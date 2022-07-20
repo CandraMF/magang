@@ -10,7 +10,7 @@ export const routes = [
     },
     {
         name: 'prosedurMagang',
-        path: '/prosedur',
+        path: '/prosedurMagang',
         component: ProsedurMagang
     },
     {

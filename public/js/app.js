@@ -2234,7 +2234,7 @@ var routes = [{
   component: Home
 }, {
   name: 'prosedurMagang',
-  path: '/prosedur',
+  path: '/prosedurMagang',
   component: ProsedurMagang
 }, {
   name: 'pengumuman',
@@ -19785,67 +19785,71 @@ var render = function() {
               attrs: { id: "navbarSupportedContent" }
             },
             [
-              _c("ul", { staticClass: "navbar-nav me-auto mb-2 mb-lg-0" }, [
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          "exact-active-class": "active",
-                          to: "/",
-                          "aria-current": "page"
-                        }
-                      },
-                      [_vm._v("Beranda")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          "exact-active-class": "active",
-                          to: "/prosedurMagang"
-                        }
-                      },
-                      [_vm._v("Prosedur Magang")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: {
-                          "exact-active-class": "active",
-                          to: "/pengumuman"
-                        }
-                      },
-                      [_vm._v("Pengumuman")]
-                    )
-                  ],
-                  1
-                )
-              ]),
+              _c(
+                "ul",
+                { staticClass: "navbar-nav me-auto ms-5 ps-3 mb-2 mb-lg-0" },
+                [
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            "exact-active-class": "active",
+                            to: "/",
+                            "aria-current": "page"
+                          }
+                        },
+                        [_vm._v("Beranda")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            "exact-active-class": "active",
+                            to: "/prosedurMagang"
+                          }
+                        },
+                        [_vm._v("Prosedur Magang")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link",
+                          attrs: {
+                            "exact-active-class": "active",
+                            to: "/pengumuman"
+                          }
+                        },
+                        [_vm._v("Pengumuman")]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("ul", { staticClass: "navbar-nav" }, [
+              _c("ul", { staticClass: "navbar-nav me-3" }, [
                 _c(
                   "li",
                   { staticClass: "nav-item" },
