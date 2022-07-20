@@ -4,22 +4,28 @@
         <section id="jumbotron">
             <div class="container vh-100">
                 <div class="col-md-12" style="height: 100% !important">
-                    <div class="d-flex align-items-center justify-content-center" style="height: 100% !important">
-                        <div>
-                            <div class="col-md-12 mb-5 text-center " >
-                                <h1 class="text-white mb-5">
-                                    Selamat Datang di Portal Karir BPKH
-                                </h1>
-                            </div>
-                            <div class="col-md-12 mb-5 pb-5">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="form col-md-6">
-                                        <form class="d-flex">
-                                            <input class="form-control" type="search" placeholder="Cari Posisi Magang" aria-label="Search">
-                                        </form>
+                    <div class="row d-flex flex-column align-items-center justify-content-center" style="height: 100% !important">
+                        <div class="col-md-12 text-center " >
+                            <h1 class="text-white mb-5">
+                                Selamat Datang di Portal Karir BPKH
+                            </h1>
+                        </div>
+                        <div class="col-md-6 mb-5 pb-5">
+                            <form action="">
+                                <div class="inner-form">
+                                    <div class="search-field">
+                                        <button class="btn-search-logo" type="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="#525252" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                                            </svg>
+                                        </button>
+                                        <input id="search" type="text" placeholder="Cari Posisi Magang" />
+                                        <button class="btn-search">
+                                            Cari
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -98,7 +104,7 @@
         <section id="berita">
             <div class="container pt-5">
                 <div class="col-md-12">
-                    <div class="row vh-100">
+                    <div class="row" style="min-height: 100vh">
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
@@ -142,6 +148,66 @@
         </section>
     </div>
 </template>
+
+<style scoped>
+
+    .inner-form {
+        position: relative;
+    }
+    .search-field  input {
+        background: white;
+        padding: 5px;
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        border: 0;
+        background: #fff;
+        display: block;
+        width: 100%;
+        padding: 10px 32px 10px 70px;
+        font-size: 18px;
+        color: #666;
+        border-radius: 34px;
+        outline: 0;
+    }
+
+    .search-field .btn-search-logo {
+        width: 70px;
+        display: flex;
+        align-items: center;
+        left: 0;
+        height: 100%;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-field .btn-search {
+        width: 70px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background: #3A57E8;
+        color: white;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        right: 0;
+        border-radius: 50px 50px 50px 50px;
+        top: 0px;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.8);
+    }
+
+</style>
 
 export default {
 
