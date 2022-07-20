@@ -2086,6 +2086,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -2180,21 +2220,12 @@ var Home = function Home() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home.vue */ "./resources/js/components/Home.vue"));
 };
 
-var Contacto = function Contacto() {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Contacto_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Contacto.vue */ "./resources/js/components/Contacto.vue"));
-}; //importamos los componentes para el blog
-
-
-var Mostrar = function Mostrar() {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_blog_Mostrar_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/blog/Mostrar.vue */ "./resources/js/components/blog/Mostrar.vue"));
+var ProsedurMagang = function ProsedurMagang() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_ProsedurMagang_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/ProsedurMagang.vue */ "./resources/js/components/ProsedurMagang.vue"));
 };
 
-var Crear = function Crear() {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_blog_Crear_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/blog/Crear.vue */ "./resources/js/components/blog/Crear.vue"));
-};
-
-var Editar = function Editar() {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_blog_Editar_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/blog/Editar.vue */ "./resources/js/components/blog/Editar.vue"));
+var Pengumuman = function Pengumuman() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Pengumuman_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Pengumuman.vue */ "./resources/js/components/Pengumuman.vue"));
 };
 
 var routes = [{
@@ -2202,21 +2233,13 @@ var routes = [{
   path: '/',
   component: Home
 }, {
-  name: 'mostrarBlogs',
-  path: '/blogs',
-  component: Mostrar
+  name: 'prosedurMagang',
+  path: '/prosedur',
+  component: ProsedurMagang
 }, {
-  name: 'crearBlog',
-  path: '/crear',
-  component: Crear
-}, {
-  name: 'editarBlog',
-  path: '/editar/:id',
-  component: Editar
-}, {
-  name: 'contacto',
-  path: '/contacto',
-  component: Contacto
+  name: 'pengumuman',
+  path: '/pengumuman',
+  component: Pengumuman
 }];
 
 /***/ }),
@@ -19743,12 +19766,17 @@ var render = function() {
   return _c("main", [
     _c(
       "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-dark bg-primary" },
+      { staticClass: "navbar navbar-expand-lg navbar-dark fixed-top" },
       [
-        _c("div", { staticClass: "container-fluid" }, [
-          _vm._m(0),
+        _c("div", { staticClass: "container-fluid px-4" }, [
+          _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+            _c("img", {
+              staticStyle: { width: "100px" },
+              attrs: { src: "/images/logo-bpkh-s-white.png", alt: "" }
+            })
+          ]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "div",
@@ -19765,30 +19793,14 @@ var render = function() {
                     _c(
                       "router-link",
                       {
-                        staticClass: "nav-link active",
+                        staticClass: "nav-link",
                         attrs: {
                           "exact-active-class": "active",
                           to: "/",
                           "aria-current": "page"
                         }
                       },
-                      [_vm._v("Inicio")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: { "exact-active-class": "active", to: "/blogs" }
-                      },
-                      [_vm._v("Blogs")]
+                      [_vm._v("Beranda")]
                     )
                   ],
                   1
@@ -19804,42 +19816,181 @@ var render = function() {
                         staticClass: "nav-link",
                         attrs: {
                           "exact-active-class": "active",
-                          to: "/contacto"
+                          to: "/prosedurMagang"
                         }
                       },
-                      [_vm._v("Contacto")]
+                      [_vm._v("Prosedur Magang")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: {
+                          "exact-active-class": "active",
+                          to: "/pengumuman"
+                        }
+                      },
+                      [_vm._v("Pengumuman")]
                     )
                   ],
                   1
                 )
               ]),
               _vm._v(" "),
-              _vm._m(2)
+              _c("ul", { staticClass: "navbar-nav" }, [
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { "exact-active-class": "active", to: "/login" }
+                      },
+                      [_vm._v("Login")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: {
+                          "exact-active-class": "active",
+                          to: "/register"
+                        }
+                      },
+                      [_vm._v("Register")]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn ",
+                  staticStyle: { background: "white", color: "#3A57E8" },
+                  attrs: { href: "" }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      attrs: {
+                        width: "27",
+                        height: "26",
+                        viewBox: "0 0 27 26",
+                        fill: "none",
+                        xmlns: "http://www.w3.org/2000/svg"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          opacity: "0.3",
+                          d:
+                            "M9.16659 6.49992C9.16659 5.3033 8.19654 4.33325 6.99992 4.33325C5.8033 4.33325 4.83325 5.3033 4.83325 6.49992C4.83325 7.69654 5.8033 8.66659 6.99992 8.66659C8.19654 8.66659 9.16659 7.69654 9.16659 6.49992Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M9.16659 12.9999C9.16659 11.8033 8.19654 10.8333 6.99992 10.8333C5.8033 10.8333 4.83325 11.8033 4.83325 12.9999C4.83325 14.1965 5.8033 15.1666 6.99992 15.1666C8.19654 15.1666 9.16659 14.1965 9.16659 12.9999Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M15.6666 6.49992C15.6666 5.3033 14.6965 4.33325 13.4999 4.33325C12.3033 4.33325 11.3333 5.3033 11.3333 6.49992C11.3333 7.69654 12.3033 8.66659 13.4999 8.66659C14.6965 8.66659 15.6666 7.69654 15.6666 6.49992Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M15.6666 12.9999C15.6666 11.8033 14.6965 10.8333 13.4999 10.8333C12.3033 10.8333 11.3333 11.8033 11.3333 12.9999C11.3333 14.1965 12.3033 15.1666 13.4999 15.1666C14.6965 15.1666 15.6666 14.1965 15.6666 12.9999Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M22.1666 6.49992C22.1666 5.3033 21.1965 4.33325 19.9999 4.33325C18.8033 4.33325 17.8333 5.3033 17.8333 6.49992C17.8333 7.69654 18.8033 8.66659 19.9999 8.66659C21.1965 8.66659 22.1666 7.69654 22.1666 6.49992Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M22.1666 12.9999C22.1666 11.8033 21.1965 10.8333 19.9999 10.8333C18.8033 10.8333 17.8333 11.8033 17.8333 12.9999C17.8333 14.1965 18.8033 15.1666 19.9999 15.1666C21.1965 15.1666 22.1666 14.1965 22.1666 12.9999Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M9.16659 19.4999C9.16659 18.3033 8.19654 17.3333 6.99992 17.3333C5.8033 17.3333 4.83325 18.3033 4.83325 19.4999C4.83325 20.6965 5.8033 21.6666 6.99992 21.6666C8.19654 21.6666 9.16659 20.6965 9.16659 19.4999Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M15.6666 19.4999C15.6666 18.3033 14.6965 17.3333 13.4999 17.3333C12.3033 17.3333 11.3333 18.3033 11.3333 19.4999C11.3333 20.6965 12.3033 21.6666 13.4999 21.6666C14.6965 21.6666 15.6666 20.6965 15.6666 19.4999Z",
+                          fill: "#3A57E8"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M22.1666 19.4999C22.1666 18.3033 21.1965 17.3333 19.9999 17.3333C18.8033 17.3333 17.8333 18.3033 17.8333 19.4999C17.8333 20.6965 18.8033 21.6666 19.9999 21.6666C21.1965 21.6666 22.1666 20.6965 22.1666 19.4999Z",
+                          fill: "#3A57E8"
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v("\n                Divisi")
+                ]
+              )
             ]
           )
         ])
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "container mt-5" }, [_c("router-view")], 1)
+    _c("div", {}, [_c("router-view")], 1),
+    _vm._v(" "),
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-      _c("img", {
-        attrs: {
-          src: "https://vuejs.org/images/logo.svg",
-          alt: "",
-          width: "30",
-          height: "24"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -19864,18 +20015,60 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", { staticClass: "d-flex" }, [
-      _c("input", {
-        staticClass: "form-control me-2",
-        attrs: { type: "search", placeholder: "Search", "aria-label": "Search" }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-success", attrs: { type: "submit" } },
-        [_vm._v("Search")]
-      )
-    ])
+    return _c(
+      "footer",
+      {
+        staticClass: "text-white py-5",
+        staticStyle: { background: "#092F53" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("h5", { staticClass: "pb-4" }, [
+                  _vm._v("Badan Pengelola Keuangan Haji")
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Menara Bidakara 1, lantai 5 Jalan Gatot Subroto, Kav. 71-73 Pancoran, Jakarta Seltan 12870, Indonesia."
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("h5", { staticClass: "pb-4" }, [_vm._v("Hubungi Kami")]),
+                _vm._v(" "),
+                _c("h3", [_vm._v("(021) 83793001")]),
+                _vm._v(" "),
+                _c("p", [_vm._v("(hunting)")]),
+                _vm._v(" "),
+                _c("h3", [_vm._v("+62 821 9090 6002")]),
+                _vm._v(" "),
+                _c("p", [_vm._v("(WA Contact Center)")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v("Fax: 021 83793019 "),
+                  _c("br"),
+                  _vm._v(" Email : info@bpkh.go.id")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("h5", { staticClass: "pb-4" }, [_vm._v("Media Sosial")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Menara Bidakara 1, lantai 5 Jalan Gatot Subroto, Kav. 71-73 Pancoran, Jakarta Seltan 12870, Indonesia."
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -35207,7 +35400,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.3","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.3","D:\\\\Code\\\\bpkh\\\\Laravel_Vue_SPA_CRUD"]],"_from":"axios@0.21.3","_id":"axios@0.21.3","_inBundle":false,"_integrity":"sha512-JtoZ3Ndke/+Iwt5n+BgSli/3idTvpt5OjKyoCmz4LX5+lPiY5l7C1colYezhlxThjNa/NhngCUWZSZFypIFuaA==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.3","name":"axios","escapedName":"axios","rawSpec":"0.21.3","saveSpec":null,"fetchSpec":"0.21.3"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.3.tgz","_spec":"0.21.3","_where":"D:\\\\Code\\\\bpkh\\\\Laravel_Vue_SPA_CRUD","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.3"}');
 
 /***/ })
 
@@ -35318,7 +35511,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.3","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_Contacto_vue":1,"resources_js_components_blog_Mostrar_vue":1,"resources_js_components_blog_Crear_vue":1,"resources_js_components_blog_Editar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_ProsedurMagang_vue":1,"resources_js_components_Pengumuman_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
