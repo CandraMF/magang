@@ -38,7 +38,7 @@
                     <div class="col-md-10 bg-white p-5" style="margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
                         <div class="row">
                             <div class="col-md-4 mb-5 text-center " >
-                                <router-link to="/detail">
+                                <router-link to="/detail" >
                                     Administrasi Keuangan
                                 </router-link>
                             </div>
