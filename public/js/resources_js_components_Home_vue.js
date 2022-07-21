@@ -218,41 +218,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c("section", { attrs: { id: "logo" } }, [
-      _c("div", { staticClass: "d-flex justify-content-center" }, [
-        _c("img", {
-          staticClass: "my-5",
-          staticStyle: { width: "300px" },
-          attrs: { src: "/images/logo-bpkh-s.png", alt: "" }
-        })
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 text-center " }, [
-      _c("h1", { staticClass: "text-white mb-5" }, [
-        _vm._v(
-          "\n                            Selamat Datang di Portal Karir BPKH\n                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "posisi" } }, [
+    _c("section", { attrs: { id: "posisi" } }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "d-flex justify-content-center" }, [
           _c(
@@ -267,81 +233,193 @@ var staticRenderFns = [
             },
             [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-md-4 mb-5 text-center " }, [
-                  _vm._v(
-                    "\n                            Administrasi Keuangan\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center " },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Administrasi Keuangan\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Manajemen Resiko Bisnis\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Manajemen Resiko Bisnis\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Administrasi Kantor\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Administrasi Kantor\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Pengadaan\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Pengadaan\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            ILAL\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                ILAL\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Humas\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Humas\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Perencanaan\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Perencanaan\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Kepatuhan\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Kepatuhan\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Teknologi Informasi\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Teknologi Informasi\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Registrasi dan Analisa Kemaslahatan\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Registrasi dan Analisa Kemaslahatan\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Administrasi Sekretariat Kepala\n                        "
-                  )
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Administrasi Sekretariat Kepala\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 mb-5 text-center" }, [
-                  _vm._v(
-                    "\n                            Manajemen Risiko Korporat\n                        "
-                  )
-                ])
+                _c(
+                  "div",
+                  { staticClass: "col-md-4 mb-5 text-center" },
+                  [
+                    _c("router-link", { attrs: { to: "/detail" } }, [
+                      _vm._v(
+                        "\n                                Manajemen Risiko Korporat\n                            "
+                      )
+                    ])
+                  ],
+                  1
+                )
               ])
             ]
           )
         ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("section", { attrs: { id: "logo" } }, [
+      _c("div", { staticClass: "d-flex justify-content-center" }, [
+        _c("img", {
+          staticClass: "my-5",
+          staticStyle: { width: "300px" },
+          attrs: { src: "/images/logo-bpkh-s.png", alt: "" }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 text-center " }, [
+      _c("h1", { staticClass: "text-white mb-5" }, [
+        _vm._v(
+          "\n                            Selamat Datang di Portal Karir BPKH\n                        "
+        )
       ])
     ])
   },

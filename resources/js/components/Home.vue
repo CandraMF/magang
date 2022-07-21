@@ -38,40 +38,64 @@
                     <div class="col-md-10 bg-white p-5" style="margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
                         <div class="row">
                             <div class="col-md-4 mb-5 text-center " >
-                                Administrasi Keuangan
+                                <router-link to="/detail">
+                                    Administrasi Keuangan
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Manajemen Resiko Bisnis
+                                <router-link to="/detail">
+                                    Manajemen Resiko Bisnis
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Administrasi Kantor
+                                <router-link to="/detail">
+                                    Administrasi Kantor
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Pengadaan
+                                <router-link to="/detail">
+                                    Pengadaan
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                ILAL
+                                <router-link to="/detail">
+                                    ILAL
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Humas
+                                <router-link to="/detail">
+                                    Humas
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Perencanaan
+                                <router-link to="/detail">
+                                    Perencanaan
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Kepatuhan
+                                <router-link to="/detail">
+                                    Kepatuhan
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Teknologi Informasi
+                                <router-link to="/detail">
+                                    Teknologi Informasi
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Registrasi dan Analisa Kemaslahatan
+                                <router-link to="/detail">
+                                    Registrasi dan Analisa Kemaslahatan
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Administrasi Sekretariat Kepala
+                                <router-link to="/detail">
+                                    Administrasi Sekretariat Kepala
+                                </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                Manajemen Risiko Korporat
+                                <router-link to="/detail">
+                                    Manajemen Risiko Korporat
+                                </router-link>
                             </div>
                         </div>
                     </div>

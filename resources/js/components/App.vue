@@ -68,6 +68,10 @@
         box-shadow: 0 0 10px #aaa;
         background-color: #fff;
    }
+
+   .navOnScroll .active {
+        color: #092F53 !important;
+   }
    .navLinkOnScroll {
         color: black !important;
    }
