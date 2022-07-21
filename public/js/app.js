@@ -2130,6 +2130,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   el: '#navbar',
   data: function data() {
@@ -2186,7 +2192,13 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]);
 Vue.use((vue_axios__WEBPACK_IMPORTED_MODULE_2___default()), (axios__WEBPACK_IMPORTED_MODULE_3___default()));
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
   mode: 'history',
-  routes: _routes__WEBPACK_IMPORTED_MODULE_4__.routes
+  routes: _routes__WEBPACK_IMPORTED_MODULE_4__.routes,
+  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0
+    };
+  }
 }); //finalmente, definimos nuestra app de Vue
 
 var app = new Vue({
@@ -2253,6 +2265,22 @@ var Pengumuman = function Pengumuman() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Pengumuman_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Pengumuman.vue */ "./resources/js/components/Pengumuman.vue"));
 };
 
+var NotFound = function NotFound() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_404_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/404.vue */ "./resources/js/components/404.vue"));
+};
+
+var Detail = function Detail() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Detail_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Detail.vue */ "./resources/js/components/Detail.vue"));
+};
+
+var Login = function Login() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_auth_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/auth/Login.vue */ "./resources/js/components/auth/Login.vue"));
+};
+
+var Register = function Register() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_auth_Register_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/auth/Register.vue */ "./resources/js/components/auth/Register.vue"));
+};
+
 var routes = [{
   name: 'home',
   path: '/',
@@ -2265,6 +2293,23 @@ var routes = [{
   name: 'pengumuman',
   path: '/pengumuman',
   component: Pengumuman
+}, {
+  name: 'detail',
+  path: '/detail/:id',
+  component: Detail,
+  props: true
+}, {
+  name: 'login',
+  path: '/login',
+  component: Login
+}, {
+  name: 'register',
+  path: '/register',
+  component: Register
+}, {
+  name: '404',
+  path: '*',
+  component: NotFound
 }];
 
 /***/ }),
@@ -20355,6 +20400,17 @@ var render = function() {
     _vm._v(" "),
     _c("div", {}, [_c("router-view")], 1),
     _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-lg text-white btn-warning m-3",
+        class: { "d-none": _vm.view.topOfPage },
+        staticStyle: { position: "fixed", right: "0", bottom: "0" },
+        attrs: { href: "#" }
+      },
+      [_c("i", { staticClass: "fa fa-chevron-up" })]
+    ),
+    _vm._v(" "),
     _vm._m(1)
   ])
 }
@@ -35879,7 +35935,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.3","D:\\\\Code\\\\bpkh\\\\La
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_ProsedurMagang_vue":1,"resources_js_components_Pengumuman_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Home_vue":1,"resources_js_components_ProsedurMagang_vue":1,"resources_js_components_Pengumuman_vue":1,"resources_js_components_404_vue":1,"resources_js_components_Detail_vue":1,"resources_js_components_auth_Login_vue":1,"resources_js_components_auth_Register_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

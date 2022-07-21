@@ -36,6 +36,11 @@
         <div class="">
             <router-view></router-view>
         </div>
+        <a href="#" class="btn btn-lg text-white btn-warning m-3" :class="{'d-none': view.topOfPage}" style="position: fixed; right: 0; bottom: 0;">
+            <i class="fa fa-chevron-up">
+
+            </i>
+        </a>
         <footer style="background: #092F53;" class="text-white py-5">
             <div class="container">
                 <div class="col-md-12">
@@ -60,6 +65,7 @@
                 </div>
             </div>
         </footer>
+
     </main>
 </template>
 

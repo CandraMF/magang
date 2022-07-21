@@ -11,15 +11,19 @@ import axios from 'axios';
 //Importamos y configuramos el Vue-router
 import VueRouter from 'vue-router';
 import {routes} from './routes';
- 
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
- 
+
 const router = new VueRouter({
     mode: 'history',
-    routes: routes
+    routes: routes,
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
+
 });
- 
+
 //finalmente, definimos nuestra app de Vue
 const app = new Vue({
     el: '#app',

@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.inner-form[data-v-f2b6376c] {\n    position: relative;\n}\n.search-field  input[data-v-f2b6376c] {\n    background: white;\n    padding: 5px;\n    height: 100%;\n    width: 100%;\n    background: transparent;\n    border: 0;\n    background: #fff;\n    display: block;\n    width: 100%;\n    padding: 10px 32px 10px 70px;\n    font-size: 18px;\n    color: #666;\n    border-radius: 34px;\n    outline: 0;\n}\n.search-field .btn-search-logo[data-v-f2b6376c] {\n    width: 70px;\n    display: flex;\n    align-items: center;\n    left: 0;\n    height: 100%;\n    background: transparent;\n    border: 0;\n    padding: 0;\n    cursor: pointer;\n    display: flex;\n    position: absolute;\n    justify-content: center;\n    align-items: center;\n}\n.search-field .btn-search[data-v-f2b6376c] {\n    width: 70px;\n    display: flex;\n    align-items: center;\n    height: 100%;\n    background: #3A57E8;\n    color: white;\n    border: 0;\n    padding: 0;\n    cursor: pointer;\n    display: flex;\n    right: 0;\n    border-radius: 50px 50px 50px 50px;\n    top: 0px;\n    position: absolute;\n    justify-content: center;\n    align-items: center;\n    transform: scale(0.8);\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.inner-form[data-v-f2b6376c] {\n    position: relative;\n}\n.search-field  input[data-v-f2b6376c] {\n    background: white;\n    padding: 5px;\n    height: 100%;\n    width: 100%;\n    background: transparent;\n    border: 0;\n    background: #fff;\n    display: block;\n    width: 100%;\n    padding: 10px 32px 10px 70px;\n    font-size: 18px;\n    color: #666;\n    border-radius: 34px;\n    outline: 0;\n}\n.search-field .btn-search-logo[data-v-f2b6376c] {\n    width: 70px;\n    display: flex;\n    align-items: center;\n    left: 0;\n    height: 100%;\n    background: transparent;\n    border: 0;\n    padding: 0;\n    cursor: pointer;\n    display: flex;\n    position: absolute;\n    justify-content: center;\n    align-items: center;\n}\n.search-field .btn-search[data-v-f2b6376c] {\n    width: 70px;\n    display: flex;\n    align-items: center;\n    height: 100%;\n    background: #3A57E8;\n    color: white;\n    border: 0;\n    padding: 0;\n    cursor: pointer;\n    display: flex;\n    right: 0;\n    border-radius: 50px 50px 50px 50px;\n    top: 0px;\n    position: absolute;\n    justify-content: center;\n    align-items: center;\n    transform: scale(0.8);\n}\n.go_animated[data-v-f2b6376c]{\n    transition: 1s ease;\n    cursor: pointer;\n    -webkit-animation: go_animate-data-v-f2b6376c 1s linear 0s infinite alternate;\n            animation: go_animate-data-v-f2b6376c 1s linear 0s infinite alternate\n}\n.go_animated[data-v-f2b6376c]:hover{\n    -webkit-animation-play-state: paused;\n            animation-play-state: paused;\n}\n@-webkit-keyframes go_animate-data-v-f2b6376c {\nfrom {\n        transform: translate(0px, -10px);\n}\nto {\n        transform: translate(0px, 0px);\n}\n}\n@keyframes go_animate-data-v-f2b6376c {\nfrom {\n        transform: translate(0px, -10px);\n}\nto {\n        transform: translate(0px, 0px);\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -210,6 +210,57 @@ var render = function() {
                       ])
                     ])
                   ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-1" }, [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "go_animated",
+                      attrs: {
+                        id: "go",
+                        width: "30",
+                        height: "30",
+                        viewBox: "0 0 26 26",
+                        fill: "#fff",
+                        xmlns: "http://www.w3.org/2000/svg"
+                      }
+                    },
+                    [
+                      _c(
+                        "g",
+                        { attrs: { id: "7bf1db55bbc1be3d7d48f9ed6dd65c5f" } },
+                        [
+                          _c(
+                            "g",
+                            {
+                              attrs: { id: "b50410873f1c5ef41de022179f6506e3" }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  id: "f243221f8881b6c9cd5b2539cee61a18",
+                                  d:
+                                    "M18.7341 5.1923C19.1572 4.76923 19.8431 4.76923 20.2662 5.1923C20.6893 5.61537 20.6893 6.3013 20.2662 6.72437L13.7662 13.2244C13.3561 13.6345 12.6957 13.6488 12.2681 13.2569L5.76813 7.29858C5.32708 6.89429 5.29729 6.20901 5.70158 5.76797C6.10587 5.32692 6.79115 5.29712 7.2322 5.70142L12.9676 10.9589L18.7341 5.1923Z",
+                                  fill: "#fff"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                attrs: {
+                                  id: "f6b68c86abdc26f1cf9c8c852851ca93",
+                                  opacity: "0.3",
+                                  d:
+                                    "M18.7341 12.7756C19.1572 12.3526 19.8431 12.3526 20.2662 12.7756C20.6893 13.1987 20.6893 13.8846 20.2662 14.3077L13.7662 20.8077C13.3561 21.2178 12.6957 21.2322 12.2681 20.8402L5.76813 14.8819C5.32708 14.4776 5.29729 13.7923 5.70158 13.3513C6.10587 12.9103 6.79115 12.8805 7.2322 13.2847L12.9676 18.5422L18.7341 12.7756Z",
+                                  fill: "#fff"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
                 ])
               ]
             )
@@ -218,18 +269,19 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("section", { attrs: { id: "posisi" } }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "d-flex justify-content-center" }, [
+    _c("section", [
+      _c("div", { staticClass: "container " }, [
+        _c("div", { staticClass: "d-flex justify-content-center " }, [
           _c(
             "div",
             {
-              staticClass: "col-md-10 bg-white p-5",
+              staticClass: "col-md-10 bg-white p-5 ",
               staticStyle: {
                 "margin-top": "-150px",
                 "border-radius": "9px",
                 "box-shadow": "0px 4px 79px -23px rgba(0,0,0,0.75)"
-              }
+              },
+              attrs: { id: "divisi" }
             },
             [
               _c("div", { staticClass: "row" }, [
@@ -237,11 +289,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center " },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Administrasi Keuangan\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Administrasi Keuangan" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Administrasi Keuangan\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -250,11 +309,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Manajemen Resiko Bisnis\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Manajemen Resiko Bisnis" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Manajemen Resiko Bisnis\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -263,11 +329,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Administrasi Kantor\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Administrasi Kantor" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Administrasi Kantor\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -276,11 +349,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Pengadaan\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Pengadaan" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Pengadaan\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -289,11 +369,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                ILAL\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/ILAL" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                ILAL\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -302,11 +389,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Humas\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Humas" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Humas\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -315,11 +409,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Perencanaan\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Perencanaan" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Perencanaan\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -328,11 +429,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Kepatuhan\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Kepatuhan" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Kepatuhan\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -341,11 +449,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Teknologi Informasi\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Teknologi Informasi" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Teknologi Informasi\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -354,11 +469,20 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Registrasi dan Analisa Kemaslahatan\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: {
+                          to: "/detail/Registrasi dan Analisa Kemaslahatan"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Registrasi dan Analisa Kemaslahatan\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -367,11 +491,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Administrasi Sekretariat Kepala\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Administrasi Sekretariat Kepala" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Administrasi Sekretariat Kepala\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 ),
@@ -380,11 +511,18 @@ var render = function() {
                   "div",
                   { staticClass: "col-md-4 mb-5 text-center" },
                   [
-                    _c("router-link", { attrs: { to: "/detail" } }, [
-                      _vm._v(
-                        "\n                                Manajemen Risiko Korporat\n                            "
-                      )
-                    ])
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link text-dark",
+                        attrs: { to: "/detail/Manajemen Risiko Korporat" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Manajemen Risiko Korporat\n                            "
+                        )
+                      ]
+                    )
                   ],
                   1
                 )
@@ -418,7 +556,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-md-12 text-center " }, [
       _c("h1", { staticClass: "text-white mb-5" }, [
         _vm._v(
-          "\n                            Selamat Datang di Portal Karir BPKH\n                        "
+          "\n                            Selamat Datang di Portal Magang BPKH\n                        "
         )
       ])
     ])

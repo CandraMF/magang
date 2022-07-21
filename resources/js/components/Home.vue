@@ -7,7 +7,7 @@
                     <div class="row d-flex flex-column align-items-center justify-content-center" style="height: 100% !important">
                         <div class="col-md-12 text-center " >
                             <h1 class="text-white mb-5">
-                                Selamat Datang di Portal Karir BPKH
+                                Selamat Datang di Portal Magang BPKH
                             </h1>
                         </div>
                         <div class="col-md-6 mb-5 pb-5">
@@ -27,73 +27,84 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col-md-1">
+                            <svg class="go_animated" id="go" width="30" height="30" viewBox="0 0 26 26" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                                <g id="7bf1db55bbc1be3d7d48f9ed6dd65c5f">
+                                    <g id="b50410873f1c5ef41de022179f6506e3">
+                                        <path id="f243221f8881b6c9cd5b2539cee61a18" d="M18.7341 5.1923C19.1572 4.76923 19.8431 4.76923 20.2662 5.1923C20.6893 5.61537 20.6893 6.3013 20.2662 6.72437L13.7662 13.2244C13.3561 13.6345 12.6957 13.6488 12.2681 13.2569L5.76813 7.29858C5.32708 6.89429 5.29729 6.20901 5.70158 5.76797C6.10587 5.32692 6.79115 5.29712 7.2322 5.70142L12.9676 10.9589L18.7341 5.1923Z" fill="#fff"></path>
+                                        <path id="f6b68c86abdc26f1cf9c8c852851ca93" opacity="0.3" d="M18.7341 12.7756C19.1572 12.3526 19.8431 12.3526 20.2662 12.7756C20.6893 13.1987 20.6893 13.8846 20.2662 14.3077L13.7662 20.8077C13.3561 21.2178 12.6957 21.2322 12.2681 20.8402L5.76813 14.8819C5.32708 14.4776 5.29729 13.7923 5.70158 13.3513C6.10587 12.9103 6.79115 12.8805 7.2322 13.2847L12.9676 18.5422L18.7341 12.7756Z" fill="#fff"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+
                     </div>
 
                 </div>
             </div>
         </section>
-        <section id="posisi">
-            <div class="container">
-                <div class="d-flex justify-content-center">
-                    <div class="col-md-10 bg-white p-5" style="margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
-                        <div class="row">
+        <section >
+            <div class="container " >
+                <div class="d-flex justify-content-center ">
+                    <div id="divisi" class="col-md-10 bg-white p-5 " style="margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
+                        <div class="row" >
                             <div class="col-md-4 mb-5 text-center " >
-                                <router-link to="/detail" >
+                                <router-link to="/detail/Administrasi Keuangan" class="nav-link text-dark" >
                                     Administrasi Keuangan
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Manajemen Resiko Bisnis" class="nav-link text-dark">
                                     Manajemen Resiko Bisnis
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Administrasi Kantor" class="nav-link text-dark">
                                     Administrasi Kantor
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Pengadaan" class="nav-link text-dark">
                                     Pengadaan
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/ILAL" class="nav-link text-dark">
                                     ILAL
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Humas" class="nav-link text-dark">
                                     Humas
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Perencanaan" class="nav-link text-dark">
                                     Perencanaan
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Kepatuhan" class="nav-link text-dark">
                                     Kepatuhan
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Teknologi Informasi" class="nav-link text-dark">
                                     Teknologi Informasi
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Registrasi dan Analisa Kemaslahatan" class="nav-link text-dark">
                                     Registrasi dan Analisa Kemaslahatan
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Administrasi Sekretariat Kepala" class="nav-link text-dark">
                                     Administrasi Sekretariat Kepala
                                 </router-link>
                             </div>
                             <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail">
+                                <router-link to="/detail/Manajemen Risiko Korporat" class="nav-link text-dark">
                                     Manajemen Risiko Korporat
                                 </router-link>
                             </div>
@@ -229,6 +240,25 @@
         justify-content: center;
         align-items: center;
         transform: scale(0.8);
+    }
+
+    .go_animated{
+        transition: 1s ease;
+        cursor: pointer;
+        animation: go_animate 1s linear 0s infinite alternate
+    }
+
+    .go_animated:hover{
+        animation-play-state: paused;
+    }
+
+    @keyframes go_animate {
+        from {
+            transform: translate(0px, -10px);
+        }
+        to {
+            transform: translate(0px, 0px);
+        }
     }
 
 </style>
