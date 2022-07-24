@@ -270,12 +270,12 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("section", [
-      _c("div", { staticClass: "container " }, [
-        _c("div", { staticClass: "d-flex justify-content-center " }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "d-flex justify-content-center" }, [
           _c(
             "div",
             {
-              staticClass: "col-md-10 bg-white p-5 ",
+              staticClass: "col-md-10 bg-white p-5",
               staticStyle: {
                 "margin-top": "-150px",
                 "border-radius": "9px",
@@ -287,7 +287,7 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-md-4 mb-5 text-center " },
+                  { staticClass: "col-md-4 mb-5 text-center" },
                   [
                     _c(
                       "router-link",
@@ -543,7 +543,57 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _c("section", { attrs: { id: "berita-utama" } }, [
+      _c(
+        "div",
+        {
+          staticClass: "col-md-12 py-5 mt-5 text-center text-white",
+          staticStyle: { background: "#3A57E8" }
+        },
+        [
+          _c("h2", { staticClass: "mb-4" }, [
+            _vm._v("Periode Pendaftaran Baru Telah Dibuka")
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "contact" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-lg btn-dark",
+                staticStyle: { height: "54px", "border-radius": "50px" },
+                attrs: { href: "#" }
+              },
+              [_c("b-icon", { attrs: { icon: "telephone" } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-lg btn-dark",
+                staticStyle: { height: "54px", "border-radius": "50px" },
+                attrs: { href: "#" }
+              },
+              [_c("b-icon", { attrs: { icon: "whatsapp" } })],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-lg btn-dark",
+                staticStyle: { height: "54px", "border-radius": "50px" },
+                attrs: { href: "#" }
+              },
+              [_c("b-icon", { attrs: { icon: "envelope" } })],
+              1
+            )
+          ])
+        ]
+      )
+    ]),
     _vm._v(" "),
     _vm._m(2)
   ])
@@ -553,7 +603,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 text-center " }, [
+    return _c("div", { staticClass: "col-md-12 text-center" }, [
       _c("h1", { staticClass: "text-white mb-5" }, [
         _vm._v(
           "\n                            Selamat Datang di Portal Magang BPKH\n                        "
@@ -565,82 +615,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "berita-utama" } }, [
+    return _c("div", { staticClass: "action mb-4" }, [
       _c(
-        "div",
+        "a",
         {
-          staticClass: " col-md-12 py-5 mt-5 text-center text-white ",
-          staticStyle: { background: "#3A57E8" }
+          staticClass: "btn btn-lg text-white",
+          staticStyle: { background: "rgba(255, 255, 255, 0.226)" },
+          attrs: { href: "#" }
         },
-        [
-          _c("h2", { staticClass: "mb-4" }, [
-            _vm._v("Periode Pendaftaran Baru Telah Dibuka")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "action mb-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-lg text-white",
-                staticStyle: { background: "rgba(255, 255, 255, 0.226)" },
-                attrs: { href: "#" }
-              },
-              [_vm._v("FAQ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-lg text-white",
-                staticStyle: { background: "rgba(255, 255, 255, 0.226)" },
-                attrs: { href: "#" }
-              },
-              [_vm._v("Prosedur Pendaftaran")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-lg text-primary",
-                staticStyle: { background: "white" },
-                attrs: { href: "#" }
-              },
-              [_vm._v("Daftar/Masuk")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contact" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-lg btn-dark",
-                staticStyle: { height: "54px", "border-radius": "50px" },
-                attrs: { href: "#" }
-              },
-              [_c("i", { staticClass: "fas fa-phone" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-lg btn-dark",
-                staticStyle: { height: "54px", "border-radius": "50px" },
-                attrs: { href: "#" }
-              },
-              [_c("i", { staticClass: "fab fa-brands fa-whatsapp" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-lg btn-dark",
-                staticStyle: { height: "54px", "border-radius": "50px" },
-                attrs: { href: "#" }
-              },
-              [_c("i", { staticClass: "fas fa-solid fa-envelope" })]
-            )
-          ])
-        ]
+        [_vm._v("FAQ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-lg text-white",
+          staticStyle: { background: "rgba(255, 255, 255, 0.226)" },
+          attrs: { href: "#" }
+        },
+        [_vm._v("Prosedur Pendaftaran")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-lg text-primary",
+          staticStyle: { background: "white" },
+          attrs: { href: "#" }
+        },
+        [_vm._v("Daftar/Masuk")]
       )
     ])
   },

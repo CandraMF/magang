@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap');
 
 *{
-    font-family: Inter;
+    font-family: Inter !important;
 }
 
 .nav-link{
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 p{
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 h1{
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 h5{
-    font-weight: 700;
+    font-weight: 700 !important;
 }
 
 h6{
-    font-weight: 400;
+    font-weight: 400 !important;
 }
 
 

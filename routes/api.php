@@ -11,4 +11,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::resource('blog',App\Http\Controllers\BlogController::class)->only(['index','store','show','update','destroy']);
 
 //de esta forma nos genera todas las rutas
-Route::resource('blog',App\Http\Controllers\BlogController::class);
+Route::resource('blog', App\Http\Controllers\BlogController::class);
+Route::resource('person', App\Http\Controllers\PersonController::class);

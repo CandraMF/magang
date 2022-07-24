@@ -20,6 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['id']
 });
@@ -121,6 +122,12 @@ var render = function() {
             _vm._v(_vm._s(_vm.id))
           ])
         ]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "btn btn-primary", attrs: { to: "/register" } },
+          [_vm._v("Daftar")]
+        ),
         _vm._v(" "),
         _c(
           "router-link",

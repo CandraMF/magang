@@ -128,9 +128,9 @@
                     <a href="#" class="btn btn-lg text-primary" style="background: white">Daftar/Masuk</a>
                 </div>
                 <div class="contact">
-                    <a href="#" class="btn btn-lg btn-dark" style="height: 54px; width 54px; border-radius: 50px"><i class="fas fa-phone"></i></a>
-                    <a href="#" class="btn btn-lg btn-dark" style="height: 54px; width 54px; border-radius: 50px"><i class="fab fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="btn btn-lg btn-dark" style="height: 54px; width 54px; border-radius: 50px"><i class="fas fa-solid fa-envelope"></i></a>
+                    <a href="#" class="btn btn-lg btn-dark" style="height: 54px; width 54px; border-radius: 50px"><b-icon icon="telephone"></b-icon></a>
+                    <a href="#" class="btn btn-lg btn-dark" style="height: 54px; width 54px; border-radius: 50px"><b-icon icon="whatsapp"></b-icon></a>
+                    <a href="#" class="btn btn-lg btn-dark" style="height: 54px; width 54px; border-radius: 50px"><b-icon icon="envelope"></b-icon></a>
                 </div>
 
 
