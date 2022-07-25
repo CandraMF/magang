@@ -26,6 +26,9 @@
         "vue": "^2.7.8",
         "vue-axios": "^3.2.5",
         "vue-router": "^3.5.2",
+        "vue-sidebar-menu": "^4.8.1",
+        "vue2-transitions": "^0.3.0",
+        "vuelidate": "^0.7.7",
         "watch": "^1.0.2"
     }
 }

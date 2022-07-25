@@ -8,7 +8,7 @@
 
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet"/>
     </head>
-    <body>
+    <body style="padding: 0 !important">
         <div id="app">
 
         </div>

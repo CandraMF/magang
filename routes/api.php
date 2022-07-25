@@ -13,3 +13,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //de esta forma nos genera todas las rutas
 Route::resource('blog', App\Http\Controllers\BlogController::class);
 Route::resource('person', App\Http\Controllers\PersonController::class);
+Route::resource('status', App\Http\Controllers\StatusController::class);
+Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
