@@ -10,5 +10,5 @@ class Status extends Model
     use HasFactory;
 
     protected $table = 'magang.status_tr';
-    protected $primaryKey = 'status_id';
+    // protected $primaryKey = 'status_id';
 }

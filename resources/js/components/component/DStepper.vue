@@ -11,7 +11,7 @@
           class="step-number align-items-center justify-content-center mx-auto"
           :class="stepNumberClasses(i)"
         >
-          <i v-if="step > i" class="fas fa-check"></i>
+          <b-icon v-if="step > i" icon="check2"></b-icon>
           <i v-else-if="step === i && fatalError" class="fas fa-exclamation"></i>
           <span v-else>{{ i + 1 }}</span>
         </div>
@@ -26,13 +26,10 @@
       :class="{ 'border-danger': error, 'shake-error': shake }"
       v-loading="loading"
     >
-      <b-card-body class="d-flex">
-        <div v-if="steps[step].icon" class="d-none d-sm-block">
-          <i class="fas fa-fw fa-3x mr-4" :class="iconClasses"></i>
-        </div>
-        <div>
+      <b-card-body class="d-flex bg-white p-5">
+        <div class="col-md-12">
           <h3>{{ step + 1 }}. {{ steps[step].name }}</h3>
-          <p class="text-muted">{{ steps[step].desc }}</p>
+          <p class="text-muted" >{{ steps[step].desc }}</p>
 
           <div v-if="!fatalError">
             <transition :name="effect" mode="out-in">

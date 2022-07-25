@@ -36,7 +36,7 @@ class PersonController extends Controller
     public function store(Request $request)
     {
         \App\Models\Person::create([
-            'person_id'         => $request->person_id,
+            // 'person_id'         => $request->person_id,
             'title_pre'         => $request->title_pre,
             'name'              => $request->name,
             'title_post'        => $request->title_post,
@@ -55,11 +55,11 @@ class PersonController extends Controller
             'mobile'            => $request->mobile,
             'mobile_alt'        => $request->mobile_alt,
             'address'           => $request->address,
-            'region_id'         => $request->region_id,
-            'zip'               => $request->zip,
-            'address_home'      => $request->address_home,
-            'region_id_home'    => $request->region_id_home,
-            'zip_home'          => $request->zip_home
+            'region_id'         => '-',
+            'zip'               => '-',
+            'address_home'      => '-',
+            'region_id_home'    => '-',
+            'zip_home'          => '-'
         ]);
     }
 

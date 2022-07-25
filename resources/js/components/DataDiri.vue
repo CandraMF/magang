@@ -1,6 +1,6 @@
 <template>
 
-  <div class="bg-light">
+  <div class="bg-light pb-5">
     <b-container id="app" class="pt-5 mt-5 min-vh-100">
         <d-stepper :steps="steps" :initial-state="{ name: 'Carlos', users: [] }">
             <template #fatal-error="{ errorMsg }">{{ errorMsg }}</template>
@@ -28,13 +28,13 @@ export default {
           name: "Data Diri",
           desc:
             "Isi Dengan Data Diri Anda yang, Pastikan Data yang dimasukan sesuai",
-          icon: "fas fa-car",
+          icon: "person",
           disabled: false,
           active: true,
           component: DataDiri1
         },
         {
-          name: "Data Keluarga",
+          name: "Keluarga",
           desc:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
           disabled: false,
@@ -42,7 +42,7 @@ export default {
           component: DataDiri2
         },
         {
-          name: "Riwayat Pendidikan",
+          name: "Pendidikan",
           desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           icon: "fas fa-check",
           disabled: false,
@@ -50,13 +50,13 @@ export default {
           component: DataDiri3,
         },
         {
-          name: "Riwayat Pendidikan",
+          name: "Berkas",
           desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           icon: "fas fa-check",
           disabled: false,
           active: false,
           component: DataDiri3,
-          confirm: "Enviar formluario"
+          confirm: "Kirim"
         }
       ]
     };
