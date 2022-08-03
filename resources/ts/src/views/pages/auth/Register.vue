@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-center">
             <div class="card shadow col-md-6">
                 <div class="card-body ">
-                    <h4 class="card-title text-center mb-10">Register</h4>
+                    <h2 class="card-title text-center mb-10">Register</h2>
                     <div class="mb-5">
                         <label for="emailField" class="form-label">Nama Lengkap</label>
                         <input

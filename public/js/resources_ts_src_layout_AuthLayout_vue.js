@@ -16,14 +16,22 @@ __webpack_require__.r(__webpack_exports__);
     return {
       view: {
         topOfPage: false
-      }
+      },
+      effect: ""
     };
   },
   watch: {
     $route: function $route(to, from) {
-      var toDepth = to.path.split('/').length;
-      var fromDepth = from.path.split('/').length;
-      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+      if (to.path == '/login') {
+        this.effect = 'out-in-translate-fade';
+      } else {
+        this.effect = 'in-out-translate-fade';
+      } // if(this.$router.history.current["path"] === "/login") {
+      //     this.effect = 'out-in-translate-fade'
+      // } else {
+      //     this.effect = 'in-out-translate-fade'
+      // }
+
     }
   }
 });
@@ -112,10 +120,9 @@ var _hoisted_17 = {
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register");
 
-var _hoisted_19 = {
-  "class": "wrapper"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
@@ -237,8 +244,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
       var Component = _ref.Component;
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-        name: "slide"
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+        name: _this.effect,
+        mode: "out-in"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)(Component)))];
@@ -246,9 +254,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 2
         /* DYNAMIC */
 
-      }, 1024
-      /* DYNAMIC_SLOTS */
-      )])];
+      }, 1032
+      /* PROPS, DYNAMIC_SLOTS */
+      , ["name"])];
     }),
     _: 1
     /* STABLE */
@@ -274,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.navOnScroll[data-v-578dafd4] {\n        box-shadow: 0 0 10px #aaa;\n        background-color: #fff;\n}\n.navOnScroll .active[data-v-578dafd4] {\n        color: #092F53 !important;\n}\n.navLinkOnScroll[data-v-578dafd4] {\n        color: black !important;\n}\nh5[data-v-578dafd4] {\n        font-weight: 500;\n        font-size: 18pt;\n        color: white;\n}\nh3[data-v-578dafd4] {\n        color: white;\n}\nfooter .col-md-4[data-v-578dafd4] {\n        padding: 0px 40px;\n}\n.wrapper[data-v-578dafd4] {\n        width: 100%;\n        min-height: 100vh;\n}\n.slide-enter-active[data-v-578dafd4],\n    .slide-leave-active[data-v-578dafd4] {\n        transition: all 0.75s ease-out;\n}\n.slide-enter-to[data-v-578dafd4] {\n        position: absolute;\n        right: 0;\n        opacity: 1;\n}\n.slide-enter-from[data-v-578dafd4] {\n        position: absolute;\n        right: -100%;\n        opacity: 0;\n}\n.slide-leave-to[data-v-578dafd4] {\n        position: absolute;\n        left: -100%;\n        opacity: 0;\n}\n.slide-leave-from[data-v-578dafd4] {\n        position: absolute;\n        left: 0;\n        opacity: 1;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.navOnScroll[data-v-578dafd4] {\n        box-shadow: 0 0 10px #aaa;\n        background-color: #fff;\n}\n.navOnScroll .active[data-v-578dafd4] {\n        color: #092F53 !important;\n}\n.navLinkOnScroll[data-v-578dafd4] {\n        color: black !important;\n}\nh5[data-v-578dafd4] {\n        font-weight: 500;\n        font-size: 18pt;\n        color: white;\n}\nh3[data-v-578dafd4] {\n        color: white;\n}\nfooter .col-md-4[data-v-578dafd4] {\n        padding: 0px 40px;\n}\n.wrapper[data-v-578dafd4] {\n        width: 100%;\n        min-height: 100vh;\n}\n.in-out-translate-fade-enter-active[data-v-578dafd4],\n    .in-out-translate-fade-leave-active[data-v-578dafd4] {\n        transition: all 0.15s;\n}\n.in-out-translate-fade-enter[data-v-578dafd4],\n    .in-out-translate-fade-leave-active[data-v-578dafd4] {\n        opacity: 0;\n}\n.in-out-translate-fade-enter[data-v-578dafd4] {\n        transform: translateX(100px);\n}\n.in-out-translate-fade-leave-active[data-v-578dafd4] {\n        transform: translateX(-100px);\n}\n.out-in-translate-fade-enter-active[data-v-578dafd4],\n    .out-in-translate-fade-leave-active[data-v-578dafd4] {\n        transition: all 0.15s;\n}\n.out-in-translate-fade-enter[data-v-578dafd4],\n    .out-in-translate-fade-leave-active[data-v-578dafd4] {\n        opacity: 0;\n}\n.out-in-translate-fade-enter[data-v-578dafd4] {\n        transform: translateX(-100px);\n}\n.out-in-translate-fade-leave-active[data-v-578dafd4] {\n    transform: translateX(100px);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

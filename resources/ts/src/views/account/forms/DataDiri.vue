@@ -45,7 +45,7 @@
       <el-form-item label="Status Pernikahan" prop="marital">
         <el-select v-model="ruleForm.marital" placeholder="Select" class="w-100">
           <el-option
-            v-for="item in options"
+            v-for="item in options['marital']"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -61,7 +61,7 @@
       <el-form-item label="Etnis" prop="etnicity">
         <el-select v-model="ruleForm.etnicity" placeholder="Select" class="w-100">
           <el-option
-            v-for="item in options"
+            v-for="item in options['etnicity']"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -71,7 +71,7 @@
       <el-form-item label="Agama" prop="religion">
         <el-select v-model="ruleForm.religion" placeholder="Select" class="w-100">
           <el-option
-            v-for="item in options"
+            v-for="item in options['religion']"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -86,28 +86,16 @@
 
 </template>
 <script>
+    import axios from 'axios'
   export default {
     data() {
         return {
-            options: [
-                {
-                    value: 'Option1',
-                    label: 'Option1'
-                }, {
-                    value: 'Option2',
-                    label: 'Option2',
-                    disabled: true
-                }, {
-                    value: 'Option3',
-                    label: 'Option3'
-                }, {
-                    value: 'Option4',
-                    label: 'Option4'
-                }, {
-                    value: 'Option5',
-                    label: 'Option5'
-                }
-            ],
+
+            options: {
+              'etnicity': [],
+              'marital': [],
+              'religion': [],
+            },
             ruleForm: {
                 name: '',
                 email: '',
@@ -136,13 +124,16 @@
               ],
               nomorKTP: [
                 { required: true, message: 'Mohon isi nomor KTP', trigger: ['blur', 'change'] },
-                { min: 16, message: 'Nomor KTP minimal 16 digit', trigger: ['blur', 'change'] }
+                { min: 16, message: 'Nomor KTP harus 16 digit', trigger: ['blur', 'change'] },
+                { max: 16, message: 'Nomor KTP harus 16 digit', trigger: ['blur', 'change'] }
               ],
               nomorNPWP: [
-                { min: 16, message: 'Nomor NPWP minimal 16 digit', trigger: ['blur', 'change'] }
+                { min: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] },
+                { max: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] }
               ],
               nomorSIM: [
-                { min: 12, message: 'Nomor SIM minimal 12 digit', trigger: ['blur', 'change'] }
+                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
+                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
               ],
               tempatLahir: [
                 { required: true, message: 'Mohon isi Tempat Lahir', trigger: 'blur' },
@@ -168,7 +159,34 @@
             }
       };
     },
+    mounted : function() {
+      this.getStatus()
+    },
     methods: {
+      async getStatus(){
+        await axios.get('/api/status')
+          .then((response)=> {
+            response.data.forEach(element => {
+                if(element.status_id.slice(0,3) == 'ETH') {
+                    this.options['etnicity'].push({
+                        'value': element.status_id,
+                        'label': element.name,
+                    })
+                } else if(element.status_id.slice(0,3) == 'REL') {
+                    this.options['religion'].push({
+                        'value': element.status_id,
+                        'label': element.name,
+                    })
+                }
+                if(element.status_id.slice(0,3) == 'MAR') {
+                    this.options['marital'].push({
+                        'value': element.status_id,
+                        'label': element.name,
+                    })
+                }
+            });
+          })
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {

@@ -35,11 +35,9 @@
         </nav>
         <div>
             <router-view v-slot="{ Component }">
-                <div class="wrapper">
-                    <transition name="slide">
-                        <component :is="Component" />
-                    </transition>
-                </div>
+                <transition :name="this.effect" mode="out-in">
+                    <component :is="Component" />
+                </transition>
             </router-view>
         </div>
     </div>
@@ -77,46 +75,59 @@
         min-height: 100vh;
     }
 
-    .slide-enter-active,
-    .slide-leave-active {
-        transition: all 0.75s ease-out;
+
+    .in-out-translate-fade-enter-active,
+    .in-out-translate-fade-leave-active {
+        transition: all 0.15s;
     }
-    .slide-enter-to {
-        position: absolute;
-        right: 0;
-        opacity: 1;
-    }
-    .slide-enter-from {
-        position: absolute;
-        right: -100%;
+    .in-out-translate-fade-enter,
+    .in-out-translate-fade-leave-active {
         opacity: 0;
     }
-    .slide-leave-to {
-        position: absolute;
-        left: -100%;
-        opacity: 0;
+    .in-out-translate-fade-enter {
+        transform: translateX(100px);
     }
-    .slide-leave-from {
-        position: absolute;
-        left: 0;
-        opacity: 1;
+    .in-out-translate-fade-leave-active {
+        transform: translateX(-100px);
     }
 
+    .out-in-translate-fade-enter-active,
+    .out-in-translate-fade-leave-active {
+        transition: all 0.15s;
+    }
+    .out-in-translate-fade-enter,
+    .out-in-translate-fade-leave-active {
+        opacity: 0;
+    }
+    .out-in-translate-fade-enter {
+        transform: translateX(-100px);
+    }
+    .out-in-translate-fade-leave-active {
+    transform: translateX(100px);
+    }
 </style>
 <script>
     export default {
         data () {
             return {
                 view: {
-                    topOfPage: false
-                }
+                    topOfPage: false,
+                },
+                effect: ""
             }
         },
         watch: {
             $route(to, from) {
-                const toDepth = to.path.split('/').length
-                const fromDepth = from.path.split('/').length
-                this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+                if(to.path == '/login'){
+                    this.effect = 'out-in-translate-fade'
+                } else {
+                    this.effect = 'in-out-translate-fade'
+                }
+                // if(this.$router.history.current["path"] === "/login") {
+                //     this.effect = 'out-in-translate-fade'
+                // } else {
+                //     this.effect = 'in-out-translate-fade'
+                // }
             },
         },
     }
