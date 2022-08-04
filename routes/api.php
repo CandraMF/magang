@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('person', App\Http\Controllers\PersonController::class);
 Route::resource('status', App\Http\Controllers\StatusController::class);
 Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
+
+Route::post('social/{provider}', [App\Http\Controllers\AuthController::class, 'social']);
+

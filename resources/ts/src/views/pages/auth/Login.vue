@@ -34,8 +34,8 @@
                     <div class="my-5 text-center">
                         <router-link to="admin" class="btn btn-primary w-100">Login</router-link>
                         <div class="separator my-5"></div>
-                        <a href="#" class="btn btn-danger">
-                            <i class="bi bi-google me-2"></i> Google
+                        <a @click.prevent="authProvider('google')" class="btn btn-danger">
+                            <i class="bi bi-google me-2"></i>Masuk Dengan Google
                         </a>
                     </div>
                 </div>
@@ -53,34 +53,53 @@ import { useField, useForm } from "vee-validate";
 export default {
     setup() {
     // Define a validation schema
-    const schema = yup.object({
-      email: yup
-        .string()
-        .required()
-        .email(),
-      password: yup
-        .string()
-        .required()
-        .min(8)
-    });
+        const schema = yup.object({
+            email: yup
+                .string()
+                .required()
+                .email(),
+            password: yup
+                .string()
+                .required()
+                .min(8)
+            });
 
-    // Create a form context with the validation schema
-    useForm({
-      validationSchema: schema
-    });
+        // Create a form context with the validation schema
+        useForm({
+            validationSchema: schema
+        });
 
-    // No need to define rules for fields
-    const { value: email, errorMessage: emailError } = useField("email");
-    const { value: password, errorMessage: passwordError } = useField(
-      "password"
-    );
+        // No need to define rules for fields
+        const { value: email, errorMessage: emailError } = useField("email");
+        const { value: password, errorMessage: passwordError } = useField(
+            "password"
+        );
 
-    return {
-      email,
-      emailError,
-      password,
-      passwordError
-    };
-  }
+        return {
+            email,
+            emailError,
+            password,
+            passwordError
+        };
+    },
+    methods: {
+        authProvider(provider) {
+            let self = this;
+            this.$auth.authenticate(provider).then(response => {
+                self.socialLogin(provider,response)
+            }).catch(err => {
+                console.log({err:err})
+            })
+        },
+        socialLogin(provider,response) {
+            this.$http.post('/social/'+provider, response).then(response => {
+                return response.data.token;
+            }).catch(err => {
+                console.log({err:err})
+            })
+        }
+    }
+
+
 }
 </script>

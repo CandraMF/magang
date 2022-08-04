@@ -14,6 +14,7 @@ import "@/core/plugins/bootstrap";
 import "@/core/plugins/keenthemes";
 import "@/core/plugins/prismjs";
 
+
 const app = createApp(App);
 
 app.use(store);

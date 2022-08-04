@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_ID', '333358273938-q5bej8qu7gtmrhc83a23pc3mkpht3msg.apps.googleusercontent.com'),
+        'client_secret' => env('GOOGLE_SECRET', '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'),
+        'redirect' => env('GOOGLE_URL', 'http://magang.com/auth/google/callback'),
+    ],
+
 ];

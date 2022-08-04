@@ -41,6 +41,27 @@ __webpack_require__.r(__webpack_exports__);
       password: password,
       passwordError: passwordError
     };
+  },
+  methods: {
+    authProvider: function authProvider(provider) {
+      var self = this;
+      this.$auth.authenticate(provider).then(function (response) {
+        self.socialLogin(provider, response);
+      })["catch"](function (err) {
+        console.log({
+          err: err
+        });
+      });
+    },
+    socialLogin: function socialLogin(provider, response) {
+      this.$http.post('/social/' + provider, response).then(function (response) {
+        return response.data.token;
+      })["catch"](function (err) {
+        console.log({
+          err: err
+        });
+      });
+    }
   }
 });
 
@@ -126,15 +147,15 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#",
-  "class": "btn btn-danger"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bi bi-google me-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Google ")], -1
+}, null, -1
 /* HOISTED */
 );
 
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk Dengan Google ");
+
+var _hoisted_20 = [_hoisted_18, _hoisted_19];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -183,7 +204,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), _hoisted_17, _hoisted_18])])])])]);
+  }), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $options.authProvider('google');
+    }, ["prevent"])),
+    "class": "btn btn-danger"
+  }, _hoisted_20)])])])])]);
 }
 
 /***/ }),

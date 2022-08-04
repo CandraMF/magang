@@ -75,7 +75,6 @@
         min-height: 100vh;
     }
 
-
     .in-out-translate-fade-enter-active,
     .in-out-translate-fade-leave-active {
         transition: all 0.15s;
