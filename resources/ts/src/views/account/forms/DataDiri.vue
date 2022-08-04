@@ -90,7 +90,6 @@
   export default {
     data() {
         return {
-
             options: {
               'etnicity': [],
               'marital': [],

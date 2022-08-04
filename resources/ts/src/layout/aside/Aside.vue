@@ -14,7 +14,7 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto pt-9 pb-7 px-9" id="kt_aside_logo">
       <!--begin::Logo-->
-      <a href="#">
+      <a href="/">
         <img
           alt="Logo"
           src="/image/logo-bpkh-s.png"

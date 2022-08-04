@@ -5,6 +5,7 @@ import router from "./router";
 import store from "./store";
 import ElementPlus from "element-plus";
 import i18n from "@/core/plugins/i18n";
+import axios from 'axios'
 
 //imports for app initialization
 import { initInlineSvg } from "@/core/plugins/inline-svg";
@@ -17,6 +18,7 @@ import "@/core/plugins/prismjs";
 
 const app = createApp(App);
 
+app.config.globalProperties.$axios = axios;
 app.use(store);
 app.use(router);
 app.use(ElementPlus);

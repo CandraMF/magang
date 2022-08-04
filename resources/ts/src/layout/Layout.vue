@@ -2,7 +2,7 @@
   <KTLoader v-if="loaderEnabled" :logo="loaderLogo"></KTLoader>
 
   <!-- begin:: Body -->
-  <div class="page d-flex flex-row flex-column-fluid">
+  <div class="page d-flex flex-row flex-column-fluid bg-light">
     <!-- begin:: Aside Left -->
     <KTAside
       v-if="asideEnabled"

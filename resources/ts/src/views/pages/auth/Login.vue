@@ -1,105 +1,65 @@
 <template>
 
-    <div class="col-md-12 pt-10">
-        <div class="d-flex justify-content-center">
-            <div class="card shadow col-md-6">
-                <div class="card-body ">
-                    <h2 class="card-title text-center mb-10">Login</h2>
-                    <div class="mb-5">
-                        <label for="emailField" class="form-label">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            v-model="email"
-                            class="form-control form-control-solid"
-                            id="emailField"
-                            placeholder="Email"
-                        />
-                        <span class="text-danger">{{ emailError }}</span>
-                    </div>
-
-                    <div class="mb-5">
-                        <label for="passwordField" class="form-label">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            v-model="password"
-                            class="form-control form-control-solid"
-                            id="passwordField"
-                            placeholder="password"
-                        />
-                        <span class="text-danger ">{{ passwordError }}</span>
-                    </div>
+    <div class="row d-flex justify-content-center m-0 p-0">
+        <div class="col-md-6 mt-10">
+            <el-card class="p-10">
+                <h2 class="text-center">Login</h2>
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon>
+                    <el-form-item prop="email" label="Email">
+                        <el-input v-model="ruleForm.email"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="password" label="Password" >
+                        <el-input v-model="ruleForm.password" show-password></el-input>
+                    </el-form-item>
                     <div class="w-100 text-end">Belum Punya Akun? <router-link to="register">Register</router-link></div>
                     <div class="my-5 text-center">
-                        <router-link to="admin" class="btn btn-primary w-100">Login</router-link>
+                        <button type="button" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Login</button>
                         <div class="separator my-5"></div>
-                        <a @click.prevent="authProvider('google')" class="btn btn-danger">
-                            <i class="bi bi-google me-2"></i>Masuk Dengan Google
+                        <a href="#" class="btn btn-danger">
+                            <i class="bi bi-google me-2"></i> Google
                         </a>
                     </div>
-                </div>
-            </div>
-
+                </el-form>
+            </el-card>
         </div>
     </div>
+
 </template>
-
 <script>
-
-import * as yup from "yup";
-import { useField, useForm } from "vee-validate";
-
-export default {
-    setup() {
-    // Define a validation schema
-        const schema = yup.object({
-            email: yup
-                .string()
-                .required()
-                .email(),
-            password: yup
-                .string()
-                .required()
-                .min(8)
-            });
-
-        // Create a form context with the validation schema
-        useForm({
-            validationSchema: schema
-        });
-
-        // No need to define rules for fields
-        const { value: email, errorMessage: emailError } = useField("email");
-        const { value: password, errorMessage: passwordError } = useField(
-            "password"
-        );
-
+  import axios from 'axios'
+  export default {
+    data() {
         return {
-            email,
-            emailError,
-            password,
-            passwordError
-        };
+            ruleForm: {
+                email: '',
+                password: '',
+            },
+            rules: {
+                password: [
+                    { required: true, message: 'Mohon isi password', trigger: ['blur', 'change'] },
+                ],
+                email: [
+                    { required: true, message: 'Mohon isi email', trigger: 'blur' },
+                    { type: 'email', message: 'Mohon isi format email yang benar', trigger: ['blur', 'change'] }
+                ],
+            }
+      };
     },
     methods: {
-        authProvider(provider) {
-            let self = this;
-            this.$auth.authenticate(provider).then(response => {
-                self.socialLogin(provider,response)
-            }).catch(err => {
-                console.log({err:err})
-            })
-        },
-        socialLogin(provider,response) {
-            this.$http.post('/social/'+provider, response).then(response => {
-                return response.data.token;
-            }).catch(err => {
-                console.log({err:err})
-            })
-        }
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            console.log($refs(formName))
+            // this.nextStepAction()
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
     }
-
-
-}
+  }
 </script>
