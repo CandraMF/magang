@@ -9,7 +9,20 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: "/beranda",
                 name: "beranda",
+                redirect: 'beranda/login',
                 component: () => import("@/views/pages/LandingPage.vue"),
+                children: [
+                    {
+                        path: "/beranda/login",
+                        name: "berandaLogin",
+                        component: () => import("@/views/pages/auth/Login.vue"),
+                    },
+                    {
+                        path: "/beranda/register",
+                        name: "berandaRegister",
+                        component: () => import("@/views/pages/auth/Register.vue"),
+                    },
+                ]
             },
             {
                 path: "/detail",
@@ -78,11 +91,11 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(() => {
-  // Scroll page to top on every route change
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 100);
-});
+// router.beforeEach(() => {
+//   // Scroll page to top on every route change
+//   setTimeout(() => {
+//     window.scrollTo(0, 0);
+//   }, 100);
+// });
 
 export default router;

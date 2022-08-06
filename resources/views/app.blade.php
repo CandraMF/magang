@@ -8,26 +8,25 @@
    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700|Material+Icons" rel="stylesheet">
 </head>
 <body style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px; background: rgb(255, 255, 255) !important">
+
+    @if (Auth::check())
+        <script>
+            window.Laravel = {!!json_encode([
+                'isLoggedin' => true,
+                'user' => Auth::user()
+            ])!!}
+        </script>
+    @else
+        <script>
+            window.Laravel = {!!json_encode([
+                'isLoggedin' => false
+            ])!!}
+        </script>
+    @endif
+
    <div id="app" class="d-flex flex-column flex-root">
    </div>
 
-   @if (Auth::check())
-        @php
-            $user_auth_data = [
-                'isLoggedin' => true,
-                'user' =>  Auth::user()
-            ];
-        @endphp
-    @else
-        @php
-            $user_auth_data = [
-                'isLoggedin' => false
-            ];
-        @endphp
-    @endif
-    <script>
-        window.Laravel = JSON.parse(atob('{{ base64_encode(json_encode($user_auth_data)) }}'));
-    </script>
    <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>

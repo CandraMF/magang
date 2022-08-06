@@ -18,7 +18,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      isLoading: false,
       ruleForm: {
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -26,6 +28,11 @@ __webpack_require__.r(__webpack_exports__);
         nik: ''
       },
       rules: {
+        name: [{
+          required: true,
+          message: 'Mohon isi Nama Lengkap',
+          trigger: 'blur'
+        }],
         nik: [{
           required: true,
           message: 'Mohon isi NIK',
@@ -40,9 +47,11 @@ __webpack_require__.r(__webpack_exports__);
           message: 'Mohon isi Konfirmasi Password',
           trigger: ['blur', 'change']
         }],
-        //   password: [
-        //     { validator: validatePass2, trigger: ['blur', 'change'] },
-        //   ],
+        password: [{
+          required: true,
+          message: 'Mohon isi Password',
+          trigger: ['blur', 'change']
+        }],
         nomorHP: [{
           required: true,
           message: 'Mohon isi Nomor HP',
@@ -65,17 +74,66 @@ __webpack_require__.r(__webpack_exports__);
     submitForm: function submitForm(formName) {
       var _this = this;
 
+      this.isLoading = true;
       this.$refs[formName].validate(function (valid) {
         if (valid) {
-          _this.nextStepAction();
+          axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie').then(function (response) {
+            axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', {
+              login: _this.ruleForm.nik,
+              password: _this.ruleForm.password,
+              name: _this.ruleForm.name,
+              email: _this.ruleForm.email,
+              mobile: _this.ruleForm.nomorHP
+            }).then(function (response) {
+              if (response.data.success) {
+                _this.$notify({
+                  title: 'Success',
+                  type: 'success',
+                  message: response.data.message
+                });
+
+                localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("userInfo", response.data.userInfo);
+                localStorage.setItem("userId", response.data.userId);
+
+                _this.$router.push({
+                  name: 'dashboard',
+                  query: {
+                    redirect: '/dashboard'
+                  }
+                });
+              } else {
+                _this.$notify.error({
+                  title: 'Error',
+                  message: response.data.message
+                });
+              }
+
+              _this.isLoading = false;
+            })["catch"](function (error) {
+              console.error(error.message);
+              this.isLoading = false;
+            });
+          });
         } else {
-          console.log('error submit!!');
+          _this.isLoading = false;
           return false;
         }
       });
     },
     resetForm: function resetForm(formName) {
       this.$refs[formName].resetFields();
+    }
+  },
+  mounted: function mounted() {
+    if (localStorage.getItem('loggedIn') && this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin') {
+      this.$router.push({
+        name: 'dashboard',
+        query: {
+          redirect: '/dashboard'
+        }
+      });
     }
   }
 });
@@ -94,45 +152,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "row d-flex justify-content-center p-0 m-0"
-};
-var _hoisted_2 = {
-  "class": "col-md-6 mt-10"
-};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "mb-5 text-center"
 }, "Register", -1
 /* HOISTED */
 );
 
-var _hoisted_4 = {
+var _hoisted_2 = {
   "class": "w-100 text-end"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "my-5 text-center"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "separator my-5"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#",
-  "class": "btn btn-danger"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bi bi-google me-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Google ")], -1
-/* HOISTED */
-);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
@@ -141,15 +180,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
+  var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
+
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
   var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+      'row d-flex justify-content-center m-0 p-0': this.$route.name != 'berandaRegister'
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+      'col-md-6 mt-10': this.$route.name != 'berandaRegister'
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, {
     "class": "p-10"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
         model: $data.ruleForm,
         rules: $data.rules,
         ref: "ruleForm",
@@ -177,13 +226,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
 
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+            prop: "name",
+            label: "Nama Lengkap"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+                modelValue: $data.ruleForm.name,
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+                  return $data.ruleForm.name = $event;
+                })
+              }, null, 8
+              /* PROPS */
+              , ["modelValue"])];
+            }),
+            _: 1
+            /* STABLE */
+
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "email",
             label: "Email"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                 modelValue: $data.ruleForm.email,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
                   return $data.ruleForm.email = $event;
                 })
               }, null, 8
@@ -200,7 +266,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                 modelValue: $data.ruleForm.nomorHP,
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+                "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
                   return $data.ruleForm.nomorHP = $event;
                 })
               }, null, 8
@@ -217,7 +283,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                 modelValue: $data.ruleForm.password,
-                "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+                "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
                   return $data.ruleForm.password = $event;
                 }),
                 "show-password": ""
@@ -235,7 +301,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                 modelValue: $data.ruleForm.confirmPassword,
-                "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+                "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
                   return $data.ruleForm.confirmPassword = $event;
                 }),
                 "show-password": "",
@@ -247,8 +313,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "login"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_4];
+            }),
+            _: 1
+            /* STABLE */
+
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+            type: "button",
+            loading: $data.isLoading,
+            onClick: _cache[6] || (_cache[6] = function ($event) {
+              return $options.submitForm('ruleForm');
+            }),
+            "class": "btn btn-primary w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [_hoisted_6];
@@ -256,13 +336,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-            type: "button",
-            onClick: _cache[5] || (_cache[5] = function ($event) {
-              return $options.submitForm('ruleForm');
-            }),
-            "class": "btn btn-primary w-100"
-          }, "Register"), _hoisted_8, _hoisted_9])];
+          }, 8
+          /* PROPS */
+          , ["loading"])])];
         }),
         _: 1
         /* STABLE */
@@ -274,7 +350,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]);
+  })], 2
+  /* CLASS */
+  )], 2
+  /* CLASS */
+  );
 }
 
 /***/ }),

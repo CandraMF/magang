@@ -45,68 +45,16 @@
         </section>
         <section >
             <div class="container " >
-                <div class="d-flex justify-content-center ">
-                    <div id="divisi" class="col-md-10 bg-white" style="font-size: 12pt; padding: 50px 40px; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
-                        <div class="row" >
-                            <div class="col-md-4 mb-5 text-center ">
-                                <router-link to="/detail/Administrasi Keuangan" class="nav-link text-dark" >
-                                    Administrasi Keuangan
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Manajemen Resiko Bisnis" class="nav-link text-dark">
-                                    Manajemen Resiko Bisnis
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Administrasi Kantor" class="nav-link text-dark">
-                                    Administrasi Kantor
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Pengadaan" class="nav-link text-dark">
-                                    Pengadaan
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/ILAL" class="nav-link text-dark">
-                                    ILAL
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Humas" class="nav-link text-dark">
-                                    Humas
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Perencanaan" class="nav-link text-dark">
-                                    Perencanaan
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Kepatuhan" class="nav-link text-dark">
-                                    Kepatuhan
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Teknologi Informasi" class="nav-link text-dark">
-                                    Teknologi Informasi
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Registrasi dan Analisa Kemaslahatan" class="nav-link text-dark">
-                                    Registrasi dan Analisa Kemaslahatan
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Administrasi Sekretariat Kepala" class="nav-link text-dark">
-                                    Administrasi Sekretariat Kepala
-                                </router-link>
-                            </div>
-                            <div class="col-md-4 mb-5 text-center" >
-                                <router-link to="/detail/Manajemen Risiko Korporat" class="nav-link text-dark">
-                                    Manajemen Risiko Korporat
-                                </router-link>
+                <div class="row d-flex justify-content-center m-0 p-0">
+                    <div id="auth" class="col-md-10 bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
+                        <div class="row">
+                            <router-view v-if="!isLogged" v-slot="{ Component }">
+                                <transition :name="this.effect" mode="out-in">
+                                    <component :is="Component" />
+                                </transition>
+                            </router-view>
+                            <div class="col-md-12 px-10 py-10" v-else>
+                                <Activation></Activation>
                             </div>
                         </div>
                     </div>
@@ -146,12 +94,7 @@
                             <i class="bi bi-envelope text-white"></i>
                         </div>
                     </div>
-
-                    <!-- <i class="bi bi-diagram-3 fs-2x"></i>
-                    <i class="bi bi-diagram-3 fs-2x"></i> -->
                 </div>
-
-
             </div>
         </section>
         <section id="berita">
@@ -201,6 +144,49 @@
         </section>
     </div>
 </template>
+
+<script>
+
+    import Login from '@/views/pages/auth/Login.vue';
+    import Register from '@/views/pages/auth/Register.vue';
+    import Activation from '@/components/notice/Activation.vue';
+    import { defineComponent, onMounted, watch } from "vue";
+
+    export default defineComponent({
+        components: {
+            Login,
+            Register,
+            Activation
+        },
+        data () {
+            return {
+                view: {
+                    topOfPage: false,
+                },
+                effect: "",
+                isLogged: false,
+                userInfo: null,
+            }
+        },
+        watch: {
+            $route(to, from) {
+                if(to.path == '/login'){
+                    this.effect = 'out-in-translate-fade'
+                } else {
+                    this.effect = 'in-out-translate-fade'
+                }
+            },
+        },
+        mounted(){
+            if (localStorage.getItem('loggedIn')) {
+                this.isLogged = true
+            } else {
+                this.isLogged = false
+            }
+        }
+    })
+
+</script>
 
 <style scoped>
 
@@ -289,8 +275,34 @@
         font-size: 32pt;
     }
 
+    .in-out-translate-fade-enter-active,
+    .in-out-translate-fade-leave-active {
+        transition: all 0.15s;
+    }
+    .in-out-translate-fade-enter,
+    .in-out-translate-fade-leave-active {
+        opacity: 0;
+    }
+    .in-out-translate-fade-enter {
+        transform: translateX(100px);
+    }
+    .in-out-translate-fade-leave-active {
+        transform: translateX(-100px);
+    }
+
+    .out-in-translate-fade-enter-active,
+    .out-in-translate-fade-leave-active {
+        transition: all 0.15s;
+    }
+    .out-in-translate-fade-enter,
+    .out-in-translate-fade-leave-active {
+        opacity: 0;
+    }
+    .out-in-translate-fade-enter {
+        transform: translateX(-100px);
+    }
+    .out-in-translate-fade-leave-active {
+        transform: translateX(100px);
+    }
+
 </style>
-
-export default {
-
-}

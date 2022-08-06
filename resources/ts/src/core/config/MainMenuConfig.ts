@@ -1,5 +1,6 @@
 const DocMenuConfig = [
   {
+    heading: "Utama",
     pages: [
       {
         heading: "Dashboard",
@@ -28,6 +29,16 @@ const DocMenuConfig = [
         ],
       },
 
+    ],
+  },
+  {
+    heading: "Akun",
+    pages: [
+      {
+        heading: "Logout",
+        route: "/logout",
+        svgIcon: "/media/icons/duotune/arrows/arr060.svg",
+      },
     ],
   },
 ];

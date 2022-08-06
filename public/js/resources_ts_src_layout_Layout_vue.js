@@ -2623,6 +2623,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var DocMenuConfig = [{
+  heading: "Utama",
   pages: [{
     heading: "Dashboard",
     route: "/dashboard",
@@ -2643,6 +2644,13 @@ var DocMenuConfig = [{
       heading: "Data Diri",
       route: "/profil"
     }]
+  }]
+}, {
+  heading: "Akun",
+  pages: [{
+    heading: "Logout",
+    route: "/logout",
+    svgIcon: "/media/icons/duotune/arrows/arr060.svg"
   }]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DocMenuConfig);
