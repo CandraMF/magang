@@ -11,6 +11,9 @@ class CreatePersonalAccessTokensTable extends Migration
      *
      * @return void
      */
+
+    protected $connection = 'pgsql';
+
     public function up()
     {
         Schema::create('personal_access_tokens', function (Blueprint $table) {
