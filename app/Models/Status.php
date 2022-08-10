@@ -9,6 +9,6 @@ class Status extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.status_tr';
+    protected $table = 'magang.status_tr';
     // protected $primaryKey = 'status_id';
 }
