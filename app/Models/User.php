@@ -43,4 +43,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function secrets()
+    {
+        return $this->hasMany('App\Secret');
+    }
+
+
 }

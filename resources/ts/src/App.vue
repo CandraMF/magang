@@ -13,10 +13,6 @@ export default defineComponent({
     const store = useStore();
 
     onMounted(() => {
-      /**
-       * this is to override the layout config using saved data from localStorage
-       * remove this to use config only from static config (@/core/config/DefaultLayoutConfig.ts)
-       */
       store.commit(Mutations.OVERRIDE_LAYOUT_CONFIG);
     });
   },

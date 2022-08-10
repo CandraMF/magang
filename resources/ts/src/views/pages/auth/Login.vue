@@ -23,8 +23,12 @@
         </div>
     </div>
 </template>
-<script>
+<script lang="ts">
   import axios from 'axios'
+  import { useStore } from "vuex";
+  import { Mutations, Actions } from "@/store/enums/StoreEnums";
+  import { onMounted } from 'vue';
+
   export default {
     data() {
         return {
@@ -45,53 +49,55 @@
     },
     watch: {
     },
+    setup() {
+        const store = useStore();
+
+        return {
+            store,
+        }
+    },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.post('/api/login', {
-                    login: this.ruleForm.nik,
-                    password: this.ruleForm.password
-                })
-                .then(response => {
-                    console.log(response.data)
-                    if (response.data.success) {
-                        localStorage.setItem("loggedIn", "true")
-                        localStorage.setItem("token", response.data.token)
-                        localStorage.setItem("userInfo", response.data.userInfo)
-                        localStorage.setItem("userId", response.data.userId)
-                        this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-                        this.$notify({
-                            title: 'Success',
-                            type: 'success',
-                            message: response.data.message
-                        });
-                    } else {
-                        this.$notify.error({
-                            title: 'Error',
-                            message: response.data.message
-                        });
-                    }
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
-            })
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
+        submitForm(formName) {
+            this.$refs[formName].validate(async (valid) => {
+                if (valid) {
+                    var response = await this.store.dispatch(Actions.LOGIN, {
+                        'nik': this.ruleForm.nik,
+                        'password': this.ruleForm.password,
+                    })
+
+                    console.log(response)
+                    // .then((response) => {
+                    //     console.log(response)
+                    //     // if(response.data.success) {
+                    //     //     this.$notify({
+                    //     //         title: 'Success',
+                    //     //         type: 'success',
+                    //     //         message: "Login Berhasil"
+                    //     //     });
+                    //     // } else {
+                    //     //     this.$notify.error({
+                    //     //         title: 'Error',
+                    //     //         message: "Login Gagal"
+                    //     //     });
+                    //     // }
+
+                    // }).catch((error) => {
+                    //     console.log(error)
+                    //     // this.$notify.error({
+                    //     //     title: 'Error',
+                    //     //     message: "Login Gagal"
+                    //     // });
+                    // })
+
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
         });
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
     },
-    mounted() {
-        if (localStorage.getItem('loggedIn') && ( this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin' )) {
-            this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-        }
-    }
   }
 </script>

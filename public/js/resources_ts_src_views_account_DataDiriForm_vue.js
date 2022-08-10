@@ -455,6 +455,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_el_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-date-picker");
 
+  var _component_el_radio = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-radio");
+
+  var _component_el_radio_group = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-radio-group");
+
   var _component_el_option = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-option");
 
   var _component_el_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-select");
@@ -687,12 +691,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         prop: "golonganDarah"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio_group, {
             modelValue: $data.ruleForm.golonganDarah,
             "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
               return $data.ruleForm.golonganDarah = $event;
             })
-          }, null, 8
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio, {
+                border: "",
+                label: "A",
+                "class": "mx-0 me-2"
+              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio, {
+                border: "",
+                label: "B",
+                "class": "mx-0 me-2"
+              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio, {
+                border: "",
+                label: "O",
+                "class": "mx-0 me-2"
+              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio, {
+                border: "",
+                label: "AB",
+                "class": "mx-0 me-2"
+              })];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
           /* PROPS */
           , ["modelValue"])];
         }),

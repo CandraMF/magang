@@ -9,21 +9,6 @@
 </head>
 <body style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px; background: rgb(255, 255, 255) !important">
 
-    @if (Auth::check())
-        <script>
-            window.Laravel = {!!json_encode([
-                'isLoggedin' => true,
-                'user' => Auth::user()
-            ])!!}
-        </script>
-    @else
-        <script>
-            window.Laravel = {!!json_encode([
-                'isLoggedin' => false
-            ])!!}
-        </script>
-    @endif
-
    <div id="app" class="d-flex flex-column flex-root">
    </div>
 

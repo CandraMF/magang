@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
-Route::post('register', [App\Http\Controllers\AuthController::class, 'register']);
-Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('logout');
+Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('person', App\Http\Controllers\PersonController::class);
-Route::resource('status', App\Http\Controllers\StatusController::class);
-Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::resource('person', App\Http\Controllers\PersonController::class);
+    Route::resource('status', App\Http\Controllers\StatusController::class);
+    Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
+});
+
+
+
+
+
 

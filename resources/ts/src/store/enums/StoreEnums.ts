@@ -6,6 +6,9 @@ enum Actions {
   REMOVE_BODY_ATTRIBUTE = "removeBodyAttribute",
   ADD_CLASSNAME = "addClassName",
   SET_BREADCRUMB_ACTION = "setBreadcrumbAction",
+
+  LOGIN = "login",
+  LOGOUT = "logout"
 }
 
 enum Mutations {
@@ -16,6 +19,9 @@ enum Mutations {
   RESET_LAYOUT_CONFIG = "resetLayoutConfig",
   OVERRIDE_LAYOUT_CONFIG = "overrideLayoutConfig",
   OVERRIDE_PAGE_LAYOUT_CONFIG = "overridePageLayoutConfig",
+
+  SET_USER = "setUser",
+  SET_TOKEN = "setToken",
 }
 
 export { Actions, Mutations };

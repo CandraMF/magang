@@ -38,6 +38,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_widgets_sliders_Widget1_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/widgets/sliders/Widget1.vue */ "./resources/ts/src/components/widgets/sliders/Widget1.vue");
 /* harmony import */ var _components_notice_Activation_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/notice/Activation.vue */ "./resources/ts/src/components/notice/Activation.vue");
 
+ // import { useStore } from "vuex";
 
 
 
@@ -58,6 +59,14 @@ __webpack_require__.r(__webpack_exports__);
     if (localStorage.getItem('userInfo') != 'null') {
       this.active = true;
     }
+  },
+  setup: function setup() {// const store = useStore();
+    // const count = computed(() => {
+    //   return store.getters.getCount;
+    // });
+    // return {
+    //     count
+    // }
   }
 }));
 
@@ -113,7 +122,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_KTSliderWidget1 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("KTSliderWidget1");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Row"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin:::Col"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [!_ctx.active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Activation, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Row"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin:::Col"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p>{{ count }}</p> "), !_ctx.active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Activation, {
     key: 0,
     "class": "mb-5"
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_KTSliderWidget1, {

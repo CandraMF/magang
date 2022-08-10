@@ -93,7 +93,6 @@ __webpack_require__.r(__webpack_exports__);
                 });
 
                 localStorage.setItem("loggedIn", "true");
-                localStorage.setItem("token", response.data.token);
                 localStorage.setItem("userInfo", response.data.userInfo);
                 localStorage.setItem("userId", response.data.userId);
 

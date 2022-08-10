@@ -4,6 +4,9 @@ import { config } from "vuex-module-decorators";
 import BodyModule from "@/store/modules/BodyModule";
 import BreadcrumbsModule from "@/store/modules/BreadcrumbsModule";
 import ConfigModule from "@/store/modules/ConfigModule";
+import AuthModule from "@/store/modules/AuthModule";
+
+import createPersistedState from 'vuex-persistedstate'
 
 config.rawError = true;
 
@@ -12,7 +15,11 @@ const store = createStore({
     BodyModule,
     BreadcrumbsModule,
     ConfigModule,
+    AuthModule
   },
+  plugins:[
+    createPersistedState()
+  ],
 });
 
 export default store;

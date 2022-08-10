@@ -99,7 +99,6 @@
                                 message: response.data.message
                             });
                             localStorage.setItem("loggedIn", "true")
-                            localStorage.setItem("token", response.data.token)
                             localStorage.setItem("userInfo", response.data.userInfo)
                             localStorage.setItem("userId", response.data.userId)
                             this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });

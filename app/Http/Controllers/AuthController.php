@@ -73,12 +73,12 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $success = true;
             $message = 'Berhasil Login';
-            $userInfo = Auth::user()->activation_date;
-            $userId = Auth::user()->id;
+            $user = Auth::user();
             $token = Auth::user()->createToken('ApiToken')->plainTextToken;
         } else {
             $success = false;
-            $message = 'Unauthorized';
+            $message = 'Login Gagal';
+            $user = null;
             $token = null;
         }
 
@@ -86,9 +86,8 @@ class AuthController extends Controller
         $response = [
             'success' => $success,
             'message' => $message,
-            'token'     => $token,
-            'userInfo' => $userInfo,
-            'userId' => $userId,
+            'user'    => $user,
+            'token'   => $token,
         ];
 
         return response()->json($response);
@@ -99,22 +98,9 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        try {
-            Session::flush();
-            $success = true;
-            $message = 'Successfully logged out';
-        } catch (\Illuminate\Database\QueryException $ex) {
-            $success = false;
-            $message = $ex->getMessage();
-        }
-
-        // response
-        $response = [
-            'success' => $success,
-            'message' => $message,
-        ];
-        return response()->json($response);
+        auth()->logout();
+        return response()->json([
+            'success'    => true
+        ], 200);
     }
-
-
 }

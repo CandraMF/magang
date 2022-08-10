@@ -3,13 +3,13 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
-        redirect: "beranda",
+        redirect: "/beranda",
         component: () => import("@/layout/HomeLayout.vue"),
         children: [
             {
                 path: "/beranda",
                 name: "beranda",
-                redirect: 'beranda/login',
+                redirect: '/beranda/login',
                 component: () => import("@/views/pages/LandingPage.vue"),
                 children: [
                     {
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: "/auth",
-        redirect: "login",
+        redirect: "/login",
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
@@ -60,7 +60,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
       path: "/admin",
-      redirect: "dashboard",
+      redirect: "/dashboard",
       component: () => import("@/layout/Layout.vue"),
       children: [
         {

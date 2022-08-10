@@ -40,7 +40,12 @@
           </el-col>
       </el-form-item>
       <el-form-item label="Golongan Darah" prop="golonganDarah">
-        <el-input v-model="ruleForm.golonganDarah"></el-input>
+        <el-radio-group v-model="ruleForm.golonganDarah">
+            <el-radio border label="A" class="mx-0 me-2"></el-radio>
+            <el-radio border label="B" class="mx-0 me-2"></el-radio>
+            <el-radio border label="O" class="mx-0 me-2"></el-radio>
+            <el-radio border label="AB" class="mx-0 me-2"></el-radio>
+            </el-radio-group>
       </el-form-item>
       <el-form-item label="Status Pernikahan" prop="marital">
         <el-select v-model="ruleForm.marital" placeholder="Select" class="w-100">
