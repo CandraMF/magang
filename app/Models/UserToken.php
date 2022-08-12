@@ -9,5 +9,5 @@ use Laravel\Sanctum\PersonalAccessToken;
 class UserToken extends PersonalAccessToken
 {
     protected $connection = 'pgsql';
-    protected $table = 'public.user_token_tx';
+    protected $table = 'magang.user_token_tx';
 }

@@ -9,7 +9,7 @@ class Person extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.person_tm';
+    protected $table = 'magang.person_tm';
     protected $primaryKey = 'person_id';
     public $timestamps = false;
 

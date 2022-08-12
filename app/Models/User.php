@@ -13,7 +13,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'public.user_tm';
+    protected $table = 'magang.user_tm';
     protected $primaryKey = 'user_id';
     public $timestamps = false;
 
