@@ -56,6 +56,16 @@ const routes: Array<RouteRecordRaw> = [
                 name: "home",
                 component: () => import("@/views/pages/AboutUs.vue"),
             },
+            {
+                path: "/aktivasi",
+                name: "aktivasi",
+                component: () => import("@/views/pages/auth/Aktivasi.vue"),
+            },
+            {
+                path: "/aktivasiPlatform",
+                name: "aktivasiPlatform",
+                component: () => import("@/views/pages/auth/AktivasiPlatform.vue"),
+            },
         ],
     },
     {

@@ -11,12 +11,9 @@ class CreatePersonalAccessTokensTable extends Migration
      *
      * @return void
      */
-
-    protected $connection = 'pgsql';
-
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::create('magang.personal_access_tokens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->morphs('tokenable');
             $table->string('name');
@@ -34,6 +31,6 @@ class CreatePersonalAccessTokensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('magang.personal_access_tokens');
     }
 }

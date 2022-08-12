@@ -12,14 +12,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
-/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      isLoading: false,
       ruleForm: {
         nik: '',
         password: ''
@@ -51,48 +53,65 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm(formName) {
-      var _this = this;
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
+        var _this = this;
 
-      this.$refs[formName].validate(function (valid) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(_this, void 0, void 0, function () {
-          var response;
-          return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
-            switch (_a.label) {
-              case 0:
-                if (!valid) return [3
-                /*break*/
-                , 2];
-                return [4
-                /*yield*/
-                , this.store.dispatch(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_0__.Actions.LOGIN, {
-                  'nik': this.ruleForm.nik,
-                  'password': this.ruleForm.password
-                })];
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+          this.setLoading(true);
+          this.$refs[formName].validate(function (valid) {
+            if (valid) {
+              axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie').then(function (response) {
+                axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', {
+                  login: _this.ruleForm.nik,
+                  password: _this.ruleForm.password
+                }).then(function (response) {
+                  console.log(response.data);
+                  console.log(response);
 
-              case 1:
-                response = _a.sent();
-                console.log(response);
-                return [3
-                /*break*/
-                , 3];
+                  if (response.data.success) {
+                    _this.$notify({
+                      title: 'Success',
+                      type: 'success',
+                      message: response.data.message
+                    });
 
-              case 2:
-                console.log('error submit!!');
-                return [2
-                /*return*/
-                , false];
+                    _this.$router.push({
+                      name: 'aktivasiPlatform',
+                      query: {
+                        redirect: '/aktivasiPlatform'
+                      }
+                    });
+                  } else {
+                    _this.$notify.error({
+                      title: 'Error',
+                      message: response.data.message
+                    });
+                  }
 
-              case 3:
-                return [2
-                /*return*/
-                ];
+                  _this.setLoading(false);
+                })["catch"](function (error) {
+                  console.error(error.message);
+
+                  _this.setLoading(false);
+                });
+              });
+            } else {
+              _this.setLoading(false);
+
+              return false;
             }
           });
+          return [2
+          /*return*/
+          ];
         });
       });
     },
     resetForm: function resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    setLoading: function setLoading(value) {
+      this.isLoading = value;
     }
   }
 });

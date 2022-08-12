@@ -8,7 +8,8 @@ enum Actions {
   SET_BREADCRUMB_ACTION = "setBreadcrumbAction",
 
   LOGIN = "login",
-  LOGOUT = "logout"
+  LOGOUT = "logout",
+  REGISTER = "register"
 }
 
 enum Mutations {
@@ -22,6 +23,7 @@ enum Mutations {
 
   SET_USER = "setUser",
   SET_TOKEN = "setToken",
+  SET_NOTIF = "setNotif",
 }
 
 export { Actions, Mutations };

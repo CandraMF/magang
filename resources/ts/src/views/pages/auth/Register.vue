@@ -21,6 +21,9 @@
                     <el-form-item prop="nomorHP" label="Nomor HP">
                         <el-input v-model="ruleForm.nomorHP"></el-input>
                     </el-form-item>
+                    <el-form-item prop="username" label="Username" >
+                        <el-input v-model="ruleForm.nik" readonly></el-input>
+                    </el-form-item>
                     <el-form-item prop="password" label="Password" >
                         <el-input v-model="ruleForm.password" show-password></el-input>
                     </el-form-item>
@@ -37,11 +40,14 @@
     </div>
 
 </template>
-<script>
+<script lang="ts">
     import axios from 'axios'
+    import { useStore, mapMutations } from "vuex";
+    import { Mutations, Actions } from "@/store/enums/StoreEnums";
     // import { regex } from "vee-validate/dist/rules";
 
   export default {
+
     data() {
         return {
             isLoading: false,
@@ -78,9 +84,15 @@
             }
       };
     },
+    setup() {
+        const store = useStore();
+        return {
+            store,
+        }
+    },
     methods: {
-      submitForm(formName) {
-        this.isLoading = true;
+      async submitForm(formName) {
+        this.setLoading(true)
         this.$refs[formName].validate((valid) => {
           if (valid) {
             axios.get('/sanctum/csrf-cookie').then(response => {
@@ -91,32 +103,31 @@
                     email: this.ruleForm.email,
                     mobile: this.ruleForm.nomorHP
                 })
-                    .then(response => {
+                    .then((response) => {
+                        console.log(response.data)
                         if (response.data.success) {
                             this.$notify({
                                 title: 'Success',
                                 type: 'success',
                                 message: response.data.message
                             });
-                            localStorage.setItem("loggedIn", "true")
-                            localStorage.setItem("userInfo", response.data.userInfo)
-                            localStorage.setItem("userId", response.data.userId)
-                            this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+
+                            this.$router.push({ name: 'login', query: { redirect: '/login' } });
                         } else {
                             this.$notify.error({
                                 title: 'Error',
                                 message: response.data.message
                             });
                         }
-                        this.isLoading = false;
+                        this.setLoading(false)
                     })
-                    .catch(function (error) {
+                    .catch((error) => {
                         console.error(error.message);
-                        this.isLoading = false;
+                        this.setLoading(false)
                     });
             })
           } else {
-            this.isLoading = false;
+            this.setLoading(false)
             return false;
           }
         });
@@ -124,12 +135,16 @@
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
+      setLoading(value) {
+        this.isLoading = value
+      }
     },
-    mounted() {
-        if (localStorage.getItem('loggedIn') && ( this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin' )) {
-            this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-        }
-    }
+    // mounted() {
+    //     if (localStorage.getItem('loggedIn') && ( this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin' )) {
+    //         this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+    //     }
+    // },
+
 }
 
 </script>

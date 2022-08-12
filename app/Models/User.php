@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'magang.user_tm';
+    protected $table = 'public.user_tm';
     protected $primaryKey = 'user_id';
     public $timestamps = false;
 
@@ -42,11 +43,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
-
-    public function secrets()
-    {
-        return $this->hasMany('App\Secret');
-    }
-
 
 }

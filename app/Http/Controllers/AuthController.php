@@ -20,8 +20,6 @@ class AuthController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->mobile = $request->mobile;
-            $user->role_id = 'ROL001';
-            $user->status_id = 'USR002';
             $user->create_date = NOW();
             $user->save();
 
@@ -33,14 +31,14 @@ class AuthController extends Controller
             if (Auth::attempt($credentials)) {
                 $success = true;
                 $message = 'Berhasil Membuat Akun';
-                $userInfo = Auth::user()->activation_date;
-                $userId = Auth::user()->id;
                 $token = Auth::user()->createToken('ApiToken')->plainTextToken;
             }
 
         } catch (\Illuminate\Database\QueryException $ex) {
             $errorCode = $ex->errorInfo[1];
             $success = false;
+            $message = 'Gagal Membuat Akun';
+            $token = null;
 
             if($errorCode == '7'){
                 $message = "NIK Telah Terdaftar, Silahkan Login";
@@ -53,8 +51,6 @@ class AuthController extends Controller
             'success' => $success,
             'message' => $message,
             'token'     => $token,
-            'userInfo'=> $userInfo,
-            'userId'=> $userId,
         ];
 
         return response()->json($response);

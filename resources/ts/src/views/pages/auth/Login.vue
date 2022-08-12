@@ -28,10 +28,12 @@
   import { useStore } from "vuex";
   import { Mutations, Actions } from "@/store/enums/StoreEnums";
   import { onMounted } from 'vue';
+import { response } from 'express';
 
   export default {
     data() {
         return {
+            isLoading: false,
             ruleForm: {
                 nik: '',
                 password: '',
@@ -57,47 +59,52 @@
         }
     },
     methods: {
-        submitForm(formName) {
-            this.$refs[formName].validate(async (valid) => {
+        async submitForm(formName) {
+            this.setLoading(true)
+            this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    var response = await this.store.dispatch(Actions.LOGIN, {
-                        'nik': this.ruleForm.nik,
-                        'password': this.ruleForm.password,
+                    axios.get('/sanctum/csrf-cookie').then(response => {
+                        axios.post('/api/login', {
+                            login: this.ruleForm.nik,
+                            password: this.ruleForm.password,
+                        })
+                            .then((response) => {
+                                console.log(response.data)
+                                console.log(response)
+                                if (response.data.success) {
+                                    this.$notify({
+                                        title: 'Success',
+                                        type: 'success',
+                                        message: response.data.message
+                                    });
+
+                                    this.$router.push({ name: 'aktivasiPlatform', query: { redirect: '/aktivasiPlatform' } });
+
+                                } else {
+                                    this.$notify.error({
+                                        title: 'Error',
+                                        message: response.data.message
+                                    })
+                                }
+                                this.setLoading(false)
+                            })
+                            .catch((error) => {
+                                console.error(error.message);
+                                this.setLoading(false)
+                            });
                     })
-
-                    console.log(response)
-                    // .then((response) => {
-                    //     console.log(response)
-                    //     // if(response.data.success) {
-                    //     //     this.$notify({
-                    //     //         title: 'Success',
-                    //     //         type: 'success',
-                    //     //         message: "Login Berhasil"
-                    //     //     });
-                    //     // } else {
-                    //     //     this.$notify.error({
-                    //     //         title: 'Error',
-                    //     //         message: "Login Gagal"
-                    //     //     });
-                    //     // }
-
-                    // }).catch((error) => {
-                    //     console.log(error)
-                    //     // this.$notify.error({
-                    //     //     title: 'Error',
-                    //     //     message: "Login Gagal"
-                    //     // });
-                    // })
-
                 } else {
-                    console.log('error submit!!');
+                    this.setLoading(false)
                     return false;
                 }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-    },
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        },
+        setLoading(value) {
+            this.isLoading = value
+        }
+    }
   }
 </script>
