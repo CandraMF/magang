@@ -13,6 +13,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_CodeInput_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/CodeInput.vue */ "./resources/ts/src/components/CodeInput.vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -21,8 +30,64 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup() {
     var completed = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRouter)();
+    var token = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
+    var user = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount)(function () {
+      user = store.getters.getUser;
+      token = store.getters.getToken;
+
+      if (user.activation_date != null) {
+        router.push({
+          name: 'dashboard',
+          query: {
+            redirect: '/dashboard'
+          }
+        });
+      }
+    });
+
+    var submitForm = function submitForm(subject) {
+      // console.log(user.email)
+      // console.log(user.mobile)
+      axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/sendActivationCode', {
+        platform: subject,
+        email: user.email,
+        mobile: user.mobile
+      }, {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      }).then(function (response) {
+        if (response.data.success) {
+          console.log(response.data);
+          store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_SUBJECT, subject);
+          store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_REMAINING, 180000);
+          store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_CODE, response.data.code); // this.$notify({
+          //     title: 'Success',
+          //     type: 'success',
+          //     message: response.data.message
+          // });
+
+          router.push({
+            name: 'aktivasi',
+            query: {
+              redirect: '/aktivasi'
+            }
+          });
+        } else {// this.$notify.error({
+          //     title: 'Error',
+          //     message: response.data.message
+          // });
+        }
+      });
+    };
+
     return {
-      completed: completed
+      completed: completed,
+      store: store,
+      submitForm: submitForm
     };
   }
 });
@@ -71,7 +136,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+  var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
   var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
 
@@ -79,8 +144,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "p-10 text-center"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "/aktivasi",
+      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return $setup.submitForm('whatsapp');
+        }),
         "class": "btn btn-icon btn-warning me-3",
         style: {
           "height": "65px",
@@ -93,8 +160,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "/aktivasi",
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+        onClick: _cache[1] || (_cache[1] = function ($event) {
+          return $setup.submitForm('email');
+        }),
         "class": "btn btn-icon btn-primary me-3",
         style: {
           "height": "65px",

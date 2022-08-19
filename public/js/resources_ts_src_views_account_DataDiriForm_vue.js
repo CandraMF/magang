@@ -175,7 +175,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           trigger: ['blur', 'change']
         }],
         etnicity: [{
-          required: true,
+          required: false,
           message: 'Mohon isi pilih Etnis',
           trigger: ['blur', 'change']
         }],
@@ -195,12 +195,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var vuex, token;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/status').then(function (response) {
+                vuex = JSON.parse(localStorage.getItem('vuex'));
+                token = vuex.AuthModule.token;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/status', {
+                  headers: {
+                    'Authorization': 'Bearer ' + token
+                  }
+                }).then(function (response) {
                   response.data.forEach(function (element) {
                     if (element.status_id.slice(0, 3) == 'ETH') {
                       _this.options['etnicity'].push({
@@ -223,7 +230,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 });
 
-              case 2:
+              case 4:
               case "end":
                 return _context.stop();
             }

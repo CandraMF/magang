@@ -19,14 +19,14 @@ Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->na
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('logout');
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->get('user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('person', App\Http\Controllers\PersonController::class);
     Route::resource('status', App\Http\Controllers\StatusController::class);
     Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
+
+    // activation
+    Route::post('sendActivationCode', [App\Http\Controllers\UserController::class, 'sendActivationCode'])->name('user.sendActivationCode');
+    Route::post('activateUser', [App\Http\Controllers\UserController::class, 'activateUser'])->name('user.activateUser');
 });
 
 

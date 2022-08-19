@@ -11,27 +11,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
 
 
+
+ // import { regex } from "vee-validate/dist/rules";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       isLoading: false,
       ruleForm: {
-        nik: '',
-        password: ''
+        password: '',
+        nik: ''
       },
       rules: {
-        password: [{
-          required: true,
-          message: 'Mohon isi password',
-          trigger: ['blur', 'change']
-        }],
         nik: [{
           required: true,
           message: 'Mohon isi NIK',
@@ -40,23 +38,38 @@ __webpack_require__.r(__webpack_exports__);
           min: 16,
           message: 'NIK Harus 16 Digit',
           trigger: 'blur'
+        }],
+        password: [{
+          required: true,
+          message: 'Mohon isi Password',
+          trigger: ['blur', 'change']
         }]
       }
     };
   },
-  watch: {},
   setup: function setup() {
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.useStore)();
+
+    function setUser(payload) {
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.SET_USER, payload);
+    }
+
+    function setToken(payload) {
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.SET_TOKEN, payload);
+    }
+
     return {
-      store: store
+      store: store,
+      setUser: setUser,
+      setToken: setToken
     };
   },
   methods: {
     submitForm: function submitForm(formName) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
           this.setLoading(true);
           this.$refs[formName].validate(function (valid) {
             if (valid) {
@@ -65,9 +78,6 @@ __webpack_require__.r(__webpack_exports__);
                   login: _this.ruleForm.nik,
                   password: _this.ruleForm.password
                 }).then(function (response) {
-                  console.log(response.data);
-                  console.log(response);
-
                   if (response.data.success) {
                     _this.$notify({
                       title: 'Success',
@@ -75,10 +85,14 @@ __webpack_require__.r(__webpack_exports__);
                       message: response.data.message
                     });
 
+                    _this.setUser(response.data.user);
+
+                    _this.setToken(response.data.token);
+
                     _this.$router.push({
                       name: 'aktivasiPlatform',
                       query: {
-                        redirect: '/aktivasiPlatform'
+                        redirect: '/akktivasiPlatform'
                       }
                     });
                   } else {
@@ -132,7 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "text-center"
+  "class": "mb-5 text-center"
 }, "Login", -1
 /* HOISTED */
 );
@@ -148,12 +162,17 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_5 = {
   "class": "my-5 text-center"
 };
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
@@ -181,17 +200,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "nik",
-            label: "Nomor Induk Kependudukan (NIK)"
+            label: "Nomor Induk Kependudukan"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                autofocus: "",
-                maxlength: "16",
-                "show-word-limit": "",
                 modelValue: $data.ruleForm.nik,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
                   return $data.ruleForm.nik = $event;
-                })
+                }),
+                maxlength: "16",
+                "show-word-limit": ""
               }, null, 8
               /* PROPS */
               , ["modelValue"])];
@@ -226,13 +244,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
             type: "button",
+            loading: $data.isLoading,
             onClick: _cache[2] || (_cache[2] = function ($event) {
               return $options.submitForm('ruleForm');
             }),
             "class": "btn btn-primary w-100"
-          }, "Login")])];
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_6];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["loading"])])];
         }),
         _: 1
         /* STABLE */

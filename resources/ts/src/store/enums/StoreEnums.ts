@@ -24,6 +24,9 @@ enum Mutations {
   SET_USER = "setUser",
   SET_TOKEN = "setToken",
   SET_NOTIF = "setNotif",
+  SET_SUBJECT = "setSubject",
+  SET_REMAINING = "setRemaining",
+  SET_CODE = "setCode",
 }
 
 export { Actions, Mutations };

@@ -155,7 +155,7 @@
                 { required: true, message: 'Mohon isi pilih Status Pernikahan', trigger: ['blur', 'change'] },
               ],
               etnicity: [
-                { required: true, message: 'Mohon isi pilih Etnis', trigger: ['blur', 'change'] },
+                { required: false, message: 'Mohon isi pilih Etnis', trigger: ['blur', 'change'] },
               ],
               religion: [
                 { required: true, message: 'Mohon isi pilih Agama', trigger: ['blur', 'change'] },
@@ -168,7 +168,12 @@
     },
     methods: {
       async getStatus(){
-        await axios.get('/api/status')
+        var vuex = JSON.parse(localStorage.getItem('vuex'))
+        var token = vuex.AuthModule.token
+
+        await axios.get('/api/status', {
+                        headers: {'Authorization': 'Bearer '+ token},
+                    })
           .then((response)=> {
             response.data.forEach(element => {
                 if(element.status_id.slice(0,3) == 'ETH') {

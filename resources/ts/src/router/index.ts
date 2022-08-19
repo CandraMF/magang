@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import auth from "./middleware/auth";
+import active from "./middleware/active";
+import log from "./middleware/log";
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
         redirect: "/beranda",
+        meta: {
+            // middleware: log
+        },
         component: () => import("@/layout/HomeLayout.vue"),
         children: [
             {
@@ -39,6 +45,9 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/auth",
         redirect: "/login",
+        meta: {
+            // middleware: log
+        },
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
@@ -72,6 +81,9 @@ const routes: Array<RouteRecordRaw> = [
       path: "/admin",
       redirect: "/dashboard",
       component: () => import("@/layout/Layout.vue"),
+      meta: {
+            middleware: active
+      },
       children: [
         {
           path: "/dashboard",
@@ -101,6 +113,39 @@ const router = createRouter({
   routes,
 });
 
+function nextFactory(context, middleware, index) {
+    const subsequentMiddleware = middleware[index];
+
+        if (!subsequentMiddleware) return context.next;
+
+        return (...parameters) => {
+
+        context.next(...parameters);
+
+        const nextMiddleware = nextFactory(context, middleware, index  1);
+        subsequentMiddleware({ ...context, next: nextMiddleware });
+        };
+    }
+
+    router.beforeEach((to, from, next) => {
+      if (to.meta.middleware) {
+        const middleware = Array.isArray(to.meta.middleware)
+          ? to.meta.middleware
+          : [to.meta.middleware];
+
+        const context = {
+          from,
+          next,
+          router,
+          to,
+        };
+        const nextMiddleware = nextFactory(context, middleware, 1);
+
+        return middleware[0]({ ...context, next: nextMiddleware });
+      }
+
+      return next();
+    });
 // router.beforeEach(() => {
 //   // Scroll page to top on every route change
 //   setTimeout(() => {

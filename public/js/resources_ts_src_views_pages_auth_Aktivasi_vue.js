@@ -1,6 +1,395 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_ts_src_views_pages_auth_Aktivasi_vue"],{
 
+/***/ "./node_modules/@chenfengyuan/vue-countdown/dist/vue-countdown.esm.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@chenfengyuan/vue-countdown/dist/vue-countdown.esm.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ index)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/*! vue-countdown v2.1.0 | (c) 2018-present Chen Fengyuan | MIT */
+
+
+const MILLISECONDS_SECOND = 1000;
+const MILLISECONDS_MINUTE = 60 * MILLISECONDS_SECOND;
+const MILLISECONDS_HOUR = 60 * MILLISECONDS_MINUTE;
+const MILLISECONDS_DAY = 24 * MILLISECONDS_HOUR;
+const EVENT_ABORT = 'abort';
+const EVENT_END = 'end';
+const EVENT_PROGRESS = 'progress';
+const EVENT_START = 'start';
+const EVENT_VISIBILITY_CHANGE = 'visibilitychange';
+var index = (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+    name: 'VueCountdown',
+    props: {
+        /**
+         * Starts the countdown automatically when initialized.
+         */
+        autoStart: {
+            type: Boolean,
+            default: true,
+        },
+        /**
+         * Emits the countdown events.
+         */
+        emitEvents: {
+            type: Boolean,
+            default: true,
+        },
+        /**
+         * The interval time (in milliseconds) of the countdown progress.
+         */
+        interval: {
+            type: Number,
+            default: 1000,
+            validator: (value) => value >= 0,
+        },
+        /**
+         * Generate the current time of a specific time zone.
+         */
+        now: {
+            type: Function,
+            default: () => Date.now(),
+        },
+        /**
+         * The tag name of the component's root element.
+         */
+        tag: {
+            type: String,
+            default: 'span',
+        },
+        /**
+         * The time (in milliseconds) to count down from.
+         */
+        time: {
+            type: Number,
+            default: 0,
+            validator: (value) => value >= 0,
+        },
+        /**
+         * Transforms the output props before render.
+         */
+        transform: {
+            type: Function,
+            default: (props) => props,
+        },
+    },
+    emits: [
+        EVENT_ABORT,
+        EVENT_END,
+        EVENT_PROGRESS,
+        EVENT_START,
+    ],
+    data() {
+        return {
+            /**
+             * It is counting down.
+             * @type {boolean}
+             */
+            counting: false,
+            /**
+             * The absolute end time.
+             * @type {number}
+             */
+            endTime: 0,
+            /**
+             * The remaining milliseconds.
+             * @type {number}
+             */
+            totalMilliseconds: 0,
+            /**
+             * The request ID of the requestAnimationFrame.
+             * @type {number}
+             */
+            requestId: 0,
+        };
+    },
+    computed: {
+        /**
+         * Remaining days.
+         * @returns {number} The computed value.
+         */
+        days() {
+            return Math.floor(this.totalMilliseconds / MILLISECONDS_DAY);
+        },
+        /**
+         * Remaining hours.
+         * @returns {number} The computed value.
+         */
+        hours() {
+            return Math.floor((this.totalMilliseconds % MILLISECONDS_DAY) / MILLISECONDS_HOUR);
+        },
+        /**
+         * Remaining minutes.
+         * @returns {number} The computed value.
+         */
+        minutes() {
+            return Math.floor((this.totalMilliseconds % MILLISECONDS_HOUR) / MILLISECONDS_MINUTE);
+        },
+        /**
+         * Remaining seconds.
+         * @returns {number} The computed value.
+         */
+        seconds() {
+            return Math.floor((this.totalMilliseconds % MILLISECONDS_MINUTE) / MILLISECONDS_SECOND);
+        },
+        /**
+         * Remaining milliseconds.
+         * @returns {number} The computed value.
+         */
+        milliseconds() {
+            return Math.floor(this.totalMilliseconds % MILLISECONDS_SECOND);
+        },
+        /**
+         * Total remaining days.
+         * @returns {number} The computed value.
+         */
+        totalDays() {
+            return this.days;
+        },
+        /**
+         * Total remaining hours.
+         * @returns {number} The computed value.
+         */
+        totalHours() {
+            return Math.floor(this.totalMilliseconds / MILLISECONDS_HOUR);
+        },
+        /**
+         * Total remaining minutes.
+         * @returns {number} The computed value.
+         */
+        totalMinutes() {
+            return Math.floor(this.totalMilliseconds / MILLISECONDS_MINUTE);
+        },
+        /**
+         * Total remaining seconds.
+         * @returns {number} The computed value.
+         */
+        totalSeconds() {
+            return Math.floor(this.totalMilliseconds / MILLISECONDS_SECOND);
+        },
+    },
+    watch: {
+        $props: {
+            deep: true,
+            immediate: true,
+            /**
+             * Update the countdown when props changed.
+             */
+            handler() {
+                this.totalMilliseconds = this.time;
+                this.endTime = this.now() + this.time;
+                if (this.autoStart) {
+                    this.start();
+                }
+            },
+        },
+    },
+    mounted() {
+        document.addEventListener(EVENT_VISIBILITY_CHANGE, this.handleVisibilityChange);
+    },
+    beforeUnmount() {
+        document.removeEventListener(EVENT_VISIBILITY_CHANGE, this.handleVisibilityChange);
+        this.pause();
+    },
+    methods: {
+        /**
+         * Starts to countdown.
+         * @public
+         * @emits Countdown#start
+         */
+        start() {
+            if (this.counting) {
+                return;
+            }
+            this.counting = true;
+            if (this.emitEvents) {
+                /**
+                 * Countdown start event.
+                 * @event Countdown#start
+                 */
+                this.$emit(EVENT_START);
+            }
+            if (document.visibilityState === 'visible') {
+                this.continue();
+            }
+        },
+        /**
+         * Continues the countdown.
+         * @private
+         */
+        continue() {
+            if (!this.counting) {
+                return;
+            }
+            const delay = Math.min(this.totalMilliseconds, this.interval);
+            if (delay > 0) {
+                let init;
+                let prev;
+                const step = (now) => {
+                    if (!init) {
+                        init = now;
+                    }
+                    if (!prev) {
+                        prev = now;
+                    }
+                    const range = now - init;
+                    if (range >= delay
+                        // Avoid losing time about one second per minute (now - prev ≈ 16ms) (#43)
+                        || range + ((now - prev) / 2) >= delay) {
+                        this.progress();
+                    }
+                    else {
+                        this.requestId = requestAnimationFrame(step);
+                    }
+                    prev = now;
+                };
+                this.requestId = requestAnimationFrame(step);
+            }
+            else {
+                this.end();
+            }
+        },
+        /**
+         * Pauses the countdown.
+         * @private
+         */
+        pause() {
+            cancelAnimationFrame(this.requestId);
+        },
+        /**
+         * Progresses to countdown.
+         * @private
+         * @emits Countdown#progress
+         */
+        progress() {
+            if (!this.counting) {
+                return;
+            }
+            this.totalMilliseconds -= this.interval;
+            if (this.emitEvents && this.totalMilliseconds > 0) {
+                /**
+                 * Countdown progress event.
+                 * @event Countdown#progress
+                 */
+                this.$emit(EVENT_PROGRESS, {
+                    days: this.days,
+                    hours: this.hours,
+                    minutes: this.minutes,
+                    seconds: this.seconds,
+                    milliseconds: this.milliseconds,
+                    totalDays: this.totalDays,
+                    totalHours: this.totalHours,
+                    totalMinutes: this.totalMinutes,
+                    totalSeconds: this.totalSeconds,
+                    totalMilliseconds: this.totalMilliseconds,
+                });
+            }
+            this.continue();
+        },
+        /**
+         * Aborts the countdown.
+         * @public
+         * @emits Countdown#abort
+         */
+        abort() {
+            if (!this.counting) {
+                return;
+            }
+            this.pause();
+            this.counting = false;
+            if (this.emitEvents) {
+                /**
+                 * Countdown abort event.
+                 * @event Countdown#abort
+                 */
+                this.$emit(EVENT_ABORT);
+            }
+        },
+        /**
+         * Ends the countdown.
+         * @public
+         * @emits Countdown#end
+         */
+        end() {
+            if (!this.counting) {
+                return;
+            }
+            this.pause();
+            this.totalMilliseconds = 0;
+            this.counting = false;
+            if (this.emitEvents) {
+                /**
+                 * Countdown end event.
+                 * @event Countdown#end
+                 */
+                this.$emit(EVENT_END);
+            }
+        },
+        /**
+         * Updates the count.
+         * @private
+         */
+        update() {
+            if (this.counting) {
+                this.totalMilliseconds = Math.max(0, this.endTime - this.now());
+            }
+        },
+        /**
+         * Restarts the count.
+         * @public
+         */
+        restart() {
+            this.pause();
+            this.totalMilliseconds = this.time;
+            this.endTime = this.now() + this.time;
+            this.counting = false;
+            this.start();
+        },
+        /**
+         * visibility change event handler.
+         * @private
+         */
+        handleVisibilityChange() {
+            switch (document.visibilityState) {
+                case 'visible':
+                    this.update();
+                    this.continue();
+                    break;
+                case 'hidden':
+                    this.pause();
+                    break;
+            }
+        },
+    },
+    render() {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(this.tag, this.$slots.default ? [
+            this.$slots.default(this.transform({
+                days: this.days,
+                hours: this.hours,
+                minutes: this.minutes,
+                seconds: this.seconds,
+                milliseconds: this.milliseconds,
+                totalDays: this.totalDays,
+                totalHours: this.totalHours,
+                totalMinutes: this.totalMinutes,
+                totalSeconds: this.totalSeconds,
+                totalMilliseconds: this.totalMilliseconds,
+            })),
+        ] : undefined);
+    },
+});
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/pages/auth/Aktivasi.vue?vue&type=script&lang=ts":
 /*!***************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/pages/auth/Aktivasi.vue?vue&type=script&lang=ts ***!
@@ -11,18 +400,106 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _components_CodeInput_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/CodeInput.vue */ "./resources/ts/src/components/CodeInput.vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @chenfengyuan/vue-countdown */ "./node_modules/@chenfengyuan/vue-countdown/dist/vue-countdown.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+
+
+
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    CodeInput: _components_CodeInput_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    CodeInput: _components_CodeInput_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    VueCountdown: _chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      userCode: ''
+    };
   },
   setup: function setup() {
+    var _this = this;
+
     var completed = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRouter)();
+    var remaining = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(0);
+    var subject = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
+    var token = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
+    var userId = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
+    var notify = (0,vue__WEBPACK_IMPORTED_MODULE_1__.inject)('$notify');
+    var code = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount)(function () {
+      remaining = store.getters.remainingTime;
+      subject = store.getters.subject;
+      code = store.getters.code;
+      token = store.getters.getToken;
+      userId = store.getters.getUser.user_id;
+      console.log(remaining);
+      console.log(subject);
+      console.log(code);
+      console.log(token);
+      console.log(userId);
+    });
+
+    var submitForm = function submitForm() {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
+        var inputToken, tokenFields, userCode, _i, tokenFields_1, item;
+
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
+          completed = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(true);
+          inputToken = document.getElementById('input-token-id');
+          tokenFields = inputToken === null || inputToken === void 0 ? void 0 : inputToken.children[0].getElementsByTagName('input');
+          userCode = '';
+
+          for (_i = 0, tokenFields_1 = tokenFields; _i < tokenFields_1.length; _i++) {
+            item = tokenFields_1[_i];
+            userCode += item.value;
+          }
+
+          axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/activateUser', {
+            userCode: userCode,
+            userId: userId,
+            code: code
+          }, {
+            headers: {
+              'Authorization': 'Bearer ' + token
+            }
+          }).then(function (response) {
+            console.log(response);
+
+            if (response.data.success) {
+              router.push({
+                name: 'dashboard',
+                query: {
+                  redirect: '/dashboard'
+                }
+              });
+            } else {
+              alert("gagal");
+            }
+          });
+          return [2
+          /*return*/
+          ];
+        });
+      });
+    };
+
     return {
-      completed: completed
+      store: store,
+      remaining: remaining,
+      subject: subject,
+      completed: completed,
+      submitForm: submitForm
     };
   }
 });
@@ -54,12 +531,20 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Aktivasi ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Periksa Email/Whatsapp ", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Aktivasi ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_code_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("code-input");
 
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+  var _component_vue_countdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-countdown");
+
+  var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
+
+  var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
   var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
 
@@ -67,20 +552,51 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "p-10 text-center"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_code_input, {
-        onComplete: _cache[0] || (_cache[0] = function ($event) {
-          return $setup.completed = true;
-        }),
-        fields: 4,
-        fieldWidth: 56,
-        fieldHeight: 56,
-        required: true
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "/admin",
-        "class": "btn btn-primary mt-10"
-      }, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_4];
+          return [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_code_input, {
+            ref: "inputToken",
+            id: "input-token-id",
+            onComplete: _cache[0] || (_cache[0] = function ($event) {
+              return $setup.submitForm();
+            }),
+            fields: 4,
+            fieldWidth: 56,
+            fieldHeight: 56,
+            required: true
+          }, null, 512
+          /* NEED_PATCH */
+          ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+            disabled: !$setup.completed,
+            onClick: _cache[1] || (_cache[1] = function ($event) {
+              return $setup.submitForm();
+            }),
+            "class": "btn btn-primary mt-10"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_countdown, {
+                time: 180000
+              }, {
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_a) {
+                  var days = _a.days,
+                      hours = _a.hours,
+                      minutes = _a.minutes,
+                      seconds = _a.seconds;
+                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(minutes) + " : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(seconds), 1
+                  /* TEXT */
+                  )];
+                }),
+                _: 1
+                /* STABLE */
+
+              })];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["disabled"])];
         }),
         _: 1
         /* STABLE */

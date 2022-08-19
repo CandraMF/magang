@@ -5,6 +5,7 @@ import BodyModule from "@/store/modules/BodyModule";
 import BreadcrumbsModule from "@/store/modules/BreadcrumbsModule";
 import ConfigModule from "@/store/modules/ConfigModule";
 import AuthModule from "@/store/modules/AuthModule";
+import AppModule from "@/store/modules/AppModule";
 
 import createPersistedState from 'vuex-persistedstate'
 
@@ -15,7 +16,8 @@ const store = createStore({
     BodyModule,
     BreadcrumbsModule,
     ConfigModule,
-    AuthModule
+    AuthModule,
+    AppModule,
   },
   plugins:[
     createPersistedState()
