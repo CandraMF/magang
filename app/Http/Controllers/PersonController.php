@@ -35,32 +35,35 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        \App\Models\Person::create([
+        $personId = \App\Models\Person::insertGetId([
             // 'person_id'         => $request->person_id,
-            'title_pre'         => $request->title_pre,
-            'name'              => $request->name,
-            'title_post'        => $request->title_post,
-            'identity_id'       => $request->identity_id,
-            'tax_id'            => $request->tax_id,
-            'driving_a'         => $request->driving_a,
-            'driving_b'         => $request->driving_b,
-            'driving_c'         => $request->driving_c,
-            'birth_place'       => $request->birth_place,
-            'birth_date'        => $request->birth_date,
-            'religion_id'       => $request->religion_id,
-            'blood_type'        => $request->blood_type,
-            'marital_status_id' => $request->marital_status_id,
-            'ethnicity_id'      => $request->ethnicity_id,
-            'email'             => $request->email,
-            'mobile'            => $request->mobile,
-            'mobile_alt'        => $request->mobile_alt,
-            'address'           => $request->address,
+            'title_pre'         => $request->formData->title_pre,
+            'name'              => $request->formData->name,
+            'title_post'        => $request->formData->title_post,
+            'identity_id'       => $request->formData->identity_id,
+            'tax_id'            => $request->formData->tax_id,
+            'driving_a'         => $request->formData->driving_a,
+            'driving_b'         => $request->formData->driving_b,
+            'driving_c'         => $request->formData->driving_c,
+            'birth_place'       => $request->formData->birth_place,
+            'birth_date'        => $request->formData->birth_date,
+            'religion_id'       => $request->formData->religion_id,
+            'blood_type'        => $request->formData->blood_type,
+            'marital_status_id' => $request->formData->marital_status_id,
+            'ethnicity_id'      => $request->formData->ethnicity_id,
+            'email'             => $request->formData->email,
+            'mobile'            => $request->formData->mobile,
+            'mobile_alt'        => $request->formData->mobile_alt,
+            'address'           => $request->formData->address,
             'region_id'         => '-',
             'zip'               => '-',
             'address_home'      => '-',
             'region_id_home'    => '-',
             'zip_home'          => '-'
         ]);
+
+        return response()->json($request->formData);
+
     }
 
     /**

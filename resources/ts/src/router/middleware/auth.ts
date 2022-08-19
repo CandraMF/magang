@@ -1,7 +1,10 @@
-export default function auth({ next, to }) {
+export default function auth({ next, to, router }) {
 
     var vuex = JSON.parse(localStorage.getItem('vuex'))
-    console.log(vuex.AuthModule.user)
+
+    if (vuex.AuthModule.token == null) {
+        router.push({ name: 'login', query: { redirect: '/login' } });
+    }
 
     return next();
   }

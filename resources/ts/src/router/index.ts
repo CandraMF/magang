@@ -82,7 +82,7 @@ const routes: Array<RouteRecordRaw> = [
       redirect: "/dashboard",
       component: () => import("@/layout/Layout.vue"),
       meta: {
-            middleware: active
+            middleware: [auth, active]
       },
       children: [
         {

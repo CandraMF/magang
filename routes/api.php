@@ -22,7 +22,9 @@ Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('person', App\Http\Controllers\PersonController::class);
     Route::resource('status', App\Http\Controllers\StatusController::class);
+
     Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
+    Route::get('region/search/{payload}', [App\Http\Controllers\RegionController::class, 'search'])->name('region.search');
 
     // activation
     Route::post('sendActivationCode', [App\Http\Controllers\UserController::class, 'sendActivationCode'])->name('user.sendActivationCode');

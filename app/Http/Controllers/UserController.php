@@ -58,14 +58,14 @@ class UserController extends Controller
         $code = app(ActivationController::class)->getActivationCode();
 
         if ($request->platform == "whatsapp") {
-            // Http::withHeaders([
-            //     'api_key' => '36w2kh7van3eb7yg9j8hh2u6'
-            // ])->post('http://mashery.bpkh.go.id/v1/whatsapp/send/notification', [
-            //     "recipientNumber" => $mobile,
-            //     "appName" => "MAGANG",
-            //     "about" => "Permohonan Kode Aktivasi",
-            //     "description" => "Kode Aktifasi Akun mu adalah *" . $code . "*"
-            // ]);
+            Http::withHeaders([
+                'api_key' => '36w2kh7van3eb7yg9j8hh2u6'
+            ])->post('http://mashery.bpkh.go.id/v1/whatsapp/send/notification', [
+                "recipientNumber" => $mobile,
+                "appName" => "MAGANG",
+                "about" => "Permohonan Kode Aktivasi",
+                "description" => "Kode Aktifasi Akun mu adalah *" . $code . "*"
+            ]);
 
             $response = [
                 'success' => true,
