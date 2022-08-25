@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\ActivationCodeMail;
+use App\Mail\ActivationMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('{any}', function () {
-    return view('app');
-})->where('any', '.*');
+
+Route::get('/email', function() {
+    Mail::to('candragain99@gmail.com')->send(new ActivationMail());
+    return new ActivationMail();
+});
+// Route::get('{any}', function () {
+//     return view('app');
+// })->where('any', '.*');
