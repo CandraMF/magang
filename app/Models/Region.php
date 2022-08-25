@@ -9,7 +9,7 @@ class Region extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.region_tr';
+    protected $table = 'magang.region_tr';
 
     public function child()
     {
