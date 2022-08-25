@@ -10,15 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class ActivationMail extends Mailable
 {
     use Queueable, SerializesModels;
+    private $code;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($code)
     {
-        //
+        $this->code = $code;
     }
 
     /**
@@ -28,6 +29,8 @@ class ActivationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mails.activationCode');
+        $code = $this->code;
+
+        return $this->view('mails.activationCode', compact(['code']));
     }
 }

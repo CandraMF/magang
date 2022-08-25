@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ActivationController;
-use App\Mail\ActivationCodeMail;
+use App\Mail\ActivationMail;
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
@@ -76,7 +76,7 @@ class UserController extends Controller
 
         } else if ($request->platform = "email") {
 
-            Mail::to($email)->send(new ActivationCodeMail($code));
+            Mail::to($email)->send(new ActivationMail($code));
 
             if(Mail::failures()) {
                 $response = [

@@ -4,7 +4,7 @@
 Berikut Adalah Kode Aktivasi Akun Kamu
 
 @component('mail::button', ['url' => ''])
-Button Text
+    # {{ $code }}
 @endcomponent
 
 Thanks,<br>
