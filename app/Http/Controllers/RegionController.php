@@ -85,13 +85,27 @@ class RegionController extends Controller
 
     public function search($payload)
     {
-        $data = Region::where('name', 'ilike', '%'.$payload.'%')
-            ->get();
+        $region = Region::where('name', 'ilike', '%'.$payload.'%')
+            ->whereRaw('LENGTH(region_id) = 6')
+            ->get()
+            ->map(function($q) {
 
-        // foreach ($data as $key => $value) {
-        //     $data[$key]->child =
-        // }
+                $i = strlen($q->region_id);
+                $regionStr = $q->name;
 
-        return response()->json($data);
+                do {
+                    $id = substr($q->region_id, 0, $i - 2);
+                    $region = Region::whereRegionId($id)->first();
+                    $regionStr .= ', '.$region->name;
+                    $i -= 2;
+                } while ($i > 2);
+
+                return [
+                    'name' => $regionStr,
+                    'region_id' => $q->region_id
+                ];
+            });
+
+        return response()->json($region);
     }
 }

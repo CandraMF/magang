@@ -2,6 +2,7 @@
 
 use App\Mail\ActivationCodeMail;
 use App\Mail\ActivationMail;
+use App\Models\Region;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 

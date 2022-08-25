@@ -35,34 +35,35 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
+
         $personId = \App\Models\Person::insertGetId([
-            // 'person_id'         => $request->person_id,
-            'title_pre'         => $request->formData->gelarAwal,
-            'name'              => $request->formData->name,
-            'title_post'        => $request->formData->gelarAkhir,
-            'identity_id'       => $request->formData->nomorKTP,
-            'tax_id'            => $request->formData->nomorNPWP,
-            'driving_a'         => $request->formData->nomorSIM,
-            'driving_b'         => $request->formData->nomorSIM,
-            'driving_c'         => $request->formData->nomorSIM,
-            'birth_place'       => $request->formData->tempatLahir,
-            'birth_date'        => $request->formData->tanggalLahir,
-            'religion_id'       => $request->formData->religion,
-            'blood_type'        => $request->formData->golonganDarah,
-            'marital_status_id' => $request->formData->marital,
-            'ethnicity_id'      => $request->formData->etn,
-            'email'             => $request->formData->email,
-            'mobile'            => $request->formData->mobile,
-            'mobile_alt'        => $request->formData->mobile_alt,
-            'address'           => $request->formData->address,
-            'region_id'         => '-',
-            'zip'               => '-',
-            'address_home'      => '-',
-            'region_id_home'    => '-',
-            'zip_home'          => '-'
+            // 'person_id'         => $request->formData['person_id'],
+            'title_pre'         => $request->formData['gelarAwal'],
+            'name'              => $request->formData['name'],
+            'title_post'        => $request->formData['gelarAkhir'],
+            'identity_id'       => $request->formData['nomorKTP'],
+            'tax_id'            => $request->formData['nomorNPWP'],
+            'driving_a'         => $request->formData['nomorSIMA'],
+            'driving_b'         => $request->formData['nomorSIMB'],
+            'driving_c'         => $request->formData['nomorSIMC'],
+            'birth_place'       => $request->formData['tempatLahir'],
+            'birth_date'        => $request->formData['tanggalLahir'],
+            'religion_id'       => $request->formData['religion'],
+            'blood_type'        => $request->formData['golonganDarah'],
+            'marital_status_id' => $request->formData['marital'],
+            'ethnicity_id'      => $request->formData['etnicity'],
+            'email'             => $request->formData['email'],
+            'mobile'            => $request->formData['nomorHP'],
+            'mobile_alt'        => $request->formData['nomorHPAlt'],
+            'address'           => $request->formData['alamatAsal'],
+            'region_id'         => $request->formData['kodeDomisiliAsal'],
+            'zip'               => $request->formData['kodePosAsal'],
+            'address_home'      => $request->formData['alamatTinggal'],
+            'region_id_home'    => $request->formData['kodeDomisiliTinggal'],
+            'zip_home'          => $request->formData['kodePosTinggal'],
         ]);
 
-        return response()->json($request->formData);
+        return response()->json($personId);
 
     }
 

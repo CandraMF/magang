@@ -1,10 +1,10 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_ts_src_views_account_DataDiriForm_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&lang=ts":
-/*!******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&lang=ts ***!
-  \******************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&setup=true&lang=ts":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&setup=true&lang=ts ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -12,223 +12,222 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
+ // const store = useStore();
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      token: '',
-      options: {
-        'etnicity': [],
-        'marital': [],
-        'religion': []
-      },
-      ruleForm: {
-        name: '',
-        email: '',
-        etnicity: '',
-        marital: '',
-        religion: '',
-        gelarAwal: '',
-        gelarAkhir: '',
-        nomorKTP: '',
-        nomorNPWP: '',
-        nomorSIMA: '',
-        nomorSIMB: '',
-        nomorSIMC: '',
-        tempatLahir: '',
-        tanggalLahir: '',
-        golonganDarah: '',
-        domisiliAsal: '',
-        domisiliTinggal: '',
-        alamatTinggal: '',
-        nomorHP: '',
-        nomorHPAlt: '',
-        kodePosTinggal: '',
-        kodePosAsal: ''
-      },
-      rules: {
-        name: [{
-          required: true,
-          message: 'Mohon isi nama lengkap',
-          trigger: 'blur'
-        }, {
-          min: 3,
-          message: 'Panjang karakter harus lebih dari 3',
-          trigger: 'blur'
-        }],
-        email: [{
-          required: true,
-          message: 'Mohon isi email',
-          trigger: 'blur'
-        }, {
-          type: 'email',
-          message: 'Mohon isi format email yang benar',
-          trigger: ['blur', 'change']
-        }],
-        nomorKTP: [{
-          required: true,
-          message: 'Mohon isi nomor KTP',
-          trigger: ['blur', 'change']
-        }, {
-          min: 16,
-          message: 'Nomor KTP harus 16 digit',
-          trigger: ['blur', 'change']
-        }, {
-          max: 16,
-          message: 'Nomor KTP harus 16 digit',
-          trigger: ['blur', 'change']
-        }],
-        nomorNPWP: [{
-          min: 16,
-          message: 'Nomor NPWP harus 16 digit',
-          trigger: ['blur', 'change']
-        }, {
-          max: 16,
-          message: 'Nomor NPWP harus 16 digit',
-          trigger: ['blur', 'change']
-        }],
-        nomorSIMA: [{
-          min: 12,
-          message: 'Nomor SIM harus 12 digit',
-          trigger: ['blur', 'change']
-        }, {
-          min: 12,
-          message: 'Nomor SIM harus 12 digit',
-          trigger: ['blur', 'change']
-        }],
-        nomorSIMB: [{
-          min: 12,
-          message: 'Nomor SIM harus 12 digit',
-          trigger: ['blur', 'change']
-        }, {
-          min: 12,
-          message: 'Nomor SIM harus 12 digit',
-          trigger: ['blur', 'change']
-        }],
-        nomorSIMC: [{
-          min: 12,
-          message: 'Nomor SIM harus 12 digit',
-          trigger: ['blur', 'change']
-        }, {
-          min: 12,
-          message: 'Nomor SIM harus 12 digit',
-          trigger: ['blur', 'change']
-        }],
-        tempatLahir: [{
-          required: true,
-          message: 'Mohon isi Tempat Lahir',
-          trigger: 'blur'
-        }],
-        tanggalLahir: [{
-          required: true,
-          message: 'Mohon isi Tanggal Lahir',
-          trigger: 'blur'
-        }],
-        domisiliAsal: [{
-          required: true,
-          message: 'Mohon isi Kecamatan',
-          trigger: 'blur'
-        }],
-        domisiliTinggal: [{
-          required: true,
-          message: 'Mohon isi Kecamatan',
-          trigger: 'blur'
-        }],
-        alamatTinggal: [{
-          required: true,
-          message: 'Mohon isi Alamat Tinggal',
-          trigger: 'blur'
-        }],
-        alamatAsal: [{
-          required: true,
-          message: 'Mohon isi Alamat Asal',
-          trigger: 'blur'
-        }],
-        nomorHP: [{
-          required: true,
-          message: 'Mohon isi nomor HP',
-          trigger: 'blur'
-        }],
-        nomorHPAlt: [],
-        marital: [{
-          required: true,
-          message: 'Mohon pilih Status Pernikahan',
-          trigger: ['blur', 'change']
-        }],
-        golonganDarah: [{
-          required: true,
-          message: 'Mohon pilih Golongan Darah',
-          trigger: ['blur', 'change']
-        }],
-        etnicity: [{
-          required: false,
-          message: 'Mohon pilih Etnis',
-          trigger: ['blur', 'change']
-        }],
-        religion: [{
-          required: true,
-          message: 'Mohon pilih Agama',
-          trigger: ['blur', 'change']
-        }],
-        kodePosTinggal: [{
-          required: true,
-          message: 'Mohon isi Kode Pos Tinggal',
-          trigger: ['blur', 'change']
-        }],
-        kodePosAsal: [{
-          required: true,
-          message: 'Mohon isi Kode Pos Asal',
-          trigger: ['blur', 'change']
-        }]
-      }
-    };
-  },
-  mounted: function mounted() {
-    var vuex = JSON.parse(localStorage.getItem('vuex'));
-    this.token = vuex.AuthModule.token;
-    console.log(vuex.AuthModule.user);
-    this.ruleForm.email = vuex.AuthModule.user.email;
-    this.ruleForm.nomorKTP = vuex.AuthModule.user.login;
-    this.ruleForm.nomorHP = vuex.AuthModule.user.mobile;
-    this.getStatus();
-  },
-  methods: {
-    getStatus: function getStatus() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
-        var _this = this;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+  __name: 'DataDiri',
+  setup: function setup(__props, _a) {
+    var _this = this;
 
+    var expose = _a.expose;
+    expose();
+    var ruleFormRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var token = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
+    var etnicity = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
+    var marital = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
+    var religion = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
+    var ruleForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      name: '',
+      email: '',
+      etnicity: '',
+      marital: '',
+      religion: '',
+      gelarAwal: '',
+      gelarAkhir: '',
+      nomorKTP: '',
+      nomorNPWP: '',
+      nomorSIMA: '',
+      nomorSIMB: '',
+      nomorSIMC: '',
+      tempatLahir: '',
+      tanggalLahir: '',
+      golonganDarah: '',
+      domisiliAsal: '',
+      kodeDomisiliAsal: '',
+      domisiliTinggal: '',
+      kodeDomisiliTinggal: '',
+      alamatAsal: '',
+      alamatTinggal: '',
+      nomorHP: '',
+      nomorHPAlt: '',
+      kodePosTinggal: '',
+      kodePosAsal: ''
+    });
+    var rules = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      name: [{
+        required: true,
+        message: 'Mohon isi nama lengkap',
+        trigger: 'blur'
+      }, {
+        min: 3,
+        message: 'Panjang karakter harus lebih dari 3',
+        trigger: 'blur'
+      }],
+      email: [{
+        required: true,
+        message: 'Mohon isi email',
+        trigger: 'blur'
+      }, {
+        type: 'email',
+        message: 'Mohon isi format email yang benar',
+        trigger: ['blur', 'change']
+      }],
+      nomorKTP: [{
+        required: true,
+        message: 'Mohon isi nomor KTP',
+        trigger: ['blur', 'change']
+      }, {
+        min: 16,
+        message: 'Nomor KTP harus 16 digit',
+        trigger: ['blur', 'change']
+      }, {
+        max: 16,
+        message: 'Nomor KTP harus 16 digit',
+        trigger: ['blur', 'change']
+      }],
+      nomorNPWP: [{
+        min: 16,
+        message: 'Nomor NPWP harus 16 digit',
+        trigger: ['blur', 'change']
+      }, {
+        max: 16,
+        message: 'Nomor NPWP harus 16 digit',
+        trigger: ['blur', 'change']
+      }],
+      nomorSIMA: [{
+        min: 12,
+        message: 'Nomor SIM harus 12 digit',
+        trigger: ['blur', 'change']
+      }, {
+        min: 12,
+        message: 'Nomor SIM harus 12 digit',
+        trigger: ['blur', 'change']
+      }],
+      nomorSIMB: [{
+        min: 12,
+        message: 'Nomor SIM harus 12 digit',
+        trigger: ['blur', 'change']
+      }, {
+        min: 12,
+        message: 'Nomor SIM harus 12 digit',
+        trigger: ['blur', 'change']
+      }],
+      nomorSIMC: [{
+        min: 12,
+        message: 'Nomor SIM harus 12 digit',
+        trigger: ['blur', 'change']
+      }, {
+        min: 12,
+        message: 'Nomor SIM harus 12 digit',
+        trigger: ['blur', 'change']
+      }],
+      tempatLahir: [{
+        required: true,
+        message: 'Mohon isi Tempat Lahir',
+        trigger: 'blur'
+      }],
+      tanggalLahir: [{
+        required: true,
+        message: 'Mohon isi Tanggal Lahir',
+        trigger: 'blur'
+      }],
+      domisiliAsal: [{
+        required: true,
+        message: 'Mohon isi Kecamatan',
+        trigger: 'blur'
+      }],
+      domisiliTinggal: [{
+        required: true,
+        message: 'Mohon isi Kecamatan',
+        trigger: 'blur'
+      }],
+      alamatTinggal: [{
+        required: true,
+        message: 'Mohon isi Alamat Tinggal',
+        trigger: 'blur'
+      }],
+      alamatAsal: [{
+        required: true,
+        message: 'Mohon isi Alamat Asal',
+        trigger: 'blur'
+      }],
+      nomorHP: [{
+        required: true,
+        message: 'Mohon isi nomor HP',
+        trigger: 'blur'
+      }],
+      nomorHPAlt: [],
+      marital: [{
+        required: true,
+        message: 'Mohon pilih Status Pernikahan',
+        trigger: ['blur', 'change']
+      }],
+      golonganDarah: [{
+        required: true,
+        message: 'Mohon pilih Golongan Darah',
+        trigger: ['blur', 'change']
+      }],
+      etnicity: [{
+        required: false,
+        message: 'Mohon pilih Etnis',
+        trigger: ['blur', 'change']
+      }],
+      religion: [{
+        required: true,
+        message: 'Mohon pilih Agama',
+        trigger: ['blur', 'change']
+      }],
+      kodePosTinggal: [{
+        required: true,
+        message: 'Mohon isi Kode Pos Tinggal',
+        trigger: ['blur', 'change']
+      }],
+      kodePosAsal: [{
+        required: true,
+        message: 'Mohon isi Kode Pos Asal',
+        trigger: ['blur', 'change']
+      }]
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      var vuex = JSON.parse(localStorage.getItem('vuex'));
+      token = vuex.AuthModule.token;
+      getStatus();
+      ruleForm.email = vuex.AuthModule.user.email;
+      ruleForm.nomorKTP = vuex.AuthModule.user.login;
+      ruleForm.nomorHP = vuex.AuthModule.user.mobile;
+    });
+
+    var getStatus = function getStatus() {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(_this, void 0, void 0, function () {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
-              , axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/status', {
+              , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/status', {
                 headers: {
-                  'Authorization': 'Bearer ' + this.token
+                  'Authorization': 'Bearer ' + token
                 }
               }).then(function (response) {
                 response.data.forEach(function (element) {
                   if (element.status_id.slice(0, 3) == 'ETH') {
-                    _this.options['etnicity'].push({
+                    etnicity.push({
                       'value': element.status_id,
                       'label': element.name
                     });
                   } else if (element.status_id.slice(0, 3) == 'REL') {
-                    _this.options['religion'].push({
+                    religion.push({
                       'value': element.status_id,
                       'label': element.name
                     });
-                  }
-
-                  if (element.status_id.slice(0, 3) == 'MAR') {
-                    _this.options['marital'].push({
+                  } else if (element.status_id.slice(0, 3) == 'MAR') {
+                    marital.push({
                       'value': element.status_id,
                       'label': element.name
                     });
@@ -245,26 +244,30 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
-    },
-    submitForm: function submitForm(formName) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
-        var _this = this;
+    };
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
-          this.$refs[formName].validate(function (valid) {
+    var submitForm = function submitForm() {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(_this, void 0, void 0, function () {
+        var _a;
+
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_b) {
+          (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.validate(function (valid) {
             if (valid) {
-              axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/person', {
-                formData: _this.ruleForm
-              }, {
-                headers: {
-                  'Authorization': 'Bearer ' + _this.token
-                }
-              }).then(function (response) {
-                console.log(response); // if (response.data.success) {
-                //     router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-                // } else {
-                //     alert("gagal")
-                // }
+              axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
+                axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/person', {
+                  formData: ruleForm
+                }, {
+                  headers: {
+                    'Authorization': 'Bearer ' + token
+                  }
+                }).then(function (response) {
+                  console.log(response);
+
+                  if (response.data.success) {// router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+                  } else {
+                    alert("gagal");
+                  }
+                });
               });
             } else {
               console.log('error submit!!');
@@ -276,29 +279,15 @@ __webpack_require__.r(__webpack_exports__);
           ];
         });
       });
-    },
-    resetForm: function resetForm(formName) {
-      this.$refs[formName].resetFields();
-    } //   async searchRegion() {
-    //     var payload = this.ruleForm.alamat
-    //     if(payload.length >= 3) {
-    //         await axios.get('/api/region/search/' + payload, {
-    //             headers: {'Authorization': 'Bearer '+ this.token},
-    //         })
-    //         .then(response => {
-    //             console.log(response)
-    //         })
-    //     }
-    //   }
+    };
 
-  },
-  setup: function setup() {
-    var _this = this;
+    var resetForm = function resetForm() {
+      var _a;
 
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.useStore)();
-    var restaurants = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
-    var token = store.getters.getToken;
-    var results = [];
+      (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.resetFields();
+    };
+
+    var results = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
 
     var querySearch = function querySearch(queryString, cb) {
       return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(_this, void 0, void 0, function () {
@@ -312,7 +301,7 @@ __webpack_require__.r(__webpack_exports__);
               , 2];
               return [4
               /*yield*/
-              , axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/region/search/' + payload, {
+              , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/region/search/' + payload, {
                 headers: {
                   'Authorization': 'Bearer ' + token
                 }
@@ -348,18 +337,38 @@ __webpack_require__.r(__webpack_exports__);
       };
     };
 
-    var handleSelect = function handleSelect(item) {
-      console.log(item);
+    var handleSelectAsal = function handleSelectAsal(item) {
+      ruleForm.kodeDomisiliAsal = item.region_id;
     };
 
-    return {
-      restaurants: restaurants,
+    var handleSelectTinggal = function handleSelectTinggal(item) {
+      ruleForm.kodeDomisiliTinggal = item.region_id;
+    };
+
+    var __returned__ = {
+      ruleFormRef: ruleFormRef,
+      token: token,
+      etnicity: etnicity,
+      marital: marital,
+      religion: religion,
+      ruleForm: ruleForm,
+      rules: rules,
+      getStatus: getStatus,
+      submitForm: submitForm,
+      resetForm: resetForm,
+      results: results,
       querySearch: querySearch,
       createFilter: createFilter,
-      handleSelect: handleSelect
+      handleSelectAsal: handleSelectAsal,
+      handleSelectTinggal: handleSelectTinggal
     };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
   }
-});
+}));
 
 /***/ }),
 
@@ -382,25 +391,92 @@ var _hoisted_2 = {
   "class": "col-md-6"
 };
 var _hoisted_3 = {
-  "class": "col-md-6"
+  "class": "row"
 };
 var _hoisted_4 = {
-  "class": "col-md-12"
+  "class": "col-md-6"
 };
 var _hoisted_5 = {
+  "class": "col-md-6"
+};
+var _hoisted_6 = {
+  "class": "row"
+};
+var _hoisted_7 = {
+  "class": "col-md-6"
+};
+var _hoisted_8 = {
+  "class": "col-md-6"
+};
+var _hoisted_9 = {
+  "class": "row"
+};
+var _hoisted_10 = {
+  "class": "col-md-6"
+};
+var _hoisted_11 = {
+  "class": "col-md-6"
+};
+var _hoisted_12 = {
+  "class": "col-md-6"
+};
+var _hoisted_13 = {
+  "class": "row"
+};
+var _hoisted_14 = {
+  "class": "col-md-6 mb-sm-2"
+};
+var _hoisted_15 = {
+  "class": "col-md-6"
+};
+var _hoisted_16 = {
+  "class": "col-md-6"
+};
+var _hoisted_17 = {
+  "class": "row"
+};
+var _hoisted_18 = {
+  "class": "col-md-6"
+};
+var _hoisted_19 = {
+  "class": "row"
+};
+var _hoisted_20 = {
+  "class": "col-md-6"
+};
+var _hoisted_21 = {
+  "class": "row"
+};
+var _hoisted_22 = {
+  "class": "col-md-6"
+};
+var _hoisted_23 = {
+  "class": "col-md-6"
+};
+var _hoisted_24 = {
+  "class": "row"
+};
+var _hoisted_25 = {
+  "class": "col-md-6"
+};
+var _hoisted_26 = {
+  "class": "col-md-6"
+};
+var _hoisted_27 = {
+  "class": "col-md-12"
+};
+var _hoisted_28 = {
   "class": "d-flex justify-content-end"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset");
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Next");
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Next");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
-
-  var _component_el_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-col");
 
   var _component_el_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-date-picker");
 
@@ -419,10 +495,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_form, {
-    model: $data.ruleForm,
-    "label-position": "left",
-    rules: $data.rules,
-    ref: "ruleForm",
+    model: $setup.ruleForm,
+    "label-position": "top",
+    rules: $setup.rules,
+    ref: "ruleFormRef",
     "label-width": "175px",
     "class": "demo-ruleForm"
   }, {
@@ -433,9 +509,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.name,
+            modelValue: $setup.ruleForm.name,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-              return $data.ruleForm.name = $event;
+              return $setup.ruleForm.name = $event;
             })
           }, null, 8
           /* PROPS */
@@ -450,9 +526,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.email,
+            modelValue: $setup.ruleForm.email,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-              return $data.ruleForm.email = $event;
+              return $setup.ruleForm.email = $event;
             })
           }, null, 8
           /* PROPS */
@@ -461,77 +537,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        label: "Gelar"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Gelar Awal",
+        prop: "gelarAwal"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
-            span: 12
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                prop: "gelarAwal"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                    modelValue: $data.ruleForm.gelarAwal,
-                    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                      return $data.ruleForm.gelarAwal = $event;
-                    }),
-                    placeholder: "Gelar Awal"
-                  }, null, 8
-                  /* PROPS */
-                  , ["modelValue"])];
-                }),
-                _: 1
-                /* STABLE */
-
-              })];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_col, {
-            span: 12,
-            "class": "ps-2"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-                prop: "gelarAkhir"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                    modelValue: $data.ruleForm.gelarAkhir,
-                    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-                      return $data.ruleForm.gelarAkhir = $event;
-                    }),
-                    placeholder: "Gelar Akhir"
-                  }, null, 8
-                  /* PROPS */
-                  , ["modelValue"])];
-                }),
-                _: 1
-                /* STABLE */
-
-              })];
-            }),
-            _: 1
-            /* STABLE */
-
-          })];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $setup.ruleForm.gelarAwal,
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+              return $setup.ruleForm.gelarAwal = $event;
+            })
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
         }),
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Gelar Akhir",
+        prop: "gelarAkhir"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $setup.ruleForm.gelarAkhir,
+            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+              return $setup.ruleForm.gelarAkhir = $event;
+            })
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor KTP",
         prop: "nomorKTP"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorKTP,
+            modelValue: $setup.ruleForm.nomorKTP,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-              return $data.ruleForm.nomorKTP = $event;
+              return $setup.ruleForm.nomorKTP = $event;
             })
           }, null, 8
           /* PROPS */
@@ -540,16 +588,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        label: "Nomor NPWP",
-        prop: "NPWP"
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "NPWP",
+        prop: "nomorNPWP"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorNPWP,
+            modelValue: $setup.ruleForm.nomorNPWP,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-              return $data.ruleForm.nomorNPWP = $event;
-            })
+              return $setup.ruleForm.nomorNPWP = $event;
+            }),
+            maxlength: "16",
+            "show-word-limit": ""
           }, null, 8
           /* PROPS */
           , ["modelValue"])];
@@ -557,16 +607,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor SIM A",
         prop: "nomorSIMA"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorSIMA,
+            modelValue: $setup.ruleForm.nomorSIMA,
             "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-              return $data.ruleForm.nomorSIMA = $event;
-            })
+              return $setup.ruleForm.nomorSIMA = $event;
+            }),
+            maxlength: "12",
+            "show-word-limit": ""
           }, null, 8
           /* PROPS */
           , ["modelValue"])];
@@ -574,16 +626,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor SIM B",
         prop: "nomorSIMB"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorSIMB,
+            modelValue: $setup.ruleForm.nomorSIMB,
             "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-              return $data.ruleForm.nomorSIMB = $event;
-            })
+              return $setup.ruleForm.nomorSIMB = $event;
+            }),
+            maxlength: "12",
+            "show-word-limit": ""
           }, null, 8
           /* PROPS */
           , ["modelValue"])];
@@ -591,16 +645,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor SIM C",
         prop: "nomorSIMC"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorSIMC,
+            modelValue: $setup.ruleForm.nomorSIMC,
             "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-              return $data.ruleForm.nomorSIMC = $event;
-            })
+              return $setup.ruleForm.nomorSIMC = $event;
+            }),
+            maxlength: "12",
+            "show-word-limit": ""
           }, null, 8
           /* PROPS */
           , ["modelValue"])];
@@ -608,39 +664,46 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        label: "Tempat Lahir",
-        prop: "tempatLahir"
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Tempat, Tanggal Lahir"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.tempatLahir,
-            "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-              return $data.ruleForm.tempatLahir = $event;
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+            prop: "tempatLahir"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+                modelValue: $setup.ruleForm.tempatLahir,
+                "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+                  return $setup.ruleForm.tempatLahir = $event;
+                }),
+                placeholder: "Tempat Lahir"
+              }, null, 8
+              /* PROPS */
+              , ["modelValue"])];
             }),
-            placeholder: "Tempat Lahir"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
-        }),
-        _: 1
-        /* STABLE */
+            _: 1
+            /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        label: "Tanggal Lahir",
-        prop: "tanggalLahir"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_date_picker, {
-            modelValue: $data.ruleForm.tanggalLahir,
-            "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-              return $data.ruleForm.tanggalLahir = $event;
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+            prop: "tanggalLahir"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_date_picker, {
+                modelValue: $setup.ruleForm.tanggalLahir,
+                "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+                  return $setup.ruleForm.tanggalLahir = $event;
+                }),
+                placeholder: "Tanggal Lahir",
+                "class": "w-100"
+              }, null, 8
+              /* PROPS */
+              , ["modelValue"])];
             }),
-            placeholder: "Tanggal Lahir",
-            "class": "w-100"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
+            _: 1
+            /* STABLE */
+
+          })])])];
         }),
         _: 1
         /* STABLE */
@@ -651,9 +714,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio_group, {
-            modelValue: $data.ruleForm.golonganDarah,
+            modelValue: $setup.ruleForm.golonganDarah,
             "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-              return $data.ruleForm.golonganDarah = $event;
+              return $setup.ruleForm.golonganDarah = $event;
             })
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -687,15 +750,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_select, {
-            modelValue: $data.ruleForm.marital,
+            modelValue: $setup.ruleForm.marital,
             "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-              return $data.ruleForm.marital = $event;
+              return $setup.ruleForm.marital = $event;
             }),
             placeholder: "Select",
             "class": "w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.options['marital'], function (item) {
+              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.marital, function (item) {
                 return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_option, {
                   key: item.value,
                   label: item.label,
@@ -717,17 +780,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Alamat Asal",
         prop: "alamatAsal"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            placeholder: "Isi Alamat di Bawah Kecamatan",
+            placeholder: "Isi Alamat di Bawah Tingkat Kecamatan",
             type: "textarea",
-            modelValue: $data.ruleForm.alamatAsal,
+            modelValue: $setup.ruleForm.alamatAsal,
             "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-              return $data.ruleForm.alamatAsal = $event;
+              return $setup.ruleForm.alamatAsal = $event;
             })
           }, null, 8
           /* PROPS */
@@ -743,30 +806,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_autocomplete, {
             "class": "inline-input w-100",
-            modelValue: $data.ruleForm.domisiliAsal,
+            modelValue: $setup.ruleForm.domisiliAsal,
             "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-              return $data.ruleForm.domisiliAsal = $event;
+              return $setup.ruleForm.domisiliAsal = $event;
             }),
             "fetch-suggestions": $setup.querySearch,
-            placeholder: "Kecamatan",
+            placeholder: "Isi Dengan Nama Kecamatan",
             "trigger-on-focus": false,
-            onSelect: $setup.handleSelect
+            onSelect: $setup.handleSelectAsal
           }, null, 8
           /* PROPS */
-          , ["modelValue", "fetch-suggestions", "onSelect"])];
+          , ["modelValue"])];
         }),
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Kode Pos Asal",
         prop: "kodePosAsal"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.kodePosAsal,
+            modelValue: $setup.ruleForm.kodePosAsal,
             "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-              return $data.ruleForm.kodePosAsal = $event;
+              return $setup.ruleForm.kodePosAsal = $event;
             })
           }, null, 8
           /* PROPS */
@@ -775,17 +838,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Alamat Tinggal",
         prop: "alamatTinggal"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            placeholder: "Isi Alamat di Bawah Kecamatan",
+            placeholder: "Isi Alamat di Bawah Tingkat Kecamatan",
             type: "textarea",
-            modelValue: $data.ruleForm.alamatTinggal,
+            modelValue: $setup.ruleForm.alamatTinggal,
             "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-              return $data.ruleForm.alamatTinggal = $event;
+              return $setup.ruleForm.alamatTinggal = $event;
             })
           }, null, 8
           /* PROPS */
@@ -801,30 +864,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_autocomplete, {
             "class": "inline-input w-100",
-            modelValue: $data.ruleForm.domisiliTinggal,
+            modelValue: $setup.ruleForm.domisiliTinggal,
             "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-              return $data.ruleForm.domisiliTinggal = $event;
+              return $setup.ruleForm.domisiliTinggal = $event;
             }),
             "fetch-suggestions": $setup.querySearch,
-            placeholder: "Kecamatan",
+            placeholder: "Isi Dengan Nama Kecamatan",
             "trigger-on-focus": false,
-            onSelect: $setup.handleSelect
+            onSelect: $setup.handleSelectTinggal
           }, null, 8
           /* PROPS */
-          , ["modelValue", "fetch-suggestions", "onSelect"])];
+          , ["modelValue"])];
         }),
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Kode Pos Tinggal",
         prop: "kodePosTinggal"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.kodePosTinggal,
+            modelValue: $setup.ruleForm.kodePosTinggal,
             "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
-              return $data.ruleForm.kodePosTinggal = $event;
+              return $setup.ruleForm.kodePosTinggal = $event;
             })
           }, null, 8
           /* PROPS */
@@ -833,15 +896,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor Ponsel",
         prop: "nomorHP"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorHP,
+            modelValue: $setup.ruleForm.nomorHP,
             "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-              return $data.ruleForm.nomorHP = $event;
+              return $setup.ruleForm.nomorHP = $event;
             })
           }, null, 8
           /* PROPS */
@@ -850,15 +913,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor Ponsel Alternatif",
         prop: "nomorHPAlt"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorHPAlt,
+            modelValue: $setup.ruleForm.nomorHPAlt,
             "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-              return $data.ruleForm.nomorHPAlt = $event;
+              return $setup.ruleForm.nomorHPAlt = $event;
             })
           }, null, 8
           /* PROPS */
@@ -867,21 +930,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Etnis",
         prop: "etnicity"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_select, {
-            modelValue: $data.ruleForm.etnicity,
+            modelValue: $setup.ruleForm.etnicity,
             "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
-              return $data.ruleForm.etnicity = $event;
+              return $setup.ruleForm.etnicity = $event;
             }),
             placeholder: "Select",
             "class": "w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.options['etnicity'], function (item) {
+              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.etnicity, function (item) {
                 return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_option, {
                   key: item.value,
                   label: item.label,
@@ -903,21 +966,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Agama",
         prop: "religion"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_select, {
-            modelValue: $data.ruleForm.religion,
+            modelValue: $setup.ruleForm.religion,
             "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
-              return $data.ruleForm.religion = $event;
+              return $setup.ruleForm.religion = $event;
             }),
             placeholder: "Select",
             "class": "w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.options['religion'], function (item) {
+              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.religion, function (item) {
                 return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_el_option, {
                   key: item.value,
                   label: item.label,
@@ -939,30 +1002,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-form-item> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-        onClick: _cache[23] || (_cache[23] = function ($event) {
-          return $options.resetForm('ruleForm');
-        })
-      }, {
+      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_6];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+            onClick: _cache[23] || (_cache[23] = function ($event) {
+              return $setup.resetForm();
+            })
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_29];
+            }),
+            _: 1
+            /* STABLE */
+
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+            type: "primary",
+            onClick: _cache[24] || (_cache[24] = function ($event) {
+              return $setup.submitForm();
+            })
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_30];
+            }),
+            _: 1
+            /* STABLE */
+
+          })];
         }),
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-        type: "primary",
-        onClick: _cache[24] || (_cache[24] = function ($event) {
-          return $options.submitForm('ruleForm');
-        })
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_7];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </el-form-item> ")])])])];
+      })])])])];
     }),
     _: 1
     /* STABLE */
@@ -1621,14 +1691,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _DataDiri_vue_vue_type_template_id_1bbed67c_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DataDiri.vue?vue&type=template&id=1bbed67c&ts=true */ "./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=template&id=1bbed67c&ts=true");
-/* harmony import */ var _DataDiri_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DataDiri.vue?vue&type=script&lang=ts */ "./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&lang=ts");
+/* harmony import */ var _DataDiri_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DataDiri.vue?vue&type=script&setup=true&lang=ts */ "./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&setup=true&lang=ts");
 /* harmony import */ var D_Code_bpkh_magang4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Code_bpkh_magang4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DataDiri_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DataDiri_vue_vue_type_template_id_1bbed67c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/src/views/account/forms/DataDiri.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Code_bpkh_magang4_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DataDiri_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DataDiri_vue_vue_type_template_id_1bbed67c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/src/views/account/forms/DataDiri.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1664,17 +1734,17 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&lang=ts":
-/*!***********************************************************************************!*\
-  !*** ./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&lang=ts ***!
-  \***********************************************************************************/
+/***/ "./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&setup=true&lang=ts":
+/*!**********************************************************************************************!*\
+  !*** ./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&setup=true&lang=ts ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DataDiri_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DataDiri_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DataDiri_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DataDiri.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&lang=ts");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DataDiri_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DataDiri.vue?vue&type=script&setup=true&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/src/views/account/forms/DataDiri.vue?vue&type=script&setup=true&lang=ts");
  
 
 /***/ }),
