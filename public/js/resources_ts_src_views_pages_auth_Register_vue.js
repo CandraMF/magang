@@ -23,13 +23,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isLoading: false,
+      validCaptcha: false,
       ruleForm: {
         name: '',
         email: '',
         password: '',
         confirmPassword: '',
         nomorHP: '',
-        nik: ''
+        nik: '',
+        captcha: ""
       },
       rules: {
         name: [{
@@ -41,10 +43,6 @@ __webpack_require__.r(__webpack_exports__);
           required: true,
           message: 'Mohon isi NIK',
           trigger: 'blur'
-        }, {
-          min: 16,
-          message: 'NIK Harus 16 Digit',
-          trigger: 'blur'
         }],
         confirmPassword: [{
           required: true,
@@ -55,6 +53,10 @@ __webpack_require__.r(__webpack_exports__);
           required: true,
           message: 'Mohon isi Password',
           trigger: ['blur', 'change']
+        }, {
+          min: 8,
+          message: 'Password Minimal 8 Karakter',
+          trigger: ['blur', 'change']
         }],
         nomorHP: [{
           required: true,
@@ -62,6 +64,11 @@ __webpack_require__.r(__webpack_exports__);
           trigger: ['blur', 'change']
         } // { regex: /^[2-9]\d{2}[2-9]\d{2}\d{4}$/ },
         ],
+        captcha: [{
+          required: true,
+          message: 'Mohon isi Captcha',
+          trigger: ['blur', 'change']
+        }],
         email: [{
           required: true,
           message: 'Mohon isi email',
@@ -89,43 +96,52 @@ __webpack_require__.r(__webpack_exports__);
           this.setLoading(true);
           this.$refs[formName].validate(function (valid) {
             if (valid) {
-              axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie').then(function (response) {
-                axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', {
-                  login: _this.ruleForm.nik,
-                  password: _this.ruleForm.password,
-                  name: _this.ruleForm.name,
-                  email: _this.ruleForm.email,
-                  mobile: _this.ruleForm.nomorHP
-                }).then(function (response) {
-                  console.log(response.data);
+              if (_this.validCaptcha) {
+                axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie').then(function (response) {
+                  axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/register', {
+                    login: _this.ruleForm.nik,
+                    password: _this.ruleForm.password,
+                    name: _this.ruleForm.name,
+                    email: _this.ruleForm.email,
+                    mobile: _this.ruleForm.nomorHP
+                  }).then(function (response) {
+                    console.log(response.data);
 
-                  if (response.data.success) {
-                    _this.$notify({
-                      title: 'Success',
-                      type: 'success',
-                      message: response.data.message
-                    });
+                    if (response.data.success) {
+                      _this.$notify({
+                        title: 'Success',
+                        type: 'success',
+                        message: response.data.message
+                      });
 
-                    _this.$router.push({
-                      name: 'login',
-                      query: {
-                        redirect: '/login'
-                      }
-                    });
-                  } else {
-                    _this.$notify.error({
-                      title: 'Error',
-                      message: response.data.message
-                    });
-                  }
+                      _this.$router.push({
+                        name: 'login',
+                        query: {
+                          redirect: '/login'
+                        }
+                      });
+                    } else {
+                      _this.$notify.error({
+                        title: 'Error',
+                        message: response.data.message
+                      });
+                    }
 
-                  _this.setLoading(false);
-                })["catch"](function (error) {
-                  console.error(error.message);
+                    _this.setLoading(false);
+                  })["catch"](function (error) {
+                    console.error(error.message);
 
-                  _this.setLoading(false);
+                    _this.setLoading(false);
+                  });
                 });
-              });
+              } else {
+                _this.setLoading(false);
+
+                _this.$notify.error({
+                  title: 'Error',
+                  message: "Captcha tidak valid"
+                });
+              }
             } else {
               _this.setLoading(false);
 
@@ -143,6 +159,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     setLoading: function setLoading(value) {
       this.isLoading = value;
+    },
+    getCaptchaCode: function getCaptchaCode(value) {// console.log(value);
+    },
+    checkValidCaptcha: function checkValidCaptcha(value) {
+      if (value) {
+        this.validCaptcha = true;
+        console.log(this.validCaptcha);
+      }
     }
   } // mounted() {
   //     if (localStorage.getItem('loggedIn') && ( this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin' )) {
@@ -174,23 +198,64 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = {
-  "class": "w-100 text-end"
+  "class": "my-10 notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
+};
+var _hoisted_3 = {
+  "class": "svg-icon svg-icon-2tx svg-icon-warning me-4"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "d-flex flex-stack flex-grow-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "fw-bold"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "text-gray-800 fw-bolder"
+}, "Perhatian!"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "fs-6 text-gray-600"
+}, " Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya ")])], -1
+/* HOISTED */
+);
 
 var _hoisted_5 = {
+  "class": "row"
+};
+var _hoisted_6 = {
+  "class": "col-md-6"
+};
+var _hoisted_7 = {
+  "class": "col-md-6"
+};
+var _hoisted_8 = {
+  "class": "col-md-12"
+};
+var _hoisted_9 = {
+  "class": "row d-flex justify-content-center"
+};
+var _hoisted_10 = {
+  "class": "col-md-5 mt-10"
+};
+var _hoisted_11 = {
+  "class": "w-100 text-center"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
+
+var _hoisted_14 = {
   "class": "my-5 text-center"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register");
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
+
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
+
+  var _component_VueClientRecaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VueClientRecaptcha");
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -212,7 +277,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "p-10"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
+        src: "/media/icons/duotune/general/gen044.svg"
+      })]), _hoisted_4]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
         model: $data.ruleForm,
         rules: $data.rules,
         ref: "ruleForm",
@@ -220,7 +287,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "status-icon": ""
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "nik",
             label: "Nomor Induk Kependudukan"
           }, {
@@ -229,9 +296,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 modelValue: $data.ruleForm.nik,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
                   return $data.ruleForm.nik = $event;
-                }),
-                maxlength: "16",
-                "show-word-limit": ""
+                })
               }, null, 8
               /* PROPS */
               , ["modelValue"])];
@@ -275,7 +340,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "nomorHP",
-            label: "Nomor HP"
+            label: "Nomor Ponsel"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
@@ -290,7 +355,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "username",
             label: "Username"
           }, {
@@ -300,7 +365,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
                   return $data.ruleForm.nik = $event;
                 }),
-                readonly: ""
+                readonly: "",
+                disabled: ""
               }, null, 8
               /* PROPS */
               , ["modelValue"])];
@@ -328,7 +394,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "confirmPassword",
-            label: "Confirm Password"
+            label: "Konfirmasi Password"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
@@ -345,32 +411,56 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "login"
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
+            value: $data.ruleForm.captcha,
+            onGetCode: $options.getCaptchaCode,
+            onIsValid: $options.checkValidCaptcha,
+            "class": "mb-5"
+          }, null, 8
+          /* PROPS */
+          , ["value", "onGetCode", "onIsValid"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+            prop: "captcha"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_4];
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+                modelValue: $data.ruleForm.captcha,
+                "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+                  return $data.ruleForm.captcha = $event;
+                }),
+                placeholder: "Masukan Token di Atas"
+              }, null, 8
+              /* PROPS */
+              , ["modelValue"])];
             }),
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "login"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_13];
+            }),
+            _: 1
+            /* STABLE */
+
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
             type: "button",
             loading: $data.isLoading,
-            onClick: _cache[7] || (_cache[7] = function ($event) {
+            onClick: _cache[8] || (_cache[8] = function ($event) {
               return $options.submitForm('ruleForm');
             }),
             "class": "btn btn-primary w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_6];
+              return [_hoisted_15];
             }),
             _: 1
             /* STABLE */
 
           }, 8
           /* PROPS */
-          , ["loading"])])];
+          , ["loading"])])])])])])];
         }),
         _: 1
         /* STABLE */

@@ -19,30 +19,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import { regex } from "vee-validate/dist/rules";
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       isLoading: false,
+      validCaptcha: false,
       ruleForm: {
         password: '',
-        nik: ''
+        nik: '',
+        captcha: ''
       },
       rules: {
         nik: [{
           required: true,
-          message: 'Mohon isi NIK',
-          trigger: 'blur'
-        }, {
-          min: 16,
-          message: 'NIK Harus 16 Digit',
+          message: 'Mohon isi Username',
           trigger: 'blur'
         }],
         password: [{
           required: true,
           message: 'Mohon isi Password',
           trigger: ['blur', 'change']
+        }],
+        captcha: [{
+          required: true,
+          message: 'Mohon isi Captcha',
+          trigger: ['blur']
         }]
       }
     };
@@ -73,42 +75,51 @@ __webpack_require__.r(__webpack_exports__);
           this.setLoading(true);
           this.$refs[formName].validate(function (valid) {
             if (valid) {
-              axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie').then(function (response) {
-                axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', {
-                  login: _this.ruleForm.nik,
-                  password: _this.ruleForm.password
-                }).then(function (response) {
-                  if (response.data.success) {
-                    _this.$notify({
-                      title: 'Success',
-                      type: 'success',
-                      message: response.data.message
-                    });
+              if (_this.validCaptcha) {
+                axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie').then(function (response) {
+                  axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', {
+                    login: _this.ruleForm.nik,
+                    password: _this.ruleForm.password
+                  }).then(function (response) {
+                    if (response.data.success) {
+                      _this.$notify({
+                        title: 'Success',
+                        type: 'success',
+                        message: response.data.message
+                      });
 
-                    _this.setUser(response.data.user);
+                      _this.setUser(response.data.user);
 
-                    _this.setToken(response.data.token);
+                      _this.setToken(response.data.token);
 
-                    _this.$router.push({
-                      name: 'aktivasiPlatform',
-                      query: {
-                        redirect: '/akktivasiPlatform'
-                      }
-                    });
-                  } else {
-                    _this.$notify.error({
-                      title: 'Error',
-                      message: response.data.message
-                    });
-                  }
+                      _this.$router.push({
+                        name: 'aktivasiPlatform',
+                        query: {
+                          redirect: '/akktivasiPlatform'
+                        }
+                      });
+                    } else {
+                      _this.$notify.error({
+                        title: 'Error',
+                        message: response.data.message
+                      });
+                    }
 
-                  _this.setLoading(false);
-                })["catch"](function (error) {
-                  console.error(error.message);
+                    _this.setLoading(false);
+                  })["catch"](function (error) {
+                    console.error(error.message);
 
-                  _this.setLoading(false);
+                    _this.setLoading(false);
+                  });
                 });
-              });
+              } else {
+                _this.setLoading(false);
+
+                _this.$notify.error({
+                  title: 'Error',
+                  message: "Captcha tidak valid"
+                });
+              }
             } else {
               _this.setLoading(false);
 
@@ -126,6 +137,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     setLoading: function setLoading(value) {
       this.isLoading = value;
+    },
+    getCaptchaCode: function getCaptchaCode(value) {// console.log(value);
+    },
+    checkValidCaptcha: function checkValidCaptcha(value) {
+      if (value) {
+        this.validCaptcha = true;
+        console.log(this.validCaptcha);
+      }
     }
   }
 });
@@ -160,15 +179,25 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register");
 
 var _hoisted_5 = {
-  "class": "my-5 text-center"
+  "class": "w-100 text-end mb-5"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password? ");
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password");
+
+var _hoisted_8 = {
+  "class": "text-center"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
+
+  var _component_VueClientRecaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VueClientRecaptcha");
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -200,16 +229,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "nik",
-            label: "Nomor Induk Kependudukan"
+            label: "Username"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
                 modelValue: $data.ruleForm.nik,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
                   return $data.ruleForm.nik = $event;
-                }),
-                maxlength: "16",
-                "show-word-limit": ""
+                })
               }, null, 8
               /* PROPS */
               , ["modelValue"])];
@@ -235,6 +262,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
+                value: $data.ruleForm.captcha,
+                onGetCode: $options.getCaptchaCode,
+                onIsValid: $options.checkValidCaptcha
+              }, null, 8
+              /* PROPS */
+              , ["value", "onGetCode", "onIsValid"])];
+            }),
+            _: 1
+            /* STABLE */
+
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+            prop: "captcha"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+                modelValue: $data.ruleForm.captcha,
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+                  return $data.ruleForm.captcha = $event;
+                }),
+                placeholder: "Masukan Token di Atas"
+              }, null, 8
+              /* PROPS */
+              , ["modelValue"])];
+            }),
+            _: 1
+            /* STABLE */
+
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "register"
           }, {
@@ -244,16 +301,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+            to: "forgotPassword"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_7];
+            }),
+            _: 1
+            /* STABLE */
+
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
             type: "button",
             loading: $data.isLoading,
-            onClick: _cache[2] || (_cache[2] = function ($event) {
+            onClick: _cache[3] || (_cache[3] = function ($event) {
               return $options.submitForm('ruleForm');
             }),
             "class": "btn btn-primary w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_6];
+              return [_hoisted_9];
             }),
             _: 1
             /* STABLE */

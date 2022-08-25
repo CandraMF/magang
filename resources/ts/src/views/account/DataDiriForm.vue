@@ -50,8 +50,6 @@
 
 </template>
 
-
-
 <script>
     import DataDiri from "./forms/DataDiri.vue";
     import Keluarga from "./forms/Keluarga.vue";

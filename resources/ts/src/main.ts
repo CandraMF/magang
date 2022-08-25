@@ -15,9 +15,11 @@ import "@/core/plugins/bootstrap";
 import "@/core/plugins/keenthemes";
 import "@/core/plugins/prismjs";
 
+import VueClientRecaptcha from 'vue-client-recaptcha'
 
 const app = createApp(App);
 
+app.component("VueClientRecaptcha", VueClientRecaptcha);
 app.config.globalProperties.$axios = axios;
 app.use(store);
 app.use(router);

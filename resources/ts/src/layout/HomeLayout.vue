@@ -23,10 +23,10 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <router-link exact-active-class="active" to="/login" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Login</router-link>
+                            <router-link exact-active-class="active" to="/beranda/login" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Login</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link exact-active-class="active" to="/register" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Register</router-link>
+                            <router-link exact-active-class="active" to="/beranda/register" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Register</router-link>
                         </li>
                     </ul>
 

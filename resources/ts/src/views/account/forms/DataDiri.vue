@@ -1,108 +1,145 @@
 <template>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="200px" class="demo-ruleForm">
-      <el-form-item label="Nama Lengkap" prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
-      </el-form-item>
-      <el-form-item prop="email" label="Email" >
-          <el-input v-model="ruleForm.email"></el-input>
-      </el-form-item>
-      <el-form-item label="Gelar">
-          <el-col :span="11">
-              <el-form-item prop="gelarAwal">
-                  <el-input v-model="ruleForm.gelarAwal" placeholder="Gelar Awal"></el-input>
-              </el-form-item>
-          </el-col>
-          <el-col :span="11" class="px-2">
-              <el-form-item prop="gelarAkhir" >
-                  <el-input v-model="ruleForm.gelarAkhir" placeholder="Gelar Akhir"></el-input>
-              </el-form-item>
-          </el-col>
-      </el-form-item>
-      <el-form-item label="Nomor KTP" prop="nomorKTP">
-          <el-input v-model="ruleForm.nomorKTP"></el-input>
-      </el-form-item>
-      <el-form-item label="Nomor NPWP" prop="nomorNPWP">
-          <el-input v-model="ruleForm.nomorNPWP"></el-input>
-      </el-form-item>
-      <el-form-item label="Nomor SIM" prop="nomorSIM">
-          <el-input v-model="ruleForm.nomorSIM"></el-input>
-      </el-form-item>
-      <el-form-item label="Tempat, Tanggal Lahir" required class="max-w-100">
-          <el-col :span="11">
-              <el-form-item prop="tempatLahir">
-                  <el-input v-model="ruleForm.tempatLahir" placeholder="Tempat Lahir"></el-input>
-              </el-form-item>
-          </el-col>
-          <el-col :span="11" class="px-2">
-              <el-form-item prop="tanggalLahir">
-                  <el-date-picker v-model="ruleForm.tanggalLahir" placeholder="Tanggal Lahir"></el-date-picker>
-              </el-form-item>
-          </el-col>
-      </el-form-item>
-      <el-form-item label="Golongan Darah" prop="golonganDarah">
-        <el-radio-group v-model="ruleForm.golonganDarah">
-            <el-radio border label="A" class="mx-0 me-2"></el-radio>
-            <el-radio border label="B" class="mx-0 me-2"></el-radio>
-            <el-radio border label="O" class="mx-0 me-2"></el-radio>
-            <el-radio border label="AB" class="mx-0 me-2"></el-radio>
-            </el-radio-group>
-      </el-form-item>
-      <el-form-item label="Status Pernikahan" prop="marital">
-        <el-select v-model="ruleForm.marital" placeholder="Select" class="w-100">
-          <el-option
-            v-for="item in options['marital']"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="Alamat Asal" prop="alamat">
-        <!-- <el-input type="textarea" v-model="ruleForm.alamat" @input="searchRegion()"></el-input> -->
-        <el-autocomplete
-            class="inline-input w-100"
-            v-model="ruleForm.alamat"
-            :fetch-suggestions="querySearch"
-            placeholder="Alamat Asal"
-            :trigger-on-focus="false"
-            @select="handleSelect">
-        </el-autocomplete>
-      </el-form-item>
-      <el-form-item label="Nomor Ponsel" prop="nomorHP">
-        <el-input v-model="ruleForm.nomorHP"></el-input>
-      </el-form-item>
-      <el-form-item label="Etnis" prop="etnicity">
-        <el-select v-model="ruleForm.etnicity" placeholder="Select" class="w-100">
-          <el-option
-            v-for="item in options['etnicity']"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="Agama" prop="religion">
-        <el-select v-model="ruleForm.religion" placeholder="Select" class="w-100">
-          <el-option
-            v-for="item in options['religion']"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-          <el-button @click="resetForm('ruleForm')">Reset</el-button>
-          <el-button type="primary" @click="submitForm('ruleForm')">Next</el-button>
-      </el-form-item>
+    <el-form :model="ruleForm" label-position="left" :rules="rules" ref="ruleForm" label-width="175px" class="demo-ruleForm">
+        <div class="row">
+            <div class="col-md-6">
+                <el-form-item label="Nama Lengkap" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                </el-form-item>
+                <el-form-item prop="email" label="Email" >
+                    <el-input v-model="ruleForm.email"></el-input>
+                </el-form-item>
+                <el-form-item label="Gelar">
+                    <el-col :span="12">
+                        <el-form-item prop="gelarAwal">
+                            <el-input v-model="ruleForm.gelarAwal" placeholder="Gelar Awal"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="12" class="ps-2">
+                        <el-form-item prop="gelarAkhir" >
+                            <el-input v-model="ruleForm.gelarAkhir" placeholder="Gelar Akhir"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
+                <el-form-item label="Nomor KTP" prop="nomorKTP">
+                    <el-input v-model="ruleForm.nomorKTP"></el-input>
+                </el-form-item>
+                <el-form-item label="Nomor NPWP" prop="NPWP">
+                    <el-input v-model="ruleForm.nomorNPWP"></el-input>
+                </el-form-item>
+                <el-form-item label="Nomor SIM A" prop="nomorSIMA">
+                    <el-input v-model="ruleForm.nomorSIMA"></el-input>
+                </el-form-item>
+                <el-form-item label="Nomor SIM B" prop="nomorSIMB">
+                    <el-input v-model="ruleForm.nomorSIMB"></el-input>
+                </el-form-item>
+                <el-form-item label="Nomor SIM C" prop="nomorSIMC">
+                    <el-input v-model="ruleForm.nomorSIMC"></el-input>
+                </el-form-item>
+                <el-form-item label="Tempat Lahir" prop="tempatLahir">
+                    <el-input v-model="ruleForm.tempatLahir" placeholder="Tempat Lahir"></el-input>
+                </el-form-item>
+
+                <el-form-item label="Tanggal Lahir" prop="tanggalLahir">
+                    <el-date-picker v-model="ruleForm.tanggalLahir" placeholder="Tanggal Lahir" class="w-100"></el-date-picker>
+                </el-form-item>
+
+                <el-form-item label="Golongan Darah" prop="golonganDarah">
+                    <el-radio-group v-model="ruleForm.golonganDarah">
+                        <el-radio-button border label="A"></el-radio-button>
+                        <el-radio-button border label="B"></el-radio-button>
+                        <el-radio-button border label="O"></el-radio-button>
+                        <el-radio-button border label="AB"></el-radio-button>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="Status Pernikahan" prop="marital">
+                    <el-select v-model="ruleForm.marital" placeholder="Select" class="w-100">
+                        <el-option
+                            v-for="item in options['marital']"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+            </div>
+            <div class="col-md-6">
+                <el-form-item label="Alamat Asal" prop="alamatAsal">
+                    <el-input placeholder="Isi Alamat di Bawah Kecamatan" type="textarea" v-model="ruleForm.alamatAsal"></el-input>
+                </el-form-item>
+                <el-form-item label="Domisili Asal" prop="domisiliAsal">
+                    <el-autocomplete
+                        class="inline-input w-100"
+                        v-model="ruleForm.domisiliAsal"
+                        :fetch-suggestions="querySearch"
+                        placeholder="Kecamatan"
+                        :trigger-on-focus="false"
+                        @select="handleSelect">
+                    </el-autocomplete>
+                </el-form-item>
+                <el-form-item label="Kode Pos Asal" prop="kodePosAsal">
+                    <el-input v-model="ruleForm.kodePosAsal"></el-input>
+                </el-form-item>
+                <el-form-item label="Alamat Tinggal" prop="alamatTinggal">
+                    <el-input placeholder="Isi Alamat di Bawah Kecamatan" type="textarea" v-model="ruleForm.alamatTinggal"></el-input>
+                </el-form-item>
+                <el-form-item label="Domisili Tinggal" prop="domisiliTinggal">
+                    <el-autocomplete
+                        class="inline-input w-100"
+                        v-model="ruleForm.domisiliTinggal"
+                        :fetch-suggestions="querySearch"
+                        placeholder="Kecamatan"
+                        :trigger-on-focus="false"
+                        @select="handleSelect">
+                    </el-autocomplete>
+                </el-form-item>
+                <el-form-item label="Kode Pos Tinggal" prop="kodePosTinggal">
+                    <el-input v-model="ruleForm.kodePosTinggal"></el-input>
+                </el-form-item>
+                <el-form-item label="Nomor Ponsel" prop="nomorHP">
+                    <el-input v-model="ruleForm.nomorHP"></el-input>
+                </el-form-item>
+                <el-form-item label="Nomor Ponsel Alternatif" prop="nomorHPAlt">
+                    <el-input v-model="ruleForm.nomorHPAlt"></el-input>
+                </el-form-item>
+                <el-form-item label="Etnis" prop="etnicity">
+                    <el-select v-model="ruleForm.etnicity" placeholder="Select" class="w-100">
+                    <el-option
+                        v-for="item in options['etnicity']"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="Agama" prop="religion">
+                    <el-select v-model="ruleForm.religion" placeholder="Select" class="w-100">
+                    <el-option
+                        v-for="item in options['religion']"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                    </el-option>
+                    </el-select>
+                </el-form-item>
+            </div>
+            <div class="col-md-12">
+                <div class="d-flex justify-content-end">
+
+                    <!-- <el-form-item> -->
+                        <el-button @click="resetForm('ruleForm')">Reset</el-button>
+                        <el-button type="primary" @click="submitForm('ruleForm')">Next</el-button>
+                    <!-- </el-form-item> -->
+                </div>
+            </div>
+        </div>
     </el-form>
 
 </template>
 <script lang="ts">
   import axios from 'axios'
-import { result } from 'lodash';
+  import { result } from 'lodash';
   import { defineComponent, ref, onMounted } from 'vue'
-import { useStore } from 'vuex';
+  import { useStore } from 'vuex';
 
   export default {
     data() {
@@ -123,12 +160,19 @@ import { useStore } from 'vuex';
                 gelarAkhir: '',
                 nomorKTP: '',
                 nomorNPWP: '',
-                nomorSIM: '',
+                nomorSIMA: '',
+                nomorSIMB: '',
+                nomorSIMC: '',
                 tempatLahir: '',
                 tanggalLahir: '',
                 golonganDarah: '',
-                alamat: '',
+                domisiliAsal: '',
+                domisiliTinggal: '',
+                alamatTinggal: '',
                 nomorHP: '',
+                nomorHPAlt: '',
+                kodePosTinggal: '',
+                kodePosAsal: '',
             },
             rules: {
               name: [
@@ -148,7 +192,15 @@ import { useStore } from 'vuex';
                 { min: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] },
                 { max: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] }
               ],
-              nomorSIM: [
+              nomorSIMA: [
+                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
+                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
+              ],
+              nomorSIMB: [
+                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
+                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
+              ],
+              nomorSIMC: [
                 { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
                 { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
               ],
@@ -158,20 +210,41 @@ import { useStore } from 'vuex';
               tanggalLahir: [
                 { required: true, message: 'Mohon isi Tanggal Lahir', trigger: 'blur' },
               ],
-              alamat: [
-                { required: true, message: 'Mohon isi Alamat Lengkap', trigger: 'blur' },
+              domisiliAsal: [
+                { required: true, message: 'Mohon isi Kecamatan', trigger: 'blur' },
+              ],
+              domisiliTinggal: [
+                { required: true, message: 'Mohon isi Kecamatan', trigger: 'blur' },
+              ],
+              alamatTinggal: [
+                { required: true, message: 'Mohon isi Alamat Tinggal', trigger: 'blur' },
+              ],
+              alamatAsal: [
+                { required: true, message: 'Mohon isi Alamat Asal', trigger: 'blur' },
               ],
               nomorHP: [
                 { required: true, message: 'Mohon isi nomor HP', trigger: 'blur' },
               ],
+              nomorHPAlt: [
+
+              ],
               marital: [
-                { required: true, message: 'Mohon isi pilih Status Pernikahan', trigger: ['blur', 'change'] },
+                { required: true, message: 'Mohon pilih Status Pernikahan', trigger: ['blur', 'change'] },
+              ],
+              golonganDarah: [
+                { required: true, message: 'Mohon pilih Golongan Darah', trigger: ['blur', 'change'] },
               ],
               etnicity: [
-                { required: false, message: 'Mohon isi pilih Etnis', trigger: ['blur', 'change'] },
+                { required: false, message: 'Mohon pilih Etnis', trigger: ['blur', 'change'] },
               ],
               religion: [
-                { required: true, message: 'Mohon isi pilih Agama', trigger: ['blur', 'change'] },
+                { required: true, message: 'Mohon pilih Agama', trigger: ['blur', 'change'] },
+              ],
+              kodePosTinggal: [
+                { required: true, message: 'Mohon isi Kode Pos Tinggal', trigger: ['blur', 'change'] },
+              ],
+              kodePosAsal: [
+                { required: true, message: 'Mohon isi Kode Pos Asal', trigger: ['blur', 'change'] },
               ],
             }
       };
@@ -179,7 +252,11 @@ import { useStore } from 'vuex';
     mounted : function() {
         var vuex = JSON.parse(localStorage.getItem('vuex'))
         this.token = vuex.AuthModule.token
-        console.log(this.token);
+        console.log(vuex.AuthModule.user);
+
+        this.ruleForm.email = vuex.AuthModule.user.email
+        this.ruleForm.nomorKTP = vuex.AuthModule.user.login
+        this.ruleForm.nomorHP = vuex.AuthModule.user.mobile
 
         this.getStatus()
     },

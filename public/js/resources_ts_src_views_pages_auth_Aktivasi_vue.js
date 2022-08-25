@@ -400,14 +400,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _components_CodeInput_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/CodeInput.vue */ "./resources/ts/src/components/CodeInput.vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _chenfengyuan_vue_countdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @chenfengyuan/vue-countdown */ "./node_modules/@chenfengyuan/vue-countdown/dist/vue-countdown.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+
 
 
 
@@ -429,8 +431,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var completed = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
-    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRouter)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.useStore)();
+    var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.useRouter)();
     var remaining = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(0);
     var subject = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
     var token = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
@@ -451,10 +453,10 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var submitForm = function submitForm() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
         var inputToken, tokenFields, userCode, _i, tokenFields_1, item;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
           completed = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(true);
           inputToken = document.getElementById('input-token-id');
           tokenFields = inputToken === null || inputToken === void 0 ? void 0 : inputToken.children[0].getElementsByTagName('input');
@@ -477,6 +479,7 @@ __webpack_require__.r(__webpack_exports__);
             console.log(response);
 
             if (response.data.success) {
+              store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_4__.Mutations.SET_USER, response.data.user);
               router.push({
                 name: 'dashboard',
                 query: {

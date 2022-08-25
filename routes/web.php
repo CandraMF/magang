@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\ActivationCodeMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -1,7 +1,7 @@
-export default function log({ next, to }) {
+// export default function log({ next, to }) {
 
-    var vuex = JSON.parse(localStorage.getItem('vuex'))
-    console.log(vuex.AuthModule.user)
+//     var vuex = JSON.parse(localStorage.getItem('vuex'))
+//     console.log(vuex.AuthModule.user)
 
-    return next();
-  }
+//     return next();
+//   }

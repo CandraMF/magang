@@ -56,7 +56,6 @@
             let token = ref('');
             let userId = ref('');
 
-
             const notify = inject('$notify');
 
             let code = ref('');
@@ -96,6 +95,7 @@
                     .then(response => {
                         console.log(response)
                         if (response.data.success) {
+                            store.commit(Mutations.SET_USER, response.data.user)
                             router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
                         } else {
                             alert("gagal")

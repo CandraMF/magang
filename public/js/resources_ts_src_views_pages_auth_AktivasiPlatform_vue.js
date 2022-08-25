@@ -36,16 +36,9 @@ __webpack_require__.r(__webpack_exports__);
     var user = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount)(function () {
       user = store.getters.getUser;
-      token = store.getters.getToken;
-
-      if (user.activation_date != null) {
-        router.push({
-          name: 'dashboard',
-          query: {
-            redirect: '/dashboard'
-          }
-        });
-      }
+      token = store.getters.getToken; // if(user.activation_date != null) {
+      //     router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+      // }
     });
 
     var submitForm = function submitForm(subject) {

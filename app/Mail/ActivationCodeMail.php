@@ -33,6 +33,6 @@ class ActivationCodeMail extends Mailable
     {
         $code = $this->code;
 
-        return $this->view('mails.activation_code', compact(['code']));
+        return $this->markdown('mails.activation_code', compact(['code']));
     }
 }

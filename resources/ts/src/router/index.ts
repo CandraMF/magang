@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import auth from "./middleware/auth";
 import active from "./middleware/active";
-import log from "./middleware/log";
+// import log from "./middleware/log";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -15,13 +14,23 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: "/beranda",
                 name: "beranda",
-                redirect: '/beranda/login',
+                redirect: '/beranda/divisi',
                 component: () => import("@/views/pages/LandingPage.vue"),
                 children: [
+                    {
+                        path: "/beranda/divisi",
+                        name: "berandaDivisi",
+                        component: () => import("@/views/pages/Divisi.vue"),
+                    },
                     {
                         path: "/beranda/login",
                         name: "berandaLogin",
                         component: () => import("@/views/pages/auth/Login.vue"),
+                    },
+                    {
+                        path: "/beranda/forgotPassword",
+                        name: "berandaForgotPassword",
+                        component: () => import("@/views/pages/auth/ForgotPassword.vue"),
                     },
                     {
                         path: "/beranda/register",
@@ -62,8 +71,8 @@ const routes: Array<RouteRecordRaw> = [
             },
             {
                 path: "/forgotPassword",
-                name: "home",
-                component: () => import("@/views/pages/AboutUs.vue"),
+                name: "forgotPassword",
+                component: () => import("@/views/pages/auth/ForgotPassword.vue"),
             },
             {
                 path: "/aktivasi",
@@ -82,7 +91,7 @@ const routes: Array<RouteRecordRaw> = [
       redirect: "/dashboard",
       component: () => import("@/layout/Layout.vue"),
       meta: {
-            middleware: [auth, active]
+            middleware: [active]
       },
       children: [
         {
@@ -122,7 +131,7 @@ function nextFactory(context, middleware, index) {
 
         context.next(...parameters);
 
-        const nextMiddleware = nextFactory(context, middleware, index  1);
+        const nextMiddleware = nextFactory(context, middleware, index);
         subsequentMiddleware({ ...context, next: nextMiddleware });
         };
     }

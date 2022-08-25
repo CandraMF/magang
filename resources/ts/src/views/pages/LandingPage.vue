@@ -44,9 +44,9 @@
             </div>
         </section>
         <section >
-            <div class="container " >
+            <div class="container" >
                 <div class="row d-flex justify-content-center m-0 p-0">
-                    <div id="auth" class="col-md-10 bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
+                    <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
                         <div class="row">
                             <router-view v-if="!isLogged" v-slot="{ Component }">
                                 <transition :name="this.effect" mode="out-in">
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </section>
-        <section id="logo">
+        <!-- <section id="logo">
             <div class="d-flex justify-content-center" style="margin: 100px 0px;">
                 <img class="my-5" :src="'/image/logo-bpkh-s.png'" alt="" style="width: 300px">
             </div>
@@ -96,9 +96,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <section id="berita">
-            <div class="container pt-5">
+            <div class="container pt-10 mt-10">
                 <div class="col-md-12">
                     <div class="row pt-5" style="min-height: 100vh">
                         <div class="col-md-4 px-5">
@@ -145,18 +145,21 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
     import Login from '@/views/pages/auth/Login.vue';
+    import Divisi from '@/views/pages/Divisi.vue';
     import Register from '@/views/pages/auth/Register.vue';
     import Activation from '@/components/notice/Activation.vue';
+
     import { defineComponent, onMounted, watch } from "vue";
 
     export default defineComponent({
         components: {
             Login,
             Register,
-            Activation
+            Activation,
+            Divisi
         },
         data () {
             return {

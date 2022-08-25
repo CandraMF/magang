@@ -40,9 +40,9 @@
                 user = store.getters.getUser
                 token = store.getters.getToken
 
-                if(user.activation_date != null) {
-                    router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-                }
+                // if(user.activation_date != null) {
+                //     router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+                // }
             })
 
             const submitForm = (subject) => {
