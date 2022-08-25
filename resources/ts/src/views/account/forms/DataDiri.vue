@@ -23,7 +23,7 @@
                 <el-form-item label="Nomor KTP" prop="nomorKTP">
                     <el-input v-model="ruleForm.nomorKTP"></el-input>
                 </el-form-item>
-                <el-form-item label="Nomor NPWP" prop="NPWP">
+                <el-form-item label="NPWP" prop="nomorNPWP">
                     <el-input v-model="ruleForm.nomorNPWP"></el-input>
                 </el-form-item>
                 <el-form-item label="Nomor SIM A" prop="nomorSIMA">
