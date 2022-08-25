@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/email', function() {
-    Mail::to('candramiftah08@gmail.com')->send(new ActivationMail());
+    Mail::to('candragain99@gmail.com')->send(new ActivationMail());
     return new ActivationMail();
 });
 // Route::get('{any}', function () {
