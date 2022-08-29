@@ -60,7 +60,7 @@
 
     import { ref } from 'vue'
 
-    const step = ref(1)
+    const step = ref(0)
     var effect = ""
 
     const steps =  [

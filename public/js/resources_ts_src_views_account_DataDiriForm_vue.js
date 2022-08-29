@@ -23,7 +23,7 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
-    var step = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1);
+    var step = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
     var effect = "";
     var steps = [{
       name: "Data Diri",
