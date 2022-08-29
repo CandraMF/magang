@@ -45,55 +45,51 @@
                 </transition>
             </keep-alive>
 
+            <div class="d-flex justify-content-between">
+                <el-button type="primary" @click="backStep()">Kembali</el-button>
+                <el-button type="primary" @click="nextStepAction()">Lanjut</el-button>
+            </div>
         </div>
     </div>
 
 </template>
 
-<script>
+<script setup lang="ts">
     import DataDiri from "./forms/DataDiri.vue";
     import Keluarga from "./forms/Keluarga.vue";
 
     import { ref } from 'vue'
-    export default {
-        setup(props) {
-            const step = ref(0)
-            const effect = ""
-            var steps =  [
-                {
-                    name: "Data Diri",
-                    desc:
-                        "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-                    icon: "person",
-                    active: true,
-                    component: DataDiri
-                },
-                {
-                    name: "Keluarga",
-                    desc:
-                        "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-                    icon: "person",
-                    active: true,
-                    component: Keluarga
-                },
-            ]
 
-            return {
-                step, steps,
-            };
+    const step = ref(1)
+    var effect = ""
+
+    const steps =  [
+        {
+            name: "Data Diri",
+            desc:
+                "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
+            icon: "person",
+            active: true,
+            component: DataDiri
         },
+        {
+            name: "Keluarga",
+            desc:
+                "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
+            icon: "person",
+            active: true,
+            component: Keluarga
+        },
+    ]
 
-        methods: {
-            nextStepAction() {
-                this.effect = "in-out-translate-fade";
-                if (this.step < this.steps.length - 1) this.step++;
+    const nextStepAction = () => {
+        effect = "in-out-translate-fade";
+        if (step.value < steps.length - 1) step.value++;
+    }
 
-            },
-            backStep() {
-                this.effect = "out-in-translate-fade";
-                if (this.step > 0) this.step--;
-            },
-        }
+    const backStep = () =>{
+        effect = "out-in-translate-fade";
+        if (step.value > 0) step.value--;
     }
 
 </script>

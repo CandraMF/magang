@@ -34,9 +34,11 @@ class Person extends Model
         'mobile_alt',
         'address',
         'region_id',
+        'region',
         'zip',
         'address_home',
         'region_id_home',
+        'region_home',
         'zip_home'
     ];
 }

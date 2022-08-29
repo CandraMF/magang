@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -36,34 +37,64 @@ class PersonController extends Controller
     public function store(Request $request)
     {
 
-        $personId = \App\Models\Person::insertGetId([
-            // 'person_id'         => $request->formData['person_id'],
-            'title_pre'         => $request->formData['gelarAwal'],
-            'name'              => $request->formData['name'],
-            'title_post'        => $request->formData['gelarAkhir'],
-            'identity_id'       => $request->formData['nomorKTP'],
-            'tax_id'            => $request->formData['nomorNPWP'],
-            'driving_a'         => $request->formData['nomorSIMA'],
-            'driving_b'         => $request->formData['nomorSIMB'],
-            'driving_c'         => $request->formData['nomorSIMC'],
-            'birth_place'       => $request->formData['tempatLahir'],
-            'birth_date'        => $request->formData['tanggalLahir'],
-            'religion_id'       => $request->formData['religion'],
-            'blood_type'        => $request->formData['golonganDarah'],
-            'marital_status_id' => $request->formData['marital'],
-            'ethnicity_id'      => $request->formData['etnicity'],
-            'email'             => $request->formData['email'],
-            'mobile'            => $request->formData['nomorHP'],
-            'mobile_alt'        => $request->formData['nomorHPAlt'],
-            'address'           => $request->formData['alamatAsal'],
-            'region_id'         => $request->formData['kodeDomisiliAsal'],
-            'zip'               => $request->formData['kodePosAsal'],
-            'address_home'      => $request->formData['alamatTinggal'],
-            'region_id_home'    => $request->formData['kodeDomisiliTinggal'],
-            'zip_home'          => $request->formData['kodePosTinggal'],
-        ]);
+        try{
 
-        return response()->json($personId);
+            $person = \App\Models\Person::create(
+                [
+                // 'person_id'         => $request->formData['ruleForm']['person_id'],
+                'identity_id'       => $request->formData['ruleForm']['nomorKTP'],
+                'title_pre'         => $request->formData['ruleForm']['gelarAwal'],
+                'name'              => $request->formData['ruleForm']['name'],
+                'title_post'        => $request->formData['ruleForm']['gelarAkhir'],
+                'identity_id'       => $request->formData['ruleForm']['nomorKTP'],
+                'tax_id'            => $request->formData['ruleForm']['nomorNPWP'],
+                'driving_a'         => $request->formData['ruleForm']['nomorSIMA'],
+                'driving_b'         => $request->formData['ruleForm']['nomorSIMB'],
+                'driving_c'         => $request->formData['ruleForm']['nomorSIMC'],
+                'birth_place'       => $request->formData['ruleForm']['tempatLahir'],
+                'birth_date'        => $request->formData['ruleForm']['tanggalLahir'],
+                'religion_id'       => $request->formData['ruleForm']['religion'],
+                'blood_type'        => $request->formData['ruleForm']['golonganDarah'],
+                'marital_status_id' => $request->formData['ruleForm']['marital'],
+                'ethnicity_id'      => $request->formData['ruleForm']['etnicity'],
+                'email'             => $request->formData['ruleForm']['email'],
+                'mobile'            => $request->formData['ruleForm']['nomorHP'],
+                'mobile_alt'        => $request->formData['ruleForm']['nomorHPAlt'],
+                'address'           => $request->formData['ruleForm']['alamatAsal'],
+                'region_id'         => $request->formData['ruleForm']['kodeDomisiliAsal'],
+                'region'            => $request->formData['ruleForm']['domisiliAsal'],
+                'zip'               => $request->formData['ruleForm']['kodePosAsal'],
+                'address_home'      => $request->formData['ruleForm']['alamatTinggal'],
+                'region_id_home'    => $request->formData['ruleForm']['kodeDomisiliTinggal'],
+                'region_home'       => $request->formData['ruleForm']['domisiliTinggal'],
+                'zip_home'          => $request->formData['ruleForm']['kodePosTinggal'],
+            ]);
+
+            $user = \App\Models\User::find($request->userId)->update([
+                'person_id' => $person->person_id,
+                'status_id' => 'USR101',
+            ]);
+
+            $user = User::find($request->userId);
+
+            $success = true;
+            $message = 'Berhasil';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $user = User::find($request->userId);
+            $message = $ex->getMessage();
+            // $message = 'Gagal';
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'user' => $user,
+        ];
+
+        return response()->json($response);
 
     }
 
@@ -73,9 +104,11 @@ class PersonController extends Controller
      * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Person $person)
+    public function show($id)
     {
-        //
+        $person = Person::find($id);
+
+        return response()->json($person);
     }
 
     /**

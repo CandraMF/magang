@@ -185,7 +185,7 @@
 
                     <el-form-item>
                         <el-button @click="resetForm()">Reset</el-button>
-                        <el-button type="primary" @click="submitForm()">Next</el-button>
+                        <el-button type="primary" @click="submitForm()">Simpan</el-button>
                     </el-form-item>
                 </div>
             </div>
@@ -196,14 +196,16 @@
 </template>
 
 <script setup lang="ts">
+    import { Mutations } from '@/store/enums/StoreEnums';
     import axios from 'axios'
     import {ref, onMounted, reactive } from 'vue'
     import { useStore } from 'vuex';
 
-    // const store = useStore();
+    const store = useStore();
     const ruleFormRef = ref(null);
 
     var token = ref('');
+    var personId = null;
 
     const etnicity   = reactive([]);
     const marital    = reactive([]);
@@ -312,56 +314,98 @@
     })
 
     onMounted(() => {
+        ruleForm.email = store.getters.getUser.email
+        ruleForm.nomorKTP = store.getters.getUser.login
+        ruleForm.nomorHP = store.getters.getUser.mobile
 
-        var vuex = JSON.parse(localStorage.getItem('vuex'))
-        token = vuex.AuthModule.token
+        token = store.getters.getToken
+        personId = store.getters.getUser.person_id
 
         getStatus()
 
-        ruleForm.email = vuex.AuthModule.user.email
-        ruleForm.nomorKTP = vuex.AuthModule.user.login
-        ruleForm.nomorHP = vuex.AuthModule.user.mobile
+        if (personId) {
+            getPerson()
+        }
 
     })
 
-    const getStatus = async () => {
+    const getPerson = async () => {
+        await axios.get('/sanctum/csrf-cookie').then(async (response) => {
 
-        await axios.get('/api/status', {
-            headers: {'Authorization': 'Bearer '+ token},
+            await axios.get('/api/person/'+personId, {
+                headers: {'Authorization': 'Bearer '+ token},
+            })
+            .then((response)=> {
+                ruleForm.alamatAsal             = response.data.address;
+                ruleForm.alamatTinggal          = response.data.address_home;
+                ruleForm.domisiliAsal           = response.data.region;
+                ruleForm.domisiliTinggal        = response.data.region_home;
+                ruleForm.email                  = response.data.email;
+                ruleForm.etnicity               = response.data.ethnicity_id;
+                ruleForm.gelarAwal              = response.data.title_pre;
+                ruleForm.gelarAkhir             = response.data.title_post;
+                ruleForm.golonganDarah          = response.data.blood_type;
+                ruleForm.kodePosAsal            = response.data.zip;
+                ruleForm.kodePosTinggal         = response.data.zip_home;
+                ruleForm.marital                = response.data.marital_status_id;
+                ruleForm.name                   = response.data.name;
+                ruleForm.nomorHP                = response.data.mobile;
+                ruleForm.nomorHPAlt             = response.data.mobile_alt;
+                ruleForm.nomorKTP               = response.data.identity_id;
+                ruleForm.nomorNPWP              = response.data.tax_id;
+                ruleForm.nomorSIMA              = response.data.driving_a;
+                ruleForm.nomorSIMB              = response.data.driving_b;
+                ruleForm.nomorSIMC              = response.data.driving_c;
+                ruleForm.religion               = response.data.religion_id;
+                ruleForm.tanggalLahir           = response.data.birth_date;
+                ruleForm.tempatLahir            = response.data.birth_place;
+            })
         })
-          .then((response)=> {
-            response.data.forEach(element => {
-                if(element.status_id.slice(0,3) == 'ETH') {
-                    etnicity.push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                } else if(element.status_id.slice(0,3) == 'REL') {
-                    religion.push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                } else if(element.status_id.slice(0,3) == 'MAR') {
-                    marital.push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                }
-            });
-          })
+    }
+
+    const getStatus = async () => {
+        await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+
+            await axios.get('/api/status', {
+                headers: {'Authorization': 'Bearer '+ token},
+            })
+            .then((response)=> {
+                response.data.forEach(element => {
+                    if(element.status_id.slice(0,3) == 'ETH') {
+                        etnicity.push({
+                            'value': element.status_id,
+                            'label': element.name,
+                        })
+                    } else if(element.status_id.slice(0,3) == 'REL') {
+                        religion.push({
+                            'value': element.status_id,
+                            'label': element.name,
+                        })
+                    } else if(element.status_id.slice(0,3) == 'MAR') {
+                        marital.push({
+                            'value': element.status_id,
+                            'label': element.name,
+                        })
+                    }
+                });
+            })
+        })
     }
 
     const submitForm = async () => {
+        // console.log(ruleForm)
         ruleFormRef.value?.validate((valid) => {
             if (valid) {
                 axios.get('/sanctum/csrf-cookie').then(response => {
                     axios.post('/api/person', {
-                        formData: ruleForm
+                        formData: {ruleForm},
+                        userId: store.getters.getUser.user_id
                     },{
                         headers: {'Authorization': 'Bearer ' + token},
                     })
                     .then(response => {
-                        console.log(response)
+                        store.commit(Mutations.SET_USER, response.data.user)
+                        // console.log(store.getters.getUser)
                         if (response.data.success) {
                             // router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
                         } else {
@@ -422,254 +466,3 @@
     };
 
 </script>
-<!-- <script lang="ts">
-  import axios from 'axios'
-  import { result } from 'lodash';
-  import { defineComponent, ref, onMounted } from 'vue'
-  import { useStore } from 'vuex';
-
-  export default {
-    data() {
-        return {
-            token: '',
-            options: {
-              'etnicity': [],
-              'marital': [],
-              'religion': [],
-            },
-            ruleForm: {
-                name: '',
-                email: '',
-                etnicity: '',
-                marital: '',
-                religion: '',
-                gelarAwal: '',
-                gelarAkhir: '',
-                nomorKTP: '',
-                nomorNPWP: '',
-                nomorSIMA: '',
-                nomorSIMB: '',
-                nomorSIMC: '',
-                tempatLahir: '',
-                tanggalLahir: '',
-                golonganDarah: '',
-                domisiliAsal: '',
-                kodeDomisiliAsal: '',
-                domisiliTinggal: '',
-                kodeDomisiliTinggal: '',
-                alamatTinggal: '',
-                nomorHP: '',
-                nomorHPAlt: '',
-                kodePosTinggal: '',
-                kodePosAsal: '',
-            },
-            rules: {
-              name: [
-                { required: true, message: 'Mohon isi nama lengkap', trigger: 'blur' },
-                { min: 3, message: 'Panjang karakter harus lebih dari 3', trigger: 'blur' }
-              ],
-              email: [
-                { required: true, message: 'Mohon isi email', trigger: 'blur' },
-                { type: 'email', message: 'Mohon isi format email yang benar', trigger: ['blur', 'change'] }
-              ],
-              nomorKTP: [
-                { required: true, message: 'Mohon isi nomor KTP', trigger: ['blur', 'change'] },
-                { min: 16, message: 'Nomor KTP harus 16 digit', trigger: ['blur', 'change'] },
-                { max: 16, message: 'Nomor KTP harus 16 digit', trigger: ['blur', 'change'] }
-              ],
-              nomorNPWP: [
-                { min: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] },
-                { max: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] }
-              ],
-              nomorSIMA: [
-                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
-                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
-              ],
-              nomorSIMB: [
-                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
-                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
-              ],
-              nomorSIMC: [
-                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
-                { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
-              ],
-              tempatLahir: [
-                { required: true, message: 'Mohon isi Tempat Lahir', trigger: 'blur' },
-              ],
-              tanggalLahir: [
-                { required: true, message: 'Mohon isi Tanggal Lahir', trigger: 'blur' },
-              ],
-              domisiliAsal: [
-                { required: true, message: 'Mohon isi Kecamatan', trigger: 'blur' },
-              ],
-              domisiliTinggal: [
-                { required: true, message: 'Mohon isi Kecamatan', trigger: 'blur' },
-              ],
-              alamatTinggal: [
-                { required: true, message: 'Mohon isi Alamat Tinggal', trigger: 'blur' },
-              ],
-              alamatAsal: [
-                { required: true, message: 'Mohon isi Alamat Asal', trigger: 'blur' },
-              ],
-              nomorHP: [
-                { required: true, message: 'Mohon isi nomor HP', trigger: 'blur' },
-              ],
-              nomorHPAlt: [
-
-              ],
-              marital: [
-                { required: true, message: 'Mohon pilih Status Pernikahan', trigger: ['blur', 'change'] },
-              ],
-              golonganDarah: [
-                { required: true, message: 'Mohon pilih Golongan Darah', trigger: ['blur', 'change'] },
-              ],
-              etnicity: [
-                { required: false, message: 'Mohon pilih Etnis', trigger: ['blur', 'change'] },
-              ],
-              religion: [
-                { required: true, message: 'Mohon pilih Agama', trigger: ['blur', 'change'] },
-              ],
-              kodePosTinggal: [
-                { required: true, message: 'Mohon isi Kode Pos Tinggal', trigger: ['blur', 'change'] },
-              ],
-              kodePosAsal: [
-                { required: true, message: 'Mohon isi Kode Pos Asal', trigger: ['blur', 'change'] },
-              ],
-            }
-      };
-    },
-    mounted : function() {
-        var vuex = JSON.parse(localStorage.getItem('vuex'))
-        this.token = vuex.AuthModule.token
-        console.log(vuex.AuthModule.user);
-
-        this.ruleForm.email = vuex.AuthModule.user.email
-        this.ruleForm.nomorKTP = vuex.AuthModule.user.login
-        this.ruleForm.nomorHP = vuex.AuthModule.user.mobile
-
-        this.getStatus()
-    },
-    methods: {
-      async getStatus(){
-
-        await axios.get('/api/status', {
-            headers: {'Authorization': 'Bearer '+ this.token},
-        })
-          .then((response)=> {
-            response.data.forEach(element => {
-                if(element.status_id.slice(0,3) == 'ETH') {
-                    this.options['etnicity'].push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                } else if(element.status_id.slice(0,3) == 'REL') {
-                    this.options['religion'].push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                }
-                if(element.status_id.slice(0,3) == 'MAR') {
-                    this.options['marital'].push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                }
-            });
-          })
-      },
-      async submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-            if (valid) {
-                axios.post('/api/person', {
-                        formData: this.ruleForm
-                    },{
-                        headers: {'Authorization': 'Bearer ' + this.token},
-                    })
-                    .then(response => {
-                        console.log(response)
-                        // if (response.data.success) {
-                        //     router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-                        // } else {
-                        //     alert("gagal")
-                        // }
-                    })
-            } else {
-                console.log('error submit!!');
-                return false;
-            }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      },
-
-    //   async searchRegion() {
-
-    //     var payload = this.ruleForm.alamat
-    //     if(payload.length >= 3) {
-    //         await axios.get('/api/region/search/' + payload, {
-    //             headers: {'Authorization': 'Bearer '+ this.token},
-    //         })
-    //         .then(response => {
-    //             console.log(response)
-    //         })
-    //     }
-
-    //   }
-    },
-    setup() {
-        const store = useStore();
-        const restaurants = ref([]);
-        const token = store.getters.getToken
-        var results = [];
-
-        const querySearch = async (queryString, cb) => {
-                var payload = queryString
-                    if(payload.length >= 3) {
-                        await axios.get('/api/region/search/' + payload, {
-                            headers: {'Authorization': 'Bearer '+ token},
-                        })
-                        .then(response => {
-                            results = [];
-                            response.data.forEach(element => {
-                                results.push(
-                                    {
-                                        "value": element.name,
-                                        "region_id": element.region_id,
-                                    },
-                                )
-                            });
-                        })
-                    }
-                // call callback function to return suggestions
-                cb(results);
-            };
-
-            const createFilter = (queryString) => {
-                return (restaurant) => {
-                    return (
-                        restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
-                    );
-                };
-            };
-
-
-            const handleSelectAsal = (item) => {
-                this.ruleForm.kodeDomisiliAsal = item.region_id
-            };
-
-            const handleSelectTinggal = (item) => {
-                this.ruleForm.kodeDomisiliTinggal = item.region_id
-            };
-
-        return {
-            restaurants,
-            querySearch,
-            createFilter,
-            handleSelectTinggal,
-            handleSelectAsal,
-        };
-    },
-
-  }
-</script> -->
