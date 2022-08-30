@@ -4,10 +4,13 @@
     id="kt_scrolltop"
     ref="kt_scrolltop"
     class="scrolltop"
+    style="height: 50px; width: 50px;"
     data-kt-scrolltop="true"
   >
     <span class="svg-icon">
-      <inline-svg src="/media/icons/duotune/arrows/arr066.svg" />
+
+      <!-- <inline-svg src="/media/icons/duotune/arrows/arr066.svg" /> -->
+      <i class="fas fa-chevron-up text-white fs-2x"></i>
     </span>
   </div>
   <!-- end::Scrolltop -->

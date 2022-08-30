@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import active from "./middleware/active";
 // import log from "./middleware/log";
+// import authenticated from "./middleware/authenticated";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -55,32 +56,32 @@ const routes: Array<RouteRecordRaw> = [
         path: "/auth",
         redirect: "/login",
         meta: {
-            // middleware: log
+            // middleware: authenticated
         },
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
-                path: "/login",
+                path: "login",
                 name: "login",
                 component: () => import("@/views/pages/auth/Login.vue"),
             },
             {
-                path: "/register",
+                path: "register",
                 name: "register",
                 component: () => import("@/views/pages/auth/Register.vue"),
             },
             {
-                path: "/forgotPassword",
+                path: "forgotPassword",
                 name: "forgotPassword",
                 component: () => import("@/views/pages/auth/ForgotPassword.vue"),
             },
             {
-                path: "/aktivasi",
+                path: "aktivasi",
                 name: "aktivasi",
                 component: () => import("@/views/pages/auth/Aktivasi.vue"),
             },
             {
-                path: "/aktivasiPlatform",
+                path: "aktivasiPlatform",
                 name: "aktivasiPlatform",
                 component: () => import("@/views/pages/auth/AktivasiPlatform.vue"),
             },
@@ -120,46 +121,55 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+        top: 100,
+      }
+    } else {
+        return {
+            behavior: 'smooth',
+            top: 0,
+        }
+    }
+  }
+
 });
 
 function nextFactory(context, middleware, index) {
     const subsequentMiddleware = middleware[index];
 
-        if (!subsequentMiddleware) return context.next;
+    if (!subsequentMiddleware) return context.next;
 
-        return (...parameters) => {
+    return (...parameters) => {
 
-        context.next(...parameters);
+    context.next(...parameters);
 
-        const nextMiddleware = nextFactory(context, middleware, index);
-        subsequentMiddleware({ ...context, next: nextMiddleware });
-        };
-    }
+    const nextMiddleware = nextFactory(context, middleware, index);
+    subsequentMiddleware({ ...context, next: nextMiddleware });
+    };
+}
 
-    router.beforeEach((to, from, next) => {
-      if (to.meta.middleware) {
+router.beforeEach((to, from, next) => {
+    if (to.meta.middleware) {
         const middleware = Array.isArray(to.meta.middleware)
-          ? to.meta.middleware
-          : [to.meta.middleware];
+            ? to.meta.middleware
+            : [to.meta.middleware];
 
         const context = {
-          from,
-          next,
-          router,
-          to,
+            from,
+            next,
+            router,
+            to,
         };
         const nextMiddleware = nextFactory(context, middleware, 1);
 
         return middleware[0]({ ...context, next: nextMiddleware });
-      }
+    }
 
-      return next();
-    });
-// router.beforeEach(() => {
-//   // Scroll page to top on every route change
-//   setTimeout(() => {
-//     window.scrollTo(0, 0);
-//   }, 100);
-// });
+    return next();
+});
 
 export default router;

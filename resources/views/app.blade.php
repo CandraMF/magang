@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="csrf-token" value="{{ csrf_token() }}"/>
    <title>Magang</title>
-   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700|Material+Icons" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:200,300,400,500,600,700|Material+Icons" rel="stylesheet">
 </head>
 <body style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px; background: rgb(255, 255, 255) !important">
 

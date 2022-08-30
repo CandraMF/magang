@@ -1,6 +1,10 @@
 <template>
     <div>
-        <img class="position-absolute" :src="'/image/bg_landing.png'" style="z-index: -999; width: 100%" >
+        <div class="container-bg ">
+            <div class="wrapper">
+                <img class="bg-img" :src="'/image/bg_landing6.png'" >
+            </div>
+        </div>
         <section id="jumbotron">
             <div class="container vh-100">
                 <div class="col-md-12" style="height: 100% !important">
@@ -19,7 +23,7 @@
                                                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
                                             </svg>
                                         </button>
-                                        <input id="search" type="text" placeholder="Cari Posisi Magang" />
+                                        <input id="search" type="text" autofocus placeholder="Cari Posisi Magang" />
                                         <button class="btn-search">
                                             Cari
                                         </button>
@@ -44,18 +48,15 @@
             </div>
         </section>
         <section >
-            <div class="container" >
+            <div class="container">
                 <div class="row d-flex justify-content-center m-0 p-0">
                     <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
-                        <div class="row">
+                        <div class="row" id="content">
                             <router-view v-if="!isLogged" v-slot="{ Component }">
                                 <transition :name="this.effect" mode="out-in">
                                     <component :is="Component" />
                                 </transition>
                             </router-view>
-                            <div class="col-md-12 px-10 py-10" v-else>
-                                <Activation></Activation>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -193,9 +194,38 @@
 
 <style scoped>
 
+    @media (max-width: 767.98px) {
+        .bg-img {
+            min-height: 100vh;
+            width: unset !important;
+            left: -20%;
+            top: -50%;
+        }
+        .go_animated{
+            display: none;
+        }
+    }
+
     .inner-form {
         position: relative;
     }
+    .container-bg{
+        position: absolute;
+        z-index: -999;
+        width: 100%;
+        height: 110vh;
+        overflow: hidden;
+    }
+
+    .bg-img {
+        position: absolute;
+        width: 100%;
+    }
+
+    .container-bg .wrapper{
+        position: relative;
+    }
+
     .search-field  input {
         background: white;
         padding: 5px;

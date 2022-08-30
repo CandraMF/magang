@@ -20,7 +20,7 @@
                     <el-form-item prop="captcha" >
                         <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
                     </el-form-item>
-                    <div class="w-100 text-end mb-5">Ingat Password? <router-link to="login">Login</router-link></div>
+                    <div class="w-100 text-end mb-5">Ingat Password? <router-link to="login#content">Masuk</router-link></div>
                     <div class="text-center">
                         <el-button type="button" :loading="isLoading" @click="submitForm()" class="btn btn-primary w-100">Submit</el-button>
                     </div>

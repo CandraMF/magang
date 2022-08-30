@@ -3,7 +3,7 @@
     <div :class="{'row d-flex justify-content-center m-0 p-0' : this.$route.name != 'berandaRegister'}">
         <div :class="{'col-md-6 mt-10' : this.$route.name != 'berandaRegister'}">
             <el-card class="p-10" >
-                <h2 class="mb-5 text-center">Register</h2>
+                <h2 class="mb-5 text-center">Daftar</h2>
                 <div
                 class="
                     my-10
@@ -67,9 +67,9 @@
                                     <el-form-item prop="captcha">
                                         <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
                                     </el-form-item>
-                                    <div class="w-100 text-center">Sudah Punya Akun? <router-link to="login">Login</router-link></div>
+                                    <div class="w-100 text-center">Sudah Punya Akun? <router-link to="login#content">Login</router-link></div>
                                     <div class="my-5 text-center">
-                                        <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Register</el-button>
+                                        <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Daftar</el-button>
                                     </div>
                                 </div>
                             </div>
