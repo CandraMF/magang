@@ -1,6 +1,6 @@
 <template>
     <el-form :model="ruleForm" label-position="top" :rules="rules" ref="ruleFormRef" label-width="175px" class="demo-ruleForm">
-        <div class="row">
+        <div class="row ">
             <div class="col-md-6">
                 <el-form-item label="Nama Lengkap" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
@@ -428,7 +428,7 @@
 
     const querySearch = async (queryString, cb) => {
         var payload = queryString
-            if(payload.length >= 3) {
+            if(payload.length >= 2) {
                 await axios.get('/api/region/search/' + payload, {
                     headers: {'Authorization': 'Bearer '+ token},
                 })

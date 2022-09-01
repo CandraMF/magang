@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use Illuminate\Http\Request;
 
-class coba extends Controller
+class SchoolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -59,5 +60,19 @@ class coba extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search($payload)
+    {
+        $data = School::where('name', 'ilike', '%'.$payload.'%')
+            ->get()
+            ->map(function($q) {
+                return [
+                    'name' => $q->name,
+                    'school_id' => $q->school_id
+                ];
+            });
+
+        return response()->json($data);
     }
 }

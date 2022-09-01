@@ -1,5 +1,4 @@
 <template>
-
     <div class="card bg-white">
         <div class="card-body">
             <el-steps :active="step">
@@ -38,12 +37,12 @@
 
             </div>
 
-            <keep-alive>
-                <transition :name="effect" mode="out-in">
+            <transition :name="effect" mode="out-in">
+                <keep-alive>
                     <component :is="steps[step].component">
                     </component>
-                </transition>
-            </keep-alive>
+                </keep-alive>
+            </transition>
 
             <div class="d-flex justify-content-between">
                 <el-button type="primary" @click="backStep()">Kembali</el-button>
@@ -57,6 +56,8 @@
 <script setup lang="ts">
     import DataDiri from "./forms/DataDiri.vue";
     import Keluarga from "./forms/Keluarga.vue";
+    import Pendidikan from "./forms/Pendidikan.vue";
+    import Berkas from "./forms/Berkas.vue";
 
     import { ref } from 'vue'
 
@@ -80,22 +81,42 @@
             active: true,
             component: Keluarga
         },
+        {
+            name: "Pendidikan",
+            desc:
+                "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
+            icon: "person",
+            active: true,
+            component: Pendidikan
+        },
+        {
+            name: "Berkas",
+            desc:
+                "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
+            icon: "person",
+            active: true,
+            component: Berkas
+        },
     ]
 
     const nextStepAction = () => {
         effect = "in-out-translate-fade";
         if (step.value < steps.length - 1) step.value++;
+        console.log(step.value)
     }
 
     const backStep = () =>{
+
         effect = "out-in-translate-fade";
         if (step.value > 0) step.value--;
+        console.log(step.value)
     }
 
 </script>
 
 
 <style>
+
 .d-stepper .step-number-content.active {
   transform: scale(1.25);
 }

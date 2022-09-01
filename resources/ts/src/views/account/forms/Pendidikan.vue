@@ -1,103 +1,342 @@
 <template>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
-    <el-form-item label="Activity name" prop="name">
-        <el-input v-model="ruleForm.name"></el-input>
-    </el-form-item>
-    <el-form-item label="Activity zone" prop="region">
-        <el-select v-model="ruleForm.region" placeholder="Activity zone">
-        <el-option label="Zone one" value="shanghai"></el-option>
-        <el-option label="Zone two" value="beijing"></el-option>
-        </el-select>
-    </el-form-item>
-    <el-form-item label="Activity time" required>
-        <el-col :span="11">
-        <el-form-item prop="date1">
-            <el-date-picker type="date" placeholder="Pick a date" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-        </el-form-item>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11">
-        <el-form-item prop="date2">
-            <el-time-picker placeholder="Pick a time" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-        </el-form-item>
-        </el-col>
-    </el-form-item>
-    <el-form-item label="Instant delivery" prop="delivery">
-        <el-switch v-model="ruleForm.delivery"></el-switch>
-    </el-form-item>
-    <el-form-item label="Activity type" prop="type">
-        <el-checkbox-group v-model="ruleForm.type">
-        <el-checkbox label="Online activities" name="type"></el-checkbox>
-        <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-        <el-checkbox label="Offline activities" name="type"></el-checkbox>
-        <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-        </el-checkbox-group>
-    </el-form-item>
-    <el-form-item label="Resources" prop="resource">
-        <el-radio-group v-model="ruleForm.resource">
-        <el-radio label="Sponsorship"></el-radio>
-        <el-radio label="Venue"></el-radio>
-        </el-radio-group>
-    </el-form-item>
-    <el-form-item label="Activity form" prop="desc">
-        <el-input type="textarea" v-model="ruleForm.desc"></el-input>
-    </el-form-item>
+    <el-form :model="ruleForm" label-position="top" :rules="rules" ref="ruleFormRef" label-width="175px" class="demo-ruleForm">
+        <div class="row ">
+            <div class="col-md-6">
+                <el-form-item label="Jenis Pendidikan" prop="education_type">
+                    <el-select v-model="ruleForm.education_type" placeholder="Select" class="w-100">
+                        <el-option
+                            v-for="item in types"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item>
+                    <div class="row">
+                        <div class="col-md-6 mb-sm-2">
+                            <el-form-item prop="start_year" label="Tahun Masuk">
+                                <el-input v-model="ruleForm.start_year"></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="col-md-6">
+                            <el-form-item prop="end_year" label="Tahun Keluar">
+                                <el-input v-model="ruleForm.end_year"></el-input>
+                            </el-form-item>
+                        </div>
+                    </div>
+                </el-form-item>
+                <el-form-item label="Jurusan" prop="major">
+                    <el-autocomplete
+                        class="inline-input w-100"
+                        v-model="ruleForm.major"
+                        :fetch-suggestions="majorSearch"
+                        :trigger-on-focus="false"
+                        @select="handleSelectMajor">
+                    </el-autocomplete>
+                </el-form-item>
+
+                <el-form-item label="Nama sekolah / Universitas" prop="school">
+                    <el-autocomplete
+                        class="inline-input w-100"
+                        v-model="ruleForm.school"
+                        :fetch-suggestions="schoolSearch"
+                        :trigger-on-focus="false"
+                        @select="handleSelectSchool">
+                    </el-autocomplete>
+                </el-form-item>
+
+                <el-form-item label="Wilayah Sekolah / Universitas" prop="region">
+                    <el-autocomplete
+                        class="inline-input w-100"
+                        v-model="ruleForm.region"
+                        :fetch-suggestions="regionSearch"
+                        placeholder="Isi dengan nama Kecamatan / Kota"
+                        :trigger-on-focus="false"
+                        @select="handleSelectRegion">
+                    </el-autocomplete>
+                </el-form-item>
+            </div>
+            <div class="col-md-6">
+                <el-form-item>
+                    <div class="row">
+                        <div class="col-md-6 mb-sm-2">
+                            <el-form-item prop="score" label="IPK">
+                                <el-input v-model="ruleForm.score"></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="col-md-6 mb-sm-2">
+
+                        </div>
+                    </div>
+                </el-form-item>
+                <el-form-item label="Status" prop="status_id">
+                    <el-radio-group v-model="ruleForm.status_id">
+                        <el-radio-button border
+                            v-for="item in status"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                        </el-radio-button>
+                    </el-radio-group>
+                </el-form-item>
+            </div>
+            <div class="col-md-12">
+                <div class="d-flex justify-content-end">
+                    <el-form-item>
+                        <el-button @click="resetForm()">Reset</el-button>
+                        <el-button type="primary" @click="submitForm()">Simpan</el-button>
+                    </el-form-item>
+                </div>
+            </div>
+
+        </div>
     </el-form>
+
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        ruleForm: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        },
-        rules: {
-          name: [
-            { required: true, message: 'Please input Activity name', trigger: 'blur' },
-            { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' }
-          ],
-          region: [
-            { required: true, message: 'Please select Activity zone', trigger: 'change' }
-          ],
-          date1: [
-            { type: 'date', required: true, message: 'Please pick a date', trigger: 'change' }
-          ],
-          date2: [
-            { type: 'date', required: true, message: 'Please pick a time', trigger: 'change' }
-          ],
-          type: [
-            { type: 'array', required: true, message: 'Please select at least one activity type', trigger: 'change' }
-          ],
-          resource: [
-            { required: true, message: 'Please select activity resource', trigger: 'change' }
-          ],
-          desc: [
-            { required: true, message: 'Please input activity form', trigger: 'blur' }
-          ]
+
+<script setup lang="ts">
+    import { Mutations } from '@/store/enums/StoreEnums';
+    import axios from 'axios'
+    import {ref, onMounted, reactive } from 'vue'
+    import { useStore } from 'vuex';
+
+    const store = useStore();
+    const ruleFormRef = ref(null);
+
+    var token = ref('');
+    var personId = null;
+
+    const types   = reactive([]);
+    const status   = reactive([]);
+
+    const ruleForm = reactive({
+        education_type : '',
+        start_year : '',
+        end_year : '',
+        major_id : '',
+        major : '',
+        school_id : '',
+        school : '',
+        region_id : '',
+        region : '',
+        score : '',
+        status_id : '',
+        is_last: false,
+    })
+
+    const rules = reactive({
+
+        education_type: [
+            { required: true, message: 'Mohon isi Jenis Pendidikan', trigger: 'blur' },
+        ],
+        start_year : [
+            { required: true, message: 'Mohon isi Tahun Masuk', trigger: 'blur' },
+        ],
+        major_id : [
+            { required: true, message: 'Mohon isi Jurusan ', trigger: 'blur' },
+        ],
+        major : [
+            { required: true, message: 'Mohon isi Jurusan ', trigger: 'blur' },
+        ],
+        school : [
+            { required: true, message: 'Mohon isi Sekolah / Universitas', trigger: 'blur' },
+        ],
+        school_id : [
+            { required: true, message: 'Mohon isi Sekolah / Universitas', trigger: 'blur' },
+        ],
+        region_id : [
+            { required: true, message: 'Mohon isi Wilayah Sekolah ', trigger: 'blur' },
+        ],
+        region : [
+            { required: true, message: 'Mohon isi jenis pendidikan', trigger: 'blur' },
+        ],
+        status_id : [
+            { required: true, message: 'Mohon Pilih Status', trigger: 'blur' },
+        ],
+    })
+
+    onMounted(() => {
+
+        token = store.getters.getToken
+        personId = store.getters.getUser.person_id
+
+        console.log(token);
+
+        getStatus()
+
+        if (personId) {
+            getPerson()
         }
-      };
-    },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
+
+    })
+
+    const getPerson = async () => {
+        await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+
+            await axios.get('/api/person/'+personId, {
+                headers: {'Authorization': 'Bearer '+ token},
+            })
+            .then((response)=> {
+
+            })
+        })
     }
-  }
+
+    const getStatus = async () => {
+        await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+
+            await axios.get('/api/status', {
+                headers: {'Authorization': 'Bearer '+ token},
+            })
+            .then((response)=> {
+                response.data.forEach(element => {
+                    if(element.status_id.slice(0,3) == 'EDU') {
+                        types.push({
+                            'value': element.status_id,
+                            'label': element.name,
+                        })
+                    } else if(element.status_id.slice(0,3) == 'GRA') {
+                        status.push({
+                            'value': element.status_id,
+                            'label': element.name,
+                        })
+                    }
+                    // } else if(element.status_id.slice(0,3) == 'REL') {
+                    //     religion.push({
+                    //         'value': element.status_id,
+                    //         'label': element.name,
+                    //     })
+                    // } else if(element.status_id.slice(0,3) == 'MAR') {
+                    //     marital.push({
+                    //         'value': element.status_id,
+                    //         'label': element.name,
+                    //     })
+                    // }
+                });
+            })
+        })
+    }
+
+    const submitForm = async () => {
+
+        // ruleFormRef.value?.validate((valid) => {
+        //     if (valid) {
+        //         axios.get('/sanctum/csrf-cookie').then(response => {
+        //             axios.post('/api/person', {
+        //                 formData: {ruleForm},
+        //                 userId: store.getters.getUser.user_id
+        //             },{
+        //                 headers: {'Authorization': 'Bearer ' + token},
+        //             })
+        //             .then(response => {
+        //                 store.commit(Mutations.SET_USER, response.data.user)
+        //                 // console.log(store.getters.getUser)
+        //                 if (response.data.success) {
+        //                     // router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+        //                 } else {
+        //                     alert("gagal")
+        //                 }
+        //             })
+        //         })
+        //     } else {
+        //         console.log('error submit!!');
+        //         return false;
+        //     }
+        // });
+    }
+
+    const resetForm = () => {
+        ruleFormRef.value?.resetFields();
+    }
+
+    var results = reactive([]);
+
+    const majorSearch = async (queryString, cb) => {
+        var payload = queryString
+            if(payload.length >= 2) {
+                await axios.get('/api/major/search/' + payload, {
+                    headers: {'Authorization': 'Bearer '+ token},
+                })
+                .then(response => {
+                    results = [];
+                    response.data.forEach(element => {
+                        results.push(
+                            {
+                                "value": element.name,
+                                "major_id": element.major_id,
+                            },
+                        )
+                    });
+                })
+            }
+        // call callback function to return suggestions
+        cb(results);
+    };
+
+    const schoolSearch = async (queryString, cb) => {
+        var payload = queryString
+            if(payload.length >= 2) {
+                await axios.get('/api/school/search/' + payload, {
+                    headers: {'Authorization': 'Bearer '+ token},
+                })
+                .then(response => {
+                    results = [];
+                    response.data.forEach(element => {
+                        results.push(
+                            {
+                                "value": element.name,
+                                "school_id": element.school_id,
+                            },
+                        )
+                    });
+                })
+            }
+        // call callback function to return suggestions
+        cb(results);
+    };
+
+    const regionSearch = async (queryString, cb) => {
+        var payload = queryString
+            if(payload.length >= 2) {
+                await axios.get('/api/region/search/' + payload, {
+                    headers: {'Authorization': 'Bearer '+ token},
+                })
+                .then(response => {
+                    results = [];
+                    response.data.forEach(element => {
+                        results.push(
+                            {
+                                "value": element.name,
+                                "region_id": element.region_id,
+                            },
+                        )
+                    });
+                })
+            }
+        // call callback function to return suggestions
+        cb(results);
+    };
+
+    const createFilter = (queryString) => {
+        return (restaurant) => {
+            return (
+                restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
+            );
+        };
+    };
+
+
+    const handleSelectMajor = (item) => {
+        ruleForm.major_id = item.major_id
+    };
+
+    const handleSelectSchool = (item) => {
+        ruleForm.school_id = item.school_id
+    };
+
+    const handleSelectRegion = (item) => {
+        ruleForm.region_id = item.region_id
+    };
+
 </script>

@@ -41,9 +41,7 @@
                                 </g>
                             </svg>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </section>
