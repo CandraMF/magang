@@ -38,7 +38,7 @@ class EducationController extends Controller
                 'region_id'           => $request->formData['ruleForm']['region_id'],
                 'region'              => $request->formData['ruleForm']['region'],
                 'score'               => $request->formData['ruleForm']['score'],
-                'status_id'           => 0,
+                'status_id'           => $request->formData['ruleForm']['status_id'],
             ]);
 
             $success = true;
