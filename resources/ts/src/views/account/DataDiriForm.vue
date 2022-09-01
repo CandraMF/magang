@@ -3,8 +3,8 @@
         <div class="card-body">
             <el-steps :active="step">
                 <el-step title="Data Diri" ></el-step>
-                <el-step title="Keluarga" ></el-step>
                 <el-step title="Pendidikan" ></el-step>
+                <el-step title="Keluarga" ></el-step>
                 <el-step title="Berkas" ></el-step>
             </el-steps>
             <div
@@ -26,11 +26,11 @@
                 <div class="d-flex flex-stack flex-grow-1">
 
                     <div class="fw-bold">
-                    <h4 class="text-gray-800 fw-bolder">Perhatian!</h4>
+                        <h4 class="text-gray-800 fw-bolder">Perhatian!</h4>
 
-                    <div class="fs-6 text-gray-600">
-                        {{ steps[step].desc }}
-                    </div>
+                        <div class="fs-6 text-gray-600">
+                            {{ steps[step].desc }}
+                        </div>
                     </div>
 
                 </div>
@@ -61,7 +61,7 @@
 
     import { ref } from 'vue'
 
-    const step = ref(0)
+    const step = ref(1)
     var effect = ""
 
     const steps =  [
@@ -74,20 +74,20 @@
             component: DataDiri
         },
         {
+            name: "Pendidikan",
+            desc:
+            "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
+            icon: "person",
+            active: true,
+            component: Pendidikan
+        },
+        {
             name: "Keluarga",
             desc:
                 "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
             icon: "person",
             active: true,
             component: Keluarga
-        },
-        {
-            name: "Pendidikan",
-            desc:
-                "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-            icon: "person",
-            active: true,
-            component: Pendidikan
         },
         {
             name: "Berkas",

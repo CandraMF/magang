@@ -26,6 +26,29 @@
                         </div>
                     </div>
                 </el-form-item>
+                <el-form-item>
+                    <div class="row">
+                        <div class="col-md-6 mb-sm-2">
+                            <el-form-item prop="score" label="IPK">
+                                <el-input v-model="ruleForm.score"></el-input>
+                            </el-form-item>
+                        </div>
+                        <div class="col-md-6 mb-sm-2">
+                            <el-form-item label="Status" prop="status_id">
+                                <el-select v-model="ruleForm.status_id" placeholder="Select" class="w-100">
+                                    <el-option
+                                        v-for="item in status"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </div>
+                    </div>
+                </el-form-item>
+            </div>
+            <div class="col-md-6">
                 <el-form-item label="Jurusan" prop="major">
                     <el-autocomplete
                         class="inline-input w-100"
@@ -35,7 +58,6 @@
                         @select="handleSelectMajor">
                     </el-autocomplete>
                 </el-form-item>
-
                 <el-form-item label="Nama sekolah / Universitas" prop="school">
                     <el-autocomplete
                         class="inline-input w-100"
@@ -45,7 +67,6 @@
                         @select="handleSelectSchool">
                     </el-autocomplete>
                 </el-form-item>
-
                 <el-form-item label="Wilayah Sekolah / Universitas" prop="region">
                     <el-autocomplete
                         class="inline-input w-100"
@@ -57,30 +78,6 @@
                     </el-autocomplete>
                 </el-form-item>
             </div>
-            <div class="col-md-6">
-                <el-form-item>
-                    <div class="row">
-                        <div class="col-md-6 mb-sm-2">
-                            <el-form-item prop="score" label="IPK">
-                                <el-input v-model="ruleForm.score"></el-input>
-                            </el-form-item>
-                        </div>
-                        <div class="col-md-6 mb-sm-2">
-
-                        </div>
-                    </div>
-                </el-form-item>
-                <el-form-item label="Status" prop="status_id">
-                    <el-radio-group v-model="ruleForm.status_id">
-                        <el-radio-button border
-                            v-for="item in status"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                        </el-radio-button>
-                    </el-radio-group>
-                </el-form-item>
-            </div>
             <div class="col-md-12">
                 <div class="d-flex justify-content-end">
                     <el-form-item>
@@ -89,7 +86,6 @@
                     </el-form-item>
                 </div>
             </div>
-
         </div>
     </el-form>
 
@@ -220,30 +216,31 @@
 
     const submitForm = async () => {
 
-        // ruleFormRef.value?.validate((valid) => {
-        //     if (valid) {
-        //         axios.get('/sanctum/csrf-cookie').then(response => {
-        //             axios.post('/api/person', {
-        //                 formData: {ruleForm},
-        //                 userId: store.getters.getUser.user_id
-        //             },{
-        //                 headers: {'Authorization': 'Bearer ' + token},
-        //             })
-        //             .then(response => {
-        //                 store.commit(Mutations.SET_USER, response.data.user)
-        //                 // console.log(store.getters.getUser)
-        //                 if (response.data.success) {
-        //                     // router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-        //                 } else {
-        //                     alert("gagal")
-        //                 }
-        //             })
-        //         })
-        //     } else {
-        //         console.log('error submit!!');
-        //         return false;
-        //     }
-        // });
+        ruleFormRef.value?.validate((valid) => {
+            if (valid) {
+                axios.get('/sanctum/csrf-cookie').then(response => {
+                    axios.post('/api/education', {
+                        formData: {ruleForm},
+                        personId: personId
+                    },{
+                        headers: {'Authorization': 'Bearer ' + token},
+                    })
+                    .then(response => {
+                        // store.commit(Mutations.SET_USER, response.data.user)
+                        console.log(response.data)
+
+                        if (response.data.success) {
+                            // router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+                        } else {
+                            alert("gagal")
+                        }
+                    })
+                })
+            } else {
+                console.log('error submit!!');
+                return false;
+            }
+        });
     }
 
     const resetForm = () => {
