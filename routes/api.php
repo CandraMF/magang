@@ -25,8 +25,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('school', App\Http\Controllers\SchoolController::class);
     Route::resource('major', App\Http\Controllers\MajorController::class);
     Route::resource('education', App\Http\Controllers\EducationController::class);
+    Route::resource('family', App\Http\Controllers\FamilyController::class);
 
     Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
+    Route::get('education/showByPerson/{personId}', [App\Http\Controllers\EducationController::class, 'showByPerson'])->name('education.showByPerson');
+    Route::get('family/showByPerson/{personId}', [App\Http\Controllers\FamilyController::class, 'showByPerson'])->name('family.showByPerson');
+
     Route::get('region/search/{payload}', [App\Http\Controllers\RegionController::class, 'search'])->name('region.search');
     Route::get('school/search/{payload}', [App\Http\Controllers\SchoolController::class, 'search'])->name('school.search');
     Route::get('major/search/{payload}', [App\Http\Controllers\MajorController::class, 'search'])->name('major.search');

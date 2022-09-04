@@ -17,6 +17,7 @@
                     border-warning border border-dashed
                     p-6
                 "
+                v-if="step != 1"
                 >
                 <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
                     <inline-svg src="/media/icons/duotune/general/gen044.svg" />
@@ -56,12 +57,13 @@
 <script setup lang="ts">
     import DataDiri from "./forms/DataDiri.vue";
     import Keluarga from "./forms/Keluarga.vue";
-    import Pendidikan from "./forms/Pendidikan.vue";
     import Berkas from "./forms/Berkas.vue";
 
     import { ref } from 'vue'
+    import PendidikanFormVue from "./forms/PendidikanForm.vue";
+    import KeluargaFormVue from "./forms/KeluargaForm.vue";
 
-    const step = ref(1)
+    const step = ref(2)
     var effect = ""
 
     const steps =  [
@@ -79,7 +81,7 @@
             "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
             icon: "person",
             active: true,
-            component: Pendidikan
+            component: PendidikanFormVue
         },
         {
             name: "Keluarga",
@@ -87,7 +89,7 @@
                 "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
             icon: "person",
             active: true,
-            component: Keluarga
+            component: KeluargaFormVue
         },
         {
             name: "Berkas",

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Education;
+use App\Models\Family;
 use Illuminate\Http\Request;
 
-class EducationController extends Controller
+class FamilyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,21 +27,15 @@ class EducationController extends Controller
     {
         try{
 
-            $person = \App\Models\Education::updateOrCreate([
+            $person = Family::updateOrCreate([
                 'person_id'           => $request->personId,
-                'education_type'      => $request->formData['ruleForm']['education_type'],
-                'major_id'            => $request->formData['ruleForm']['major_id'],
-                'major'               => $request->formData['ruleForm']['major'],
+                'family_type'         => $request->formData['ruleForm']['family_type'],
+                'name'                => $request->formData['ruleForm']['name'],
             ],
             [
-                'start_year'          => $request->formData['ruleForm']['start_year'],
-                'end_year'            => $request->formData['ruleForm']['end_year'],
-                'school_id'           => $request->formData['ruleForm']['school_id'],
-                'school'              => $request->formData['ruleForm']['school'],
-                'region_id'           => $request->formData['ruleForm']['region_id'],
-                'region'              => $request->formData['ruleForm']['region'],
-                'score'               => $request->formData['ruleForm']['score'],
-                'status_id'           => $request->formData['ruleForm']['status_id'],
+                'birth_place'         => $request->formData['ruleForm']['birth_place'],
+                'birth_date'          => $request->formData['ruleForm']['birth_date'],
+                'mobile'              => $request->formData['ruleForm']['mobile']
             ]);
 
             $success = true;
@@ -98,8 +92,8 @@ class EducationController extends Controller
 
     public function showByPerson($personId)
     {
-        $educations = Education::wherePersonId($personId)->get();
+        $families = Family::wherePersonId($personId)->get();
 
-        return response()->json($educations);
+        return response()->json($families);
     }
 }

@@ -14,7 +14,7 @@
                 </el-form-item>
                 <el-form-item>
                     <div class="row">
-                        <div class="col-md-6 mb-sm-2">
+                        <div class="col-md-6">
                             <el-form-item prop="start_year" label="Tahun Masuk">
                                 <el-input v-model="ruleForm.start_year"></el-input>
                             </el-form-item>
@@ -28,12 +28,12 @@
                 </el-form-item>
                 <el-form-item>
                     <div class="row">
-                        <div class="col-md-6 mb-sm-2">
+                        <div class="col-md-6">
                             <el-form-item prop="score" label="IPK">
                                 <el-input v-model="ruleForm.score"></el-input>
                             </el-form-item>
                         </div>
-                        <div class="col-md-6 mb-sm-2">
+                        <div class="col-md-6">
                             <el-form-item label="Status" prop="status_id">
                                 <el-select v-model="ruleForm.status_id" placeholder="Select" class="w-100">
                                     <el-option
