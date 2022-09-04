@@ -63,7 +63,7 @@
     import PendidikanFormVue from "./forms/PendidikanForm.vue";
     import KeluargaFormVue from "./forms/KeluargaForm.vue";
 
-    const step = ref(2)
+    const step = ref(0)
     var effect = ""
 
     const steps =  [
