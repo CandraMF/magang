@@ -23,47 +23,6 @@ export default class AuthModule extends VuexModule implements StoreInfo {
     return this.user
   }
 
-  @Action({rawError: true})
-//   async [Actions.LOGIN]({commit, payload}){
-//     await axios.get('http://localhost:8000/sanctum/csrf-cookie')
-//         .then(response => {
-//             return new Promise(async (resolve, reject) => {
-//                 await axios.post('http://localhost:8000/api/login', {
-//                     login       : payload.nik,
-//                     password    : payload.password
-//                 }).then((response) => {
-//                     console.log(response)
-//                     resolve(response);
-//                 }).catch((error) => {
-//                     console.log(error)
-//                     reject(error);
-//                 })
-//             })
-//         })
-//   }
-
-//   @Action
-//   async [Actions.REGISTER](payload){
-//     // this.context.commit(Mutations.SET_TOKEN, "asdasda")
-//     // console.log(this.context.getters.getToken)
-//     await axios.get('/sanctum/csrf-cookie').then(async (response) => {
-//         // return new Promise(async (resolve, reject) => {
-//             await axios.post('/api/register', {
-//                 login: payload.login,
-//                 password: payload.password,
-//                 name: payload.name,
-//                 email: payload.email,
-//                 mobile: payload.mobile
-//             })
-//                 .then(async (response) => {
-//                     await this.context.commit(Mutations.SET_TOKEN, response.data.token)
-//                     await this.context.commit(Mutations.SET_USER, response.data.user)
-//                 })
-//             })
-//         // })
-
-//   }
-
   @Action
   [Actions.LOGOUT](payload){
     this.context.commit(Mutations.SET_TOKEN, '')

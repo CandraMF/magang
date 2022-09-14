@@ -302,13 +302,15 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
+import { useStore } from "vuex";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { ScrollComponent } from "@/assets/ts/components";
 import MenuComponent from "@/components/menu/MenuComponent.vue";
 import { version } from "@/core/helpers/documentation";
 import { asideMenuIcons } from "@/core/helpers/config";
-import MainMenuConfig from "@/core/config/MainMenuConfig";
+import PersonMainMenuConfig from "@/core/config/MainMenuConfig";
+import AdminMainMenuConfig from "@/core/config/AdminMainMenuConfig";
 
 export default defineComponent({
   name: "kt-menu",
@@ -319,6 +321,9 @@ export default defineComponent({
     const { t, te } = useI18n();
     const route = useRoute();
     const scrollElRef = ref<null | HTMLElement>(null);
+    const store = useStore();
+
+    const role = store.getters.getUser.role_id
 
     onMounted(() => {
       ScrollComponent.reinitialization();
@@ -338,6 +343,15 @@ export default defineComponent({
     const hasActiveChildren = (match) => {
       return route.path.indexOf(match) !== -1;
     };
+
+    console.log(role);
+
+    const MainMenuConfig =
+        role == 'ROL001' ?
+            PersonMainMenuConfig
+        : role == 'ROL101' ?
+            AdminMainMenuConfig
+        : null
 
     return {
       hasActiveChildren,

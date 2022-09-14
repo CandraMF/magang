@@ -40,7 +40,7 @@ class AuthController extends Controller
             $message = 'Gagal Membuat Akun';
             $token = null;
 
-            if($errorCode == '7'){
+        if($errorCode == '7'){
                 $message = "NIK Telah Terdaftar, Silahkan Login";
             } else {
                 $message = $ex->errorInfo;

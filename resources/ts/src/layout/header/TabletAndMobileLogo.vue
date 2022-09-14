@@ -13,9 +13,9 @@
     <!--end::Aside Toggle-->
 
     <!--begin::Logo-->
-    <router-link to="/dashboard" class="d-lg-none">
+    <!-- <router-link to="/dashboard" class="d-lg-none">
       <img alt="Logo" src="/image/logo-bpkh-s.png" class="max-h-40px" style="max-height: 30px;"/>
-    </router-link>
+    </router-link> -->
     <!--end::Logo-->
   </div>
   <!--end::Logo bar-->

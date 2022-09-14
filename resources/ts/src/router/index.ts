@@ -1,7 +1,24 @@
+import store from "@/store";
+import { Actions } from "@/store/enums/StoreEnums";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { useStore } from "vuex";
 import active from "./middleware/active";
 // import log from "./middleware/log";
 // import authenticated from "./middleware/authenticated";
+
+
+var vuex = JSON.parse(localStorage.getItem('vuex'))
+const userDefault = {
+    role_id : 'ROL001'
+}
+let user
+
+if (vuex) {
+    user = vuex.AuthModule.user ? vuex.AuthModule.user : userDefault
+} else {
+    user = userDefault
+}
+
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -89,12 +106,12 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
       path: "/admin",
-      redirect: "/dashboard",
+      redirect: user.role_id == 'ROL001' ? "/dashboard" : '/admin/dashboard',
       component: () => import("@/layout/Layout.vue"),
       meta: {
             middleware: [active]
       },
-      children: [
+      children: user.role_id == 'ROL001' ? [ // Pendaftar
         {
           path: "/dashboard",
           name: "dashboard",
@@ -108,14 +125,50 @@ const routes: Array<RouteRecordRaw> = [
         {
             path: "/profil/data-diri",
             name: "data-diri-form",
-            component: () => import("@/views/account/DataDiriForm.vue"),
+            component: () => import("@/views/account/DataDiri.vue"),
         },
+
+      ] : user.role_id == 'ROL101' ? [ //admin
+
+        {
+            path: "/admin/dashboard",
+            name: "admin-dashboard",
+            component: () => import("@/views/admin/Dashboard.vue"),
+        },
+        {
+            path: "/admin/user",
+            name: "admin-user",
+            component: () => import("@/views/admin/User.vue"),
+        },
+        {
+            path: "/admin/departemen",
+            name: "admin-departemen",
+            component: () => import("@/views/admin/Departemen.vue"),
+        },
+      ] : [
+
       ],
-  },
-//   {
-//     path: "/:pathMatch(.*)*",
-//     // redirect: "/dashboard",
-//   },
+    },
+    {
+        path: "/logout",
+        name: "logout",
+        meta: {
+            reload: true,
+        },
+        component: {
+            beforeRouteEnter(to, from, next) {
+              const destination = {
+                path: "/",
+              };
+              store.dispatch(Actions.LOGOUT);
+              next(destination);
+            }
+        }
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        component: () => import("@/views/Unauthenticated.vue"),
+    },
 ];
 
 const router = createRouter({

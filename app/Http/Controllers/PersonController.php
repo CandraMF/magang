@@ -15,7 +15,18 @@ class PersonController extends Controller
      */
     public function index()
     {
-        \App\Models\Person::all();
+        $person = \App\Models\Person::all();
+
+        $success = false;
+        $message = "Berhasil";
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'person' => $person,
+        ];
+
+        return response()->json($response);
     }
 
     /**

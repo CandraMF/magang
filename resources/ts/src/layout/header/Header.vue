@@ -21,7 +21,7 @@
 
       <KTTabletAndMobileLogo></KTTabletAndMobileLogo>
 
-      <KTTopbar></KTTopbar>
+      <!-- <KTTopbar></KTTopbar> -->
     </div>
     <!--end::Container-->
   </div>
