@@ -8,8 +8,8 @@
                             <el-step title="Data Diri" ></el-step>
                             <el-step title="Pendidikan" ></el-step>
                             <el-step title="Keluarga" ></el-step>
-                            <el-step title="Riwayat Kerja" ></el-step>
-                            <!-- <el-step title="Organisasi" ></el-step> -->
+                            <el-step title="Kerja" ></el-step>
+                            <el-step title="Organisasi" ></el-step>
                             <el-step title="Berkas" ></el-step>
                         </el-steps>
                     </el-affix>
@@ -73,7 +73,7 @@
     import Pendidikan from "@/views/account/Pendidikan.vue";
     import Keluarga from "@/views/account/Keluarga.vue";
     import Kerja from "@/views/account/Kerja.vue";
-    // import Organisasi from "@/views/account/Organisasi.vue";
+    import Organisasi from "@/views/account/Organisasi.vue";
 
     const step = ref(3)
     var effect = ""
@@ -104,21 +104,21 @@
             component: Keluarga
         },
         {
-            name: "Kerja",
+            name: "Perkerjaan",
             desc:
                 "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
             icon: "work",
             active: true,
             component: Kerja
         },
-        // {
-        //     name: "Organisasi",
-        //     desc:
-        //         "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-        //     icon: "social",
-        //     active: true,
-        //     component: Kerja
-        // },
+        {
+            name: "Organisasi",
+            desc:
+                "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
+            icon: "social",
+            active: true,
+            component: Organisasi
+        },
         {
             name: "Berkas",
             desc:

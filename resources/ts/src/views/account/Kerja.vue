@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card outline-dashed outline mt-5 card-custom mb-5 shadow-none">
+        <div class="card outline-dashed outline card-custom mb-5 shadow-none">
             <div :class="{'overlay overlay-block rounded' : loading}">
                 <!--begin::Body-->
                 <div class="card-header">
@@ -153,9 +153,9 @@
             .then((response)=> {
                 list.value = [];
 
-                console.log(response)
+                console.log(response.data.work)
 
-                response.data.department.forEach(element => {
+                response.data.work.forEach(element => {
                     list.value.push(element)
                 })
 

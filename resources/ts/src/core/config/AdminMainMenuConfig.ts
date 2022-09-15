@@ -8,14 +8,9 @@ const DocMenuConfig = [
           svgIcon: "/media/icons/duotune/general/gen025.svg",
         },
         {
-            heading: "Pengumuman",
-            route: "/admin/pengajuan",
+            heading: "Pendaftaran",
+            route: "/admin/pendafaran",
             svgIcon: "/media/icons/duotune/communication/com004.svg",
-        },
-        {
-            heading: "Pengajuan",
-            route: "/admin/pengajuan",
-            svgIcon: "/media/icons/duotune/abstract/abs019.svg",
         },
         {
             heading: "Departemen",

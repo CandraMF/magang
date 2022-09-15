@@ -64,7 +64,18 @@ class FamilyController extends Controller
      */
     public function show($id)
     {
-        //
+        $family = \App\Models\Family::wherePersonId($id)->get();
+
+        $success = true;
+        $message = "Berhasil";
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'family' => $family,
+        ];
+
+        return response()->json($response);
     }
 
     /**

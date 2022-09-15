@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
     var formData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Departement');
+    var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Departemen');
     var myModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var myForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var disabled = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
@@ -645,7 +645,7 @@ var _hoisted_2 = {
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-title"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Department")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Departemen")], -1
 /* HOISTED */
 );
 
@@ -753,7 +753,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table_column, {
         align: "right",
-        width: "300"
+        width: "200"
       }, {
         header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {

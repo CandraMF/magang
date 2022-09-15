@@ -5,7 +5,7 @@
                 <!--begin::Body-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h3>Department</h3>
+                        <h3>Departemen</h3>
                     </div>
                     <div class="card-toolbar">
                         <el-button :loading="loading" type="primary" icon="el-icon-plus text-white" @click="showModal()">Tambah Departement</el-button>
@@ -28,7 +28,7 @@
                                     <span class="badge badge-danger" v-if="scope.row.status_id == 'DEP001'">Tidak Aktif</span>
                                 </template>
                             </el-table-column>
-                            <el-table-column align="right" width="300">
+                            <el-table-column align="right" width="200">
                                 <template #header>
                                     <el-input v-model="search" size="small" placeholder="Type to search" />
                                 </template>
@@ -83,7 +83,7 @@
     const loading = ref(true)
     const formData = ref<any>(null);
 
-    const modalTitle = ref('Tambah Departement');
+    const modalTitle = ref('Tambah Departemen');
     let myModal = ref(null);
     let myForm = ref(null);
 

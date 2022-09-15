@@ -7,40 +7,22 @@
             ></el-input>
             <div class="row">
                 <div class="col-md-6">
-                    <el-form-item prop="nik" label="Nomor Induk Kependudukan">
-                        <el-input
-                            v-model="ruleForm.nik"
-                        ></el-input>
+                    <el-form-item prop="organization" label="Nama Organisasi">
+                        <el-input v-model="ruleForm.organization"></el-input>
                     </el-form-item>
-                    <el-form-item prop="name" label="Nama Lengkap">
-                        <el-input v-model="ruleForm.name"></el-input>
+                    <el-form-item prop="position" label="Posisi / Jabatan">
+                        <el-input v-model="ruleForm.position"></el-input>
                     </el-form-item>
-                    <el-form-item prop="email" label="Email">
-                        <el-input v-model="ruleForm.email"></el-input>
-                    </el-form-item>
-                    <el-form-item prop="nomorHP" label="Nomor Ponsel">
-                        <el-input v-model="ruleForm.nomorHP"></el-input>
+                    <el-form-item prop="description" label="Deskripsi">
+                        <el-input v-model="ruleForm.description" type="textarea"></el-input>
                     </el-form-item>
                 </div>
                 <div class="col-md-6">
-                    <el-form-item prop="username" label="Username" >
-                        <el-input v-model="ruleForm.nik" readonly></el-input>
+                    <el-form-item prop="start_period" label="Tanggal Masuk">
+                        <el-date-picker v-model="ruleForm.start_period" placeholder="Tanggal Masuk" class="w-100"></el-date-picker>
                     </el-form-item>
-                    <el-form-item prop="password" label="Password" v-if="!ruleForm.id">
-                        <el-input v-model="ruleForm.password" show-password="true"></el-input>
-                    </el-form-item>
-                    <el-form-item prop="confirmPassword" label="Konfirmasi Password" v-if="!ruleForm.id">
-                        <el-input v-model="ruleForm.confirmPassword" show-password="true" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item prop="role_id" label="Hak Akses">
-                        <el-select v-model="ruleForm.role_id" placeholder="Select" class="w-100">
-                            <el-option
-                                v-for="item in roles"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                            </el-option>
-                        </el-select>
+                    <el-form-item prop="end_period" label="Tanggal Keluar">
+                        <el-date-picker v-model="ruleForm.end_period" placeholder="Tanggal Keluar" class="w-100"></el-date-picker>
                     </el-form-item>
                 </div>
                 <div class="col-md-12">
@@ -73,48 +55,28 @@
 
     const ruleForm = reactive({
         id: null,
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        nomorHP: "",
-        nik: "",
-        captcha: "",
-        role_id: "",
+        organization: "",
+        position: "",
+        description: "",
+        start_period: "",
+        end_period: "",
     })
 
     const emit = defineEmits(['success']);
 
     onMounted(() => {
-        ruleForm.password = "12345678"
-        ruleForm.confirmPassword = "12345678"
-        getStatus()
+        // getStatus()
     })
 
     const rules = reactive({
-        name: [
-            { required: true, message: "Mohon isi Nama Lengkap", trigger: "blur" },
+        organization : [
+            { required: true, message: "Mohon isi Nama Organisasi", trigger: "blur" },
         ],
-        nik: [
-            { required: true, message: "Mohon isi NIK", trigger: "blur" },
+        position : [
+            { required: true, message: "Mohon isi Posisi", trigger: "blur" },
         ],
-        confirmPassword: [
-            { required: true, message: "Mohon isi Konfirmasi Password", trigger: ["blur", "change"] },
-        ],
-        password: [
-            { required: true, message: "Mohon isi Password", trigger: ["blur", "change"] },
-            { min: 8, message: "Password Minimal 8 Karakter", trigger: ["blur", "change"] },
-        ],
-        nomorHP: [
-            { required: true, message: "Mohon isi Nomor HP", trigger: ["blur", "change"] },
-            // { regex: /^[2-9]\d{2}[2-9]\d{2}\d{4}$/ },
-        ],
-        email: [
-            { required: true, message: "Mohon isi email", trigger: ["blur", "change"] },
-            { type: "email", message: "Mohon isi format email yang benar", trigger: ["blur", "change"] }
-        ],
-        role: [
-            { required: true, message: "Mohon pilih role", trigger: ["blur", "change"] },
+        start_period : [
+            { required: true, message: "Mohon isi Tanggal Masuk", trigger: "blur" },
         ],
     })
 
@@ -124,15 +86,15 @@
             if (valid) {
                 if(ruleForm.id) {
                     axios.get("/sanctum/csrf-cookie").then(response => {
-                        axios.put("/api/user/"+ruleForm.id, {
-                            login: ruleForm.nik,
-                            name: ruleForm.name,
-                            email: ruleForm.email,
-                            mobile: ruleForm.nomorHP
+                        axios.put("/api/organization/"+ruleForm.id, {
+                            formData: {ruleForm},
+                            personId: store.getters.getUser.person_id
                         },{
                             headers: {'Authorization': 'Bearer ' + token},
                         })
-                        .then((response) => {
+                        .then((response) =>
+                        {
+                            console.log(response)
                             if (response.data.success) {
                                 emit('success', response.data.message)
                             }
@@ -145,16 +107,14 @@
                     });
                 } else {
                     axios.get("/sanctum/csrf-cookie").then(response => {
-                        axios.post("/api/user", {
-                            login: ruleForm.nik,
-                            password: ruleForm.password,
-                            name: ruleForm.name,
-                            email: ruleForm.email,
-                            mobile: ruleForm.nomorHP
+                        axios.post("/api/organization", {
+                            formData: {ruleForm},
+                            personId: store.getters.getUser.person_id
                         },{
                             headers: {'Authorization': 'Bearer ' + token},
                         })
                         .then((response) => {
+                            console.log(response)
                             if (response.data.success) {
                                 emit('success', response.data.message)
                             }
@@ -174,22 +134,22 @@
         });
     }
 
-    const getStatus = async () => {
-        await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+    // const getStatus = async () => {
+    //     await axios.get('/sanctum/csrf-cookie').then(async (response) => {
 
-            await axios.get('/api/status/getByType/Hak Akses User', {
-                headers: {'Authorization': 'Bearer '+ token},
-            })
-            .then((response)=> {
-                response.data.forEach(element => {
-                    roles.push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                });
-            })
-        })
-    }
+    //         await axios.get('/api/status/getByType/Hak Akses User', {
+    //             headers: {'Authorization': 'Bearer '+ token},
+    //         })
+    //         .then((response)=> {
+    //             response.data.forEach(element => {
+    //                 roles.push({
+    //                     'value': element.status_id,
+    //                     'label': element.name,
+    //                 })
+    //             });
+    //         })
+    //     })
+    // }
 
     function resetForm () {
         ruleFormRef.value?.resetFields();
@@ -201,12 +161,12 @@
     }
 
     function _initData(data){
-        ruleForm.id = data.user_id
-        ruleForm.nik = data.login
-        ruleForm.password = data.password
-        ruleForm.name = data.name
-        ruleForm.email = data.email
-        ruleForm.nomorHP = data.mobile
+        ruleForm.id = data.id
+        ruleForm.organization = data.organization
+        ruleForm.position = data.position
+        ruleForm.description = data.description
+        ruleForm.start_period = data.start_period
+        ruleForm.end_period = data.end_period
     }
 
     defineExpose({ reset: _reset, initData: _initData });

@@ -2618,13 +2618,9 @@ var DocMenuConfig = [{
     route: "/admin/dashboard",
     svgIcon: "/media/icons/duotune/general/gen025.svg"
   }, {
-    heading: "Pengumuman",
-    route: "/admin/pengajuan",
+    heading: "Pendaftaran",
+    route: "/admin/pendafaran",
     svgIcon: "/media/icons/duotune/communication/com004.svg"
-  }, {
-    heading: "Pengajuan",
-    route: "/admin/pengajuan",
-    svgIcon: "/media/icons/duotune/abstract/abs019.svg"
   }, {
     heading: "Departemen",
     route: "/admin/Departemen",
@@ -2664,13 +2660,9 @@ var DocMenuConfig = [{
     route: "/dashboard",
     svgIcon: "/media/icons/duotune/general/gen025.svg"
   }, {
-    heading: "Pengumuman",
-    route: "/pengajuan",
+    heading: "Pendaftaran",
+    route: "/pendafaran",
     svgIcon: "/media/icons/duotune/communication/com004.svg"
-  }, {
-    heading: "Pengajuan",
-    route: "/pengajuan",
-    svgIcon: "/media/icons/duotune/abstract/abs019.svg"
   }, {
     sectionTitle: "Profil",
     route: "/profil",

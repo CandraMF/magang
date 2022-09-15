@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card outline-dashed outline mt-5 card-custom mb-5 shadow-none">
+        <div class="card outline-dashed outline card-custom mb-5 shadow-none">
             <!--begin::Body-->
             <div class="card-header">
                 <div class="card-title">

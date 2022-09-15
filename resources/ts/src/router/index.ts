@@ -160,6 +160,7 @@ const routes: Array<RouteRecordRaw> = [
               const destination = {
                 path: "/",
               };
+              window.location.href = "/";
               store.dispatch(Actions.LOGOUT);
               next(destination);
             }

@@ -73,7 +73,7 @@ class WorkController extends Controller
         $response = [
             'success' => $success,
             'message' => $message,
-            'department' => $work,
+            'work' => $work,
         ];
 
         return response()->json($response);
@@ -88,7 +88,6 @@ class WorkController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         try {
             $work = Work::find($id);
 
