@@ -173,6 +173,18 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import("@/views/admin/SekolahFormLayout.vue"),
             props: true,
         },
+        {
+            path: "/admin/jurusan",
+            name: "admin-jurusan",
+            component: () => import("@/views/admin/Jurusan.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/jurusan/form",
+            name: "admin-jurusan-form",
+            component: () => import("@/views/admin/JurusanFormLayout.vue"),
+            props: true,
+        },
       ] : [
 
       ],

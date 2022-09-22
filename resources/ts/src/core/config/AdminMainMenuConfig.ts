@@ -49,7 +49,7 @@ const DocMenuConfig = [
         },
         {
             heading: "Jurusan",
-            route: "/admin/departemen",
+            route: "/admin/jurusan",
             svgIcon: "/media/icons/duotune/communication/com006.svg",
         },
         {

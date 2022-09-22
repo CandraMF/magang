@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resource('status', App\Http\Controllers\StatusController::class);
     Route::apiResource('school', App\Http\Controllers\SchoolController::class);
     Route::apiResource('user', App\Http\Controllers\UserController::class);
-    Route::resource('major', App\Http\Controllers\MajorController::class);
+    Route::apiResource('major', App\Http\Controllers\MajorController::class);
     Route::resource('education', App\Http\Controllers\EducationController::class);
     Route::apiResource('family', App\Http\Controllers\FamilyController::class);
     Route::resource('department', App\Http\Controllers\DepartmentController::class);

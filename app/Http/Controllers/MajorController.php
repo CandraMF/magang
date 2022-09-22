@@ -12,9 +12,22 @@ class MajorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $pageSize = $request->query('perPage');
+
+        $data = \App\Models\Major::orderBy('major_id', 'desc')->paginate($pageSize);
+
+        $success = true;
+        $message = "Berhasil";
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'data' => $data,
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -25,7 +38,29 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+
+            $major = new Major();
+            $major->name = $request->formData['ruleForm']['name'];
+            $major->save();
+
+            $success = true;
+            $message = 'Berhasil Membuat Jurusan';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $message = 'Gagal Membuat Jurusan';
+
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -48,7 +83,29 @@ class MajorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $major = Major::find($id);
+
+            $major->update([
+                'name' => $request->formData['ruleForm']['name'],
+            ]);
+
+            $errorCode = null;
+            $success = true;
+            $message = 'Berhasil Mengubah Jurusan';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $message = 'Gagal Mengubah Jurusan';
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+
+        return response()->json($response);
     }
 
     /**
