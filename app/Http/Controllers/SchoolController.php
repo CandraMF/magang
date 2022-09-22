@@ -12,9 +12,22 @@ class SchoolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $pageSize = $request->query('perPage');
+
+        $position = \App\Models\School::orderBy('school_id', 'desc')->paginate($pageSize);
+
+        $success = true;
+        $message = "Berhasil";
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'position' => $position,
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -25,7 +38,29 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+
+            $position = new School();
+            $position->name = $request->formData['ruleForm']['name'];
+            $position->save();
+
+            $success = true;
+            $message = 'Berhasil Membuat Sekolah/Univeritas';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $message = 'Gagal Membuat Sekolah/Univeritas';
+
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -48,7 +83,29 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $position = School::find($id);
+
+            $position->update([
+                'name' => $request->formData['ruleForm']['name'],
+            ]);
+
+            $errorCode = null;
+            $success = true;
+            $message = 'Berhasil Mengubah Sekolah/Univeritas';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $message = 'Gagal Mengubah Sekolah/Univeritas';
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+
+        return response()->json($response);
     }
 
     /**

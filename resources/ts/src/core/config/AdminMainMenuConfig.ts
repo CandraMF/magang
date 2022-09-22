@@ -1,20 +1,60 @@
 const DocMenuConfig = [
     {
-      heading: "Utama",
+      heading: " ",
       pages: [
         {
           heading: "Dashboard",
           route: "/admin/dashboard",
           svgIcon: "/media/icons/duotune/general/gen025.svg",
         },
+      ],
+    },
+    {
+        heading: "Rekrutmen",
+        pages: [
+            {
+                heading: "Rekrutmen Aktif",
+                route: "/admin/pendaftaran",
+                svgIcon: "/media/icons/duotune/communication/com004.svg",
+            },
+            {
+                heading: "Semua Rekrutmen",
+                route: "/admin/pendaftaran",
+                svgIcon: "/media/icons/duotune/communication/com004.svg",
+            },
+            {
+                heading: "Peserta",
+                route: "/admin/pendaftaran",
+                svgIcon: "/media/icons/duotune/communication/com004.svg",
+            },
+        ]
+    },
+    {
+      heading: "Master Data",
+      pages: [
         {
-            heading: "Pendaftaran",
-            route: "/admin/pendafaran",
-            svgIcon: "/media/icons/duotune/communication/com004.svg",
+            heading: "Unit Kerja",
+            route: "/admin/departemen",
+            svgIcon: "/media/icons/duotune/communication/com006.svg",
         },
         {
-            heading: "Departemen",
-            route: "/admin/Departemen",
+            heading: "Posisi/Jabatan",
+            route: "/admin/posisi",
+            svgIcon: "/media/icons/duotune/communication/com006.svg",
+        },
+        {
+            heading: "Sekolah/Universitas",
+            route: "/admin/sekolah",
+            svgIcon: "/media/icons/duotune/communication/com006.svg",
+        },
+        {
+            heading: "Jurusan",
+            route: "/admin/departemen",
+            svgIcon: "/media/icons/duotune/communication/com006.svg",
+        },
+        {
+            heading: "Daerah",
+            route: "/admin/departemen",
             svgIcon: "/media/icons/duotune/communication/com006.svg",
         },
         {
@@ -25,7 +65,7 @@ const DocMenuConfig = [
     ],
     },
     {
-      heading: "Akun",
+      heading: " ",
       pages: [
         {
           heading: "Logout",

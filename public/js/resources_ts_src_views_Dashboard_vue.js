@@ -62,7 +62,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup() {// const store = useStore();
     // const count = computed(() => {
-    //   return store.getters.getCount;
+    //     return store.getters.getCount;
     // });
     // return {
     //     count

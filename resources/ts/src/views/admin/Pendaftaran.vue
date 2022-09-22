@@ -5,10 +5,11 @@
                 <!--begin::Body-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h3>Departemen</h3>
+                        <h3>Pendaftaran</h3>
                     </div>
                     <div class="card-toolbar">
-                        <el-button :loading="loading" type="primary" icon="el-icon-plus text-white" @click="showModal()">Tambah Departement</el-button>
+                        <el-button :loading="loading" type="primary" icon="el-icon-plus text-white" @click="showModal()">Tambah Pendaftaran</el-button>
+                        <el-button :loading="loading" type="dark" icon="el-icon-menu" @click="showModalPosisi()">Posisi</el-button>
                     </div>
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
@@ -17,10 +18,19 @@
                             :data="list"
                             :default-sort="{ prop: 'department_id', order: 'ascending' }"
                             style="width: 100%">
-
                             <el-table-column type="index" :index="indexMethod"/>
-                            <el-table-column sortable label="Nama" prop="name" />
-                            <el-table-column sortable label="Kode" prop="code" width="100"/>
+                            <el-table-column sortable label="Kode" prop="code">
+                                <template #default="scope">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">{{ scope.row.position }}</div>
+                                            <div class="col-md-6">{{ scope.row.code }}</div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </el-table-column>
+
+                            <!-- <el-table-column sortable label="Nama" prop="name" />
                             <el-table-column sortable label="Kepala" prop="head.name" />
                             <el-table-column sortable label="Status" prop="status_id" width="100">
                                 <template #default="scope">
@@ -39,7 +49,7 @@
                                         <el-button type="danger" size="small" icon="el-icon-delete text-white" @click="perfomDelete(scope.row.user_id)"></el-button>
                                     </el-button-group>
                                 </template>
-                            </el-table-column>
+                            </el-table-column> -->
                         </el-table>
                     </div>
                 </div>
@@ -52,6 +62,14 @@
             </div>
             <!--end::Body-->
         </div>
+
+        <Modal ref="myModalPosisi" size="lg" :title="modalTitle" @hide="handleHide">
+            <template #body>
+                <Posisi ref="myPosisi" @success="handleSuccess" :data="formData"/>
+            </template>
+            <template #footer>
+            </template>
+        </Modal>
 
         <Modal ref="myModal" size="lg" :title="modalTitle" @hide="handleHide">
             <template #body>
@@ -70,6 +88,7 @@
 
     import Modal from '@/components/Modal.vue';
     import UserForm from './forms/UserForm.vue';
+    import Posisi from '@/views/admin/Posisi.vue';
 
     const app = getCurrentInstance()
     const store = useStore();
@@ -85,6 +104,7 @@
 
     const modalTitle = ref('Tambah Departemen');
     let myModal = ref(null);
+    let myModalPosisi = ref(null);
     let myForm = ref(null);
 
     const disabled = ref(false);
@@ -105,6 +125,11 @@
     const showModal = () => {
         formData.value = null
         myModal.value.show();
+    }
+
+    const showModalPosisi = () => {
+        formData.value = null
+        myModalPosisi.value.show();
     }
 
     const handleHide = (payload) => {

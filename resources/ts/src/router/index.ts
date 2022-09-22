@@ -145,6 +145,34 @@ const routes: Array<RouteRecordRaw> = [
             name: "admin-departemen",
             component: () => import("@/views/admin/Departemen.vue"),
         },
+        {
+            path: "/admin/pendaftaran",
+            name: "admin-pendaftaran",
+            component: () => import("@/views/admin/Pendaftaran.vue"),
+        },
+        {
+            path: "/admin/posisi",
+            name: "admin-posisi",
+            component: () => import("@/views/admin/Posisi.vue"),
+        },
+        {
+            path: "/admin/posisi/form",
+            name: "admin-posisi-form",
+            component: () => import("@/views/admin/PosisiFormLayout.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/sekolah",
+            name: "admin-sekolah",
+            component: () => import("@/views/admin/Sekolah.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/sekolah/form",
+            name: "admin-sekolah-form",
+            component: () => import("@/views/admin/SekolahFormLayout.vue"),
+            props: true,
+        },
       ] : [
 
       ],

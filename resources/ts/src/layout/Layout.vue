@@ -17,7 +17,7 @@
       <!-- begin:: Content -->
       <div
         id="kt_content"
-        class="content d-flex flex-column flex-column-fluid fs-6"
+        class="content d-flex flex-column flex-column-fluid fs-6 py-0"
       >
         <!-- begin:: Content Body -->
         <div

@@ -15,4 +15,8 @@ class Department extends Model
     public function head() {
         return $this->belongsTo(\App\Models\Department::class, 'head_id', 'department_id');
     }
+
+    public function child() {
+        return $this->hasMany(\App\Models\Department::class, 'head_id', 'department_id');
+    }
 }

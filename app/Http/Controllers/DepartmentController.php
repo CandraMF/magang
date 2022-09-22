@@ -14,7 +14,11 @@ class DepartmentController extends Controller
     public function index()
     {
 
-        $department = \App\Models\Department::with(['head'])->orderBy('head_id')->get();
+        $department = \App\Models\Department::with(['child' => function ($q) {
+            $q->with(['child' => function ($q) {
+                $q->with(['child']);
+            }]);
+        }])->has('child')->whereDoesntHave('head')->orderBy('head_id')->get();
 
         $success = true;
         $message = "Berhasil";

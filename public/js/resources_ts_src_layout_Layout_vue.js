@@ -892,7 +892,7 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = {
   id: "kt_content",
-  "class": "content d-flex flex-column flex-column-fluid fs-6"
+  "class": "content d-flex flex-column flex-column-fluid fs-6 py-0"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_KTLoader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("KTLoader");
@@ -2612,18 +2612,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var DocMenuConfig = [{
-  heading: "Utama",
+  heading: " ",
   pages: [{
     heading: "Dashboard",
     route: "/admin/dashboard",
     svgIcon: "/media/icons/duotune/general/gen025.svg"
-  }, {
-    heading: "Pendaftaran",
-    route: "/admin/pendafaran",
+  }]
+}, {
+  heading: "Rekrutmen",
+  pages: [{
+    heading: "Rekrutmen Aktif",
+    route: "/admin/pendaftaran",
     svgIcon: "/media/icons/duotune/communication/com004.svg"
   }, {
-    heading: "Departemen",
-    route: "/admin/Departemen",
+    heading: "Semua Rekrutmen",
+    route: "/admin/pendaftaran",
+    svgIcon: "/media/icons/duotune/communication/com004.svg"
+  }, {
+    heading: "Peserta",
+    route: "/admin/pendaftaran",
+    svgIcon: "/media/icons/duotune/communication/com004.svg"
+  }]
+}, {
+  heading: "Master Data",
+  pages: [{
+    heading: "Unit Kerja",
+    route: "/admin/departemen",
+    svgIcon: "/media/icons/duotune/communication/com006.svg"
+  }, {
+    heading: "Posisi/Jabatan",
+    route: "/admin/posisi",
+    svgIcon: "/media/icons/duotune/communication/com006.svg"
+  }, {
+    heading: "Sekolah/Universitas",
+    route: "/admin/sekolah",
+    svgIcon: "/media/icons/duotune/communication/com006.svg"
+  }, {
+    heading: "Jurusan",
+    route: "/admin/departemen",
+    svgIcon: "/media/icons/duotune/communication/com006.svg"
+  }, {
+    heading: "Daerah",
+    route: "/admin/departemen",
     svgIcon: "/media/icons/duotune/communication/com006.svg"
   }, {
     heading: "User",
@@ -2631,7 +2661,7 @@ var DocMenuConfig = [{
     svgIcon: "/media/icons/duotune/communication/com006.svg"
   }]
 }, {
-  heading: "Akun",
+  heading: " ",
   pages: [{
     heading: "Logout",
     route: "/logout",

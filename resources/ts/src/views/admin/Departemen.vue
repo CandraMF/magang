@@ -13,7 +13,20 @@
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
                     <div>
-                        <el-table
+                        <el-tree
+                            :data="data"
+                            node-key="department_id"
+                            :default-expanded-keys="[1, 2]"
+                            :props="defaultProps"
+                        >
+                        <template #default="{ node, data }">
+                            <span class="custom-tree-node">
+                                <span>{{ node.label }}</span>
+
+                            </span>
+                        </template>
+                        </el-tree>
+                        <!-- <el-table
                             :data="list"
                             :default-sort="{ prop: 'department_id', order: 'ascending' }"
                             style="width: 100%">
@@ -40,7 +53,7 @@
                                     </el-button-group>
                                 </template>
                             </el-table-column>
-                        </el-table>
+                        </el-table> -->
                     </div>
                 </div>
 
@@ -67,6 +80,8 @@
     import axios from 'axios';
     import { reactive, onMounted, ref, getCurrentInstance } from 'vue';
     import { useStore } from 'vuex';
+    import type Node from 'element-plus/es/components'
+
 
     import Modal from '@/components/Modal.vue';
     import UserForm from './forms/UserForm.vue';
@@ -82,6 +97,12 @@
     const search = ref('');
     const loading = ref(true)
     const formData = ref<any>(null);
+
+    const data = ref<any>(null);
+    const defaultProps = {
+        children: 'child',
+        label: 'name',
+    }
 
     const modalTitle = ref('Tambah Departemen');
     let myModal = ref(null);
@@ -160,13 +181,14 @@
                 headers: {'Authorization': 'Bearer '+ token},
             })
             .then((response)=> {
-                list.value = [];
+                // list.value = [];
 
-                console.log(response)
+                data.value = response.data.department
 
-                response.data.department.forEach(element => {
-                    list.value.push(element)
-                })
+                console.log(response.data.department)
+                // response.data.department.forEach(element => {
+                //     list.value.push(element)
+                // })
 
                 loading.value = false;
             })
@@ -174,3 +196,14 @@
     }
 
 </script>
+
+<style>
+    .custom-tree-node {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        padding-right: 8px;
+    }
+</style>
