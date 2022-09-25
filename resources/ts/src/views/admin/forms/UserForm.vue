@@ -83,7 +83,7 @@
         role_id: "",
     })
 
-    const emit = defineEmits(['success']);
+    const emit = defineEmits(['success', 'finishInit']);
 
     onMounted(() => {
         ruleForm.password = "12345678"
@@ -113,7 +113,7 @@
             { required: true, message: "Mohon isi email", trigger: ["blur", "change"] },
             { type: "email", message: "Mohon isi format email yang benar", trigger: ["blur", "change"] }
         ],
-        role: [
+        role_id: [
             { required: true, message: "Mohon pilih role", trigger: ["blur", "change"] },
         ],
     })
@@ -128,7 +128,8 @@
                             login: ruleForm.nik,
                             name: ruleForm.name,
                             email: ruleForm.email,
-                            mobile: ruleForm.nomorHP
+                            mobile: ruleForm.nomorHP,
+                            role_id: ruleForm.role_id
                         },{
                             headers: {'Authorization': 'Bearer ' + token},
                         })
@@ -150,7 +151,8 @@
                             password: ruleForm.password,
                             name: ruleForm.name,
                             email: ruleForm.email,
-                            mobile: ruleForm.nomorHP
+                            mobile: ruleForm.nomorHP,
+                            role_id: ruleForm.role_id
                         },{
                             headers: {'Authorization': 'Bearer ' + token},
                         })
@@ -187,6 +189,9 @@
                         'label': element.name,
                     })
                 });
+
+                emit('finishInit', response.data.message)
+
             })
         })
     }
@@ -207,6 +212,7 @@
         ruleForm.name = data.name
         ruleForm.email = data.email
         ruleForm.nomorHP = data.mobile
+        ruleForm.role_id = data.role_id
     }
 
     defineExpose({ reset: _reset, initData: _initData });

@@ -54,7 +54,7 @@ const DocMenuConfig = [
         },
         {
             heading: "Daerah",
-            route: "/admin/departemen",
+            route: "/admin/daerah",
             svgIcon: "/media/icons/duotune/communication/com006.svg",
         },
         {

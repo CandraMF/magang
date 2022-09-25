@@ -79,13 +79,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_Modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Modal.vue */ "./resources/ts/src/components/Modal.vue");
 /* harmony import */ var _forms_UserForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms/UserForm.vue */ "./resources/ts/src/views/admin/forms/UserForm.vue");
+/* harmony import */ var _core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/core/helpers/breadcrumb */ "./resources/ts/src/core/helpers/breadcrumb.ts");
+
 
 
 
@@ -101,7 +103,7 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _a.expose;
     expose();
     var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)();
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.useStore)();
     var token = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var globalProperties;
     var list = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
@@ -119,6 +121,7 @@ __webpack_require__.r(__webpack_exports__);
     var myForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var disabled = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_4__.setCurrentPageBreadcrumbs)("Data Unit Kerja", ["Unit Kerja"]);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
@@ -149,17 +152,17 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Batal',
         type: 'warning'
       }).then(function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
           var _this = this;
 
-          return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+          return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
             switch (_a.label) {
               case 0:
                 return [4
                 /*yield*/
                 , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                  return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
+                    return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
                       switch (_a.label) {
                         case 0:
                           return [4
@@ -213,18 +216,18 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getData = function getData() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
           switch (_a.label) {
             case 0:
               loading.value = true;
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
+                  return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -323,7 +326,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'UserForm',
-  emits: ['success'],
+  emits: ['success', 'finishInit'],
   setup: function setup(__props, _a) {
     var _this = this;
 
@@ -390,7 +393,7 @@ __webpack_require__.r(__webpack_exports__);
         message: "Mohon isi format email yang benar",
         trigger: ["blur", "change"]
       }],
-      role: [{
+      role_id: [{
         required: true,
         message: "Mohon pilih role",
         trigger: ["blur", "change"]
@@ -409,7 +412,8 @@ __webpack_require__.r(__webpack_exports__);
                     login: ruleForm.nik,
                     name: ruleForm.name,
                     email: ruleForm.email,
-                    mobile: ruleForm.nomorHP
+                    mobile: ruleForm.nomorHP,
+                    role_id: ruleForm.role_id
                   }, {
                     headers: {
                       'Authorization': 'Bearer ' + token
@@ -432,7 +436,8 @@ __webpack_require__.r(__webpack_exports__);
                     password: ruleForm.password,
                     name: ruleForm.name,
                     email: ruleForm.email,
-                    mobile: ruleForm.nomorHP
+                    mobile: ruleForm.nomorHP,
+                    role_id: ruleForm.role_id
                   }, {
                     headers: {
                       'Authorization': 'Bearer ' + token
@@ -488,6 +493,7 @@ __webpack_require__.r(__webpack_exports__);
                               'label': element.name
                             });
                           });
+                          emit('finishInit', response.data.message);
                         })];
 
                       case 1:
@@ -532,6 +538,7 @@ __webpack_require__.r(__webpack_exports__);
       ruleForm.name = data.name;
       ruleForm.email = data.email;
       ruleForm.nomorHP = data.mobile;
+      ruleForm.role_id = data.role_id;
     }
 
     expose({
@@ -647,34 +654,29 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "card outline-dashed outline mt-5 card-custom mb-5 shadow-none"
 };
-var _hoisted_2 = {
-  "class": "card-header"
-};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-title"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Departemen")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-button :loading=\"loading\" type=\"primary\" icon=\"el-icon-plus text-white\" @click=\"showModal()\">Tambah Departement</el-button> ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-toolbar"
+})], -1
 /* HOISTED */
 );
 
-var _hoisted_4 = {
-  "class": "card-toolbar"
-};
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Tambah Departement");
-
-var _hoisted_6 = {
+var _hoisted_3 = {
   "class": "card-body pt-2 px-6 overlay-wrapper"
 };
-var _hoisted_7 = {
+var _hoisted_4 = {
   "class": "custom-tree-node"
 };
-var _hoisted_8 = {
+var _hoisted_5 = {
   key: 0,
   "class": "overlay-layer rounded bg-dark bg-opacity-0"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "spinner-border text-primary",
   role: "status"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -683,33 +685,15 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = [_hoisted_9];
+var _hoisted_7 = [_hoisted_6];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
-
   var _component_el_tree = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-tree");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'overlay overlay-block rounded': $setup.loading
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-    loading: $setup.loading,
-    type: "primary",
-    icon: "el-icon-plus text-white",
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $setup.showModal();
-    })
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["loading"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tree, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Body"), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tree, {
     data: $setup.data,
     "node-key": "department_id",
     "default-expanded-keys": [1, 2],
@@ -718,7 +702,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_a) {
       var node = _a.node,
           data = _a.data;
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.label), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.label), 1
       /* TEXT */
       )])];
     }),
@@ -727,7 +711,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["data"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-table\n                            :data=\"list\"\n                            :default-sort=\"{ prop: 'department_id', order: 'ascending' }\"\n                            style=\"width: 100%\">\n\n                            <el-table-column type=\"index\" :index=\"indexMethod\"/>\n                            <el-table-column sortable label=\"Nama\" prop=\"name\" />\n                            <el-table-column sortable label=\"Kode\" prop=\"code\" width=\"100\"/>\n                            <el-table-column sortable label=\"Kepala\" prop=\"head.name\" />\n                            <el-table-column sortable label=\"Status\" prop=\"status_id\" width=\"100\">\n                                <template #default=\"scope\">\n                                    <span class=\"badge badge-primary\" v-if=\"scope.row.status_id == 'DEP101'\">Aktif</span>\n                                    <span class=\"badge badge-danger\" v-if=\"scope.row.status_id == 'DEP001'\">Tidak Aktif</span>\n                                </template>\n                            </el-table-column>\n                            <el-table-column align=\"right\" width=\"200\">\n                                <template #header>\n                                    <el-input v-model=\"search\" size=\"small\" placeholder=\"Type to search\" />\n                                </template>\n                                <template #default=\"scope\">\n                                    <el-button-group :loading=\"loading\">\n                                        <el-button type=\"secondary\" size=\"small\" icon=\"el-icon-user\"></el-button>\n                                        <el-button type=\"warning\" size=\"small\" icon=\"el-icon-edit text-white\" @click=\"perfomEdit(scope.row)\"></el-button>\n                                        <el-button type=\"danger\" size=\"small\" icon=\"el-icon-delete text-white\" @click=\"perfomDelete(scope.row.user_id)\"></el-button>\n                                    </el-button-group>\n                                </template>\n                            </el-table-column>\n                        </el-table> ")])]), $setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, _hoisted_10)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+  , ["data"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-table\n                            :data=\"list\"\n                            :default-sort=\"{ prop: 'department_id', order: 'ascending' }\"\n                            style=\"width: 100%\">\n\n                            <el-table-column type=\"index\" :index=\"indexMethod\"/>\n                            <el-table-column sortable label=\"Nama\" prop=\"name\" />\n                            <el-table-column sortable label=\"Kode\" prop=\"code\" width=\"100\"/>\n                            <el-table-column sortable label=\"Kepala\" prop=\"head.name\" />\n                            <el-table-column sortable label=\"Status\" prop=\"status_id\" width=\"100\">\n                                <template #default=\"scope\">\n                                    <span class=\"badge badge-primary\" v-if=\"scope.row.status_id == 'DEP101'\">Aktif</span>\n                                    <span class=\"badge badge-danger\" v-if=\"scope.row.status_id == 'DEP001'\">Tidak Aktif</span>\n                                </template>\n                            </el-table-column>\n                            <el-table-column align=\"right\" width=\"200\">\n                                <template #header>\n                                    <el-input v-model=\"search\" size=\"small\" placeholder=\"Type to search\" />\n                                </template>\n                                <template #default=\"scope\">\n                                    <el-button-group :loading=\"loading\">\n                                        <el-button type=\"secondary\" size=\"small\" icon=\"el-icon-user\"></el-button>\n                                        <el-button type=\"warning\" size=\"small\" icon=\"el-icon-edit text-white\" @click=\"perfomEdit(scope.row)\"></el-button>\n                                        <el-button type=\"danger\" size=\"small\" icon=\"el-icon-delete text-white\" @click=\"perfomDelete(scope.row.user_id)\"></el-button>\n                                    </el-button-group>\n                                </template>\n                            </el-table-column>\n                        </el-table> ")])]), $setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_7)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Modal"], {
     ref: "myModal",
@@ -1020,6 +1004,46 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["model", "rules"])]);
 }
+
+/***/ }),
+
+/***/ "./resources/ts/src/core/helpers/breadcrumb.ts":
+/*!*****************************************************!*\
+  !*** ./resources/ts/src/core/helpers/breadcrumb.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setCurrentPageBreadcrumbs": () => (/* binding */ setCurrentPageBreadcrumbs),
+/* harmony export */   "setCurrentPageTitle": () => (/* binding */ setCurrentPageTitle)
+/* harmony export */ });
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./resources/ts/src/store/index.ts");
+/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
+
+
+/**
+ * Sets current page breadcrumbs
+ * @param {string} pageTitle Current page title
+ * @param {Array<string>} breadcrumbs Current page breadcrumbs
+ */
+
+var setCurrentPageBreadcrumbs = function setCurrentPageBreadcrumbs(pageTitle, breadcrumbs) {
+  _store__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Actions.SET_BREADCRUMB_ACTION, {
+    title: pageTitle,
+    pageBreadcrumbPath: breadcrumbs
+  });
+};
+/**
+ * Sets current page breadcrumbs
+ * @param {string} title Current page title name
+ */
+
+var setCurrentPageTitle = function setCurrentPageTitle(title) {
+  _store__WEBPACK_IMPORTED_MODULE_0__["default"].dispatch(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Actions.SET_BREADCRUMB_ACTION, {
+    title: title
+  });
+};
 
 /***/ }),
 

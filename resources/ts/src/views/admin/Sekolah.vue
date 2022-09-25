@@ -10,7 +10,7 @@
                         </router-link>
                     </div>
                     <div class="card-toolbar">
-                        <el-input v-model="search" size="small" placeholder="Type to search" />
+                        <!-- <el-input v-model="search" size="small" placeholder="Type to search" /> -->
                     </div>
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
@@ -103,7 +103,7 @@
     const total = ref(0);
 
     onMounted(() => {
-        setCurrentPageBreadcrumbs("Data Posisi", ["Posisi"]);
+        setCurrentPageBreadcrumbs("Data Sekolah", ["Sekolah"]);
 
         token = store.getters.getToken
         personId.value = store.getters.getUser.person_id
@@ -175,8 +175,8 @@
     }
 
     const performEdit = (payload) => {
-        console.log(payload)
-        router.push({name: 'admin-posisi-form', params: {data: payload}})
+        var data = JSON.stringify({...payload})
+        router.push({name: 'admin-sekolah-form', params: {data: data}})
     }
 
     const statusChange = async (payload) => {

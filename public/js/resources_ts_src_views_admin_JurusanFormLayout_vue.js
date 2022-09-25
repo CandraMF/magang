@@ -42,11 +42,11 @@ __webpack_require__.r(__webpack_exports__);
     var personId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
     var formData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Posisi');
+    var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Jurusan');
     var myModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var myForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Posisi", "Form"]);
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Jurusan", "Form"]);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
@@ -64,10 +64,16 @@ __webpack_require__.r(__webpack_exports__);
 
     var handleFinishInit = function handleFinishInit(payload) {
       loading.value = false;
+      var data = JSON.parse(props.data);
 
       if (props.data) {
-        myForm.value.initData(props.data);
+        modalTitle.value = "Edit Jurusan";
+        myForm.value.initData(data);
+      } else {
+        modalTitle.value = "Tambah Jurusan";
       }
+
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Jurusan", "Form"]);
     };
 
     var __returned__ = {

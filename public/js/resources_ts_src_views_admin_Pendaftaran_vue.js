@@ -454,11 +454,11 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var performEdit = function performEdit(payload) {
-      console.log(payload);
+      var data = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, payload));
       _router__WEBPACK_IMPORTED_MODULE_3__["default"].push({
         name: 'admin-posisi-form',
         params: {
-          data: payload
+          data: data
         }
       });
     };
@@ -638,7 +638,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'UserForm',
-  emits: ['success'],
+  emits: ['success', 'finishInit'],
   setup: function setup(__props, _a) {
     var _this = this;
 
@@ -705,7 +705,7 @@ __webpack_require__.r(__webpack_exports__);
         message: "Mohon isi format email yang benar",
         trigger: ["blur", "change"]
       }],
-      role: [{
+      role_id: [{
         required: true,
         message: "Mohon pilih role",
         trigger: ["blur", "change"]
@@ -724,7 +724,8 @@ __webpack_require__.r(__webpack_exports__);
                     login: ruleForm.nik,
                     name: ruleForm.name,
                     email: ruleForm.email,
-                    mobile: ruleForm.nomorHP
+                    mobile: ruleForm.nomorHP,
+                    role_id: ruleForm.role_id
                   }, {
                     headers: {
                       'Authorization': 'Bearer ' + token
@@ -747,7 +748,8 @@ __webpack_require__.r(__webpack_exports__);
                     password: ruleForm.password,
                     name: ruleForm.name,
                     email: ruleForm.email,
-                    mobile: ruleForm.nomorHP
+                    mobile: ruleForm.nomorHP,
+                    role_id: ruleForm.role_id
                   }, {
                     headers: {
                       'Authorization': 'Bearer ' + token
@@ -803,6 +805,7 @@ __webpack_require__.r(__webpack_exports__);
                               'label': element.name
                             });
                           });
+                          emit('finishInit', response.data.message);
                         })];
 
                       case 1:
@@ -847,6 +850,7 @@ __webpack_require__.r(__webpack_exports__);
       ruleForm.name = data.name;
       ruleForm.email = data.email;
       ruleForm.nomorHP = data.mobile;
+      ruleForm.role_id = data.role_id;
     }
 
     expose({

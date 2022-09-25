@@ -50,7 +50,7 @@ __webpack_require__.r(__webpack_exports__);
     var pageSize = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(10);
     var total = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)("Data Posisi", ["Posisi"]);
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)("Data Jurusan", ["Jurusan"]);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
@@ -151,11 +151,11 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var performEdit = function performEdit(payload) {
-      console.log(payload);
+      var data = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, payload));
       _router__WEBPACK_IMPORTED_MODULE_3__["default"].push({
-        name: 'admin-posisi-form',
+        name: 'admin-jurusan-form',
         params: {
-          data: payload
+          data: data
         }
       });
     };

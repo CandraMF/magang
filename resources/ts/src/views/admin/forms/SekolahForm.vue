@@ -140,8 +140,6 @@
 
     function _initData(data){
 
-        console.log(data);
-
         ruleForm.school_id = data.school_id
         ruleForm.name = data.name
         ruleForm.status = data.status

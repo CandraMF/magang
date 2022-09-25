@@ -5,21 +5,25 @@
                 <!--begin::Body-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h3>User</h3>
+                        <router-link to="/admin/user/form" >
+                            <el-button :loading="loading" type="primary" icon="el-icon-plus text-white">Tambah User</el-button>
+                        </router-link>
                     </div>
                     <div class="card-toolbar">
-                        <el-button :loading="loading" type="primary" icon="el-icon-plus text-white" @click="showModal()">Tambah User</el-button>
+                        <el-input v-model="search" size="small" placeholder="Type to search" />
                     </div>
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
                     <div>
                         <el-table
+                            ref="myTable"
                             :data="list"
                             :default-sort="{ prop: 'user_id', order: 'ascending' }"
                             style="width: 100%">
 
                             <el-table-column type="index" :index="indexMethod"/>
                             <el-table-column sortable label="Username" prop="login" />
+                            <el-table-column sortable label="Nama" prop="name" />
                             <el-table-column sortable label="Role" prop="role_id" width="0">
                                 <template #default="scope">
                                     <span class="badge badge-primary" v-if="scope.row.role_id == 'ROL001'">Peserta</span>
@@ -28,17 +32,28 @@
                                 </template>
                             </el-table-column>
                             <el-table-column sortable label="Email" prop="email" />
-                            <el-table-column sortable label="Nama" prop="name" />
                             <el-table-column label="No. Ponsel" prop="mobile" />
+                            <el-table-column sortable label="Status" prop="status_id" width="0">
+                                <template #default="scope">
+                                    <li class="d-flex align-items-center py-2" v-if="scope.row.status_id == 'USR001'">
+                                        <span class="bullet bg-warning me-3"></span> Pending
+                                    </li>
+                                    <li class="d-flex align-items-center py-2" v-if="scope.row.status_id == 'USR101'">
+                                        <span class="bullet bg-success me-3"></span> Aktif
+                                    </li>
+                                    <li class="d-flex align-items-center py-2" v-if="scope.row.status_id == 'USR002'">
+                                        <span class="bullet bg-danger me-3"></span> Non Aktif
+                                    </li>
+                                </template>
+                            </el-table-column>
                             <el-table-column align="right">
                                 <template #header>
-                                    <el-input v-model="search" size="small" placeholder="Type to search" />
+                                    <!-- <el-input v-model="search" size="small" placeholder="Type to search" /> -->
                                 </template>
                                 <template #default="scope">
                                     <el-button-group :loading="loading">
-                                        <el-button type="secondary" size="small" icon="el-icon-user"></el-button>
-                                        <el-button type="warning" size="small" icon="el-icon-edit text-white" @click="perfomEdit(scope.row)"></el-button>
-                                        <el-button type="danger" size="small" icon="el-icon-delete text-white" @click="perfomDelete(scope.row.user_id)"></el-button>
+                                        <el-button type="warning" size="small" icon="el-icon-edit text-white" @click="performEdit(scope.row)"></el-button>
+                                        <el-button type="danger" size="small" icon="el-icon-delete text-white" @click="performDelete(scope.row.user_id)"></el-button>
                                     </el-button-group>
                                 </template>
                             </el-table-column>
@@ -66,13 +81,13 @@
             <!--end::Body-->
         </div>
 
-        <Modal ref="myModal" size="lg" :title="modalTitle" @hide="handleHide">
+        <!-- <Modal ref="myModal" size="sm" :title="modalTitle" @hide="handleHide">
             <template #body>
-                <UserForm ref="myForm" @success="handleSuccess" :data="formData"/>
+                <PosisiForm ref="myForm" @success="handleSuccess" :data="formData"/>
             </template>
             <template #footer>
             </template>
-        </Modal>
+        </Modal> -->
     </div>
 </template>
 
@@ -82,7 +97,10 @@
     import { useStore } from 'vuex';
 
     import Modal from '@/components/Modal.vue';
-    import UserForm from './forms/UserForm.vue';
+    import PosisiForm from './forms/PosisiForm.vue';
+
+    import { setCurrentPageBreadcrumbs } from '@/core/helpers/breadcrumb';
+    import router from '@/router';
 
     const app = getCurrentInstance()
     const store = useStore();
@@ -96,10 +114,12 @@
     const loading = ref(true)
     const formData = ref<any>(null);
 
-    const modalTitle = ref('Tambah User');
+    const modalTitle = ref('Tambah Posisi');
     let myModal = ref(null);
 
     let myForm = ref(null);
+
+    let myTable = ref(null);
 
     const disabled = ref(false);
     const currentPage = ref(1);
@@ -107,18 +127,24 @@
     const total = ref(0);
 
     onMounted(() => {
+        setCurrentPageBreadcrumbs("Data User", ["User"]);
+
         token = store.getters.getToken
         personId.value = store.getters.getUser.person_id
 
         globalProperties = app.appContext.config.globalProperties
 
-        getUser(pageSize.value, currentPage.value)
+        getData(pageSize.value, currentPage.value)
+
     })
 
     const indexMethod = (index: number) => {
         return index++ + 1
     }
 
+    const beforeChange = (payload) => {
+        loading.value = true
+    }
 
     const showModal = () => {
         formData.value = null
@@ -127,7 +153,7 @@
 
     const handleHide = (payload) => {
         myForm.value.reset();
-        getUser(pageSize.value, currentPage.value)
+        getData(pageSize.value, currentPage.value)
     }
 
     const handleSuccess = (payload) => {
@@ -135,14 +161,14 @@
     }
 
     const handleSizeChange = (val) => {
-        getUser(val, currentPage.value)
+        getData(val, currentPage.value)
     }
 
     const handleCurrentChange = (val) => {
-        getUser(pageSize.value, val)
+        getData(pageSize.value, val)
     }
 
-    const perfomDelete = (id) => {
+    const performDelete = (id) => {
         globalProperties.$confirm('Aksi ini akan menghapus data secara permanen. Lanjut?', 'Perhatian', {
             confirmButtonText: 'Ya',
             cancelButtonText: 'Batal',
@@ -158,7 +184,7 @@
                             type: 'success',
                             message: 'Berhasil Menghapus Data'
                         });
-                        getUser(pageSize.value, currentPage.value)
+                        getData(pageSize.value, currentPage.value)
                     } else {
                         globalProperties.$message({
                             type: 'error',
@@ -172,15 +198,39 @@
         });
     }
 
-    const perfomEdit = (payload) => {
-        myForm.value.reset();
-
-        myForm.value.initData(payload)
-
-        myModal.value.show();
+    const performEdit = (payload) => {
+        var data = JSON.stringify({...payload})
+        router.push({name: 'admin-user-form', params: {data: data}})
     }
 
-    const getUser = async (perPage: Number | null, page: Number | null) => {
+    const statusChange = async (payload) => {
+        loading.value = true
+        await axios.get('/sanctum/csrf-cookie').then(async (response) => {
+                await axios.put('/api/user/changeStatus/'+payload.user_id, {
+
+                },{
+                    headers: {'Authorization': 'Bearer '+ token},
+                })
+                .then((response)=> {
+                    if (response.data.success) {
+                        globalProperties.$message({
+                            type: 'success',
+                            message: 'Berhasil Mengubah Data Data'
+                        });
+                        getData(pageSize.value, currentPage.value)
+                        loading.value = false
+                    } else {
+                        globalProperties.$message({
+                            type: 'error',
+                            message: 'Terjadi Kesalahan Mohon Ulangi Lagi Nanti'
+                        });
+                        loading.value = false
+                    }
+                })
+            })
+    }
+
+    const getData = async (perPage: Number | null, page: Number | null) => {
         loading.value = true;
 
         await axios.get('/sanctum/csrf-cookie').then(async (response) => {
@@ -196,6 +246,7 @@
                     list.value.push(element)
                 })
 
+                myTable.value.doLayout();
                 loading.value = false;
             })
         })

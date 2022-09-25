@@ -61,13 +61,13 @@
     const loading = ref(true)
     const formData = ref<any>(null);
 
-    const modalTitle = ref('Tambah Posisi');
+    const modalTitle = ref('Tambah Sekolah');
     let myModal = ref(null);
 
     let myForm = ref(null);
 
     onMounted(() => {
-        setCurrentPageBreadcrumbs(modalTitle.value, ["Posisi", "Form"]);
+        setCurrentPageBreadcrumbs(modalTitle.value, ["Sekolah", "Form"]);
 
         token = store.getters.getToken
         personId.value = store.getters.getUser.person_id
@@ -83,9 +83,18 @@
 
     const handleFinishInit = (payload) => {
         loading.value = false
+        var data : Object = JSON.parse(props.data)
+
         if(props.data) {
-            myForm.value.initData(props.data)
+            modalTitle.value = "Edit Sekolah"
+            myForm.value.initData(data)
+        } else {
+            modalTitle.value = "Tambah Sekolah"
+
         }
+
+        setCurrentPageBreadcrumbs(modalTitle.value, ["Sekolah", "Form"]);
+
     }
 
 </script>

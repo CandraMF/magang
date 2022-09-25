@@ -50,7 +50,6 @@ __webpack_require__.r(__webpack_exports__);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
-      console.log(props.data);
     });
 
     var handleSuccess = function handleSuccess(payload) {
@@ -64,10 +63,16 @@ __webpack_require__.r(__webpack_exports__);
 
     var handleFinishInit = function handleFinishInit(payload) {
       loading.value = false;
+      var data = JSON.parse(props.data);
 
       if (props.data) {
-        myForm.value.initData(props.data);
+        modalTitle.value = "Edit Posisi";
+        myForm.value.initData(data);
+      } else {
+        modalTitle.value = "Tambah Posisi";
       }
+
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Posisi", "Form"]);
     };
 
     var __returned__ = {
@@ -133,8 +138,8 @@ __webpack_require__.r(__webpack_exports__);
     var ruleForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       'position_id': null,
       'name': '',
-      'status': 'Aktif',
-      'status_id': 'POS101'
+      'status': '',
+      'status_id': ''
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return ruleForm.status;
@@ -143,6 +148,15 @@ __webpack_require__.r(__webpack_exports__);
         ruleForm.status_id = 'POS101';
       } else {
         ruleForm.status_id = 'POS001';
+      }
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
+      return ruleForm.status_id;
+    }, function (newValue) {
+      if (newValue == 'POS001') {
+        ruleForm.status = 'Tidak Aktif';
+      } else {
+        ruleForm.status = 'Aktif';
       }
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
@@ -289,10 +303,8 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     function _initData(data) {
-      console.log(data);
       ruleForm.position_id = data.position_id;
       ruleForm.name = data.name;
-      ruleForm.status = data.status;
       ruleForm.status_id = data.status_id;
     }
 
@@ -393,7 +405,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "myForm",
     onFinishInit: $setup.handleFinishInit,
     onSuccess: $setup.handleSuccess,
-    data: $setup.formData
+    data: $setup.props.data
   }, null, 8
   /* PROPS */
   , ["data"])])]), $setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_7)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2

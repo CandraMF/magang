@@ -196,8 +196,8 @@
     }
 
     const performEdit = (payload) => {
-        console.log(payload)
-        router.push({name: 'admin-posisi-form', params: {data: payload}})
+        var data = JSON.stringify({...payload})
+        router.push({name: 'admin-posisi-form', params: {data: data}})
     }
 
     const statusChange = async (payload) => {

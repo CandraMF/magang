@@ -151,11 +151,11 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var performEdit = function performEdit(payload) {
-      console.log(payload);
+      var data = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, payload));
       _router__WEBPACK_IMPORTED_MODULE_3__["default"].push({
         name: 'admin-posisi-form',
         params: {
-          data: payload
+          data: data
         }
       });
     };

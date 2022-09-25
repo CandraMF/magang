@@ -136,11 +136,6 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import("@/views/admin/Dashboard.vue"),
         },
         {
-            path: "/admin/user",
-            name: "admin-user",
-            component: () => import("@/views/admin/User.vue"),
-        },
-        {
             path: "/admin/departemen",
             name: "admin-departemen",
             component: () => import("@/views/admin/Departemen.vue"),
@@ -165,7 +160,6 @@ const routes: Array<RouteRecordRaw> = [
             path: "/admin/sekolah",
             name: "admin-sekolah",
             component: () => import("@/views/admin/Sekolah.vue"),
-            props: true,
         },
         {
             path: "/admin/sekolah/form",
@@ -177,12 +171,33 @@ const routes: Array<RouteRecordRaw> = [
             path: "/admin/jurusan",
             name: "admin-jurusan",
             component: () => import("@/views/admin/Jurusan.vue"),
-            props: true,
         },
         {
             path: "/admin/jurusan/form",
             name: "admin-jurusan-form",
             component: () => import("@/views/admin/JurusanFormLayout.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/daerah",
+            name: "admin-daerah",
+            component: () => import("@/views/admin/Daerah.vue"),
+        },
+        {
+            path: "/admin/daerah/form",
+            name: "admin-daerah-form",
+            component: () => import("@/views/admin/DaerahFormLayout.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/user",
+            name: "admin-user",
+            component: () => import("@/views/admin/User.vue"),
+        },
+        {
+            path: "/admin/user/form",
+            name: "admin-user-form",
+            component: () => import("@/views/admin/UserFormLayout.vue"),
             props: true,
         },
       ] : [

@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
                     <div>
-                        <PosisiForm ref="myForm" @finish-init="handleFinishInit" @success="handleSuccess" :data="formData"/>
+                        <PosisiForm ref="myForm" @finish-init="handleFinishInit" @success="handleSuccess" :data="props.data"/>
                     </div>
                 </div>
 
@@ -73,8 +73,6 @@
         personId.value = store.getters.getUser.person_id
 
         globalProperties = app.appContext.config.globalProperties
-
-        console.log(props.data)
     })
 
     const handleSuccess = (payload) => {
@@ -83,9 +81,17 @@
 
     const handleFinishInit = (payload) => {
         loading.value = false
+        var data : Object = JSON.parse(props.data)
+
         if(props.data) {
-            myForm.value.initData(props.data)
+            modalTitle.value = "Edit Posisi"
+            myForm.value.initData(data)
+        } else {
+            modalTitle.value = "Tambah Posisi"
+
         }
+
+        setCurrentPageBreadcrumbs(modalTitle.value, ["Posisi", "Form"]);
     }
 
 </script>

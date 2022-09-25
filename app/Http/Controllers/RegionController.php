@@ -14,7 +14,22 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        $region = \App\Models\Region::with(['child' => function ($q) {
+            $q->with(['child' => function ($q) {
+                $q->with(['child']);
+            }]);
+        }])->has('child')->whereDoesntHave('head')->orderBy('region_id')->get();
+
+        $success = true;
+        $message = "Berhasil";
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'region' => $region,
+        ];
+
+        return response()->json($response);
     }
 
     /**

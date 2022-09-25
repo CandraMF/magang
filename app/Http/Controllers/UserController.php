@@ -146,6 +146,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->mobile = $request->mobile;
+            $user->role_id = $request->role_id;
             $user->create_date = NOW();
             $user->save();
 
@@ -184,6 +185,7 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'mobile' => $request->mobile,
+                'role_id' => $request->role_id,
             ]);
 
             $errorCode = null;

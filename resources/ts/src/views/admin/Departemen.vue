@@ -5,10 +5,9 @@
                 <!--begin::Body-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h3>Departemen</h3>
+                        <!-- <el-button :loading="loading" type="primary" icon="el-icon-plus text-white" @click="showModal()">Tambah Departement</el-button> -->
                     </div>
                     <div class="card-toolbar">
-                        <el-button :loading="loading" type="primary" icon="el-icon-plus text-white" @click="showModal()">Tambah Departement</el-button>
                     </div>
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
@@ -85,6 +84,7 @@
 
     import Modal from '@/components/Modal.vue';
     import UserForm from './forms/UserForm.vue';
+    import { setCurrentPageBreadcrumbs } from '@/core/helpers/breadcrumb';
 
     const app = getCurrentInstance()
     const store = useStore();
@@ -111,6 +111,8 @@
     const disabled = ref(false);
 
     onMounted(() => {
+        setCurrentPageBreadcrumbs("Data Unit Kerja", ["Unit Kerja"]);
+
         token = store.getters.getToken
         personId.value = store.getters.getUser.person_id
 

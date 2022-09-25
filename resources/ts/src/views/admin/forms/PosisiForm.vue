@@ -53,8 +53,8 @@
     const ruleForm = reactive({
         'position_id' : null,
         'name': '',
-        'status': 'Aktif',
-        'status_id': 'POS101',
+        'status': '',
+        'status_id': '',
     })
 
     const emit = defineEmits(['success', 'finishInit']);
@@ -64,6 +64,14 @@
             ruleForm.status_id = 'POS101'
         } else {
             ruleForm.status_id = 'POS001'
+        }
+    })
+
+    watch(() => ruleForm.status_id, (newValue: String) => {
+        if (newValue == 'POS001') {
+            ruleForm.status = 'Tidak Aktif'
+        } else {
+            ruleForm.status = 'Aktif'
         }
     })
 
@@ -160,12 +168,8 @@
     }
 
     function _initData(data){
-
-        console.log(data);
-
         ruleForm.position_id = data.position_id
         ruleForm.name = data.name
-        ruleForm.status = data.status
         ruleForm.status_id = data.status_id
     }
 

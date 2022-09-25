@@ -50,7 +50,7 @@ __webpack_require__.r(__webpack_exports__);
     var pageSize = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(10);
     var total = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)("Data Posisi", ["Posisi"]);
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)("Data Sekolah", ["Sekolah"]);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
@@ -151,11 +151,11 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var performEdit = function performEdit(payload) {
-      console.log(payload);
+      var data = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, payload));
       _router__WEBPACK_IMPORTED_MODULE_3__["default"].push({
-        name: 'admin-posisi-form',
+        name: 'admin-sekolah-form',
         params: {
-          data: payload
+          data: data
         }
       });
     };
@@ -337,9 +337,12 @@ var _hoisted_3 = {
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Tambah Sekolah/Universitas");
 
-var _hoisted_5 = {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-toolbar"
-};
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-input v-model=\"search\" size=\"small\" placeholder=\"Type to search\" /> ")], -1
+/* HOISTED */
+);
+
 var _hoisted_6 = {
   "class": "card-body pt-2 px-6 overlay-wrapper"
 };
@@ -362,8 +365,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-
-  var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_table_column = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-table-column");
 
@@ -399,16 +400,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-    modelValue: $setup.search,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $setup.search = $event;
-    }),
-    size: "small",
-    placeholder: "Type to search"
-  }, null, 8
-  /* PROPS */
-  , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table, {
+  })]), _hoisted_5]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_table, {
     ref: "myTable",
     data: $setup.list,
     style: {
@@ -475,11 +467,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["data"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_pagination, {
     "class": "mt-5 d-flex justify-content-end",
     currentPage: $setup.currentPage,
-    "onUpdate:currentPage": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:currentPage": _cache[0] || (_cache[0] = function ($event) {
       return $setup.currentPage = $event;
     }),
     "page-size": $setup.pageSize,
-    "onUpdate:page-size": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:page-size": _cache[1] || (_cache[1] = function ($event) {
       return $setup.pageSize = $event;
     }),
     disabled: $setup.disabled,

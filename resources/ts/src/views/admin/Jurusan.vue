@@ -103,7 +103,7 @@
     const total = ref(0);
 
     onMounted(() => {
-        setCurrentPageBreadcrumbs("Data Posisi", ["Posisi"]);
+        setCurrentPageBreadcrumbs("Data Jurusan", ["Jurusan"]);
 
         token = store.getters.getToken
         personId.value = store.getters.getUser.person_id
@@ -175,8 +175,9 @@
     }
 
     const performEdit = (payload) => {
-        console.log(payload)
-        router.push({name: 'admin-posisi-form', params: {data: payload}})
+        var data = JSON.stringify({...payload})
+
+        router.push({name: 'admin-jurusan-form', params: {data: data}})
     }
 
     const statusChange = async (payload) => {
