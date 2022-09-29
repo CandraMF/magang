@@ -282,13 +282,15 @@ __webpack_require__.r(__webpack_exports__);
                             'Authorization': 'Bearer ' + token
                           }
                         }).then(function (response) {
-                          console.log(response);
-                          list.value = [];
-                          total.value = response.data.recruitment.total;
-                          response.data.recruitment.data.forEach(function (element) {
-                            list.value.push(element);
-                          });
-                          myTable.value.doLayout();
+                          if (response.data.success) {
+                            list.value = [];
+                            total.value = response.data.recruitment.total;
+                            response.data.recruitment.data.forEach(function (element) {
+                              list.value.push(element);
+                            });
+                            myTable.value.doLayout();
+                          }
+
                           loading.value = false;
                         })["finally"](function () {
                           loading.value = false;

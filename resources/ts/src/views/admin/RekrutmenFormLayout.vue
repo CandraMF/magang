@@ -5,7 +5,7 @@
                 <!--begin::Body-->
                 <div class="card-header">
                     <div class="card-title">
-                        <router-link to="/admin/rekruitmen" >
+                        <router-link to="/admin/rekrutmen" >
                             <el-button :loading="loading" type="primary" icon="el-icon-back text-white" circle></el-button>
                         </router-link>
                     </div>
@@ -61,13 +61,13 @@
     const loading = ref(true)
     const formData = ref<any>(null);
 
-    const modalTitle = ref('Tambah Rekruitmen');
+    const modalTitle = ref('Tambah Rekrutmen');
     let myModal = ref(null);
 
     let myForm = ref(null);
 
     onMounted(() => {
-        setCurrentPageBreadcrumbs(modalTitle.value, ["Rekruitmen", "Form"]);
+        setCurrentPageBreadcrumbs(modalTitle.value, ["Rekrutmen", "Form"]);
 
         token = store.getters.getToken
         personId.value = store.getters.getUser.person_id
@@ -76,7 +76,7 @@
     })
 
     const handleSuccess = (payload) => {
-        router.push({ name: 'admin-rekruitmen', query: { redirect: '/admin/rekruitmen' } });
+        router.push({ name: 'admin-rekrutmen', query: { redirect: '/admin/rekrutmen' } });
     }
 
     const handleFinishInit = (payload) => {
@@ -84,14 +84,14 @@
         var data : Object = JSON.parse(props.data)
 
         if(props.data) {
-            modalTitle.value = "Edit Rekruitmen"
+            modalTitle.value = "Edit Rekrutmen"
             myForm.value.initData(data)
         } else {
-            modalTitle.value = "Tambah Rekruitmen"
+            modalTitle.value = "Tambah Rekrutmen"
 
         }
 
-        setCurrentPageBreadcrumbs(modalTitle.value, ["Rekruitmen", "Form"]);
+        setCurrentPageBreadcrumbs(modalTitle.value, ["Rekrutmen", "Form"]);
     }
 
 </script>

@@ -42,11 +42,11 @@ __webpack_require__.r(__webpack_exports__);
     var personId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
     var formData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Rekruitmen');
+    var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Rekrutmen');
     var myModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var myForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Rekruitmen", "Form"]);
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Rekrutmen", "Form"]);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
@@ -54,9 +54,9 @@ __webpack_require__.r(__webpack_exports__);
 
     var handleSuccess = function handleSuccess(payload) {
       router.push({
-        name: 'admin-rekruitmen',
+        name: 'admin-rekrutmen',
         query: {
-          redirect: '/admin/rekruitmen'
+          redirect: '/admin/rekrutmen'
         }
       });
     };
@@ -66,13 +66,13 @@ __webpack_require__.r(__webpack_exports__);
       var data = JSON.parse(props.data);
 
       if (props.data) {
-        modalTitle.value = "Edit Rekruitmen";
+        modalTitle.value = "Edit Rekrutmen";
         myForm.value.initData(data);
       } else {
-        modalTitle.value = "Tambah Rekruitmen";
+        modalTitle.value = "Tambah Rekrutmen";
       }
 
-      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Rekruitmen", "Form"]);
+      (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_2__.setCurrentPageBreadcrumbs)(modalTitle.value, ["Rekrutmen", "Form"]);
     };
 
     var __returned__ = {
@@ -556,7 +556,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'overlay overlay-block rounded': $setup.loading
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/admin/rekruitmen"
+    to: "/admin/rekrutmen"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
