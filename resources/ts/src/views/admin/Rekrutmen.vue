@@ -290,17 +290,18 @@ import { stat } from 'fs';
                 headers: {'Authorization': 'Bearer '+ token},
             })
             .then((response)=> {
-                console.log(response)
+                if (response.data.success) {
+                    list.value = [];
 
-                list.value = [];
+                    total.value = response.data.recruitment.total
 
-                total.value = response.data.recruitment.total
+                    response.data.recruitment.data.forEach(element => {
+                        list.value.push(element)
+                    })
 
-                response.data.recruitment.data.forEach(element => {
-                    list.value.push(element)
-                })
+                    myTable.value.doLayout();
+                }
 
-                myTable.value.doLayout();
 
                 loading.value = false;
             })

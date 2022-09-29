@@ -290,6 +290,8 @@ __webpack_require__.r(__webpack_exports__);
                           });
                           myTable.value.doLayout();
                           loading.value = false;
+                        })["finally"](function () {
+                          loading.value = false;
                         })];
 
                       case 1:
