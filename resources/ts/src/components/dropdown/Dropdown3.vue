@@ -131,6 +131,10 @@ import { defineComponent, onMounted } from "vue";
 export default defineComponent({
   name: "dropdown-3",
   components: {},
+  props: {
+    id: String,
+    status: String
+  },
   setup() {
     onMounted(() => {
       // Lazy Initialization

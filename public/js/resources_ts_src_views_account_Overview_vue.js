@@ -37,6 +37,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
   name: "dropdown-3",
   components: {},
+  props: {
+    id: String,
+    status: String
+  },
   setup: function setup() {
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
       // Lazy Initialization

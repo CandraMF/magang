@@ -52,10 +52,12 @@
 
                                                     <div class="mt-3">
                                                         <span class="badge badge-dark me-3">{{ scope.row.user.name }}</span>
-                                                        <span class="badge badge-light-primary me-3">open : {{ scope.row.open_date }}</span>
                                                         <!-- <span class="badge badge-light-danger">{{ scope.row.close_date }}</span> -->
                                                     </div>
-
+                                                    <div class="mt-3">
+                                                        <span class="badge badge-light-primary me-3">open : {{ moment(scope.row.open_date).format('DD/MM/YYYY') }}</span>
+                                                        <span class="badge badge-light-danger me-3">close : {{ moment(scope.row.close_date).format('DD/MM/YYYY') }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="card-toolbar d-flex justify-content-end">
@@ -71,16 +73,19 @@
                                                         />
                                                     </span>
                                                 </button>
-                                                <Dropdown3></Dropdown3>
+                                                <DropdownRecruitment @perform-delete="performDelete" @perform-edit="performEdit" :id="scope.row.recruitment_id" :status="scope.row.status_id" :data="scope.row"></DropdownRecruitment>
 
-                                                <select
-                                                    class="form-select form-select-solid bg-white form-select-sm"
-                                                    aria-label="Select example" @change="statusChange(scope.row.recruitment_id)">
-                                                    <option :selected="scope.row.status_id == 'REC001'" value="REC001">Konsep</option>
-                                                    <option :selected="scope.row.status_id == 'REC101'" value="REC101">Rilis</option>
-                                                    <option :selected="scope.row.status_id == 'REC201'" value="REC201">Hold</option>
-                                                    <option :selected="scope.row.status_id == 'REC102'" value="REC102">Selesai</option>
-                                                </select>
+                                                <div class="w-100 d-flex justify-content-end">
+
+                                                    <select
+                                                        class="form-select form-select-solid bg-white form-select-sm w-auto"
+                                                        aria-label="Select example" @change="statusChange(scope.row.recruitment_id)">
+                                                        <option :selected="scope.row.status_id == 'REC001'" value="REC001">Konsep</option>
+                                                        <option :selected="scope.row.status_id == 'REC101'" value="REC101">Rilis</option>
+                                                        <option :selected="scope.row.status_id == 'REC201'" value="REC201">Hold</option>
+                                                        <option :selected="scope.row.status_id == 'REC102'" value="REC102">Selesai</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -134,6 +139,8 @@
 
 <script setup lang="ts">
     import axios from 'axios';
+    import moment from 'moment';
+
     import { reactive, onMounted, ref, getCurrentInstance } from 'vue';
     import { useStore } from 'vuex';
 
@@ -142,8 +149,8 @@
 
     import { setCurrentPageBreadcrumbs } from '@/core/helpers/breadcrumb';
     import router from '@/router';
-    import Dropdown3 from '@/components/dropdown/Dropdown3.vue';
-import { stat } from 'fs';
+    import DropdownRecruitment from '@/components/DropdownRecruitment.vue';
+    import { stat } from 'fs';
 
     const app = getCurrentInstance()
     const store = useStore();
