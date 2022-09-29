@@ -81,14 +81,14 @@
 
     const handleFinishInit = (payload) => {
         loading.value = false
-        var data : Object = JSON.parse(props.data)
 
         if(props.data) {
+            var data : Object = JSON.parse(props.data)
+
             modalTitle.value = "Edit Rekrutmen"
             myForm.value.initData(data)
         } else {
             modalTitle.value = "Tambah Rekrutmen"
-
         }
 
         setCurrentPageBreadcrumbs(modalTitle.value, ["Rekrutmen", "Form"]);

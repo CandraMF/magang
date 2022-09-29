@@ -11,14 +11,19 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $hierarchy = $request->query('hierarchy');
 
-        $department = \App\Models\Department::with(['child' => function ($q) {
-            $q->with(['child' => function ($q) {
-                $q->with(['child']);
-            }]);
-        }])->has('child')->whereDoesntHave('head')->orderBy('head_id')->get();
+        if($hierarchy) {
+            $department = \App\Models\Department::with(['child' => function ($q) {
+                $q->with(['child' => function ($q) {
+                    $q->with(['child']);
+                }]);
+            }])->has('child')->whereDoesntHave('head')->orderBy('head_id')->get();
+        } else {
+            $department = \App\Models\Department::whereStatusId('DEP101')->wherePosition('Divisi')->get();
+        }
 
         $success = true;
         $message = "Berhasil";

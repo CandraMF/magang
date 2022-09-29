@@ -179,7 +179,7 @@
         loading.value = true;
 
         await axios.get('/sanctum/csrf-cookie').then(async (response) => {
-            await axios.get('/api/department', {
+            await axios.get('/api/department?hierarchy=true', {
                 headers: {'Authorization': 'Bearer '+ token},
             })
             .then((response)=> {

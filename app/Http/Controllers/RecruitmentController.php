@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\Position;
 use App\Models\Recruitment;
 use Illuminate\Http\Request;
 
@@ -43,7 +45,40 @@ class RecruitmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+
+            $recruitment = new Recruitment();
+            $recruitment->open_date = $request->formData['ruleForm']['open_date'];
+            $recruitment->close_date = $request->formData['ruleForm']['close_date'];
+            $recruitment->position_id = $request->formData['ruleForm']['position_id'];
+            $recruitment->position = $request->formData['ruleForm']['position'];
+            $recruitment->department_id = $request->formData['ruleForm']['department_id'];
+            $recruitment->department = $request->formData['ruleForm']['department'];
+            $recruitment->letter = $request->formData['ruleForm']['letter'];
+            $recruitment->letter_date = $request->formData['ruleForm']['letter_date'];
+            $recruitment->status_id = $request->formData['ruleForm']['status_id'];
+            $recruitment->user_id = $request->formData['ruleForm']['user_id'];
+            $recruitment->create_date = NOW();
+
+            $recruitment->save();
+
+            $success = true;
+            $message = 'Berhasil Membuat Rekrutmen';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $message = 'Gagal Membuat Rekrutmen';
+
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -66,7 +101,38 @@ class RecruitmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $recruitment = Recruitment::find($id);
+
+            $recruitment->update([
+                'open_date' => $request->formData['ruleForm']['open_date'],
+                'close_date' => $request->formData['ruleForm']['close_date'],
+                'position_id' => $request->formData['ruleForm']['position_id'],
+                'position' => $request->formData['ruleForm']['position'],
+                'department_id' => $request->formData['ruleForm']['department_id'],
+                'department' => $request->formData['ruleForm']['department'],
+                'letter' => $request->formData['ruleForm']['letter'],
+                'letter_date' => $request->formData['ruleForm']['letter_date'],
+                'status_id' => $request->formData['ruleForm']['status_id'],
+                'update_date' => NOW(),
+            ]);
+
+            $errorCode = null;
+            $success = true;
+            $message = 'Berhasil Mengubah Rekrutmen';
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $errorCode = $ex->errorInfo[1];
+            $success = false;
+            $message = 'Gagal Mengubah Rekrutmen';
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+        ];
+
+        return response()->json($response);
     }
 
     /**

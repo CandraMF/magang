@@ -232,7 +232,7 @@ __webpack_require__.r(__webpack_exports__);
                       case 0:
                         return [4
                         /*yield*/
-                        , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/department', {
+                        , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/department?hierarchy=true', {
                           headers: {
                             'Authorization': 'Bearer ' + token
                           }

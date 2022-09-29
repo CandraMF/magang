@@ -16,7 +16,12 @@ class PositionController extends Controller
     {
         $pageSize = $request->query('perPage');
 
-        $position = \App\Models\Position::orderBy('position_id', 'desc')->paginate($pageSize);
+        if($pageSize) {
+            $position = \App\Models\Position::orderBy('position_id', 'desc')->paginate($pageSize);
+        } else {
+            $position = \App\Models\Position::whereStatusId('POS101')->get();
+        }
+
 
         $success = true;
         $message = "Berhasil";
