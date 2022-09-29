@@ -304,6 +304,9 @@ import { stat } from 'fs';
 
                 loading.value = false;
             })
+            .finally(() => {
+                loading.value = false;
+            })
         })
     }
 
