@@ -86,6 +86,7 @@ class StatusController extends Controller
 
     public function getByType($type)
     {
+
         $data = \App\Models\Status::where('type', 'like', '%'.$type.'%')
             ->whereIsActive(1)
             ->get();

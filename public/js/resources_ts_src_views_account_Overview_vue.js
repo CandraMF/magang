@@ -30,11 +30,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _assets_ts_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/assets/ts/components */ "./resources/ts/src/assets/ts/components/index.ts");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_1__.defineComponent)({
   name: "dropdown-3",
-  components: {}
+  components: {},
+  setup: function setup() {
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
+      // Lazy Initialization
+      _assets_ts_components__WEBPACK_IMPORTED_MODULE_0__.MenuComponent.reinitialization();
+    });
+  }
 }));
 
 /***/ }),

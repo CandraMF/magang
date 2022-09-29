@@ -125,10 +125,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { MenuComponent } from "@/assets/ts/components";
+import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   name: "dropdown-3",
   components: {},
+  setup() {
+    onMounted(() => {
+      // Lazy Initialization
+      MenuComponent.reinitialization();
+    });
+  }
 });
 </script>

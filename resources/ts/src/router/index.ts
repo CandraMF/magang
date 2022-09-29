@@ -200,6 +200,28 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import("@/views/admin/UserFormLayout.vue"),
             props: true,
         },
+        {
+            path: "/admin/peserta",
+            name: "admin-peserta",
+            component: () => import("@/views/admin/Peserta.vue"),
+        },
+        {
+            path: "/admin/peserta/form",
+            name: "admin-peserta-form",
+            component: () => import("@/views/admin/PesertaFormLayout.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/rekrutmen",
+            name: "admin-rekrutmen",
+            component: () => import("@/views/admin/Rekrutmen.vue"),
+        },
+        {
+            path: "/admin/rekrutmen/form",
+            name: "admin-rekrutmen-form",
+            component: () => import("@/views/admin/RekrutmenFormLayout.vue"),
+            props: true,
+        },
       ] : [
 
       ],

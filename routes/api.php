@@ -20,7 +20,7 @@ Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::resource('person', App\Http\Controllers\PersonController::class);
+    Route::apiResource('person', App\Http\Controllers\PersonController::class);
     Route::resource('status', App\Http\Controllers\StatusController::class);
     Route::apiResource('school', App\Http\Controllers\SchoolController::class);
     Route::apiResource('user', App\Http\Controllers\UserController::class);
@@ -31,12 +31,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('work', App\Http\Controllers\WorkController::class);
     Route::apiResource('organization', App\Http\Controllers\OrganizationController::class);
     Route::apiResource('position', App\Http\Controllers\PositionController::class);
+    Route::apiResource('recruitment', App\Http\Controllers\RecruitmentController::class);
 
     Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
     Route::get('education/showByPerson/{personId}', [App\Http\Controllers\EducationController::class, 'showByPerson'])->name('education.showByPerson');
     Route::get('family/showByPerson/{personId}', [App\Http\Controllers\FamilyController::class, 'showByPerson'])->name('family.showByPerson');
 
     Route::put('position/changeStatus/{id}', [App\Http\Controllers\PositionController::class, 'changeStatus'])->name('position.changeStatus');
+    Route::put('recruitment/changeStatus/{id}', [App\Http\Controllers\RecruitmentController::class, 'changeStatus'])->name('recruitment.changeStatus');
 
     Route::get('region/search/{payload}', [App\Http\Controllers\RegionController::class, 'search'])->name('region.search');
     Route::get('school/search/{payload}', [App\Http\Controllers\SchoolController::class, 'search'])->name('school.search');

@@ -2626,11 +2626,11 @@ var DocMenuConfig = [{
     svgIcon: "/media/icons/duotune/communication/com004.svg"
   }, {
     heading: "Semua Rekrutmen",
-    route: "/admin/pendaftaran",
+    route: "/admin/rekrutmen",
     svgIcon: "/media/icons/duotune/communication/com004.svg"
   }, {
     heading: "Peserta",
-    route: "/admin/pendaftaran",
+    route: "/admin/peserta",
     svgIcon: "/media/icons/duotune/communication/com004.svg"
   }]
 }, {
