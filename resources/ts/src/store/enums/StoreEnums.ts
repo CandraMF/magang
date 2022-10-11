@@ -27,6 +27,8 @@ enum Mutations {
   SET_SUBJECT = "setSubject",
   SET_REMAINING = "setRemaining",
   SET_CODE = "setCode",
+  SET_RECRUITMENT = "setRecruitment",
+  SET_RECRUITMENT_SCHEDULE = "setRecruitmentSchedule",
 }
 
 export { Actions, Mutations };

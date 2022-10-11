@@ -31,7 +31,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   emits: {
     performEdit: function performEdit(payload) {},
-    performDelete: function performDelete(payload) {}
+    performDelete: function performDelete(payload) {},
+    performJadwal: function performJadwal(payload) {}
   }
 }));
 
@@ -48,16 +49,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/core/helpers/breadcrumb */ "./resources/ts/src/core/helpers/breadcrumb.ts");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/router */ "./resources/ts/src/router/index.ts");
 /* harmony import */ var _components_DropdownRecruitment_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/DropdownRecruitment.vue */ "./resources/ts/src/components/DropdownRecruitment.vue");
+/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
+
 
 
 
@@ -75,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _a.expose;
     expose();
     var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)();
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_6__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_7__.useStore)();
     var token = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var globalProperties;
     var list = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
@@ -83,7 +86,7 @@ __webpack_require__.r(__webpack_exports__);
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(true);
     var formData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var filter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('All');
+    var filter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('REC001');
     var modalTitle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('Tambah Rekrutmen');
     var myModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var myForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
@@ -98,6 +101,7 @@ __webpack_require__.r(__webpack_exports__);
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
       getData(pageSize.value, currentPage.value, "All");
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_6__.Mutations.SET_RECRUITMENT, {});
     });
 
     var indexMethod = function indexMethod(index) {
@@ -136,17 +140,17 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Batal',
         type: 'warning'
       }).then(function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(_this, void 0, void 0, function () {
           var _this = this;
 
-          return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+          return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_a) {
             switch (_a.label) {
               case 0:
                 return [4
                 /*yield*/
                 , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+                  return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(_this, void 0, void 0, function () {
+                    return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_a) {
                       switch (_a.label) {
                         case 0:
                           return [4
@@ -194,22 +198,26 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var performEdit = function performEdit(payload) {
-      var data = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_7__.__assign)({}, payload));
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_6__.Mutations.SET_RECRUITMENT, (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__assign)({}, payload));
       _router__WEBPACK_IMPORTED_MODULE_4__["default"].push({
-        name: 'admin-rekrutmen-form',
-        params: {
-          data: data
-        }
+        name: 'admin-rekrutmen-form'
+      });
+    };
+
+    var performJadwal = function performJadwal(payload) {
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_6__.Mutations.SET_RECRUITMENT, (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__assign)({}, payload));
+      _router__WEBPACK_IMPORTED_MODULE_4__["default"].push({
+        name: 'admin-jadwalrekrutmen'
       });
     };
 
     var statusChange = function statusChange(id) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(_this, void 0, void 0, function () {
         var status;
 
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_a) {
           switch (_a.label) {
             case 0:
               loading.value = true;
@@ -217,8 +225,8 @@ __webpack_require__.r(__webpack_exports__);
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+                return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(_this, void 0, void 0, function () {
+                  return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -274,18 +282,18 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getData = function getData(perPage, page, status) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_a) {
           switch (_a.label) {
             case 0:
               loading.value = true;
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+                return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(_this, void 0, void 0, function () {
+                  return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -359,6 +367,7 @@ __webpack_require__.r(__webpack_exports__);
       handleCurrentChange: handleCurrentChange,
       performDelete: performDelete,
       performEdit: performEdit,
+      performJadwal: performJadwal,
       statusChange: statusChange,
       changeFilter: changeFilter,
       getData: getData,
@@ -392,8 +401,23 @@ var _hoisted_1 = {
   "class": "menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3",
   "data-kt-menu": "true"
 };
+var _hoisted_2 = {
+  "class": "menu-item px-3"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Jadwal ");
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fas fa-calendar ms-2 text-success fs-7",
+  "data-bs-toggle": "tooltip",
+  title: "Specify a target name for future usage and reference"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_5 = [_hoisted_3, _hoisted_4];
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "menu-item px-3"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "menu-content text-muted pb-2 px-3 fs-7 text-uppercase"
@@ -401,13 +425,13 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_3 = {
+var _hoisted_7 = {
   "class": "menu-item px-3"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit ");
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-edit ms-2 text-warning fs-7",
   "data-bs-toggle": "tooltip",
   title: "Specify a target name for future usage and reference"
@@ -415,14 +439,14 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_6 = [_hoisted_4, _hoisted_5];
-var _hoisted_7 = {
+var _hoisted_10 = [_hoisted_8, _hoisted_9];
+var _hoisted_11 = {
   "class": "menu-item px-3"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete ");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-trash text-danger fs-7",
   "data-bs-toggle": "tooltip",
   title: "Specify a target name for future usage and reference"
@@ -430,19 +454,24 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = [_hoisted_8, _hoisted_9];
+var _hoisted_14 = [_hoisted_12, _hoisted_13];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "menu-link flex-stack px-3",
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.$emit('performEdit', _ctx.$props.data);
+      return _ctx.$emit('performJadwal', _ctx.$props.data);
     })
-  }, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, _hoisted_5)]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "menu-link flex-stack px-3",
     onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.$emit('performEdit', _ctx.$props.data);
+    })
+  }, _hoisted_10)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "menu-link flex-stack px-3",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
       return _ctx.$emit('performDelete', _ctx.$props.id);
     })
-  }, _hoisted_10)])]);
+  }, _hoisted_14)])]);
 }
 
 /***/ }),
@@ -689,6 +718,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
             src: "/media/icons/duotune/general/gen008.svg"
           })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DropdownRecruitment"], {
+            onPerformJadwal: $setup.performJadwal,
             onPerformDelete: $setup.performDelete,
             onPerformEdit: $setup.performEdit,
             id: scope.row.recruitment_id,

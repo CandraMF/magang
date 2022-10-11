@@ -9,6 +9,17 @@
                             <el-button :loading="loading" type="primary" icon="el-icon-back text-white" circle></el-button>
                         </router-link>
                     </div>
+                    <div class="card-toolbar">
+                        <ul class="nav nav-pills nav-pills-sm nav-light">
+                            <li class="nav-item">
+                                <router-link class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2" :class="{'active' : $route.name == 'admin-rekrutmen-form'}" :to="{name: 'admin-rekrutmen-form'}" >Rekrutmen</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link btn btn-active-light btn-color-muted py-2 px-4 fw-bolder me-2"  :class="{'active' : $route.name == 'admin-jadwalrekrutmen', 'disabled' : Object.keys(store.getters.recruitment).length === 0}" :to="{name: 'admin-jadwalrekrutmen'}" >Jadwal</router-link>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
                 <div class="card-body pt-2 px-6 overlay-wrapper">
                     <div>
@@ -36,9 +47,10 @@
     import RekrutmenForm from './forms/RekrutmenForm.vue';
     import { useRouter } from 'vue-router';
     import { setCurrentPageBreadcrumbs } from '@/core/helpers/breadcrumb';
+import { Mutations } from '@/store/enums/StoreEnums';
 
     type Position = {
-        position_id: string,
+        recruitment_id: string,
         name: string,
         status_id: string,
     };
@@ -59,11 +71,9 @@
 
     const personId = ref('');
     const loading = ref(true)
-    const formData = ref<any>(null);
 
     const modalTitle = ref('Tambah Rekrutmen');
     let myModal = ref(null);
-
     let myForm = ref(null);
 
     onMounted(() => {
@@ -76,19 +86,23 @@
     })
 
     const handleSuccess = (payload) => {
-        router.push({ name: 'admin-rekrutmen', query: { redirect: '/admin/rekrutmen' } });
+        globalProperties.$message({
+            type: 'success',
+            message: 'Berhasil'
+        });
+
+        store.commit(Mutations.SET_RECRUITMENT, payload.recruitment)
+
+        router.push({ name: 'admin-jadwalrekrutmen', query: { redirect: '/admin/jadwalrekrutmen' }});
     }
 
     const handleFinishInit = (payload) => {
         loading.value = false
 
-        if(props.data) {
-            var data : Object = JSON.parse(props.data)
+        var data = store.getters.recruitment
 
-            modalTitle.value = "Edit Rekrutmen"
+        if(!(Object.keys(data).length === 0)) {
             myForm.value.initData(data)
-        } else {
-            modalTitle.value = "Tambah Rekrutmen"
         }
 
         setCurrentPageBreadcrumbs(modalTitle.value, ["Rekrutmen", "Form"]);

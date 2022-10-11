@@ -55,6 +55,11 @@ const routes: Array<RouteRecordRaw> = [
                         name: "berandaRegister",
                         component: () => import("@/views/pages/auth/Register.vue"),
                     },
+                    {
+                        path: "/beranda/ldap",
+                        name: "berandaLdap",
+                        component: () => import("@/views/pages/auth/Ldap.vue"),
+                    },
                 ]
             },
             {
@@ -220,6 +225,18 @@ const routes: Array<RouteRecordRaw> = [
             path: "/admin/rekrutmen/form",
             name: "admin-rekrutmen-form",
             component: () => import("@/views/admin/RekrutmenFormLayout.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/jadwalrekrutmen",
+            name: "admin-jadwalrekrutmen",
+            component: () => import("@/views/admin/JadwalRekrutmen.vue"),
+            props: true,
+        },
+        {
+            path: "/admin/jadwalrekrutmen/form",
+            name: "admin-jadwalrekrutmen-form",
+            component: () => import("@/views/admin/JadwalRekrutmenFormLayout.vue"),
             props: true,
         },
       ] : [

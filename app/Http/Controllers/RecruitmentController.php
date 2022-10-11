@@ -23,6 +23,7 @@ class RecruitmentController extends Controller
             ->when($status != "All", function($q)use($status) {
                 $q->whereStatusId($status);
             })
+            ->orderBy('open_date')
             ->paginate($pageSize);
 
         $success = true;
@@ -56,7 +57,6 @@ class RecruitmentController extends Controller
             $recruitment->department = $request->formData['ruleForm']['department'];
             $recruitment->letter = $request->formData['ruleForm']['letter'];
             $recruitment->letter_date = $request->formData['ruleForm']['letter_date'];
-            $recruitment->status_id = $request->formData['ruleForm']['status_id'];
             $recruitment->user_id = $request->formData['ruleForm']['user_id'];
             $recruitment->create_date = NOW();
 
@@ -67,13 +67,15 @@ class RecruitmentController extends Controller
 
         } catch (\Illuminate\Database\QueryException $ex) {
 
-            $errorCode = $ex->errorInfo[1];
+            $recruitment = null;
+            $id = null;
             $success = false;
             $message = 'Gagal Membuat Rekrutmen';
 
         }
 
         $response = [
+            'recruitment' => $recruitment,
             'success' => $success,
             'message' => $message,
         ];
@@ -89,7 +91,17 @@ class RecruitmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $recruitment = Recruitment::with(['schedule' => function($q){
+            $q->orderBy('start_date');
+        }])->find($id);
+
+        $response = [
+            'recruitment' => $recruitment,
+            'success' => true,
+            'message' => 'berhasil',
+        ];
+
+        return response()->json($response);
     }
 
     /**
@@ -113,7 +125,6 @@ class RecruitmentController extends Controller
                 'department' => $request->formData['ruleForm']['department'],
                 'letter' => $request->formData['ruleForm']['letter'],
                 'letter_date' => $request->formData['ruleForm']['letter_date'],
-                'status_id' => $request->formData['ruleForm']['status_id'],
                 'update_date' => NOW(),
             ]);
 
@@ -123,11 +134,13 @@ class RecruitmentController extends Controller
 
         } catch (\Illuminate\Database\QueryException $ex) {
             $errorCode = $ex->errorInfo[1];
+            $recruitment = null;
             $success = false;
             $message = 'Gagal Mengubah Rekrutmen';
         }
 
         $response = [
+            'recruitment' => $recruitment,
             'success' => $success,
             'message' => $message,
         ];

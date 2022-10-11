@@ -73,7 +73,7 @@
                                                         />
                                                     </span>
                                                 </button>
-                                                <DropdownRecruitment @perform-delete="performDelete" @perform-edit="performEdit" :id="scope.row.recruitment_id" :status="scope.row.status_id" :data="scope.row"></DropdownRecruitment>
+                                                <DropdownRecruitment @perform-jadwal="performJadwal" @perform-delete="performDelete" @perform-edit="performEdit" :id="scope.row.recruitment_id" :status="scope.row.status_id" :data="scope.row"></DropdownRecruitment>
 
                                                 <div class="w-100 d-flex justify-content-end">
 
@@ -85,6 +85,7 @@
                                                         <option :selected="scope.row.status_id == 'REC201'" value="REC201">Hold</option>
                                                         <option :selected="scope.row.status_id == 'REC102'" value="REC102">Selesai</option>
                                                     </select>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -151,6 +152,7 @@
     import router from '@/router';
     import DropdownRecruitment from '@/components/DropdownRecruitment.vue';
     import { stat } from 'fs';
+    import { Mutations } from '@/store/enums/StoreEnums';
 
     const app = getCurrentInstance()
     const store = useStore();
@@ -164,7 +166,7 @@
     const loading = ref(true)
     const formData = ref<any>(null);
 
-    const filter = ref('All');
+    const filter = ref('REC001');
 
     const modalTitle = ref('Tambah Rekrutmen');
     let myModal = ref(null);
@@ -188,6 +190,7 @@
 
         getData(pageSize.value, currentPage.value, "All")
 
+        store.commit(Mutations.SET_RECRUITMENT, {})
     })
 
     const indexMethod = (index: number) => {
@@ -251,8 +254,14 @@
     }
 
     const performEdit = (payload) => {
-        var data = JSON.stringify({...payload})
-        router.push({name: 'admin-rekrutmen-form', params: {data: data}})
+        store.commit(Mutations.SET_RECRUITMENT, {...payload})
+        router.push({name: 'admin-rekrutmen-form'})
+    }
+
+    const performJadwal = (payload) => {
+
+        store.commit(Mutations.SET_RECRUITMENT, {...payload})
+        router.push({name: 'admin-jadwalrekrutmen'})
     }
 
     const statusChange = async (id) => {

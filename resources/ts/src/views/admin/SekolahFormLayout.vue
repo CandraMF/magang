@@ -90,7 +90,6 @@
             myForm.value.initData(data)
         } else {
             modalTitle.value = "Tambah Sekolah"
-
         }
 
         setCurrentPageBreadcrumbs(modalTitle.value, ["Sekolah", "Form"]);

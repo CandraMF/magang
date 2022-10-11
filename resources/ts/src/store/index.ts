@@ -6,6 +6,7 @@ import BreadcrumbsModule from "@/store/modules/BreadcrumbsModule";
 import ConfigModule from "@/store/modules/ConfigModule";
 import AuthModule from "@/store/modules/AuthModule";
 import AppModule from "@/store/modules/AppModule";
+import RecruitmentModule from "@/store/modules/RecruitmentModule";
 
 import createPersistedState from 'vuex-persistedstate'
 
@@ -18,6 +19,7 @@ const store = createStore({
     ConfigModule,
     AuthModule,
     AppModule,
+    RecruitmentModule
   },
   plugins:[
     createPersistedState()

@@ -48,7 +48,7 @@
         <section >
             <div class="container">
                 <div class="row d-flex justify-content-center m-0 p-0">
-                    <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
+                    <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword' || this.$route.name == 'berandaLdap'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
                         <div class="row" id="content">
                             <router-view v-if="!isLogged" v-slot="{ Component }">
                                 <transition :name="this.effect" mode="out-in">

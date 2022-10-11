@@ -29,16 +29,7 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item prop="department_id" label="Unit Kerja">
-                        <el-select v-model="ruleForm.department_id" filterable placeholder="Select" class="w-100">
-                            <el-option
-                                v-for="item in department"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
+
                 </div>
                 <div class="col-md-6">
                     <div class="row">
@@ -53,19 +44,15 @@
                             </el-form-item>
                         </div>
                     </div>
-                    <el-form-item prop="status_id" label="Status">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <el-select v-model="ruleForm.status_id" placeholder="Select" class="w-100">
-                                    <el-option
-                                        v-for="item in status"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </div>
-                        </div>
+                    <el-form-item prop="department_id" label="Unit Kerja">
+                        <el-select v-model="ruleForm.department_id" filterable placeholder="Select" class="w-100">
+                            <el-option
+                                v-for="item in department"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
                     </el-form-item>
                 </div>
                 <div class="col-md-12">
@@ -96,7 +83,6 @@
 
     const position = reactive([]);
     const department = reactive([]);
-    const status = reactive([]);
 
     const ruleForm = reactive({
         'recruitment_id' : null,
@@ -108,7 +94,6 @@
         'department' : '',
         'letter' : '',
         'letter_date' : '',
-        'status_id' : '',
         'user_id' : '',
         'create_date' : '',
         'update_date' : '',
@@ -127,7 +112,10 @@
             return obj.value === newValue
         })
 
-        ruleForm.department = thisdepartment.label
+        if(thisdepartment) {
+            ruleForm.department = thisdepartment.label
+        }
+
     })
 
     watch(() => ruleForm.position_id, (newValue: String) => {
@@ -135,7 +123,9 @@
             return obj.value === newValue
         })
 
-        ruleForm.position = thisposition.label
+        if(thisposition) {
+            ruleForm.position = thisposition.label
+        }
     })
 
     const rules = reactive({
@@ -151,15 +141,12 @@
         department_id: [
             { required: true, message: 'Mohon pilih Unit Kerja', trigger: 'blur' },
         ],
-        status_id: [
-            { required: true, message: 'Mohon pilih Status', trigger: 'blur' },
-        ],
     })
 
 
     const submitForm = async () => {
         isLoading.value = false
-        // console.log(ruleForm)
+
         ruleFormRef.value.validate((valid) => {
             if (valid) {
                 if(ruleForm.recruitment_id) {
@@ -170,9 +157,8 @@
                             headers: {'Authorization': 'Bearer ' + token},
                         })
                         .then((response) => {
-                            console.log(response)
                             if (response.data.success) {
-                                emit('success', response.data.message)
+                                emit('success', response.data)
                             }
                             isLoading.value = false
                         })
@@ -189,10 +175,9 @@
                             headers: {'Authorization': 'Bearer ' + token},
                         })
                         .then((response) => {
-                            console.log(response)
 
                             if (response.data.success) {
-                                emit('success', response.data.message)
+                                emit('success', response.data)
                             }
                             isLoading.value = false
                         })
@@ -213,23 +198,12 @@
 
     const getStatus = async () => {
         await axios.get('/sanctum/csrf-cookie').then(async (response) => {
-            await axios.get('/api/status/getByType/Status Lowongan', {
-                headers: {'Authorization': 'Bearer '+ token},
-            })
-            .then(async (response)=> {
-                await response.data.forEach(element => {
-                    status.push({
-                        'value': element.status_id,
-                        'label': element.name,
-                    })
-                });
-            })
 
             await axios.get('/api/position', {
                     headers: {'Authorization': 'Bearer '+ token},
                 })
                 .then((response)=> {
-                    console.log(response)
+
                     response.data.position.forEach(element => {
                         position.push({
                             'value': element.position_id,
@@ -242,7 +216,6 @@
                     headers: {'Authorization': 'Bearer '+ token},
                 })
                 .then((response)=> {
-                    console.log(response)
                     response.data.department.forEach(element => {
                         department.push({
                             'value': element.department_id,
@@ -311,7 +284,6 @@
         ruleForm.department = data.department
         ruleForm.letter = data.letter
         ruleForm.letter_date = data.letter_date
-        ruleForm.status_id = data.status_id
     }
 
     defineExpose({ reset: _reset, initData: _initData });

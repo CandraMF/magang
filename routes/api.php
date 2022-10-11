@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('logout');
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/login/ldap', [App\Http\Controllers\LDAPController::class, 'login'])->name('ldap');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('person', App\Http\Controllers\PersonController::class);
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('organization', App\Http\Controllers\OrganizationController::class);
     Route::apiResource('position', App\Http\Controllers\PositionController::class);
     Route::apiResource('recruitment', App\Http\Controllers\RecruitmentController::class);
+    Route::apiResource('recruitmentSchedule', App\Http\Controllers\RecruitmentScheduleController::class);
 
     Route::get('status/getByType/{type}', [App\Http\Controllers\StatusController::class, 'getByType'])->name('status.getByType');
     Route::get('education/showByPerson/{personId}', [App\Http\Controllers\EducationController::class, 'showByPerson'])->name('education.showByPerson');

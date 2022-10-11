@@ -15,12 +15,22 @@
       "
       data-kt-menu="true"
     >
+        <div class="menu-item px-3">
+            <a class="menu-link flex-stack px-3" @click="$emit('performJadwal', $props.data)">
+                Jadwal
+                <i
+                    class="fas fa-calendar ms-2 text-success fs-7 "
+                    data-bs-toggle="tooltip"
+                    title="Specify a target name for future usage and reference"></i>
+            </a>
+        </div>
 
       <div class="menu-item px-3">
         <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">
           Actions
         </div>
       </div>
+
 
       <div class="menu-item px-3">
         <a class="menu-link flex-stack px-3" @click="$emit('performEdit', $props.data)">
@@ -74,6 +84,10 @@
         },
 
         performDelete(payload) {
+
+        },
+
+        performJadwal(payload) {
 
         }
 

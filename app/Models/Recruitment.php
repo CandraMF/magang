@@ -48,4 +48,8 @@ class Recruitment extends Model
     public function user() {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'user_id');
     }
+
+    public function schedule() {
+        return $this->hasMany(\App\Models\RecruitmentSchedule::class, 'recruitment_id', 'recruitment_id');
+    }
 }

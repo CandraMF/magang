@@ -2,18 +2,7 @@
     <div>
 
         <div class="row">
-                <div class="col-2 ">
-                    <el-affix :offset="120">
-                        <el-steps :active="step" direction="vertical" style="height: 300px;">
-                            <el-step title="Data Diri" ></el-step>
-                            <el-step title="Pendidikan" ></el-step>
-                            <el-step title="Keluarga" ></el-step>
-                            <el-step title="Kerja" ></el-step>
-                            <el-step title="Organisasi" ></el-step>
-                            <el-step title="Berkas" ></el-step>
-                        </el-steps>
-                    </el-affix>
-                </div>
+
                 <div class="col-10">
                     <div class="card bg-white">
                         <div class="card-body">
@@ -60,6 +49,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-2 ">
+                    <el-affix :offset="120">
+                        <el-steps :active="step" direction="vertical" style="height: 300px;">
+                            <el-step title="Data Diri" ></el-step>
+                            <el-step title="Pendidikan" ></el-step>
+                            <el-step title="Keluarga" ></el-step>
+                            <el-step title="Kerja" ></el-step>
+                            <el-step title="Organisasi" ></el-step>
+                            <el-step title="Berkas" ></el-step>
+                        </el-steps>
+                    </el-affix>
+                </div>
             </div>
         </div>
 
@@ -75,7 +76,7 @@
     import Kerja from "@/views/account/Kerja.vue";
     import Organisasi from "@/views/account/Organisasi.vue";
 
-    const step = ref(3)
+    const step = ref(0)
     var effect = ""
 
     const steps =  [
