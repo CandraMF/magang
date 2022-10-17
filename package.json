@@ -67,6 +67,7 @@
         "typescript": "^4.3.5",
         "universal-social-auth": "^0.2.6",
         "vue-client-recaptcha": "^1.0.5",
+        "vue-router-multiguard": "^1.0.3",
         "vue3-count-to": "^1.1.2",
         "vue3-verification-code-input": "^0.1.0",
         "vuex-module-decorators": "^1.0.1",

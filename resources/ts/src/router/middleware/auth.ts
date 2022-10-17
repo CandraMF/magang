@@ -1,7 +1,18 @@
-export default function auth({ next, from, to, router }) {
-    var vuex = JSON.parse(localStorage.getItem('vuex'))
+import store from "@/store"
+import { useRouter } from "vue-router"
 
-    if (vuex.AuthModule.user.status)
+const user = store.getters.getUser
+const token = store.getters.getToken
 
-    return next();
+
+export default ({ to, from, next }) => {
+
+    console.log('auth')
+
+    if (!token) {
+        next({ path: '/beranda/login' })
+        return false
+    }
+
+    next()
 }

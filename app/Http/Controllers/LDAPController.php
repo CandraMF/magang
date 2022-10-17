@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -74,64 +75,60 @@ class LDAPController extends Controller
         $login = str_replace("@bpkh.go.id", "", $login);
         $host = "10.10.60.18";
 
-        if(!$ldap = ldap_connect($host)){
-            $response = [
-                'success'   => false,
-                'message'   => "Proses gagal, koneksi ke Server LDAP gagal",
-                'token'     => null,
-                'user'      => null,
-
-            ];
-            return response()->json($response);
-        }else{
-            ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-            ldap_set_option($ldap, LDAP_OPT_NETWORK_TIMEOUT, 10);
-            if(ldap_bind($ldap, "UID=$login,OU=people,DC=bpkh,DC=go,DC=id", $password)){
-
-                $credentials = [
-                    'login' => $login,
-                    'password' => $password,
-                ];
-
-                if (Auth::attempt($credentials)) {
-                    $user = Auth::user();
-                    $token = $user->createToken('ApiToken')->plainTextToken;
-                } else {
-                    $user = new User();
-                    $user->login = $login;
-                    $user->password = Hash::make($password);
-                    $user->name = $login;
-                    $user->email = $login;
-                    $user->mobile = $login;
-                    $user->role_id = 'ROL101';
-                    $user->status_id = 'USR101';
-                    $user->create_date = NOW();
-                    $user->activation_date = NOW();
-                    $user->save();
-
-                    Auth::attempt($credentials);
-                    $user = Auth::user();
-                    $token = $user->createToken('ApiToken')->plainTextToken;
-                }
-
-
-                $response = [
-                    'success'   => true,
-                    'message'   => "Proses berhasil",
-                    'token'     => $token,
-                    'user'      => $user,
-                ];
-
-                return response()->json($response);
-            }else{
+        try {
+            if(!$ldap = ldap_connect($host)){
                 $response = [
                     'success'   => false,
-                    'message'   => "Proses gagal, User ID dan/atau Password yang Anda masukkan tidak sesuai",
+                    'message'   => "Proses gagal, koneksi ke Server LDAP gagal",
                     'token'     => null,
                     'user'      => null,
                 ];
-                return response()->json($response);
+                return $response;
+            }else{
+                ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+                ldap_set_option($ldap, LDAP_OPT_NETWORK_TIMEOUT, 10);
+                if(ldap_bind($ldap, "UID=$login,OU=people,DC=bpkh,DC=go,DC=id", $password)){
+
+                    $credentials = [
+                        'login' => $login,
+                        'password' => $password,
+                    ];
+
+                    if (Auth::attempt($credentials)) {
+                        $user = Auth::user();
+                        $token = $user->createToken('ApiToken')->plainTextToken;
+                    } else {
+                        $user = null;
+                        $token = null;
+                    }
+
+                    $response = [
+                        'success'   => true,
+                        'message'   => "Proses berhasil",
+                        'token'     => $token,
+                        'user'      => $user,
+                    ];
+
+                    return $response;
+                } else {
+                    $response = [
+                        'success'   => false,
+                        'message'   => "Proses gagal, User ID dan/atau Password yang Anda masukkan tidak sesuai",
+                        'token'     => null,
+                        'user'      => null,
+                    ];
+                    return $response;
+                }
             }
+        } catch (Exception $ex) {
+            $response = [
+                'success'   => false,
+                'message'   => "Proses gagal, User ID dan/atau Password yang Anda masukkan tidak sesuai",
+                'token'     => null,
+                'user'      => null,
+            ];
+            return $response;
         }
+
     }
 }

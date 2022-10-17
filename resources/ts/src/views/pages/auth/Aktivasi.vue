@@ -96,7 +96,7 @@
                         console.log(response)
                         if (response.data.success) {
                             store.commit(Mutations.SET_USER, response.data.user)
-                            router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
+                            router.push({ name: 'admin' });
                         } else {
                             alert("gagal")
                         }

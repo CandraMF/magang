@@ -1,32 +1,94 @@
 import store from "@/store";
 import { Actions } from "@/store/enums/StoreEnums";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import { useStore } from "vuex";
-import active from "./middleware/active";
-// import log from "./middleware/log";
+// import activated from "./middleware/activated";
+// import active from "./middleware/active";
+// import auth from "./middleware/auth";
+// import authentication from "./middleware/auth";
 // import authenticated from "./middleware/authenticated";
+// import role from "./middleware/role";
 
+import multiguard from 'vue-router-multiguard';
 
-var vuex = JSON.parse(localStorage.getItem('vuex'))
-const userDefault = {
-    role_id : 'ROL001'
+// import activated from "./middleware/activated";
+// import active from "./middleware/active";
+// import authenticated from "./middleware/authenticated";
+// // import log from "./middleware/log";
+// // import authenticated from "./middleware/authenticated";
+
+var user = store.getters.getUser ? store.getters.getUser : { role_id : 'ROL001', status_id : 'USR101', person_id : null } ;
+
+const token = store.getters.getToken
+
+const role = (to, from, next) => {
+
+    if (to.name == 'admin') {
+        if (user.role_id == 'ROL001') {
+            console.log('dashboar')
+            next({ path: '/dashboard' });
+            return false;
+        } else if(user.role_id == 'ROL101' || user.role_id == 'ROL102') {
+            console.log('admin-dashboard')
+            next({ path: '/admin/dashboard' });
+            return false;
+        }
+    }
+
+    next()
 }
-let user
 
-if (vuex) {
-    user = vuex.AuthModule.user ? vuex.AuthModule.user : userDefault
-} else {
-    user = userDefault
+const auth = (to, from, next) => {
+    console.log('auth')
+
+    if (!token) {
+        next({ path: '/beranda/login' })
+        return false
+    }
+
+    next()
 }
 
+const active = (to, from, next) => {
+
+    if (user.status_id == 'USR001') {
+
+        next({ path : '/auth/aktivasiPlatform' })
+
+        return false
+    } else if (user.person_id == null) {
+
+        if(!(to.path == '/profil')) {
+            next({ path : '/profil' })
+            return false
+        }
+    }
+    next()
+}
+
+const activated = (to, from, next) => {
+
+    console.log(user)
+
+    if (user.status_id === 'USR101' && user.person_id !== null) {
+        next({ path : '/admin' })
+        return false;
+    }
+
+    next()
+}
+
+const authenticated = (to, from, next) => {
+    if (token) {
+        next({ name: 'admin' })
+        return false
+    }
+    next()
+}
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
         redirect: "/beranda",
-        meta: {
-            // middleware: log
-        },
         component: () => import("@/layout/HomeLayout.vue"),
         children: [
             {
@@ -55,11 +117,6 @@ const routes: Array<RouteRecordRaw> = [
                         name: "berandaRegister",
                         component: () => import("@/views/pages/auth/Register.vue"),
                     },
-                    {
-                        path: "/beranda/ldap",
-                        name: "berandaLdap",
-                        component: () => import("@/views/pages/auth/Ldap.vue"),
-                    },
                 ]
             },
             {
@@ -77,55 +134,52 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/auth",
         redirect: "/login",
-        meta: {
-            // middleware: authenticated
-        },
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
-                path: "login",
+                path: "/auth/login",
                 name: "login",
                 component: () => import("@/views/pages/auth/Login.vue"),
             },
             {
-                path: "register",
+                path: "/auth/register",
                 name: "register",
                 component: () => import("@/views/pages/auth/Register.vue"),
             },
             {
-                path: "forgotPassword",
+                path: "/auth/forgotPassword",
                 name: "forgotPassword",
                 component: () => import("@/views/pages/auth/ForgotPassword.vue"),
             },
             {
-                path: "aktivasi",
+                path: "/auth/aktivasi",
                 name: "aktivasi",
+                beforeEnter: multiguard([activated]),
                 component: () => import("@/views/pages/auth/Aktivasi.vue"),
             },
             {
-                path: "aktivasiPlatform",
+                path: "/auth/aktivasiPlatform",
                 name: "aktivasiPlatform",
+                beforeEnter: multiguard([activated]),
                 component: () => import("@/views/pages/auth/AktivasiPlatform.vue"),
             },
         ],
     },
     {
       path: "/admin",
-      redirect: user.role_id == 'ROL001' ? "/dashboard" : '/admin/dashboard',
+      name: "admin",
+      beforeEnter: multiguard([auth, active, role]),
       component: () => import("@/layout/Layout.vue"),
-      meta: {
-            middleware: [active]
-      },
       children: user.role_id == 'ROL001' ? [ // Pendaftar
         {
-          path: "/dashboard",
-          name: "dashboard",
-          component: () => import("@/views/Dashboard.vue"),
+            path: "/dashboard",
+            name: "dashboard",
+            component: () => import("@/views/Dashboard.vue"),
         },
         {
-          path: "/profil",
-          name: "profil-overview",
-          component: () => import("@/views/account/Overview.vue"),
+            path: "/profil",
+            name: "profil-overview",
+            component: () => import("@/views/account/Overview.vue"),
         },
         {
             path: "/profil/data-diri",
@@ -246,17 +300,14 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/logout",
         name: "logout",
-        meta: {
-            reload: true,
-        },
         component: {
             beforeRouteEnter(to, from, next) {
-              const destination = {
-                path: "/",
-              };
-              window.location.href = "/";
-              store.dispatch(Actions.LOGOUT);
-              next(destination);
+                const destination = {
+                    path: "/",
+                };
+                window.location.href = "/";
+                store.dispatch(Actions.LOGOUT);
+                next(destination);
             }
         }
     },
@@ -267,57 +318,38 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth',
-        top: 100,
-      }
-    } else {
-        return {
-            behavior: 'smooth',
-            top: 0,
+    history: createWebHistory(),
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            return {
+                el: to.hash,
+                behavior: 'smooth',
+                top: 100,
+            }
+        } else {
+            return {
+                behavior: 'smooth',
+                top: 0,
+            }
         }
     }
-  }
-
 });
 
-function nextFactory(context, middleware, index) {
-    const subsequentMiddleware = middleware[index];
+// function nextFactory(context, middleware, index) {
+//     const subsequentMiddleware = middleware[index];
 
-    if (!subsequentMiddleware) return context.next;
+//     if (!subsequentMiddleware) return context.next;
 
-    return (...parameters) => {
+//     return (...parameters) => {
 
-    context.next(...parameters);
+//         context.next(...parameters);
 
-    const nextMiddleware = nextFactory(context, middleware, index);
-    subsequentMiddleware({ ...context, next: nextMiddleware });
-    };
-}
+//         const nextMiddleware = nextFactory(context, middleware, index);
+//         subsequentMiddleware({ ...context, next: nextMiddleware });
+//     };
+// }
 
-router.beforeEach((to, from, next) => {
-    if (to.meta.middleware) {
-        const middleware = Array.isArray(to.meta.middleware)
-            ? to.meta.middleware
-            : [to.meta.middleware];
-
-        const context = {
-            from,
-            next,
-            router,
-            to,
-        };
-        const nextMiddleware = nextFactory(context, middleware, 1);
-
-        return middleware[0]({ ...context, next: nextMiddleware });
-    }
-
-    return next();
-});
+// router.beforeEach(middleware());
 
 export default router;

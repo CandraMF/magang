@@ -1,15 +1,24 @@
-export default function active({ next, from, to, router }) {
-    var vuex = JSON.parse(localStorage.getItem('vuex'))
+import store from "@/store"
 
-    if(!(to.name == 'data-diri-form' || to.name == 'aktivasiPlatform' || to.name == 'aktivasi')) {
-        if (!vuex.AuthModule.token) {
-            router.push({ name: 'berandaLogin', query: { redirect: '/berandaLogin' } });
-        } else if(vuex.AuthModule.user.status_id == 'USR001'){
-            router.push({ name: 'aktivasiPlatform', query: { redirect: '/aktivasiPlatform' } });
-        } else if (!vuex.AuthModule.user.person_id && vuex.AuthModule.user.role_id == 'ROL001') {
-            router.push({ name: 'data-diri-form', query: { redirect: '/profil/data-diri' } });
-        }
+const user = store.getters.getUser
+const token = store.getters.getToken
+
+export default ({ to, from, next }) => {
+
+    console.log('active')
+
+    if (user.status_id == 'USR001') {
+        console.log('aktivasi')
+        next({ path : '/auth/aktivasi' })
+
+        return false
+    } else if (user.person_id == null) {
+        console.log('aktivasip')
+
+        next({path : '/auth/aktivasiPlatform' })
+
+        return false
     }
 
-    return next();
+    next()
 }

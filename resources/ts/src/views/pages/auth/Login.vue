@@ -29,10 +29,6 @@
                         <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Masuk</el-button>
                     </div>
                 </el-form>
-                <el-divider content-position="center" class="fw-light fs-6 my-10">Atau Masuk Sebagai</el-divider>
-                <div class="d-flex justify-content-center">
-                    <router-link to="Ldap#content" class="btn btn-linkedin">Admin</router-link>
-                </div>
             </el-card>
         </div>
     </div>
@@ -43,6 +39,7 @@
     import { useStore, mapMutations } from "vuex";
     import { Mutations, Actions } from "@/store/enums/StoreEnums";
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
   export default {
     data() {
@@ -64,7 +61,8 @@
                 captcha: [
                     { required: true, message: 'Mohon isi Captcha', trigger: ['blur'] },
                 ]
-            }
+            },
+            router: useRouter()
       };
     },
     setup() {
@@ -106,7 +104,9 @@
                                 this.setUser(response.data.user);
                                 this.setToken(response.data.token);
 
-                                this.$router.push({ name: 'aktivasiPlatform', query: { redirect: '/akktivasiPlatform' } });
+                                console.log(response.data)
+
+                                this.router.push({ path: '/auth/aktivasiPlatform'})
                             } else {
                                 this.$notify.error({
                                     title: 'Error',

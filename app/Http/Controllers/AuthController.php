@@ -61,19 +61,38 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $user = User::whereLogin($request->login)->first();
+
         $credentials = [
             'login' => $request->login,
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($credentials)) {
-            $success = true;
-            $message = 'Berhasil Login';
-            $user = Auth::user();
-            $token = Auth::user()->createToken('ApiToken')->plainTextToken;
+        if (!empty($user)) {
+            if($user->role_id == 'ROL001') {
+                if (Auth::attempt($credentials)) {
+                    $success = true;
+                    $message = 'Berhasil Login';
+                    $user = Auth::user();
+                    $token = Auth::user()->createToken('ApiToken')->plainTextToken;
+                } else {
+                    $success = false;
+                    $message = 'Login Gagal';
+                    $user = null;
+                    $token = null;
+                }
+            } else {
+                $ldap = new LDAPController();
+                $LdapResponse = $ldap->login($request);
+
+                $success = $LdapResponse['success'];
+                $message = $LdapResponse['message'];
+                $user = $LdapResponse['user'];
+                $token = $LdapResponse['token'];
+            }
         } else {
             $success = false;
-            $message = 'Login Gagal';
+            $message = 'Akun Tidak Ditemukan';
             $user = null;
             $token = null;
         }
@@ -96,7 +115,7 @@ class AuthController extends Controller
     {
         auth()->logout();
         return response()->json([
-            'success'    => true
+            'success' => true
         ], 200);
     }
 }

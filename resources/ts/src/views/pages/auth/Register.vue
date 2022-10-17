@@ -76,10 +76,6 @@
                         </div>
                     </div>
                 </el-form>
-                <el-divider content-position="center" class="fw-light fs-6 my-10">Atau Masuk Sebagai</el-divider>
-                <div class="d-flex justify-content-center">
-                    <router-link to="Ldap#content" class="btn btn-linkedin">Admin</router-link>
-                </div>
             </el-card>
         </div>
     </div>

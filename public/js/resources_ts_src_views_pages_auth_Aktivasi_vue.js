@@ -481,10 +481,7 @@ __webpack_require__.r(__webpack_exports__);
             if (response.data.success) {
               store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_4__.Mutations.SET_USER, response.data.user);
               router.push({
-                name: 'dashboard',
-                query: {
-                  redirect: '/dashboard'
-                }
+                name: 'admin'
               });
             } else {
               alert("gagal");

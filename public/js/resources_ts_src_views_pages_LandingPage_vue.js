@@ -68,11 +68,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+
 
 
 
@@ -103,11 +105,12 @@ __webpack_require__.r(__webpack_exports__);
           message: 'Mohon isi Captcha',
           trigger: ['blur']
         }]
-      }
+      },
+      router: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)()
     };
   },
   setup: function setup() {
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.useStore)();
 
     function setUser(payload) {
       store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.SET_USER, payload);
@@ -125,10 +128,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm(formName) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
           this.setLoading(true);
           this.$refs[formName].validate(function (valid) {
             if (valid) {
@@ -149,11 +152,10 @@ __webpack_require__.r(__webpack_exports__);
 
                       _this.setToken(response.data.token);
 
-                      _this.$router.push({
-                        name: 'aktivasiPlatform',
-                        query: {
-                          redirect: '/akktivasiPlatform'
-                        }
+                      console.log(response.data);
+
+                      _this.router.push({
+                        path: '/auth/aktivasiPlatform'
                       });
                     } else {
                       _this.$notify.error({
@@ -516,14 +518,6 @@ var _hoisted_8 = {
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Atau Masuk Sebagai");
-
-var _hoisted_11 = {
-  "class": "d-flex justify-content-center"
-};
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Admin");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
@@ -536,8 +530,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
-
-  var _component_el_divider = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-divider");
 
   var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
 
@@ -667,27 +659,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["model", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_divider, {
-        "content-position": "center",
-        "class": "fw-light fs-6 my-10"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_10];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "Ldap#content",
-        "class": "btn btn-linkedin"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_12];
-        }),
-        _: 1
-        /* STABLE */
-
-      })])];
+      , ["model", "rules"])];
     }),
     _: 1
     /* STABLE */
@@ -771,14 +743,6 @@ var _hoisted_14 = {
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Atau Masuk Sebagai");
-
-var _hoisted_17 = {
-  "class": "d-flex justify-content-center"
-};
-
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Admin");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
 
@@ -793,8 +757,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
-
-  var _component_el_divider = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-divider");
 
   var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
 
@@ -1000,27 +962,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["model", "rules"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_divider, {
-        "content-position": "center",
-        "class": "fw-light fs-6 my-10"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_16];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "Ldap#content",
-        "class": "btn btn-linkedin"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_18];
-        }),
-        _: 1
-        /* STABLE */
-
-      })])];
+      , ["model", "rules"])];
     }),
     _: 1
     /* STABLE */
