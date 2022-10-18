@@ -213,31 +213,37 @@ var _hoisted_4 = {
   "class": "collapse navbar-collapse",
   id: "navbarSupportedContent"
 };
-var _hoisted_5 = {
-  "class": "navbar-nav me-auto ms-5 ps-3 mb-lg-0"
-};
+
+var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+    "class": "navbar-nav me-auto ms-5 ps-3 mb-lg-0"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
 var _hoisted_6 = {
-  "class": "nav-item me-lg-4"
-};
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Beranda");
-
-var _hoisted_8 = {
-  "class": "nav-item me-lg-4"
-};
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Prosedur Magang");
-
-var _hoisted_10 = {
-  "class": "nav-item me-lg-4"
-};
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Pengumuman");
-
-var _hoisted_12 = {
   key: 0,
   "class": "navbar-nav ms-5 ps-3 mb-2 mb-lg-0 mb-sm-5"
 };
+var _hoisted_7 = {
+  "class": "nav-item ms-lg-4 my-auto"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Beranda");
+
+var _hoisted_9 = {
+  "class": "nav-item ms-lg-4 my-auto"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Prosedur Magang");
+
+var _hoisted_11 = {
+  "class": "nav-item ms-lg-4 my-auto"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Pengumuman");
+
 var _hoisted_13 = {
   "class": "nav-item ms-lg-4 my-auto"
 };
@@ -245,7 +251,7 @@ var _hoisted_13 = {
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
 
 var _hoisted_15 = {
-  "class": "nav-item ms-lg-4"
+  "class": "nav-item ms-lg-4 my-auto"
 };
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
@@ -308,8 +314,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    "exact-active-class": "active",
+  }), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, $setup.user == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    "exact-active-class": "active btn",
     to: "/beranda/divisi",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link", {
       'navLinkOnScroll': !$data.view.topOfPage
@@ -317,45 +323,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-current": "page"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_7];
+      return [_hoisted_8];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    "exact-active-class": "active",
+  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    "exact-active-class": "active btn",
     to: "/prosedurMagang",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link", {
       'navLinkOnScroll': !$data.view.topOfPage
     }])
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_9];
+      return [_hoisted_10];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    "exact-active-class": "active",
+  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    "exact-active-class": "active btn",
     to: "/pengumuman",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link", {
       'navLinkOnScroll': !$data.view.topOfPage
     }])
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_11];
+      return [_hoisted_12];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["class"])])]), $setup.user == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    "exact-active-class": "active",
+  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    "exact-active-class": "active btn",
     to: "/beranda/register#content",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link", {
       'navLinkOnScroll': !$data.view.topOfPage
@@ -370,16 +376,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    "exact-active-class": "active",
+    "exact-active-class": "active btn",
     to: "/beranda/login#content",
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link btn text-white", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link", {
       'navLinkOnScroll': !$data.view.topOfPage
-    }]),
-    style: {
-      "border-radius": "6px",
-      "background": "#092F53",
-      "color": "white !important"
-    }
+    }])
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_16];
@@ -414,7 +415,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.navOnTop[data-v-0dfb236a]{\n        background: transparent;\n        width: 100%;\n        padding: 30px 50px;\n        position: absolute;\n}\n.navOnScroll[data-v-0dfb236a] {\n        box-shadow: 0 0 10px #aaa;\n        background-color: #fff;\n        padding: 10px 20px !important;\n        position: fixed;\n        width: 100%;\n}\n.navLogoOnScroll[data-v-0dfb236a]{\n        width: 100px !important;\n}\n.navbarSm[data-v-0dfb236a] {\n        position: relative !important;\n        padding: 10px 20px !important;\n        background: white !important;\n}\n.navbarSm .navbar-brand img[data-v-0dfb236a]{\n        padding: 10px 20px !important;\n}\n.navbarSm .nav-link[data-v-0dfb236a]:hover{\n        color: #092F53 !important;\n}\n.navbarSm .nav-item .active[data-v-0dfb236a]{\n        color: #092F53 !important;\n}\n.nav-link[data-v-0dfb236a]{\n        color: rgba(0, 0, 0, 0.644) !important;\n        font-weight: 600;\n}\n.nav-link[data-v-0dfb236a]:hover{\n        color: #ffffff !important;\n}\n.navOnScroll .nav-link[data-v-0dfb236a]:hover {\n        color: #000000 !important;\n}\n.nav-item .active[data-v-0dfb236a]{\n        color: #ffffff !important;\n}\n.navOnScroll .active[data-v-0dfb236a] {\n        color: #092F53 !important;\n}\nh5[data-v-0dfb236a] {\n        font-weight: 500;\n        font-size: 18pt;\n        color: white;\n}\nh3[data-v-0dfb236a] {\n        color: white;\n}\nfooter .col-md-4[data-v-0dfb236a] {\n        padding: 0px 40px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.active[data-v-0dfb236a] {\n        border-radius: 6px;\n        background: #092F53;\n        color: white !important;\n}\n.navOnTop[data-v-0dfb236a]{\n        background: transparent;\n        width: 100%;\n        padding: 30px 50px;\n        position: absolute;\n}\n.navOnScroll[data-v-0dfb236a] {\n        box-shadow: 0 0 10px #aaa;\n        background-color: #fff;\n        padding: 10px 20px !important;\n        position: fixed;\n        width: 100%;\n}\n.navLogoOnScroll[data-v-0dfb236a]{\n        width: 100px !important;\n}\n.navbarSm[data-v-0dfb236a] {\n        position: relative !important;\n        padding: 10px 20px !important;\n        background: white !important;\n}\n.navbarSm .navbar-brand img[data-v-0dfb236a]{\n        padding: 10px 20px !important;\n}\n.navbarSm .nav-link[data-v-0dfb236a]:hover{\n        color: black !important;\n}\n.navbarSm .nav-item .active[data-v-0dfb236a]{\n        color: white !important;\n}\n.nav-link[data-v-0dfb236a]{\n        color: rgba(0, 0, 0, 0.644) !important;\n        font-weight: 600;\n}\n.nav-link[data-v-0dfb236a]:hover{\n        color: #ffffff !important;\n}\n.nav-link[data-v-0dfb236a]:hover{\n        color: #ffffff !important;\n}\n.navOnScroll  .nav-link[data-v-0dfb236a]:hover:not(.active){\n        color: #000000 !important;\n}\n.nav-item .active[data-v-0dfb236a]{\n        color: #ffffff !important;\n}\n.navOnScroll .active[data-v-0dfb236a] {\n        color: white !important;\n}\nh5[data-v-0dfb236a] {\n        font-weight: 500;\n        font-size: 18pt;\n        color: white;\n}\nh3[data-v-0dfb236a] {\n        color: white;\n}\nfooter .col-md-4[data-v-0dfb236a] {\n        padding: 0px 40px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

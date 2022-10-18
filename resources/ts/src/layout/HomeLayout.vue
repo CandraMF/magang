@@ -11,22 +11,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto ms-5 ps-3 mb-lg-0">
-                        <li class="nav-item me-lg-4">
-                            <router-link exact-active-class="active" to="/beranda/divisi" class="nav-link" aria-current="page" :class="{ 'navLinkOnScroll': !view.topOfPage}">Beranda</router-link>
-                        </li>
-                        <li class="nav-item me-lg-4">
-                            <router-link exact-active-class="active" to="/prosedurMagang" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Prosedur Magang</router-link>
-                        </li>
-                        <li class="nav-item me-lg-4">
-                            <router-link exact-active-class="active" to="/pengumuman" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Pengumuman</router-link>
-                        </li>
+
                     </ul>
                     <ul class="navbar-nav ms-5 ps-3 mb-2 mb-lg-0 mb-sm-5" v-if="user == null">
                         <li class="nav-item ms-lg-4 my-auto">
-                            <router-link exact-active-class="active" to="/beranda/register#content" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
+                            <router-link exact-active-class="active btn" to="/beranda/divisi" class="nav-link" aria-current="page" :class="{ 'navLinkOnScroll': !view.topOfPage}">Beranda</router-link>
                         </li>
-                        <li class="nav-item ms-lg-4">
-                            <router-link exact-active-class="active" to="/beranda/login#content" class="nav-link btn text-white" style="border-radius: 6px; background: #092F53; color: white !important;" :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
+                        <li class="nav-item ms-lg-4 my-auto">
+                            <router-link exact-active-class="active btn" to="/prosedurMagang" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Prosedur Magang</router-link>
+                        </li>
+                        <li class="nav-item ms-lg-4 my-auto">
+                            <router-link exact-active-class="active btn" to="/pengumuman" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Pengumuman</router-link>
+                        </li>
+                        <li class="nav-item ms-lg-4 my-auto">
+                            <router-link exact-active-class="active btn" to="/beranda/register#content" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
+                        </li>
+                        <li class="nav-item ms-lg-4 my-auto">
+                            <router-link exact-active-class="active btn" to="/beranda/login#content" class="nav-link"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-else>
@@ -94,6 +95,11 @@
 
 <style scoped>
 
+    .active {
+        border-radius: 6px;
+        background: #092F53;
+        color: white !important;
+    }
     .navOnTop{
         background: transparent;
         width: 100%;
@@ -124,11 +130,11 @@
     }
 
     .navbarSm .nav-link:hover{
-        color: #092F53 !important;
+        color: black !important;
     }
 
     .navbarSm .nav-item .active{
-        color: #092F53 !important;
+        color: white !important;
     }
 
     .nav-link{
@@ -138,7 +144,10 @@
     .nav-link:hover{
         color: #ffffff !important;
     }
-    .navOnScroll .nav-link:hover {
+    .nav-link:hover{
+        color: #ffffff !important;
+    }
+    .navOnScroll  .nav-link:hover:not(.active){
         color: #000000 !important;
     }
 
@@ -147,10 +156,8 @@
     }
 
     .navOnScroll .active {
-        color: #092F53 !important;
+        color: white !important;
     }
-
-
 
     h5 {
         font-weight: 500;

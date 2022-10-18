@@ -2,7 +2,7 @@
     <div>
         <div class="container-bg ">
             <div class="wrapper">
-                <img class="bg-img" :src="'/image/bg_landing6.png'" >
+                <img class="bg-img" :src="'/image/bg_landing11.png'" >
             </div>
         </div>
         <section id="jumbotron">
