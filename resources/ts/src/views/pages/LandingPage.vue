@@ -10,8 +10,8 @@
                 <div class="col-md-12" style="height: 100% !important">
                     <div class="row d-flex flex-column align-items-center justify-content-center" style="height: 100% !important">
                         <div class="col-md-12 text-center " >
-                            <h1 class="text-white" style="margin-bottom: 50px;">
-                                Selamat Datang di Portal Magang BPKH
+                            <h1 class="text-white" style="margin-bottom: 50px; color: #123155 !important;" >
+                                <span class="fw-normal">Selamat Datang di</span> <span class="fw-bolder">Portal Magang BPKH</span>
                             </h1>
                         </div>
                         <div class="col-md-6 mb-5 pb-5">
@@ -32,7 +32,7 @@
                             </form>
                         </div>
                         <div class="col-md-1">
-                            <svg class="go_animated" id="go" width="30" height="30" viewBox="0 0 26 26" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                            <svg @click="" class="go_animated" id="go" width="30" height="30" viewBox="0 0 26 26" fill="#fff" xmlns="http://www.w3.org/2000/svg">
                                 <g id="7bf1db55bbc1be3d7d48f9ed6dd65c5f">
                                     <g id="b50410873f1c5ef41de022179f6506e3">
                                         <path id="f243221f8881b6c9cd5b2539cee61a18" d="M18.7341 5.1923C19.1572 4.76923 19.8431 4.76923 20.2662 5.1923C20.6893 5.61537 20.6893 6.3013 20.2662 6.72437L13.7662 13.2244C13.3561 13.6345 12.6957 13.6488 12.2681 13.2569L5.76813 7.29858C5.32708 6.89429 5.29729 6.20901 5.70158 5.76797C6.10587 5.32692 6.79115 5.29712 7.2322 5.70142L12.9676 10.9589L18.7341 5.1923Z" fill="#fff"></path>

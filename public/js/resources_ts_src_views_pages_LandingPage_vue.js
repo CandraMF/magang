@@ -411,21 +411,64 @@ var _hoisted_2 = {
   "class": "wrapper"
 };
 var _hoisted_3 = ["src"];
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section id=\"jumbotron\" data-v-176fd577><div class=\"container vh-100\" data-v-176fd577><div class=\"col-md-12\" style=\"height:100% !important;\" data-v-176fd577><div class=\"row d-flex flex-column align-items-center justify-content-center\" style=\"height:100% !important;\" data-v-176fd577><div class=\"col-md-12 text-center\" data-v-176fd577><h1 class=\"text-white\" style=\"margin-bottom:50px;\" data-v-176fd577> Selamat Datang di Portal Magang BPKH </h1></div><div class=\"col-md-6 mb-5 pb-5\" data-v-176fd577><form action=\"\" data-v-176fd577><div class=\"inner-form\" data-v-176fd577><div class=\"search-field\" data-v-176fd577><button class=\"btn-search-logo\" type=\"button\" data-v-176fd577><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"#525252\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" data-v-176fd577><path d=\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\" data-v-176fd577></path></svg></button><input id=\"search\" type=\"text\" autofocus placeholder=\"Cari Posisi Magang\" data-v-176fd577><button class=\"btn-search\" data-v-176fd577> Cari </button></div></div></form></div><div class=\"col-md-1\" data-v-176fd577><svg class=\"go_animated\" id=\"go\" width=\"30\" height=\"30\" viewBox=\"0 0 26 26\" fill=\"#fff\" xmlns=\"http://www.w3.org/2000/svg\" data-v-176fd577><g id=\"7bf1db55bbc1be3d7d48f9ed6dd65c5f\" data-v-176fd577><g id=\"b50410873f1c5ef41de022179f6506e3\" data-v-176fd577><path id=\"f243221f8881b6c9cd5b2539cee61a18\" d=\"M18.7341 5.1923C19.1572 4.76923 19.8431 4.76923 20.2662 5.1923C20.6893 5.61537 20.6893 6.3013 20.2662 6.72437L13.7662 13.2244C13.3561 13.6345 12.6957 13.6488 12.2681 13.2569L5.76813 7.29858C5.32708 6.89429 5.29729 6.20901 5.70158 5.76797C6.10587 5.32692 6.79115 5.29712 7.2322 5.70142L12.9676 10.9589L18.7341 5.1923Z\" fill=\"#fff\" data-v-176fd577></path><path id=\"f6b68c86abdc26f1cf9c8c852851ca93\" opacity=\"0.3\" d=\"M18.7341 12.7756C19.1572 12.3526 19.8431 12.3526 20.2662 12.7756C20.6893 13.1987 20.6893 13.8846 20.2662 14.3077L13.7662 20.8077C13.3561 21.2178 12.6957 21.2322 12.2681 20.8402L5.76813 14.8819C5.32708 14.4776 5.29729 13.7923 5.70158 13.3513C6.10587 12.9103 6.79115 12.8805 7.2322 13.2847L12.9676 18.5422L18.7341 12.7756Z\" fill=\"#fff\" data-v-176fd577></path></g></g></svg></div></div></div></div></section>", 1);
-
+var _hoisted_4 = {
+  id: "jumbotron"
+};
 var _hoisted_5 = {
-  "class": "container"
+  "class": "container vh-100"
 };
 var _hoisted_6 = {
-  "class": "row d-flex justify-content-center m-0 p-0"
+  "class": "col-md-12",
+  style: {
+    "height": "100% !important"
+  }
 };
 var _hoisted_7 = {
+  "class": "row d-flex flex-column align-items-center justify-content-center",
+  style: {
+    "height": "100% !important"
+  }
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-12 text-center\" data-v-176fd577><h1 class=\"text-white\" style=\"margin-bottom:50px;color:#123155 !important;\" data-v-176fd577><span class=\"fw-normal\" data-v-176fd577>Selamat Datang di</span> <span class=\"fw-bolder\" data-v-176fd577>Portal Magang BPKH</span></h1></div><div class=\"col-md-6 mb-5 pb-5\" data-v-176fd577><form action=\"\" data-v-176fd577><div class=\"inner-form\" data-v-176fd577><div class=\"search-field\" data-v-176fd577><button class=\"btn-search-logo\" type=\"button\" data-v-176fd577><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"#525252\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" data-v-176fd577><path d=\"M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\" data-v-176fd577></path></svg></button><input id=\"search\" type=\"text\" autofocus placeholder=\"Cari Posisi Magang\" data-v-176fd577><button class=\"btn-search\" data-v-176fd577> Cari </button></div></div></form></div>", 2);
+
+var _hoisted_10 = {
+  "class": "col-md-1"
+};
+
+var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
+  /*#__PURE__*/
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("g", {
+    id: "7bf1db55bbc1be3d7d48f9ed6dd65c5f"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("g", {
+    id: "b50410873f1c5ef41de022179f6506e3"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    id: "f243221f8881b6c9cd5b2539cee61a18",
+    d: "M18.7341 5.1923C19.1572 4.76923 19.8431 4.76923 20.2662 5.1923C20.6893 5.61537 20.6893 6.3013 20.2662 6.72437L13.7662 13.2244C13.3561 13.6345 12.6957 13.6488 12.2681 13.2569L5.76813 7.29858C5.32708 6.89429 5.29729 6.20901 5.70158 5.76797C6.10587 5.32692 6.79115 5.29712 7.2322 5.70142L12.9676 10.9589L18.7341 5.1923Z",
+    fill: "#fff"
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    id: "f6b68c86abdc26f1cf9c8c852851ca93",
+    opacity: "0.3",
+    d: "M18.7341 12.7756C19.1572 12.3526 19.8431 12.3526 20.2662 12.7756C20.6893 13.1987 20.6893 13.8846 20.2662 14.3077L13.7662 20.8077C13.3561 21.2178 12.6957 21.2322 12.2681 20.8402L5.76813 14.8819C5.32708 14.4776 5.29729 13.7923 5.70158 13.3513C6.10587 12.9103 6.79115 12.8805 7.2322 13.2847L12.9676 18.5422L18.7341 12.7756Z",
+    fill: "#fff"
+  })])], -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_12 = [_hoisted_11];
+var _hoisted_13 = {
+  "class": "container"
+};
+var _hoisted_14 = {
+  "class": "row d-flex justify-content-center m-0 p-0"
+};
+var _hoisted_15 = {
   "class": "row",
   id: "content"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section id=\"berita\" data-v-176fd577><div class=\"container pt-10 mt-10\" data-v-176fd577><div class=\"col-md-12\" data-v-176fd577><div class=\"row pt-5\" style=\"min-height:100vh;\" data-v-176fd577><div class=\"col-md-4 px-5\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-12 mb-3\" data-v-176fd577><div style=\"border-radius:7px;height:250px;background:#D9D9D9;\" data-v-176fd577></div></div><div class=\"col-md-12\" data-v-176fd577><h6 data-v-176fd577>Daftar Nama Lolos ke Tahap Interview</h6><p data-v-176fd577>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p></div></div></div><div class=\"col-md-4 px-5\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-12 mb-3\" data-v-176fd577><div style=\"border-radius:7px;height:250px;background:#D9D9D9;\" data-v-176fd577></div></div><div class=\"col-md-12\" data-v-176fd577><h6 data-v-176fd577>Jadwal Pendaftaran Magang</h6><p data-v-176fd577>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p></div></div></div><div class=\"col-md-4 px-5\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-12 mb-3\" data-v-176fd577><div style=\"border-radius:7px;height:250px;background:#D9D9D9;\" data-v-176fd577></div></div><div class=\"col-md-12\" data-v-176fd577><h6 data-v-176fd577>Jadwal Pendaftaran Magang</h6><p data-v-176fd577>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p></div></div></div></div></div></div></section>", 1);
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section id=\"berita\" data-v-176fd577><div class=\"container pt-10 mt-10\" data-v-176fd577><div class=\"col-md-12\" data-v-176fd577><div class=\"row pt-5\" style=\"min-height:100vh;\" data-v-176fd577><div class=\"col-md-4 px-5\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-12 mb-3\" data-v-176fd577><div style=\"border-radius:7px;height:250px;background:#D9D9D9;\" data-v-176fd577></div></div><div class=\"col-md-12\" data-v-176fd577><h6 data-v-176fd577>Daftar Nama Lolos ke Tahap Interview</h6><p data-v-176fd577>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p></div></div></div><div class=\"col-md-4 px-5\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-12 mb-3\" data-v-176fd577><div style=\"border-radius:7px;height:250px;background:#D9D9D9;\" data-v-176fd577></div></div><div class=\"col-md-12\" data-v-176fd577><h6 data-v-176fd577>Jadwal Pendaftaran Magang</h6><p data-v-176fd577>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p></div></div></div><div class=\"col-md-4 px-5\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-12 mb-3\" data-v-176fd577><div style=\"border-radius:7px;height:250px;background:#D9D9D9;\" data-v-176fd577></div></div><div class=\"col-md-12\" data-v-176fd577><h6 data-v-176fd577>Jadwal Pendaftaran Magang</h6><p data-v-176fd577>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p></div></div></div></div></div></div></section>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
@@ -437,7 +480,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     src: '/image/bg_landing11.png'
   }, null, 8
   /* PROPS */
-  , _hoisted_3)])]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  , _hoisted_3)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    onClick: _cache[0] || (_cache[0] = function () {}),
+    "class": "go_animated",
+    id: "go",
+    width: "30",
+    height: "30",
+    viewBox: "0 0 26 26",
+    fill: "#fff",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, _hoisted_12))])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "auth",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       'col-md-6': this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword' || this.$route.name == 'berandaLdap'
@@ -448,7 +500,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "border-radius": "9px",
       "box-shadow": "0px 4px 79px -23px rgba(0,0,0,0.75)"
     }
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [!_ctx.isLogged ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [!_ctx.isLogged ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, {
     key: 0
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_a) {
@@ -472,7 +524,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 2
   /* CLASS */
-  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <section id=\"logo\">\n            <div class=\"d-flex justify-content-center\" style=\"margin: 100px 0px;\">\n                <img class=\"my-5\" :src=\"'/image/logo-bpkh-s.png'\" alt=\"\" style=\"width: 300px\">\n            </div>\n        </section>\n        <section id=\"berita-utama\">\n            <div class=\" col-md-12 text-center text-white\" style=\"background: #3A57E8; padding: 75px 0px;\">\n                <h2 class=\"text-white\">Periode Pendaftaran Baru Telah Dibuka</h2>\n\n                <div class=\"action mb-4\">\n                    <a href=\"#\" class=\"btn btn-lg text-white mx-2\" style=\"background: rgba(255, 255, 255, 0.226)\">FAQ</a>\n                    <a href=\"#\" class=\"btn btn-lg text-white mx-2\" style=\"background: rgba(255, 255, 255, 0.226)\">Prosedur Pendaftaran</a>\n                    <a href=\"#\" class=\"btn btn-lg text-primary mx-2\" style=\"background: white\">Daftar/Masuk</a>\n                </div>\n\n                <p>Atau hubungi media sosial kami : </p>\n\n                <div class=\"contact\">\n                    <div class=\"symbol symbol-50px symbol-circle mx-2\">\n                        <div class=\"symbol-label\" style=\"background: rgba(255, 255, 255, 0.226)\">\n                            <i class=\"bi bi-telephone text-white\"></i>\n                        </div>\n                    </div>\n                    <div class=\"symbol symbol-50px symbol-circle mx-2\">\n                        <div class=\"symbol-label\" style=\"background: rgba(255, 255, 255, 0.226)\">\n                            <i class=\"bi bi-whatsapp text-white\"></i>\n                        </div>\n                    </div>\n                    <div class=\"symbol symbol-50px symbol-circle mx-2\">\n                        <div class=\"symbol-label\" style=\"background: rgba(255, 255, 255, 0.226)\">\n                            <i class=\"bi bi-envelope text-white\"></i>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </section> "), _hoisted_8]);
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <section id=\"logo\">\n            <div class=\"d-flex justify-content-center\" style=\"margin: 100px 0px;\">\n                <img class=\"my-5\" :src=\"'/image/logo-bpkh-s.png'\" alt=\"\" style=\"width: 300px\">\n            </div>\n        </section>\n        <section id=\"berita-utama\">\n            <div class=\" col-md-12 text-center text-white\" style=\"background: #3A57E8; padding: 75px 0px;\">\n                <h2 class=\"text-white\">Periode Pendaftaran Baru Telah Dibuka</h2>\n\n                <div class=\"action mb-4\">\n                    <a href=\"#\" class=\"btn btn-lg text-white mx-2\" style=\"background: rgba(255, 255, 255, 0.226)\">FAQ</a>\n                    <a href=\"#\" class=\"btn btn-lg text-white mx-2\" style=\"background: rgba(255, 255, 255, 0.226)\">Prosedur Pendaftaran</a>\n                    <a href=\"#\" class=\"btn btn-lg text-primary mx-2\" style=\"background: white\">Daftar/Masuk</a>\n                </div>\n\n                <p>Atau hubungi media sosial kami : </p>\n\n                <div class=\"contact\">\n                    <div class=\"symbol symbol-50px symbol-circle mx-2\">\n                        <div class=\"symbol-label\" style=\"background: rgba(255, 255, 255, 0.226)\">\n                            <i class=\"bi bi-telephone text-white\"></i>\n                        </div>\n                    </div>\n                    <div class=\"symbol symbol-50px symbol-circle mx-2\">\n                        <div class=\"symbol-label\" style=\"background: rgba(255, 255, 255, 0.226)\">\n                            <i class=\"bi bi-whatsapp text-white\"></i>\n                        </div>\n                    </div>\n                    <div class=\"symbol symbol-50px symbol-circle mx-2\">\n                        <div class=\"symbol-label\" style=\"background: rgba(255, 255, 255, 0.226)\">\n                            <i class=\"bi bi-envelope text-white\"></i>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </section> "), _hoisted_16]);
 }
 
 /***/ }),
@@ -489,34 +541,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "row d-flex justify-content-center m-0 p-0"
+};
+var _hoisted_2 = {
+  "class": "col-md-6 mt-10"
+};
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "mb-5 text-center"
 }, "Masuk", -1
 /* HOISTED */
 );
 
-var _hoisted_2 = {
+var _hoisted_4 = {
   "class": "w-100 text-end"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Belum Punya Akun? ");
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Belum Punya Akun? ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
 
-var _hoisted_5 = {
+var _hoisted_7 = {
   "class": "w-100 text-end mb-5"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password? ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password? ");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password");
 
-var _hoisted_8 = {
+var _hoisted_10 = {
   "class": "text-center"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
@@ -533,19 +591,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'row d-flex justify-content-center m-0 p-0': this.$route.name != 'berandaLogin'
-    })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
-      'col-md-6 mt-10': this.$route.name != 'berandaLogin'
-    })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, {
     "class": "p-10"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
         model: $data.ruleForm,
         rules: $data.rules,
         ref: "ruleForm",
@@ -618,25 +668,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "register#content"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_4];
+              return [_hoisted_6];
             }),
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
             to: "forgotPassword#content"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_7];
+              return [_hoisted_9];
             }),
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
             type: "button",
             loading: $data.isLoading,
             onClick: _cache[3] || (_cache[3] = function ($event) {
@@ -645,7 +695,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "btn btn-primary w-100"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_9];
+              return [_hoisted_11];
             }),
             _: 1
             /* STABLE */
@@ -664,11 +714,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })], 2
-  /* CLASS */
-  )], 2
-  /* CLASS */
-  );
+  })])]);
 }
 
 /***/ }),

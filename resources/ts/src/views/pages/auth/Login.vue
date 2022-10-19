@@ -1,7 +1,7 @@
 <template>
 
-    <div :class="{'row d-flex justify-content-center m-0 p-0' : this.$route.name != 'berandaLogin'}">
-        <div :class="{'col-md-6 mt-10' : this.$route.name != 'berandaLogin'}">
+    <div class="row d-flex justify-content-center m-0 p-0">
+        <div class="col-md-6 mt-10">
             <el-card class="p-10" >
                 <h2 class="mb-5 text-center">Masuk</h2>
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon>

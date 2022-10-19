@@ -24,10 +24,10 @@
                             <router-link exact-active-class="active btn" to="/pengumuman" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Pengumuman</router-link>
                         </li>
                         <li class="nav-item ms-lg-4 my-auto">
-                            <router-link exact-active-class="active btn" to="/beranda/register#content" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
+                            <router-link exact-active-class="active btn" to="/auth/register#content" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
                         </li>
                         <li class="nav-item ms-lg-4 my-auto">
-                            <router-link exact-active-class="active btn" to="/beranda/login#content" class="nav-link"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
+                            <router-link exact-active-class="btn" style="border-radius: 6px; background: #fec727; color: white !important;" to="/auth/login#content" class="nav-link btn"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-else>
