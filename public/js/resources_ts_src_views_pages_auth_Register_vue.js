@@ -11,13 +11,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
+/* harmony import */ var vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue3-recaptcha-v2 */ "./node_modules/vue3-recaptcha-v2/dist/vue3-recaptcha-v2.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 
 
  // import { regex } from "vee-validate/dist/rules";
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -82,17 +88,52 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   setup: function setup() {
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
+    var resetRecaptcha = (0,vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_2__.useRecaptcha)().resetRecaptcha;
+    var recaptchaWidget = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(null);
+
+    var callbackVerify = function callbackVerify(response) {
+      console.log(response);
+    };
+
+    var callbackExpired = function callbackExpired() {
+      console.log("expired!");
+    };
+
+    var callbackFail = function callbackFail() {
+      console.log("fail");
+    }; // Reset Recaptcha action
+
+
+    var actionReset = function actionReset() {
+      resetRecaptcha(recaptchaWidget.value);
+    };
+
+    function setUser(payload) {
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.SET_USER, payload);
+    }
+
+    function setToken(payload) {
+      store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.SET_TOKEN, payload);
+    }
+
     return {
-      store: store
+      store: store,
+      setUser: setUser,
+      setToken: setToken,
+      recaptchaWidget: recaptchaWidget,
+      callbackVerify: callbackVerify,
+      callbackFail: callbackFail,
+      callbackExpired: callbackExpired,
+      actionReset: actionReset
     };
   },
   methods: {
     submitForm: function submitForm(formName) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
           this.setLoading(true);
           this.$refs[formName].validate(function (valid) {
             if (valid) {
@@ -168,6 +209,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(this.validCaptcha);
       }
     }
+  },
+  components: {
+    VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_2__.VueRecaptcha
   } // mounted() {
   //     if (localStorage.getItem('loggedIn') && ( this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin' )) {
   //         this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
@@ -193,18 +237,22 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "p-5 card"
 };
-var _hoisted_2 = {
-  "class": "card-body"
-};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "mb-5 text-center"
-}, "Daftar", -1
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-title"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Registrasi Akun"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "fw-light fs-6 text-info mt-3"
+}, " Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya")])])], -1
 /* HOISTED */
 );
 
+var _hoisted_3 = {
+  "class": "card-body"
+};
 var _hoisted_4 = {
-  "class": "my-10 notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
+  "class": "notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-5"
 };
 var _hoisted_5 = {
   "class": "svg-icon svg-icon-2tx svg-icon-warning me-4"
@@ -235,13 +283,13 @@ var _hoisted_10 = {
   "class": "col-md-12"
 };
 var _hoisted_11 = {
-  "class": "row d-flex justify-content-center"
+  "class": "d-flex justify-content-center mt-9"
 };
 var _hoisted_12 = {
-  "class": "col-md-5 mt-10"
+  "class": "col-md-6"
 };
 var _hoisted_13 = {
-  "class": "w-100 text-center"
+  "class": "w-100"
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
@@ -249,10 +297,13 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
 
 var _hoisted_16 = {
-  "class": "my-5 text-center"
+  "class": "col-md-6"
+};
+var _hoisted_17 = {
+  "class": "text-center"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
@@ -261,7 +312,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
 
-  var _component_VueClientRecaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VueClientRecaptcha");
+  var _component_vue_recaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-recaptcha");
 
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -277,7 +328,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'col-md-6 mt-10': this.$route.name != 'berandaRegister'
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
     src: "/media/icons/duotune/general/gen044.svg"
   })]), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
     model: $data.ruleForm,
@@ -411,31 +462,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
-        value: $data.ruleForm.captcha,
-        onGetCode: $options.getCaptchaCode,
-        onIsValid: $options.checkValidCaptcha,
-        "class": "mb-5"
-      }, null, 8
-      /* PROPS */
-      , ["value", "onGetCode", "onIsValid"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        prop: "captcha"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.captcha,
-            "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-              return $data.ruleForm.captcha = $event;
-            }),
-            placeholder: "Masukan Token di Atas"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_recaptcha, {
+        style: {
+          "min-width": "100% !important"
+        },
+        theme: "light",
+        size: "normal",
+        tabindex: 0,
+        onWidgetId: _cache[7] || (_cache[7] = function ($event) {
+          return $setup.recaptchaWidget = $event;
         }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+        onVerify: _cache[8] || (_cache[8] = function ($event) {
+          return $setup.callbackVerify($event);
+        }),
+        onFail: _cache[9] || (_cache[9] = function ($event) {
+          return $setup.callbackFail();
+        }),
+        onExpired: _cache[10] || (_cache[10] = function ($event) {
+          return $setup.callbackExpired();
+        })
+      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
         to: "login#content"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -444,23 +490,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
         type: "button",
         loading: $data.isLoading,
-        onClick: _cache[8] || (_cache[8] = function ($event) {
+        onClick: _cache[11] || (_cache[11] = function ($event) {
           return $options.submitForm('ruleForm');
         }),
         "class": "btn btn-primary w-100"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_17];
+          return [_hoisted_18];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["loading"])])])])])])];
+      , ["loading"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-12\">\n                                <div class=\"row d-flex justify-content-center\">\n                                    <div class=\"col-md-5 mt-10\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <VueClientRecaptcha\n                                            :value=\"ruleForm.captcha\"\n                                            @getCode=\"getCaptchaCode\"\n                                            @isValid=\"checkValidCaptcha\"\n                                            class=\"mb-5\"\n                                            chars=\"1234567890\"\n                                            :hideLines=\"true\"\n                                        /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-form-item prop=\"captcha\">\n                                            <el-input v-model=\"ruleForm.captcha\" placeholder=\"Masukan Token di Atas\"></el-input>\n                                        </el-form-item> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div>\n                                </div>\n                            </div> ")])];
     }),
     _: 1
     /* STABLE */

@@ -7,3 +7,19 @@
 .el-form-item {
     margin-bottom: 12px !important;
 }
+.el-input__inner {
+    background-color: #F5F8FA !important;
+    border-color: #F5F8FA !important;
+    /* @include placeholder($input-solid-placeholder-color); */
+    color: #5E6278 !important;
+    /* transition: $transition-input; */
+}
+
+.el-input__inner, .el-textarea__inner, .el-input__count-inner {
+    background-color: #F5F8FA !important;
+    border-color: #F5F8FA !important;
+    /* @include placeholder($input-solid-placeholder-color); */
+    color: #5E6278 !important;
+    /* transition: $transition-input; */
+}
+

@@ -69,6 +69,7 @@
         "vue-client-recaptcha": "^1.0.5",
         "vue-router-multiguard": "^1.0.3",
         "vue3-count-to": "^1.1.2",
+        "vue3-recaptcha-v2": "^1.0.1",
         "vue3-verification-code-input": "^0.1.0",
         "vuex-module-decorators": "^1.0.1",
         "vuex-persistedstate": "^4.1.0"

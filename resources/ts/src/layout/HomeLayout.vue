@@ -27,7 +27,7 @@
                             <router-link exact-active-class="active btn" to="/auth/register#content" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
                         </li>
                         <li class="nav-item ms-lg-4 my-auto">
-                            <router-link exact-active-class="btn" style="border-radius: 6px; background: #fec727; color: white !important;" to="/auth/login#content" class="nav-link btn"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
+                            <router-link exact-active-class="btn" style="border-radius: 6px; background: #DC8100; color: white !important;" to="/auth/login#content" class="nav-link btn"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-else>
@@ -142,10 +142,7 @@
         font-weight: 600;
     }
     .nav-link:hover{
-        color: #ffffff !important;
-    }
-    .nav-link:hover{
-        color: #ffffff !important;
+        color: #DC8100 !important;
     }
     .navOnScroll  .nav-link:hover:not(.active){
         color: #000000 !important;

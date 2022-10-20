@@ -1,12 +1,16 @@
 <template>
 
     <div class="row d-flex justify-content-center m-0 p-0">
-        <div class="col-md-6 mt-10">
+        <div class="col-md-4 mt-10">
             <div class="card p-5">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h2 class="text-center">Masuk</h2>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <h2 class="text-center">Masuk</h2>
                     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon >
-                        <el-form-item prop="nik" label="Username">
+                        <el-form-item prop="nik" label="User ID">
                             <el-input
                                 v-model="ruleForm.nik"
                             ></el-input>
@@ -14,20 +18,23 @@
                         <el-form-item prop="password" label="Password" >
                             <el-input v-model="ruleForm.password" show-password></el-input>
                         </el-form-item>
-                        <el-form-item>
-                            <VueClientRecaptcha
-                                :value="ruleForm.captcha"
-                                @getCode="getCaptchaCode"
-                                @isValid="checkValidCaptcha"
-                            />
-                        </el-form-item>
-                        <el-form-item prop="captcha">
-                            <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
-                        </el-form-item>
-                        <div class="w-100 text-end">Belum Punya Akun? <router-link to="register#content">Daftar</router-link></div>
-                        <div class="w-100 text-end mb-5">Lupa Password? <router-link to="forgotPassword#content">Lupa Password</router-link></div>
-                        <div class="text-center">
-                            <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Masuk</el-button>
+
+                        <div class="d-flex justify-content-center mt-9">
+                            <div>
+                                <vue-recaptcha
+                                    theme="light"
+                                    size="normal"
+                                    :tabindex="0"
+                                    @widgetId="recaptchaWidget = $event"
+                                    @verify="callbackVerify($event)"
+                                    @fail="callbackFail()"
+                                    @expired="callbackExpired()"
+                                />
+                            </div>
+                        </div>
+                        <div class=" text-center mt-5" >
+                            <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary px-10 mb-5">Masuk</el-button>
+                            <div class="w-100 mb-5">Lupa Password? <router-link to="forgotPassword#content">Reset Password</router-link></div>
                         </div>
                     </el-form>
                 </div>
@@ -42,33 +49,53 @@
     import { useStore, mapMutations } from "vuex";
     import { Mutations, Actions } from "@/store/enums/StoreEnums";
     import { ref } from 'vue';
-import store from '@/store';
+    import store from '@/store';
+
+    import { VueRecaptcha, useRecaptcha } from "vue3-recaptcha-v2";
 
   export default {
     data() {
         return {
             isLoading: false,
-            validCaptcha: false,
+            validCaptcha: true,
             ruleForm: {
                 password: '',
                 nik: '',
-                captcha: '',
+                // captcha: '',
             },
             rules: {
                 nik: [
-                    { required: true, message: 'Mohon isi Username', trigger: 'blur' },
+                    { required: true, message: 'Mohon isi User ID', trigger: 'blur' },
                 ],
                 password: [
                     { required: true, message: 'Mohon isi Password', trigger: ['blur', 'change'] },
                 ],
-                captcha: [
-                    { required: true, message: 'Mohon isi Captcha', trigger: ['blur'] },
-                ]
+                // captcha: [
+                //     { required: true, message: 'Mohon isi Captcha', trigger: ['blur'] },
+                // ]
             },
       };
     },
     setup() {
         const store = useStore();
+        const { resetRecaptcha } = useRecaptcha();
+        const recaptchaWidget = ref(null);
+
+        const callbackVerify = (response) => {
+            console.log(response);
+        };
+
+        const callbackExpired = () => {
+            console.log("expired!");
+        };
+
+        const callbackFail = () => {
+            console.log("fail");
+        };
+        // Reset Recaptcha action
+        const actionReset = () => {
+            resetRecaptcha(recaptchaWidget.value);
+        };
 
         function setUser(payload){
             store.commit(Mutations.SET_USER, payload)
@@ -82,6 +109,11 @@ import store from '@/store';
             store,
             setUser,
             setToken,
+            recaptchaWidget,
+            callbackVerify,
+            callbackFail,
+            callbackExpired,
+            actionReset,
         }
     },
     methods: {
@@ -153,6 +185,7 @@ import store from '@/store';
         }
       }
     },
+    components: { VueRecaptcha },
 }
 
 </script>

@@ -3,17 +3,24 @@
     <div :class="{'row d-flex justify-content-center m-0 p-0' : this.$route.name != 'berandaRegister'}">
         <div :class="{'col-md-6 mt-10' : this.$route.name != 'berandaRegister'}">
             <div class="p-5 card" >
+                <div class="card-header">
+                    <div class="card-title">
+                        <div>
+                            <h2>Registrasi Akun</h2>
+                            <p class="fw-light fs-6 text-info mt-3"> Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <h2 class="mb-5 text-center">Daftar</h2>
                     <div
                     class="
-                        my-10
                         notice
                         d-flex
                         bg-light-warning
                         rounded
                         border-warning border border-dashed
                         p-6
+                        mb-5
                     ">
                         <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
                             <inline-svg src="/media/icons/duotune/general/gen044.svg" />
@@ -57,24 +64,47 @@
                                 </el-form-item>
                             </div>
                             <div class="col-md-12">
+                                <div class="d-flex justify-content-center mt-9">
+                                    <div>
+                                        <vue-recaptcha
+                                            style="min-width: 100% !important;"
+                                            theme="light"
+                                            size="normal"
+                                            :tabindex="0"
+                                            @widgetId="recaptchaWidget = $event"
+                                            @verify="callbackVerify($event)"
+                                            @fail="callbackFail()"
+                                            @expired="callbackExpired()"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="w-100">Sudah Punya Akun? <router-link to="login#content">Login</router-link></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-center">
+                                    <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Daftar</el-button>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12">
                                 <div class="row d-flex justify-content-center">
-                                    <div class="col-md-5 mt-10">
-                                        <VueClientRecaptcha
+                                    <div class="col-md-5 mt-10"> -->
+                                        <!-- <VueClientRecaptcha
                                             :value="ruleForm.captcha"
                                             @getCode="getCaptchaCode"
                                             @isValid="checkValidCaptcha"
                                             class="mb-5"
-                                        />
-                                        <el-form-item prop="captcha">
+                                            chars="1234567890"
+                                            :hideLines="true"
+                                        /> -->
+                                        <!-- <el-form-item prop="captcha">
                                             <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
-                                        </el-form-item>
-                                        <div class="w-100 text-center">Sudah Punya Akun? <router-link to="login#content">Login</router-link></div>
-                                        <div class="my-5 text-center">
-                                            <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Daftar</el-button>
-                                        </div>
-                                    </div>
+                                        </el-form-item> -->
+
+                                    <!-- </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </el-form>
                 </div>
@@ -88,6 +118,9 @@
     import { useStore, mapMutations } from "vuex";
     import { Mutations, Actions } from "@/store/enums/StoreEnums";
     // import { regex } from "vee-validate/dist/rules";
+
+    import { VueRecaptcha, useRecaptcha } from "vue3-recaptcha-v2";
+    import { ref } from 'vue';
 
   export default {
 
@@ -134,8 +167,42 @@
     },
     setup() {
         const store = useStore();
+        const { resetRecaptcha } = useRecaptcha();
+        const recaptchaWidget = ref(null);
+
+        const callbackVerify = (response) => {
+            console.log(response);
+        };
+
+        const callbackExpired = () => {
+            console.log("expired!");
+        };
+
+        const callbackFail = () => {
+            console.log("fail");
+        };
+        // Reset Recaptcha action
+        const actionReset = () => {
+            resetRecaptcha(recaptchaWidget.value);
+        };
+
+        function setUser(payload){
+            store.commit(Mutations.SET_USER, payload)
+        }
+
+        function setToken(payload){
+            store.commit(Mutations.SET_TOKEN, payload)
+        }
+
         return {
             store,
+            setUser,
+            setToken,
+            recaptchaWidget,
+            callbackVerify,
+            callbackFail,
+            callbackExpired,
+            actionReset,
         }
     },
     methods: {
@@ -204,6 +271,8 @@
         }
       }
     },
+
+    components: { VueRecaptcha },
     // mounted() {
     //     if (localStorage.getItem('loggedIn') && ( this.$route.name != 'berandaRegister' && this.$route.name != 'berandaLogin' )) {
     //         this.$router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });

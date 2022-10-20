@@ -37,6 +37,8 @@
                                 @getCode="getCaptchaCode"
                                 @isValid="checkValidCaptcha"
                                 class="mb-5"
+                                chars="1234567890"
+                                :hideLines="true"
                             />
                             <el-form-item prop="captcha">
                                 <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>

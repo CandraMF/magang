@@ -44,7 +44,7 @@ const auth = (to, from, next) => {
     console.log('auth')
 
     if (!token) {
-        if (to.name != 'login') {
+        if (to.name != 'login' && to.name != 'register') {
             next({ path: '/auth/login' })
             return false
         }

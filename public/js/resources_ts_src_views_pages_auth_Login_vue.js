@@ -11,12 +11,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/store */ "./resources/ts/src/store/index.ts");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/store */ "./resources/ts/src/store/index.ts");
+/* harmony import */ var vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue3-recaptcha-v2 */ "./node_modules/vue3-recaptcha-v2/dist/vue3-recaptcha-v2.js");
+
+
 
 
 
@@ -26,33 +30,50 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isLoading: false,
-      validCaptcha: false,
+      validCaptcha: true,
       ruleForm: {
         password: '',
-        nik: '',
-        captcha: ''
+        nik: '' // captcha: '',
+
       },
       rules: {
         nik: [{
           required: true,
-          message: 'Mohon isi Username',
+          message: 'Mohon isi User ID',
           trigger: 'blur'
         }],
         password: [{
           required: true,
           message: 'Mohon isi Password',
           trigger: ['blur', 'change']
-        }],
-        captcha: [{
-          required: true,
-          message: 'Mohon isi Captcha',
-          trigger: ['blur']
-        }]
+        }] // captcha: [
+        //     { required: true, message: 'Mohon isi Captcha', trigger: ['blur'] },
+        // ]
+
       }
     };
   },
   setup: function setup() {
-    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.useStore)();
+    var store = (0,vuex__WEBPACK_IMPORTED_MODULE_5__.useStore)();
+    var resetRecaptcha = (0,vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_4__.useRecaptcha)().resetRecaptcha;
+    var recaptchaWidget = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(null);
+
+    var callbackVerify = function callbackVerify(response) {
+      console.log(response);
+    };
+
+    var callbackExpired = function callbackExpired() {
+      console.log("expired!");
+    };
+
+    var callbackFail = function callbackFail() {
+      console.log("fail");
+    }; // Reset Recaptcha action
+
+
+    var actionReset = function actionReset() {
+      resetRecaptcha(recaptchaWidget.value);
+    };
 
     function setUser(payload) {
       store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.SET_USER, payload);
@@ -65,15 +86,20 @@ __webpack_require__.r(__webpack_exports__);
     return {
       store: store,
       setUser: setUser,
-      setToken: setToken
+      setToken: setToken,
+      recaptchaWidget: recaptchaWidget,
+      callbackVerify: callbackVerify,
+      callbackFail: callbackFail,
+      callbackExpired: callbackExpired,
+      actionReset: actionReset
     };
   },
   methods: {
     submitForm: function submitForm(formName) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function () {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
           this.setLoading(true);
           this.$refs[formName].validate(function (valid) {
             if (valid) {
@@ -83,8 +109,8 @@ __webpack_require__.r(__webpack_exports__);
                     login: _this.ruleForm.nik,
                     password: _this.ruleForm.password
                   }).then(function (response) {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
-                      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+                    return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
+                      return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
                         switch (_a.label) {
                           case 0:
                             if (!response.data.success) return [3
@@ -104,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
                             this.setUser(response.data.user);
                             this.setToken(response.data.token);
                             console.log(response.data);
-                            console.log(_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.getUser);
+                            console.log(_store__WEBPACK_IMPORTED_MODULE_3__["default"].getters.getUser);
                             this.$router.go(0);
                             return [3
                             /*break*/
@@ -165,6 +191,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(this.validCaptcha);
       }
     }
+  },
+  components: {
+    VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_4__.VueRecaptcha
   }
 });
 
@@ -186,57 +215,56 @@ var _hoisted_1 = {
   "class": "row d-flex justify-content-center m-0 p-0"
 };
 var _hoisted_2 = {
-  "class": "col-md-6 mt-10"
+  "class": "col-md-4 mt-10"
 };
 var _hoisted_3 = {
   "class": "card p-5"
 };
-var _hoisted_4 = {
-  "class": "card-body"
-};
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-title"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "text-center"
-}, "Masuk", -1
+}, "Masuk")])], -1
 /* HOISTED */
 );
 
+var _hoisted_5 = {
+  "class": "card-body"
+};
 var _hoisted_6 = {
-  "class": "w-100 text-end"
+  "class": "d-flex justify-content-center mt-9"
+};
+var _hoisted_7 = {
+  "class": "text-center mt-5"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Belum Punya Akun? ");
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
 
 var _hoisted_9 = {
-  "class": "w-100 text-end mb-5"
+  "class": "w-100 mb-5"
 };
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password? ");
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password");
-
-var _hoisted_12 = {
-  "class": "text-center"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset Password");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
 
-  var _component_VueClientRecaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VueClientRecaptcha");
-
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+  var _component_vue_recaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-recaptcha");
 
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
     model: $data.ruleForm,
     rules: $data.rules,
     ref: "ruleForm",
@@ -246,7 +274,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         prop: "nik",
-        label: "Username"
+        label: "User ID"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
@@ -279,38 +307,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
-            value: $data.ruleForm.captcha,
-            onGetCode: $options.getCaptchaCode,
-            onIsValid: $options.checkValidCaptcha
-          }, null, 8
-          /* PROPS */
-          , ["value", "onGetCode", "onIsValid"])];
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_recaptcha, {
+        theme: "light",
+        size: "normal",
+        tabindex: 0,
+        onWidgetId: _cache[2] || (_cache[2] = function ($event) {
+          return $setup.recaptchaWidget = $event;
         }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        prop: "captcha"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.captcha,
-            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-              return $data.ruleForm.captcha = $event;
-            }),
-            placeholder: "Masukan Token di Atas"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
+        onVerify: _cache[3] || (_cache[3] = function ($event) {
+          return $setup.callbackVerify($event);
         }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "register#content"
+        onFail: _cache[4] || (_cache[4] = function ($event) {
+          return $setup.callbackFail();
+        }),
+        onExpired: _cache[5] || (_cache[5] = function ($event) {
+          return $setup.callbackExpired();
+        })
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+        type: "button",
+        loading: $data.isLoading,
+        onClick: _cache[6] || (_cache[6] = function ($event) {
+          return $options.submitForm('ruleForm');
+        }),
+        "class": "btn btn-primary px-10 mb-5"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_8];
@@ -318,7 +337,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+      }, 8
+      /* PROPS */
+      , ["loading"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
         to: "forgotPassword#content"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -327,23 +348,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-        type: "button",
-        loading: $data.isLoading,
-        onClick: _cache[3] || (_cache[3] = function ($event) {
-          return $options.submitForm('ruleForm');
-        }),
-        "class": "btn btn-primary w-100"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_13];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["loading"])])];
+      })])])];
     }),
     _: 1
     /* STABLE */

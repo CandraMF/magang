@@ -16,6 +16,7 @@ import "@/core/plugins/keenthemes";
 import "@/core/plugins/prismjs";
 
 import VueClientRecaptcha from 'vue-client-recaptcha'
+import VueRecaptcha from "vue3-recaptcha-v2";
 
 const app = createApp(App);
 
@@ -25,6 +26,10 @@ app.use(store);
 app.use(router);
 app.use(ElementPlus);
 app.use(i18n);
+app.use(VueRecaptcha, {
+    siteKey: "6LfWt5UiAAAAAFwW8KgF-Md-qms6hAXx0u34DD2V",
+    alterDomain: false,
+})
 
 initInlineSvg(app);
 initVeeValidate();
