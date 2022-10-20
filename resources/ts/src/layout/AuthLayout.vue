@@ -49,9 +49,6 @@
 </template>
 
 <style scoped>
-    *{
-        font-family: 'Work Sans', sans-serif !important;
-    }
    .navOnScroll {
         box-shadow: 0 0 10px #aaa;
         background-color: #fff;
