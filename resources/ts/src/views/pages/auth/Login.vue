@@ -4,7 +4,7 @@
         <div class="col-md-6 mt-10">
             <div class="card p-5">
                 <div class="card-body">
-                    <h2 class="mb-5 text-center">Masuk</h2>
+                    <h2 class="text-center">Masuk</h2>
                     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon >
                         <el-form-item prop="nik" label="Username">
                             <el-input
@@ -14,23 +14,16 @@
                         <el-form-item prop="password" label="Password" >
                             <el-input v-model="ruleForm.password" show-password></el-input>
                         </el-form-item>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <el-form-item>
-                                    <VueClientRecaptcha
-                                        class="justify-content-md-start"
-                                        :value="ruleForm.captcha"
-                                        @getCode="getCaptchaCode"
-                                        @isValid="checkValidCaptcha"
-                                    />
-                                </el-form-item>
-                            </div>
-                            <div class="col-md-6">
-                                <el-form-item prop="captcha">
-                                    <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Di Samping"></el-input>
-                                </el-form-item>
-                            </div>
-                        </div>
+                        <el-form-item>
+                            <VueClientRecaptcha
+                                :value="ruleForm.captcha"
+                                @getCode="getCaptchaCode"
+                                @isValid="checkValidCaptcha"
+                            />
+                        </el-form-item>
+                        <el-form-item prop="captcha">
+                            <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
+                        </el-form-item>
                         <div class="w-100 text-end">Belum Punya Akun? <router-link to="register#content">Daftar</router-link></div>
                         <div class="w-100 text-end mb-5">Lupa Password? <router-link to="forgotPassword#content">Lupa Password</router-link></div>
                         <div class="text-center">
@@ -49,7 +42,7 @@
     import { useStore, mapMutations } from "vuex";
     import { Mutations, Actions } from "@/store/enums/StoreEnums";
     import { ref } from 'vue';
-    import store from '@/store';
+import store from '@/store';
 
   export default {
     data() {
