@@ -86,9 +86,9 @@ class StatusController extends Controller
 
     public function getByType($type)
     {
-
         $data = \App\Models\Status::where('type', 'like', '%'.$type.'%')
             ->whereIsActive(1)
+            ->orderBy('status_id', 'desc')
             ->get();
 
         return response()->json($data);

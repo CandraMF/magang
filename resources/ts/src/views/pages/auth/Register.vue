@@ -2,81 +2,83 @@
 
     <div :class="{'row d-flex justify-content-center m-0 p-0' : this.$route.name != 'berandaRegister'}">
         <div :class="{'col-md-6 mt-10' : this.$route.name != 'berandaRegister'}">
-            <el-card class="p-10" >
-                <h2 class="mb-5 text-center">Daftar</h2>
-                <div
-                class="
-                    my-10
-                    notice
-                    d-flex
-                    bg-light-warning
-                    rounded
-                    border-warning border border-dashed
-                    p-6
-                ">
-                    <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-                        <inline-svg src="/media/icons/duotune/general/gen044.svg" />
-                    </span>
-                    <div class="d-flex flex-stack flex-grow-1">
-                        <div class="fw-bold">
-                            <h4 class="text-gray-800 fw-bolder">Perhatian!</h4>
-                            <div class="fs-6 text-gray-600">
-                                Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <el-form-item prop="nik" label="Nomor Induk Kependudukan">
-                                <el-input
-                                    v-model="ruleForm.nik"
-                                ></el-input>
-                            </el-form-item>
-                            <el-form-item prop="name" label="Nama Lengkap">
-                                <el-input v-model="ruleForm.name"></el-input>
-                            </el-form-item>
-                            <el-form-item prop="email" label="Email">
-                                <el-input v-model="ruleForm.email"></el-input>
-                            </el-form-item>
-                            <el-form-item prop="nomorHP" label="Nomor Ponsel">
-                                <el-input v-model="ruleForm.nomorHP"></el-input>
-                            </el-form-item>
-                        </div>
-                        <div class="col-md-6">
-                            <el-form-item prop="username" label="Username" >
-                                <el-input v-model="ruleForm.nik" readonly disabled></el-input>
-                            </el-form-item>
-                            <el-form-item prop="password" label="Password" >
-                                <el-input v-model="ruleForm.password" show-password></el-input>
-                            </el-form-item>
-                            <el-form-item prop="confirmPassword" label="Konfirmasi Password" >
-                                <el-input v-model="ruleForm.confirmPassword" show-password autocomplete="off"></el-input>
-                            </el-form-item>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-md-5 mt-10">
-                                    <VueClientRecaptcha
-                                        :value="ruleForm.captcha"
-                                        @getCode="getCaptchaCode"
-                                        @isValid="checkValidCaptcha"
-                                        class="mb-5"
-                                    />
-                                    <el-form-item prop="captcha">
-                                        <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
-                                    </el-form-item>
-                                    <div class="w-100 text-center">Sudah Punya Akun? <router-link to="login#content">Login</router-link></div>
-                                    <div class="my-5 text-center">
-                                        <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Daftar</el-button>
-                                    </div>
+            <div class="p-5 card" >
+                <div class="card-body">
+                    <h2 class="mb-5 text-center">Daftar</h2>
+                    <div
+                    class="
+                        my-10
+                        notice
+                        d-flex
+                        bg-light-warning
+                        rounded
+                        border-warning border border-dashed
+                        p-6
+                    ">
+                        <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+                            <inline-svg src="/media/icons/duotune/general/gen044.svg" />
+                        </span>
+                        <div class="d-flex flex-stack flex-grow-1">
+                            <div class="fw-bold">
+                                <h4 class="text-gray-800 fw-bolder">Perhatian!</h4>
+                                <div class="fs-6 text-gray-600">
+                                    Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya
                                 </div>
                             </div>
                         </div>
                     </div>
-                </el-form>
-            </el-card>
+                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <el-form-item prop="nik" label="Nomor Induk Kependudukan">
+                                    <el-input
+                                        v-model="ruleForm.nik"
+                                    ></el-input>
+                                </el-form-item>
+                                <el-form-item prop="name" label="Nama Lengkap">
+                                    <el-input v-model="ruleForm.name"></el-input>
+                                </el-form-item>
+                                <el-form-item prop="email" label="Email">
+                                    <el-input v-model="ruleForm.email"></el-input>
+                                </el-form-item>
+                                <el-form-item prop="nomorHP" label="Nomor Ponsel">
+                                    <el-input v-model="ruleForm.nomorHP"></el-input>
+                                </el-form-item>
+                            </div>
+                            <div class="col-md-6">
+                                <el-form-item prop="username" label="Username" >
+                                    <el-input v-model="ruleForm.nik" readonly disabled></el-input>
+                                </el-form-item>
+                                <el-form-item prop="password" label="Password" >
+                                    <el-input v-model="ruleForm.password" show-password></el-input>
+                                </el-form-item>
+                                <el-form-item prop="confirmPassword" label="Konfirmasi Password" >
+                                    <el-input v-model="ruleForm.confirmPassword" show-password autocomplete="off"></el-input>
+                                </el-form-item>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-5 mt-10">
+                                        <VueClientRecaptcha
+                                            :value="ruleForm.captcha"
+                                            @getCode="getCaptchaCode"
+                                            @isValid="checkValidCaptcha"
+                                            class="mb-5"
+                                        />
+                                        <el-form-item prop="captcha">
+                                            <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
+                                        </el-form-item>
+                                        <div class="w-100 text-center">Sudah Punya Akun? <router-link to="login#content">Login</router-link></div>
+                                        <div class="my-5 text-center">
+                                            <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Daftar</el-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-form>
+                </div>
+            </div>
         </div>
     </div>
 

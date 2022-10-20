@@ -49,6 +49,9 @@
 </template>
 
 <style scoped>
+    *{
+        font-family: 'Work Sans', sans-serif !important;
+    }
    .navOnScroll {
         box-shadow: 0 0 10px #aaa;
         background-color: #fff;
@@ -269,7 +272,7 @@ export default {
     }
 
     .auth-layout {
-        margin-top: 100px
+        margin-top: 75px
     }
 
 </style>

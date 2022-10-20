@@ -95,6 +95,9 @@
 
 <style scoped>
 
+    *{
+        font-family: 'Work Sans', sans-serif !important;
+    }
     .active {
         border-radius: 6px;
         background: #092F53;

@@ -37,7 +37,7 @@
                         </el-form-item>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6">
                         <el-form-item label="Nomor SIM A" prop="nomorSIMA">
                             <el-input
@@ -65,7 +65,7 @@
                             </el-input>
                         </el-form-item>
                     </div>
-                </div>
+                </div> -->
                 <el-form-item label="Tempat, Tanggal Lahir">
                     <div class="row">
                         <div class="col-md-6 mb-sm-2">
@@ -101,10 +101,10 @@
                 </el-form-item>
             </div>
             <div class="col-md-6">
-                <el-form-item label="Alamat Asal" prop="alamatAsal">
+                <el-form-item label="Alamat Asal (Sesuai KTP)" prop="alamatAsal">
                     <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.alamatAsal"></el-input>
                 </el-form-item>
-                <el-form-item label="Domisili Asal" prop="domisiliAsal">
+                <el-form-item label="Domisili Asal (Isi dengan nama kecamatan)" prop="domisiliAsal">
                     <el-autocomplete
                         class="inline-input w-100"
                         v-model="ruleForm.domisiliAsal"
@@ -121,26 +121,36 @@
                         </el-form-item>
                     </div>
                 </div>
-                <el-form-item label="Alamat Tinggal" prop="alamatTinggal">
-                    <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.alamatTinggal"></el-input>
-                </el-form-item>
-                <el-form-item label="Domisili Tinggal" prop="domisiliTinggal">
-                    <el-autocomplete
-                        class="inline-input w-100"
-                        v-model="ruleForm.domisiliTinggal"
-                        :fetch-suggestions="querySearch"
-                        placeholder="Isi Dengan Nama Kecamatan"
-                        :trigger-on-focus="false"
-                        @select="handleSelectTinggal">
-                    </el-autocomplete>
-                </el-form-item>
-                <div class="row">
-                    <div class="col-md-6">
-                        <el-form-item label="Kode Pos Tinggal" prop="kodePosTinggal">
-                            <el-input v-model="ruleForm.kodePosTinggal"></el-input>
+
+                <!-- <el-divider>
+                    <el-checkbox v-model="alamatTinggalShow" label="Alamat " size="large" border/></div>
+                </el-divider> -->
+
+                <transition name="el-zoom-in-top">
+                    <div v-show="alamatTinggalShow" class="transition-box">
+                        <el-form-item label="Alamat Tinggal" prop="alamatTinggal">
+                            <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.alamatTinggal"></el-input>
                         </el-form-item>
+                        <el-form-item label="Domisili Tinggal (Isi dengan nama kecamatan)" prop="domisiliTinggal">
+                            <el-autocomplete
+                                class="inline-input w-100"
+                                v-model="ruleForm.domisiliTinggal"
+                                :fetch-suggestions="querySearch"
+                                placeholder="Isi Dengan Nama Kecamatan"
+                                :trigger-on-focus="false"
+                                @select="handleSelectTinggal">
+                            </el-autocomplete>
+                        </el-form-item>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <el-form-item label="Kode Pos Tinggal" prop="kodePosTinggal">
+                                    <el-input v-model="ruleForm.kodePosTinggal"></el-input>
+                                </el-form-item>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </transition>
+
                 <div class="row">
                     <div class="col-md-6">
                         <el-form-item label="Nomor Ponsel" prop="nomorHP">
@@ -203,6 +213,8 @@
 
     const store = useStore();
     const ruleFormRef = ref(null);
+
+    const alamatTinggalShow = ref(false);
 
     var token = ref('');
     var personId = null;

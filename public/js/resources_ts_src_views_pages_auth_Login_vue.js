@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/store */ "./resources/ts/src/store/index.ts");
 
 
 
@@ -48,8 +48,7 @@ __webpack_require__.r(__webpack_exports__);
           message: 'Mohon isi Captcha',
           trigger: ['blur']
         }]
-      },
-      router: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)()
+      }
     };
   },
   setup: function setup() {
@@ -84,30 +83,48 @@ __webpack_require__.r(__webpack_exports__);
                     login: _this.ruleForm.nik,
                     password: _this.ruleForm.password
                   }).then(function (response) {
-                    if (response.data.success) {
-                      _this.$notify({
-                        title: 'Success',
-                        type: 'success',
-                        message: response.data.message
+                    return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
+                      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+                        switch (_a.label) {
+                          case 0:
+                            if (!response.data.success) return [3
+                            /*break*/
+                            , 2];
+                            return [4
+                            /*yield*/
+                            , this.$notify({
+                              title: 'Success',
+                              type: 'success',
+                              message: response.data.message
+                            })];
+
+                          case 1:
+                            _a.sent();
+
+                            this.setUser(response.data.user);
+                            this.setToken(response.data.token);
+                            console.log(response.data);
+                            console.log(_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.getUser);
+                            this.$router.go(0);
+                            return [3
+                            /*break*/
+                            , 3];
+
+                          case 2:
+                            this.$notify.error({
+                              title: 'Error',
+                              message: response.data.message
+                            });
+                            _a.label = 3;
+
+                          case 3:
+                            this.setLoading(false);
+                            return [2
+                            /*return*/
+                            ];
+                        }
                       });
-
-                      _this.setUser(response.data.user);
-
-                      _this.setToken(response.data.token);
-
-                      console.log(response.data);
-
-                      _this.router.push({
-                        path: '/auth/aktivasiPlatform'
-                      });
-                    } else {
-                      _this.$notify.error({
-                        title: 'Error',
-                        message: response.data.message
-                      });
-                    }
-
-                    _this.setLoading(false);
+                    });
                   })["catch"](function (error) {
                     console.error(error.message);
 
@@ -171,34 +188,49 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "col-md-6 mt-10"
 };
+var _hoisted_3 = {
+  "class": "card p-5"
+};
+var _hoisted_4 = {
+  "class": "card-body"
+};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "mb-5 text-center"
 }, "Masuk", -1
 /* HOISTED */
 );
 
-var _hoisted_4 = {
+var _hoisted_6 = {
+  "class": "row"
+};
+var _hoisted_7 = {
+  "class": "col-md-6"
+};
+var _hoisted_8 = {
+  "class": "col-md-6"
+};
+var _hoisted_9 = {
   "class": "w-100 text-end"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Belum Punya Akun? ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Belum Punya Akun? ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
 
-var _hoisted_7 = {
+var _hoisted_12 = {
   "class": "w-100 text-end mb-5"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password? ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password? ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lupa Password");
 
-var _hoisted_10 = {
+var _hoisted_15 = {
   "class": "text-center"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
@@ -213,132 +245,122 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
-  var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, {
-    "class": "p-10"
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+    model: $data.ruleForm,
+    rules: $data.rules,
+    ref: "ruleForm",
+    "label-position": "top",
+    "status-icon": ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
-        model: $data.ruleForm,
-        rules: $data.rules,
-        ref: "ruleForm",
-        "label-position": "top",
-        "status-icon": ""
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        prop: "nik",
+        label: "Username"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "nik",
-            label: "Username"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $data.ruleForm.nik,
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-                  return $data.ruleForm.nik = $event;
-                })
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "password",
-            label: "Password"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $data.ruleForm.password,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-                  return $data.ruleForm.password = $event;
-                }),
-                "show-password": ""
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
-                value: $data.ruleForm.captcha,
-                onGetCode: $options.getCaptchaCode,
-                onIsValid: $options.checkValidCaptcha
-              }, null, 8
-              /* PROPS */
-              , ["value", "onGetCode", "onIsValid"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "captcha"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $data.ruleForm.captcha,
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                  return $data.ruleForm.captcha = $event;
-                }),
-                placeholder: "Masukan Token di Atas"
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "register#content"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_6];
-            }),
-            _: 1
-            /* STABLE */
-
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "forgotPassword#content"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_9];
-            }),
-            _: 1
-            /* STABLE */
-
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-            type: "button",
-            loading: $data.isLoading,
-            onClick: _cache[3] || (_cache[3] = function ($event) {
-              return $options.submitForm('ruleForm');
-            }),
-            "class": "btn btn-primary w-100"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_11];
-            }),
-            _: 1
-            /* STABLE */
-
-          }, 8
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $data.ruleForm.nik,
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+              return $data.ruleForm.nik = $event;
+            })
+          }, null, 8
           /* PROPS */
-          , ["loading"])])];
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        prop: "password",
+        label: "Password"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $data.ruleForm.password,
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+              return $data.ruleForm.password = $event;
+            }),
+            "show-password": ""
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
+            "class": "justify-content-md-start",
+            value: $data.ruleForm.captcha,
+            onGetCode: $options.getCaptchaCode,
+            onIsValid: $options.checkValidCaptcha
+          }, null, 8
+          /* PROPS */
+          , ["value", "onGetCode", "onIsValid"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        prop: "captcha"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $data.ruleForm.captcha,
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+              return $data.ruleForm.captcha = $event;
+            }),
+            placeholder: "Masukan Token di Di Samping"
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+        to: "register#content"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_11];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+        to: "forgotPassword#content"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_14];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+        type: "button",
+        loading: $data.isLoading,
+        onClick: _cache[3] || (_cache[3] = function ($event) {
+          return $options.submitForm('ruleForm');
+        }),
+        "class": "btn btn-primary w-100"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_16];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["model", "rules"])];
+      , ["loading"])])];
     }),
     _: 1
     /* STABLE */
 
-  })])]);
+  }, 8
+  /* PROPS */
+  , ["model", "rules"])])])])]);
 }
 
 /***/ }),

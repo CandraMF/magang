@@ -2,34 +2,44 @@
 
     <div class="row d-flex justify-content-center m-0 p-0">
         <div class="col-md-6 mt-10">
-            <el-card class="p-10" >
-                <h2 class="mb-5 text-center">Masuk</h2>
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon>
-                    <el-form-item prop="nik" label="Username">
-                        <el-input
-                            v-model="ruleForm.nik"
-                        ></el-input>
-                    </el-form-item>
-                    <el-form-item prop="password" label="Password" >
-                        <el-input v-model="ruleForm.password" show-password></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <VueClientRecaptcha
-                            :value="ruleForm.captcha"
-                            @getCode="getCaptchaCode"
-                            @isValid="checkValidCaptcha"
-                        />
-                    </el-form-item>
-                    <el-form-item prop="captcha" >
-                        <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Atas"></el-input>
-                    </el-form-item>
-                    <div class="w-100 text-end">Belum Punya Akun? <router-link to="register#content">Daftar</router-link></div>
-                    <div class="w-100 text-end mb-5">Lupa Password? <router-link to="forgotPassword#content">Lupa Password</router-link></div>
-                    <div class="text-center">
-                        <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Masuk</el-button>
-                    </div>
-                </el-form>
-            </el-card>
+            <div class="card p-5">
+                <div class="card-body">
+                    <h2 class="mb-5 text-center">Masuk</h2>
+                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon >
+                        <el-form-item prop="nik" label="Username">
+                            <el-input
+                                v-model="ruleForm.nik"
+                            ></el-input>
+                        </el-form-item>
+                        <el-form-item prop="password" label="Password" >
+                            <el-input v-model="ruleForm.password" show-password></el-input>
+                        </el-form-item>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <el-form-item>
+                                    <VueClientRecaptcha
+                                        class="justify-content-md-start"
+                                        :value="ruleForm.captcha"
+                                        @getCode="getCaptchaCode"
+                                        @isValid="checkValidCaptcha"
+                                    />
+                                </el-form-item>
+                            </div>
+                            <div class="col-md-6">
+                                <el-form-item prop="captcha">
+                                    <el-input v-model="ruleForm.captcha" placeholder="Masukan Token di Di Samping"></el-input>
+                                </el-form-item>
+                            </div>
+                        </div>
+                        <div class="w-100 text-end">Belum Punya Akun? <router-link to="register#content">Daftar</router-link></div>
+                        <div class="w-100 text-end mb-5">Lupa Password? <router-link to="forgotPassword#content">Lupa Password</router-link></div>
+                        <div class="text-center">
+                            <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Masuk</el-button>
+                        </div>
+                    </el-form>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -39,7 +49,7 @@
     import { useStore, mapMutations } from "vuex";
     import { Mutations, Actions } from "@/store/enums/StoreEnums";
     import { ref } from 'vue';
-    import { useRouter } from 'vue-router';
+    import store from '@/store';
 
   export default {
     data() {
@@ -62,7 +72,6 @@
                     { required: true, message: 'Mohon isi Captcha', trigger: ['blur'] },
                 ]
             },
-            router: useRouter()
       };
     },
     setup() {
@@ -93,9 +102,9 @@
                         login: this.ruleForm.nik,
                         password: this.ruleForm.password,
                     })
-                        .then((response) => {
+                        .then(async (response) => {
                             if (response.data.success) {
-                                this.$notify({
+                                await this.$notify({
                                     title: 'Success',
                                     type: 'success',
                                     message: response.data.message
@@ -106,7 +115,9 @@
 
                                 console.log(response.data)
 
-                                this.router.push({ path: '/auth/aktivasiPlatform'})
+                                console.log(store.getters.getUser)
+
+                                this.$router.go(0);
                             } else {
                                 this.$notify.error({
                                     title: 'Error',

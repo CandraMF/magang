@@ -97,9 +97,9 @@
             </div>
         </section> -->
         <section id="berita">
-            <div class="container pt-10 mt-10">
+            <div class="container pt-10 mt-10 mb-10">
                 <div class="col-md-12">
-                    <div class="row pt-5" style="min-height: 100vh">
+                    <div class="row pt-5" style="max-height: 100vh">
                         <div class="col-md-4 px-5">
                             <div class="row">
                                 <div class="col-md-12 mb-3">

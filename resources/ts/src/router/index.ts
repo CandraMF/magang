@@ -20,7 +20,9 @@ var user = store.getters.getUser ? store.getters.getUser : { role_id : 'ROL001',
 
 const token = store.getters.getToken
 
+
 const role = (to, from, next) => {
+    console.log('role')
 
     if (to.name == 'admin') {
         if (user.role_id == 'ROL001') {
@@ -38,24 +40,31 @@ const role = (to, from, next) => {
 }
 
 const auth = (to, from, next) => {
+
     console.log('auth')
 
     if (!token) {
-        next({ path: '/beranda/login' })
-        return false
+        if (to.name != 'login') {
+            next({ path: '/auth/login' })
+            return false
+        }
     }
 
     next()
 }
 
 const active = (to, from, next) => {
+    console.log('active')
 
     if (user.status_id == 'USR001') {
 
-        next({ path : '/auth/aktivasiPlatform' })
+        if(to.name != 'aktivasiPlatform') {
+            next({ path : '/auth/aktivasiPlatform' })
 
-        return false
-    } else if (user.person_id == null) {
+            return false
+        }
+
+    } else if (user.person_id == null && user.role_id == 'ROL001') {
 
         if(!(to.path == '/profil')) {
             next({ path : '/profil' })
@@ -67,21 +76,25 @@ const active = (to, from, next) => {
 
 const activated = (to, from, next) => {
 
-    console.log(user)
-
-    if (user.status_id === 'USR101' && user.person_id !== null) {
-        next({ path : '/admin' })
-        return false;
+    console.log('activated')
+    if (to.name == 'aktivasi' || to.name == 'aktivasiPlatform') {
+        if (user.status_id == 'USR101') {
+            next({ path : '/admin' })
+            return false;
+        }
     }
 
     next()
 }
 
 const authenticated = (to, from, next) => {
+    console.log('authenticated')
+
     if (token) {
         next({ name: 'admin' })
         return false
     }
+
     next()
 }
 
@@ -102,21 +115,21 @@ const routes: Array<RouteRecordRaw> = [
                         name: "berandaDivisi",
                         component: () => import("@/views/pages/Divisi.vue"),
                     },
-                    {
-                        path: "/beranda/login",
-                        name: "berandaLogin",
-                        component: () => import("@/views/pages/auth/Login.vue"),
-                    },
-                    {
-                        path: "/beranda/forgotPassword",
-                        name: "berandaForgotPassword",
-                        component: () => import("@/views/pages/auth/ForgotPassword.vue"),
-                    },
-                    {
-                        path: "/beranda/register",
-                        name: "berandaRegister",
-                        component: () => import("@/views/pages/auth/Register.vue"),
-                    },
+                    // {
+                    //     path: "/beranda/login",
+                    //     name: "berandaLogin",
+                    //     component: () => import("@/views/pages/auth/Login.vue"),
+                    // },
+                    // {
+                    //     path: "/beranda/forgotPassword",
+                    //     name: "berandaForgotPassword",
+                    //     component: () => import("@/views/pages/auth/ForgotPassword.vue"),
+                    // },
+                    // {
+                    //     path: "/beranda/register",
+                    //     name: "berandaRegister",
+                    //     component: () => import("@/views/pages/auth/Register.vue"),
+                    // },
                 ]
             },
             {
@@ -134,6 +147,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/auth",
         redirect: "/login",
+        beforeEnter: multiguard([auth, activated, authenticated]),
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
@@ -154,13 +168,11 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: "/auth/aktivasi",
                 name: "aktivasi",
-                beforeEnter: multiguard([activated]),
                 component: () => import("@/views/pages/auth/Aktivasi.vue"),
             },
             {
                 path: "/auth/aktivasiPlatform",
                 name: "aktivasiPlatform",
-                beforeEnter: multiguard([activated]),
                 component: () => import("@/views/pages/auth/AktivasiPlatform.vue"),
             },
         ],
