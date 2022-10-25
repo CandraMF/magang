@@ -3,8 +3,8 @@
         <div class="col-md-6 mt-10">
             <el-card class="p-10 text-center">
                 <el-form>
-                    <h2 class="text-center mb-10">Masukan Kode OTP</h2>
-                    <p>Periksa Email/Whatsapp </p>
+                    <h2 class="text-center mb-5">Kode Aktivasi</h2>
+                    <p class="fs-4">Silakan Masukkan 4 Angka Kode Aktivasi yang Dikirim oleh Sistem Melalui Email atau WhatsApp</p>
                     <code-input
                         ref="inputToken"
                         id="input-token-id"
@@ -15,12 +15,17 @@
                         :required="true"
                     />
 
-                    <el-button :disabled="!completed" @click="submitForm()" class="btn btn-primary mt-10">
+                    <el-button :disabled="!completed" @click="submitForm()" class="btn btn-primary mt-10 mb-5">
                         Aktivasi
-                        <vue-countdown :time="180000" v-slot="{ days, hours, minutes, seconds }">
-                            {{ minutes }} : {{ seconds }}
-                        </vue-countdown>
                     </el-button>
+                    <br>
+
+                    <span >
+                        Kirim Ulang Kode Aktivasi Dalam
+                        <vue-countdown :time="3000" v-slot="{ days, hours, minutes, seconds }" @end="onCountdownEnd()">
+                            0{{ minutes }}:{{ seconds }}
+                        </vue-countdown>
+                    </span>
                 </el-form>
             </el-card>
         </div>
@@ -74,6 +79,11 @@
                 console.log(userId)
             })
 
+            const onCountdownEnd = async () => {
+                await store.commit(Mutations.SET_CODE, '');
+                router.push({ path : '/auth/aktivasiPlatform' })
+            }
+
             const submitForm = async () => {
                 completed = ref(true);
 
@@ -101,6 +111,9 @@
                             alert("gagal")
                         }
                     })
+                    .catch(err => {
+                        alert("gagal")
+                    })
             }
 
             return {
@@ -108,7 +121,8 @@
                 remaining,
                 subject,
                 completed,
-                submitForm
+                submitForm,
+                onCountdownEnd
             }
         },
     }

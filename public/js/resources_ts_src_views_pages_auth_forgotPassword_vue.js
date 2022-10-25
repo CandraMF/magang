@@ -12,6 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue3-recaptcha-v2 */ "./node_modules/vue3-recaptcha-v2/dist/vue3-recaptcha-v2.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
@@ -22,6 +24,21 @@ __webpack_require__.r(__webpack_exports__);
     var isLoading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var ruleFormRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var validCaptcha = false;
+    var resetRecaptcha = (0,vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__.useRecaptcha)().resetRecaptcha;
+    var recaptchaWidget = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+
+    var callbackVerify = function callbackVerify(response) {
+      console.log(response);
+    };
+
+    var callbackExpired = function callbackExpired() {
+      console.log("expired!");
+    };
+
+    var callbackFail = function callbackFail() {
+      console.log("fail");
+    };
+
     var ruleForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       password: '',
       confirmPassword: '',
@@ -56,7 +73,7 @@ __webpack_require__.r(__webpack_exports__);
       }]
     });
 
-    var submitForm = function submitForm() {
+    var submitForm = function submitForm(payload) {
       var _a;
 
       (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.validate();
@@ -66,11 +83,17 @@ __webpack_require__.r(__webpack_exports__);
       isLoading: isLoading,
       ruleFormRef: ruleFormRef,
       validCaptcha: validCaptcha,
+      resetRecaptcha: resetRecaptcha,
+      recaptchaWidget: recaptchaWidget,
+      callbackVerify: callbackVerify,
+      callbackExpired: callbackExpired,
+      callbackFail: callbackFail,
       ruleForm: ruleForm,
       getCaptchaCode: getCaptchaCode,
       checkValidCaptcha: checkValidCaptcha,
       rules: rules,
-      submitForm: submitForm
+      submitForm: submitForm,
+      VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__.VueRecaptcha
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -97,32 +120,26 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "mb-5 text-center"
-}, "Lupa Password", -1
+}, "Reset Password", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = {
-  "class": "w-100 text-end mb-5"
+  "class": "col-md-12"
+};
+var _hoisted_3 = {
+  "class": "d-flex justify-content-center mt-9"
+};
+var _hoisted_4 = {
+  "class": "text-center mt-5"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Ingat Password? ");
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
-
-var _hoisted_5 = {
-  "class": "text-center"
-};
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Submit");
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset Password");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
-
-  var _component_VueClientRecaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VueClientRecaptcha");
-
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
@@ -152,7 +169,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "password",
-            label: "Password"
+            label: "User ID"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
@@ -170,7 +187,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
             prop: "confirmPassword",
-            label: "Konfirmasi Password"
+            label: "Password Baru"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
@@ -187,55 +204,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1
             /* STABLE */
 
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueClientRecaptcha, {
-                value: $setup.ruleForm.captcha,
-                onGetCode: $setup.getCaptchaCode,
-                onIsValid: $setup.checkValidCaptcha
-              }, null, 8
-              /* PROPS */
-              , ["value"])];
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["VueRecaptcha"], {
+            style: {
+              "min-width": "100% !important"
+            },
+            theme: "light",
+            "class": "mb-5",
+            size: "normal",
+            tabindex: 0,
+            onWidgetId: _cache[2] || (_cache[2] = function ($event) {
+              return $setup.recaptchaWidget = $event;
             }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "captcha"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $setup.ruleForm.captcha,
-                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                  return $setup.ruleForm.captcha = $event;
-                }),
-                placeholder: "Masukan Token di Atas"
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
+            onVerify: _cache[3] || (_cache[3] = function ($event) {
+              return $setup.callbackVerify($event);
             }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-            to: "login#content"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_4];
+            onFail: _cache[4] || (_cache[4] = function ($event) {
+              return $setup.callbackFail();
             }),
-            _: 1
-            /* STABLE */
-
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+            onExpired: _cache[5] || (_cache[5] = function ($event) {
+              return $setup.callbackExpired();
+            })
+          })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
             type: "button",
             loading: $setup.isLoading,
-            onClick: _cache[3] || (_cache[3] = function ($event) {
-              return $setup.submitForm();
+            onClick: _cache[6] || (_cache[6] = function ($event) {
+              return $setup.submitForm('ruleForm');
             }),
-            "class": "btn btn-primary w-100"
+            "class": "btn btn-primary px-10 mb-5"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_6];
+              return [_hoisted_5];
             }),
             _: 1
             /* STABLE */

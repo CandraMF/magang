@@ -2,11 +2,11 @@
     <div>
         <div class="container-bg ">
             <div class="wrapper">
-                <img class="bg-img" :src="'/image/bg_landing11.png'" >
+                <img class="bg-img" :src="'/image/bg_landing10.png'" >
             </div>
         </div>
         <section id="jumbotron">
-            <div class="container vh-100">
+            <div class="container" style="height: 75vh;">
                 <div class="col-md-12" style="height: 100% !important">
                     <div class="row d-flex flex-column align-items-center justify-content-center" style="height: 100% !important">
                         <div class="col-md-12 text-center " >
@@ -216,7 +216,7 @@
     }
 
     .bg-img {
-        position: absolute;
+        position: fixed;
         width: 100%;
     }
 

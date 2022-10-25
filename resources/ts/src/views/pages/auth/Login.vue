@@ -3,12 +3,12 @@
     <div class="row d-flex justify-content-center m-0 p-0">
         <div class="col-md-4 mt-10">
             <div class="card p-5">
-                <div class="card-header">
+                <div class="card-header justify-content-center">
                     <div class="card-title">
-                        <h2 class="text-center">Masuk</h2>
+                        <h2 class="text-center">Selamat Datang</h2>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body pt-3 pb-1">
                     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon >
                         <el-form-item prop="nik" label="User ID">
                             <el-input
@@ -127,9 +127,9 @@
                         login: this.ruleForm.nik,
                         password: this.ruleForm.password,
                     })
-                        .then(async (response) => {
+                        .then((response) => {
                             if (response.data.success) {
-                                await this.$notify({
+                                this.$notify({
                                     title: 'Success',
                                     type: 'success',
                                     message: response.data.message
@@ -178,12 +178,12 @@
       getCaptchaCode(value){
         // console.log(value);
       },
-      checkValidCaptcha(value){
-        if(value) {
-            this.validCaptcha = true
-            console.log(this.validCaptcha);
-        }
-      }
+    //   checkValidCaptcha(value){
+    //     if(value) {
+    //         this.validCaptcha = true
+    //         console.log(this.validCaptcha);
+    //     }
+    //   }
     },
     components: { VueRecaptcha },
 }

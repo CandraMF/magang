@@ -3,6 +3,16 @@
 //
 .vue_client_recaptcha{display:flex;justify-content:center;flex-direction:row}.vue_client_recaptcha_icon{text-align:center;padding:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;background-color:#eee}.vue_client_recaptcha_icon:hover{background-color:#ccc}.vue_client_recaptcha .captcha_canvas{background:#eee;padding:10px 0}
 
+.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:after {
+    content: "*" !important;
+    color: var(--el-color-danger) !important;
+    margin-left: 4px !important;
+}
+
+.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
+    content: none !important;
+}
+
 // Initialize
 @import "init";
 

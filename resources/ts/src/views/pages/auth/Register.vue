@@ -7,12 +7,12 @@
                     <div class="card-title">
                         <div>
                             <h2>Registrasi Akun</h2>
-                            <p class="fw-light fs-6 text-info mt-3"> Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya</p>
+                            <p class="fw-light fs-6 text-info mt-3"> Pastikan Data yang Anda Masukan Adalah Data yang Benar dan Valid</p>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div
+                    <!-- <div
                     class="
                         notice
                         d-flex
@@ -33,35 +33,33 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top" status-icon>
                         <div class="row">
                             <div class="col-md-6">
                                 <el-form-item prop="nik" label="Nomor Induk Kependudukan">
                                     <el-input
+
                                         v-model="ruleForm.nik"
                                     ></el-input>
-                                </el-form-item>
-                                <el-form-item prop="name" label="Nama Lengkap">
-                                    <el-input v-model="ruleForm.name"></el-input>
-                                </el-form-item>
-                                <el-form-item prop="email" label="Email">
-                                    <el-input v-model="ruleForm.email"></el-input>
                                 </el-form-item>
                                 <el-form-item prop="nomorHP" label="Nomor Ponsel">
                                     <el-input v-model="ruleForm.nomorHP"></el-input>
                                 </el-form-item>
                             </div>
                             <div class="col-md-6">
-                                <el-form-item prop="username" label="Username" >
-                                    <el-input v-model="ruleForm.nik" readonly disabled></el-input>
+                                <el-form-item prop="name" label="Nama Lengkap">
+                                    <el-input v-model="ruleForm.name"></el-input>
                                 </el-form-item>
-                                <el-form-item prop="password" label="Password" >
+                                <el-form-item prop="email" label="Email">
+                                    <el-input v-model="ruleForm.email"></el-input>
+                                </el-form-item>
+                                <!-- <el-form-item prop="password" label="Password" >
                                     <el-input v-model="ruleForm.password" show-password></el-input>
                                 </el-form-item>
                                 <el-form-item prop="confirmPassword" label="Konfirmasi Password" >
                                     <el-input v-model="ruleForm.confirmPassword" show-password autocomplete="off"></el-input>
-                                </el-form-item>
+                                </el-form-item> -->
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-center mt-9">
@@ -69,6 +67,7 @@
                                         <vue-recaptcha
                                             style="min-width: 100% !important;"
                                             theme="light"
+                                            class="mb-5"
                                             size="normal"
                                             :tabindex="0"
                                             @widgetId="recaptchaWidget = $event"
@@ -79,13 +78,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="w-100">Sudah Punya Akun? <router-link to="login#content">Login</router-link></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-center">
-                                    <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary w-100">Daftar</el-button>
-                                </div>
+                            <div class=" text-center mt-5" >
+                                <el-button type="button" :loading="isLoading" @click="submitForm('ruleForm')" class="btn btn-primary px-10 mb-5">Daftar</el-button>
+                                <div class="w-100 mb-5">Sudah Punya Akun? <router-link to="login#content">Masuk</router-link></div>
                             </div>
                             <!-- <div class="col-md-12">
                                 <div class="row d-flex justify-content-center">
@@ -142,7 +137,7 @@
                     { required: true, message: 'Mohon isi Nama Lengkap', trigger: 'blur' },
                 ],
                 nik: [
-                    { required: true, message: 'Mohon isi NIK', trigger: 'blur' },
+                    { required: true, message: 'Mohon isi Nomor Induk Kependudukan', trigger: 'blur' },
                 ],
                 confirmPassword: [
                     { required: true, message: 'Mohon isi Konfirmasi Password', trigger: ['blur', 'change'] },

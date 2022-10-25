@@ -452,6 +452,29 @@ __webpack_require__.r(__webpack_exports__);
       console.log(userId);
     });
 
+    var onCountdownEnd = function onCountdownEnd() {
+      return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
+          switch (_a.label) {
+            case 0:
+              return [4
+              /*yield*/
+              , store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_4__.Mutations.SET_CODE, '')];
+
+            case 1:
+              _a.sent();
+
+              router.push({
+                path: '/auth/aktivasiPlatform'
+              });
+              return [2
+              /*return*/
+              ];
+          }
+        });
+      });
+    };
+
     var submitForm = function submitForm() {
       return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(_this, void 0, void 0, function () {
         var inputToken, tokenFields, userCode, _i, tokenFields_1, item;
@@ -486,6 +509,8 @@ __webpack_require__.r(__webpack_exports__);
             } else {
               alert("gagal");
             }
+          })["catch"](function (err) {
+            alert("gagal");
           });
           return [2
           /*return*/
@@ -499,7 +524,8 @@ __webpack_require__.r(__webpack_exports__);
       remaining: remaining,
       subject: subject,
       completed: completed,
-      submitForm: submitForm
+      submitForm: submitForm,
+      onCountdownEnd: onCountdownEnd
     };
   }
 });
@@ -526,23 +552,31 @@ var _hoisted_2 = {
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "text-center mb-10"
-}, "Masukan Kode OTP", -1
+  "class": "text-center mb-5"
+}, "Kode Aktivasi", -1
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Periksa Email/Whatsapp ", -1
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "fs-4"
+}, "Silakan Masukkan 4 Angka Kode Aktivasi yang Dikirim oleh Sistem Melalui Email atau WhatsApp", -1
 /* HOISTED */
 );
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Aktivasi ");
 
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kirim Ulang Kode Aktivasi Dalam ");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_code_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("code-input");
 
-  var _component_vue_countdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-countdown");
-
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
+
+  var _component_vue_countdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-countdown");
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
@@ -571,32 +605,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClick: _cache[1] || (_cache[1] = function ($event) {
               return $setup.submitForm();
             }),
-            "class": "btn btn-primary mt-10"
+            "class": "btn btn-primary mt-10 mb-5"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_countdown, {
-                time: 180000
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_a) {
-                  var days = _a.days,
-                      hours = _a.hours,
-                      minutes = _a.minutes,
-                      seconds = _a.seconds;
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(minutes) + " : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(seconds), 1
-                  /* TEXT */
-                  )];
-                }),
-                _: 1
-                /* STABLE */
-
-              })];
+              return [_hoisted_5];
             }),
             _: 1
             /* STABLE */
 
           }, 8
           /* PROPS */
-          , ["disabled"])];
+          , ["disabled"]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_countdown, {
+            time: 3000,
+            onEnd: _cache[2] || (_cache[2] = function ($event) {
+              return $setup.onCountdownEnd();
+            })
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_a) {
+              var days = _a.days,
+                  hours = _a.hours,
+                  minutes = _a.minutes,
+                  seconds = _a.seconds;
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(minutes) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(seconds), 1
+              /* TEXT */
+              )];
+            }),
+            _: 1
+            /* STABLE */
+
+          })])];
         }),
         _: 1
         /* STABLE */

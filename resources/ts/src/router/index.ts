@@ -115,6 +115,7 @@ const routes: Array<RouteRecordRaw> = [
                         name: "berandaDivisi",
                         component: () => import("@/views/pages/Divisi.vue"),
                     },
+
                     // {
                     //     path: "/beranda/login",
                     //     name: "berandaLogin",
@@ -145,9 +146,25 @@ const routes: Array<RouteRecordRaw> = [
         ],
     },
     {
+        path : "/",
+        component: () => import("@/layout/AuthLayout.vue"),
+        children: [
+            {
+                path: "/prosedurMagang",
+                name: "prosedurMagang",
+                component: () => import("@/views/pages/ProsedurMagang.vue"),
+            },
+            {
+                path: "/pengumuman",
+                name: "pengumuman",
+                component: () => import("@/views/pages/Pengumuman.vue"),
+            },
+        ]
+    },
+    {
         path: "/auth",
         redirect: "/login",
-        beforeEnter: multiguard([auth, activated, authenticated]),
+        // beforeEnter: multiguard([auth, activated, authenticated]),
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
@@ -180,7 +197,7 @@ const routes: Array<RouteRecordRaw> = [
     {
       path: "/admin",
       name: "admin",
-      beforeEnter: multiguard([auth, active, role]),
+    //   beforeEnter: multiguard([auth, active, role]),
       component: () => import("@/layout/Layout.vue"),
       children: user.role_id == 'ROL001' ? [ // Pendaftar
         {

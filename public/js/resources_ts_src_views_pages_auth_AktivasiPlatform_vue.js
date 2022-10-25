@@ -32,18 +32,11 @@ __webpack_require__.r(__webpack_exports__);
     var completed = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
     var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.useRouter)();
-    var token = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)('');
-    var user = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
-    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount)(function () {
-      user = store.getters.getUser;
-      token = store.getters.getToken; // if(user.activation_date != null) {
-      //     router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-      // }
-    });
+    var token = store.getters.getToken;
+    var user = store.getters.getUser;
+    console.log(user);
 
     var submitForm = function submitForm(subject) {
-      // console.log(user.email)
-      // console.log(user.mobile)
       axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/sendActivationCode', {
         platform: subject,
         email: user.email,
@@ -80,6 +73,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       completed: completed,
       store: store,
+      user: user,
       submitForm: submitForm
     };
   }
@@ -105,76 +99,90 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "col-md-6 mt-10"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "text-center mb-10"
-}, "Pilih Tujuan Pengiriman Kode Aktifasi : ", -1
-/* HOISTED */
-);
-
+var _hoisted_3 = {
+  "class": "card p-10 text-center"
+};
 var _hoisted_4 = {
-  "class": "contact"
+  "class": "card-body"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bi bi-whatsapp text-white fs-2x"
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "text-center mb-5"
+}, "Selamat, Proses Registrasi Anda Berhasil ", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = {
+  "class": "fs-4"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("User ID Anda adalah ");
+
+var _hoisted_8 = {
+  "class": "fw-bold text-danger"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ");
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Silakan Pilih Platform Tujuan Pengiriman Kode Aktivasi Sesuai Dengan Kebutuhan Anda");
+
+var _hoisted_12 = {
+  "class": "contact mt-4"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bi bi-whatsapp fs-4 me-2"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bi bi-envelope text-white fs-2x"
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Whatsapp ");
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bi bi-envelope fs-4 me-2"
 }, null, -1
 /* HOISTED */
 );
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Email ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
-  var _component_el_card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-card");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_card, {
-    "class": "p-10 text-center"
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.user.login), 1
+  /* TEXT */
+  ), _hoisted_9, _hoisted_10, _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $setup.submitForm('whatsapp');
+    }),
+    "class": "btn btn-success mx-2",
+    style: {
+      "background-color": "#25d366"
+    }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-        onClick: _cache[0] || (_cache[0] = function ($event) {
-          return $setup.submitForm('whatsapp');
-        }),
-        "class": "btn btn-icon btn-warning me-3",
-        style: {
-          "height": "65px",
-          "width": "65px"
-        }
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_5];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-        onClick: _cache[1] || (_cache[1] = function ($event) {
-          return $setup.submitForm('email');
-        }),
-        "class": "btn btn-icon btn-primary me-3",
-        style: {
-          "height": "65px",
-          "width": "65px"
-        }
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_6];
-        }),
-        _: 1
-        /* STABLE */
-
-      })])];
+      return [_hoisted_13, _hoisted_14];
     }),
     _: 1
     /* STABLE */
 
-  })])]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.submitForm('email');
+    }),
+    "class": "btn btn-danger mx-2"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_15, _hoisted_16];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])])])]);
 }
 
 /***/ }),

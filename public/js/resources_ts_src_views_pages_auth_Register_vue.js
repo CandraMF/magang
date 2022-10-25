@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
         }],
         nik: [{
           required: true,
-          message: 'Mohon isi NIK',
+          message: 'Mohon isi Nomor Induk Kependudukan',
           trigger: 'blur'
         }],
         confirmPassword: [{
@@ -244,7 +244,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "card-title"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Registrasi Akun"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "fw-light fs-6 text-info mt-3"
-}, " Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya")])])], -1
+}, " Pastikan Data yang Anda Masukan Adalah Data yang Benar dan Valid")])])], -1
 /* HOISTED */
 );
 
@@ -252,71 +252,44 @@ var _hoisted_3 = {
   "class": "card-body"
 };
 var _hoisted_4 = {
-  "class": "notice d-flex bg-light-warning rounded border-warning border border-dashed p-6 mb-5"
-};
-var _hoisted_5 = {
-  "class": "svg-icon svg-icon-2tx svg-icon-warning me-4"
-};
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "d-flex flex-stack flex-grow-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "fw-bold"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
-  "class": "text-gray-800 fw-bolder"
-}, "Perhatian!"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "fs-6 text-gray-600"
-}, " Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya ")])], -1
-/* HOISTED */
-);
-
-var _hoisted_7 = {
   "class": "row"
 };
-var _hoisted_8 = {
+var _hoisted_5 = {
   "class": "col-md-6"
 };
-var _hoisted_9 = {
+var _hoisted_6 = {
   "class": "col-md-6"
 };
-var _hoisted_10 = {
+var _hoisted_7 = {
   "class": "col-md-12"
 };
-var _hoisted_11 = {
+var _hoisted_8 = {
   "class": "d-flex justify-content-center mt-9"
 };
-var _hoisted_12 = {
-  "class": "col-md-6"
-};
-var _hoisted_13 = {
-  "class": "w-100"
+var _hoisted_9 = {
+  "class": "text-center mt-5"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Login");
-
-var _hoisted_16 = {
-  "class": "col-md-6"
-};
-var _hoisted_17 = {
-  "class": "text-center"
+var _hoisted_11 = {
+  "class": "w-100 mb-5"
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Daftar");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sudah Punya Akun? ");
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masuk");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
-
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
 
   var _component_el_form_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form-item");
 
   var _component_vue_recaptcha = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-recaptcha");
 
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
+
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
@@ -328,9 +301,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'col-md-6 mt-10': this.$route.name != 'berandaRegister'
     })
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
-    src: "/media/icons/duotune/general/gen044.svg"
-  })]), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div\n                    class=\"\n                        notice\n                        d-flex\n                        bg-light-warning\n                        rounded\n                        border-warning border border-dashed\n                        p-6\n                        mb-5\n                    \">\n                        <span class=\"svg-icon svg-icon-2tx svg-icon-warning me-4\">\n                            <inline-svg src=\"/media/icons/duotune/general/gen044.svg\" />\n                        </span>\n                        <div class=\"d-flex flex-stack flex-grow-1\">\n                            <div class=\"fw-bold\">\n                                <h4 class=\"text-gray-800 fw-bolder\">Perhatian!</h4>\n                                <div class=\"fs-6 text-gray-600\">\n                                    Pastikan Data yang Anda Masukan Adalah Data yang Sebenar-benarnya\n                                </div>\n                            </div>\n                        </div>\n                    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form, {
     model: $data.ruleForm,
     rules: $data.rules,
     ref: "ruleForm",
@@ -338,7 +309,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "status-icon": ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         prop: "nik",
         label: "Nomor Induk Kependudukan"
       }, {
@@ -356,13 +327,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        prop: "nomorHP",
+        label: "Nomor Ponsel"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $data.ruleForm.nomorHP,
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+              return $data.ruleForm.nomorHP = $event;
+            })
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         prop: "name",
         label: "Nama Lengkap"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
             modelValue: $data.ruleForm.name,
-            "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
               return $data.ruleForm.name = $event;
             })
           }, null, 8
@@ -379,7 +367,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
             modelValue: $data.ruleForm.email,
-            "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
               return $data.ruleForm.email = $event;
             })
           }, null, 8
@@ -389,124 +377,52 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        prop: "nomorHP",
-        label: "Nomor Ponsel"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nomorHP,
-            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-              return $data.ruleForm.nomorHP = $event;
-            })
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
-        }),
-        _: 1
-        /* STABLE */
-
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        prop: "username",
-        label: "Username"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.nik,
-            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-              return $data.ruleForm.nik = $event;
-            }),
-            readonly: "",
-            disabled: ""
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        prop: "password",
-        label: "Password"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.password,
-            "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-              return $data.ruleForm.password = $event;
-            }),
-            "show-password": ""
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
-        }),
-        _: 1
-        /* STABLE */
-
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        prop: "confirmPassword",
-        label: "Konfirmasi Password"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $data.ruleForm.confirmPassword,
-            "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-              return $data.ruleForm.confirmPassword = $event;
-            }),
-            "show-password": "",
-            autocomplete: "off"
-          }, null, 8
-          /* PROPS */
-          , ["modelValue"])];
-        }),
-        _: 1
-        /* STABLE */
-
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_recaptcha, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-form-item prop=\"password\" label=\"Password\" >\n                                    <el-input v-model=\"ruleForm.password\" show-password></el-input>\n                                </el-form-item>\n                                <el-form-item prop=\"confirmPassword\" label=\"Konfirmasi Password\" >\n                                    <el-input v-model=\"ruleForm.confirmPassword\" show-password autocomplete=\"off\"></el-input>\n                                </el-form-item> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_recaptcha, {
         style: {
           "min-width": "100% !important"
         },
         theme: "light",
+        "class": "mb-5",
         size: "normal",
         tabindex: 0,
-        onWidgetId: _cache[7] || (_cache[7] = function ($event) {
+        onWidgetId: _cache[4] || (_cache[4] = function ($event) {
           return $setup.recaptchaWidget = $event;
         }),
-        onVerify: _cache[8] || (_cache[8] = function ($event) {
+        onVerify: _cache[5] || (_cache[5] = function ($event) {
           return $setup.callbackVerify($event);
         }),
-        onFail: _cache[9] || (_cache[9] = function ($event) {
+        onFail: _cache[6] || (_cache[6] = function ($event) {
           return $setup.callbackFail();
         }),
-        onExpired: _cache[10] || (_cache[10] = function ($event) {
+        onExpired: _cache[7] || (_cache[7] = function ($event) {
           return $setup.callbackExpired();
         })
-      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-        to: "login#content"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_15];
-        }),
-        _: 1
-        /* STABLE */
-
-      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
         type: "button",
         loading: $data.isLoading,
-        onClick: _cache[11] || (_cache[11] = function ($event) {
+        onClick: _cache[8] || (_cache[8] = function ($event) {
           return $options.submitForm('ruleForm');
         }),
-        "class": "btn btn-primary w-100"
+        "class": "btn btn-primary px-10 mb-5"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_18];
+          return [_hoisted_10];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["loading"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-12\">\n                                <div class=\"row d-flex justify-content-center\">\n                                    <div class=\"col-md-5 mt-10\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <VueClientRecaptcha\n                                            :value=\"ruleForm.captcha\"\n                                            @getCode=\"getCaptchaCode\"\n                                            @isValid=\"checkValidCaptcha\"\n                                            class=\"mb-5\"\n                                            chars=\"1234567890\"\n                                            :hideLines=\"true\"\n                                        /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-form-item prop=\"captcha\">\n                                            <el-input v-model=\"ruleForm.captcha\" placeholder=\"Masukan Token di Atas\"></el-input>\n                                        </el-form-item> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div>\n                                </div>\n                            </div> ")])];
+      , ["loading"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+        to: "login#content"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_13];
+        }),
+        _: 1
+        /* STABLE */
+
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-12\">\n                                <div class=\"row d-flex justify-content-center\">\n                                    <div class=\"col-md-5 mt-10\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <VueClientRecaptcha\n                                            :value=\"ruleForm.captcha\"\n                                            @getCode=\"getCaptchaCode\"\n                                            @isValid=\"checkValidCaptcha\"\n                                            class=\"mb-5\"\n                                            chars=\"1234567890\"\n                                            :hideLines=\"true\"\n                                        /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-form-item prop=\"captcha\">\n                                            <el-input v-model=\"ruleForm.captcha\" placeholder=\"Masukan Token di Atas\"></el-input>\n                                        </el-form-item> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div>\n                                </div>\n                            </div> ")])];
     }),
     _: 1
     /* STABLE */

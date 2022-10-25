@@ -362,7 +362,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "exact-active-class": "active btn",
-    to: "/auth/register#content",
+    to: "/auth/register",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link", {
       'navLinkOnScroll': !$data.view.topOfPage
     }])
@@ -382,7 +382,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "background": "#DC8100",
       "color": "white !important"
     },
-    to: "/auth/login#content",
+    to: "/auth/login",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["nav-link btn", {
       'navLinkOnScroll': !$data.view.topOfPage
     }])

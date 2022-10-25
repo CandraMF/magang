@@ -1,17 +1,20 @@
 <template>
     <div class="row d-flex justify-content-center m-0 p-0">
         <div class="col-md-6 mt-10">
-            <el-card class="p-10 text-center">
-                <h2 class="text-center mb-10">Pilih Tujuan Pengiriman Kode Aktifasi : </h2>
-                <div class="contact">
-                    <el-button @click="submitForm('whatsapp')"  class="btn btn-icon btn-warning me-3" style="height: 65px; width: 65px">
-                        <i class="bi bi-whatsapp text-white fs-2x"></i>
-                    </el-button>
-                    <el-button @click="submitForm('email')" class="btn btn-icon btn-primary me-3" style="height: 65px; width: 65px">
-                        <i class="bi bi-envelope text-white fs-2x"></i>
-                    </el-button>
+            <div class="card p-10 text-center">
+                <div class="card-body">
+                    <h2 class="text-center mb-5">Selamat, Proses Registrasi Anda Berhasil </h2>
+                    <p class="fs-4">User ID Anda adalah <span class="fw-bold text-danger">{{ user.login }}</span>. <br> Silakan Pilih Platform Tujuan Pengiriman Kode Aktivasi Sesuai Dengan Kebutuhan Anda</p>
+                    <div class="contact mt-4">
+                        <el-button @click="submitForm('whatsapp')" class="btn btn-success mx-2" style="background-color: #25d366;">
+                            <i class="bi bi-whatsapp fs-4 me-2"></i> Whatsapp
+                        </el-button>
+                        <el-button @click="submitForm('email')" class="btn btn-danger mx-2">
+                            <i class="bi bi-envelope fs-4 me-2"></i> Email
+                        </el-button>
+                    </div>
                 </div>
-            </el-card>
+            </div>
         </div>
     </div>
 </template>
@@ -33,21 +36,12 @@
             const store = useStore();
             const router = useRouter();
 
-            let token = ref('');
-            let user = ref({});
+            let token = store.getters.getToken;
+            let user = store.getters.getUser;
 
-            onBeforeMount(() => {
-                user = store.getters.getUser
-                token = store.getters.getToken
-
-                // if(user.activation_date != null) {
-                //     router.push({ name: 'dashboard', query: { redirect: '/dashboard' } });
-                // }
-            })
+            console.log(user)
 
             const submitForm = (subject) => {
-                // console.log(user.email)
-                // console.log(user.mobile)
                 axios.post('/api/sendActivationCode', {
                         platform: subject,
                         email: user.email,
@@ -87,6 +81,7 @@
             return {
                 completed,
                 store,
+                user,
                 submitForm
             }
         },

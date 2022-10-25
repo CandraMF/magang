@@ -1,5 +1,5 @@
 <template>
-    <div class="min-vh-100" style="background-size: cover; background-repeat: no-repeat; background-image: url('/image/bg_landing10.png');">
+    <div class="min-vh-100" style="background-size: cover; background-repeat: no-repeat; background-image: url('/image/bg_landing10.png'); background-attachment: fixed;">
         <nav class="navbar navbar-expand-lg"  style="z-index: 999; font-size: 12pt !important; transition: .2s ease-in-out;" :class="[view.type != 'md' && view.type != 'lg' ? 'navbarSm' : '', {'navOnScroll': !view.topOfPage, 'navOnTop' : view.topOfPage}]">
             <div class="container-fluid px-4">
                 <router-link class="navbar-brand" to="/">
@@ -24,10 +24,10 @@
                             <router-link exact-active-class="active btn" to="/pengumuman" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Pengumuman</router-link>
                         </li>
                         <li class="nav-item ms-lg-4 my-auto">
-                            <router-link exact-active-class="active btn" to="/auth/register#content" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
+                            <router-link exact-active-class="active btn" to="/auth/register" class="nav-link" :class="{ 'navLinkOnScroll': !view.topOfPage}">Daftar</router-link>
                         </li>
                         <li class="nav-item ms-lg-4 my-auto">
-                            <router-link exact-active-class="btn" style="border-radius: 6px; background: #fec727; color: white !important;" to="/auth/login#content" class="nav-link btn"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
+                            <router-link exact-active-class="btn" style="border-radius: 6px; background: #DC8100; color: white !important;" to="/auth/login" class="nav-link btn"  :class="{ 'navLinkOnScroll': !view.topOfPage}">Masuk</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav" v-else>
@@ -38,78 +38,18 @@
                 </div>
             </div>
         </nav>
-        <div class="mb-10" :class="{ 'auth-layout' : !(view.type == 'sm' || view.type == 'xs') }">
+        <!-- <div class="mb-10" :class="{ 'auth-layout' : !(view.type == 'sm' || view.type == 'xs') }">
             <router-view v-slot="{ Component }">
                 <transition :name="this.effect" mode="out-in">
                     <component :is="Component" />
                 </transition>
             </router-view>
+        </div> -->
+        <div class="mb-10" :class="{ 'auth-layout' : !(view.type == 'sm' || view.type == 'xs') }">
+            <router-view></router-view>
         </div>
     </div>
 </template>
-
-<style scoped>
-   .navOnScroll {
-        box-shadow: 0 0 10px #aaa;
-        background-color: #fff;
-   }
-
-   .navOnScroll .active {
-        color: #092F53 !important;
-   }
-   .navLinkOnScroll {
-        color: black !important;
-   }
-
-    h5 {
-        font-weight: 500;
-        font-size: 18pt;
-        color: white;
-    }
-
-    h3 {
-        color: white;
-    }
-
-    footer .col-md-4 {
-        padding: 0px 40px;
-    }
-
-    .wrapper {
-        width: 100%;
-        min-height: 100vh;
-    }
-
-    .in-out-translate-fade-enter-active,
-    .in-out-translate-fade-leave-active {
-        transition: all 0.15s;
-    }
-    .in-out-translate-fade-enter,
-    .in-out-translate-fade-leave-active {
-        opacity: 0;
-    }
-    .in-out-translate-fade-enter {
-        transform: translateX(100px);
-    }
-    .in-out-translate-fade-leave-active {
-        transform: translateX(-100px);
-    }
-
-    .out-in-translate-fade-enter-active,
-    .out-in-translate-fade-leave-active {
-        transition: all 0.15s;
-    }
-    .out-in-translate-fade-enter,
-    .out-in-translate-fade-leave-active {
-        opacity: 0;
-    }
-    .out-in-translate-fade-enter {
-        transform: translateX(-100px);
-    }
-    .out-in-translate-fade-leave-active {
-    transform: translateX(100px);
-    }
-</style>
 
 <script>
 import KTScrollTop from "@/layout/extras/ScrollTop.vue";
@@ -189,6 +129,9 @@ export default {
 </script>
 
 <style scoped>
+    .auth-layout {
+        margin-top: 75px
+    }
 
     .active {
         border-radius: 6px;
@@ -237,10 +180,7 @@ export default {
         font-weight: 600;
     }
     .nav-link:hover{
-        color: #ffffff !important;
-    }
-    .nav-link:hover{
-        color: #ffffff !important;
+        color: #DC8100 !important;
     }
     .navOnScroll  .nav-link:hover:not(.active){
         color: #000000 !important;
@@ -266,10 +206,6 @@ export default {
 
     footer .col-md-4 {
         padding: 0px 40px;
-    }
-
-    .auth-layout {
-        margin-top: 75px
     }
 
 </style>

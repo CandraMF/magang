@@ -109,48 +109,29 @@ __webpack_require__.r(__webpack_exports__);
                     login: _this.ruleForm.nik,
                     password: _this.ruleForm.password
                   }).then(function (response) {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(_this, void 0, void 0, function () {
-                      return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
-                        switch (_a.label) {
-                          case 0:
-                            if (!response.data.success) return [3
-                            /*break*/
-                            , 2];
-                            return [4
-                            /*yield*/
-                            , this.$notify({
-                              title: 'Success',
-                              type: 'success',
-                              message: response.data.message
-                            })];
-
-                          case 1:
-                            _a.sent();
-
-                            this.setUser(response.data.user);
-                            this.setToken(response.data.token);
-                            console.log(response.data);
-                            console.log(_store__WEBPACK_IMPORTED_MODULE_3__["default"].getters.getUser);
-                            this.$router.go(0);
-                            return [3
-                            /*break*/
-                            , 3];
-
-                          case 2:
-                            this.$notify.error({
-                              title: 'Error',
-                              message: response.data.message
-                            });
-                            _a.label = 3;
-
-                          case 3:
-                            this.setLoading(false);
-                            return [2
-                            /*return*/
-                            ];
-                        }
+                    if (response.data.success) {
+                      _this.$notify({
+                        title: 'Success',
+                        type: 'success',
+                        message: response.data.message
                       });
-                    });
+
+                      _this.setUser(response.data.user);
+
+                      _this.setToken(response.data.token);
+
+                      console.log(response.data);
+                      console.log(_store__WEBPACK_IMPORTED_MODULE_3__["default"].getters.getUser);
+
+                      _this.$router.go(0);
+                    } else {
+                      _this.$notify.error({
+                        title: 'Error',
+                        message: response.data.message
+                      });
+                    }
+
+                    _this.setLoading(false);
                   })["catch"](function (error) {
                     console.error(error.message);
 
@@ -184,13 +165,13 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoading = value;
     },
     getCaptchaCode: function getCaptchaCode(value) {// console.log(value);
-    },
-    checkValidCaptcha: function checkValidCaptcha(value) {
-      if (value) {
-        this.validCaptcha = true;
-        console.log(this.validCaptcha);
-      }
-    }
+    } //   checkValidCaptcha(value){
+    //     if(value) {
+    //         this.validCaptcha = true
+    //         console.log(this.validCaptcha);
+    //     }
+    //   }
+
   },
   components: {
     VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_4__.VueRecaptcha
@@ -222,17 +203,17 @@ var _hoisted_3 = {
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "card-header"
+  "class": "card-header justify-content-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-title"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "text-center"
-}, "Masuk")])], -1
+}, "Selamat Datang")])], -1
 /* HOISTED */
 );
 
 var _hoisted_5 = {
-  "class": "card-body"
+  "class": "card-body pt-3 pb-1"
 };
 var _hoisted_6 = {
   "class": "d-flex justify-content-center mt-9"
