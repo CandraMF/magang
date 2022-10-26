@@ -154,7 +154,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <el-form-item label="Nomor Ponsel" prop="nomorHP">
-                            <el-input v-model="ruleForm.nomorHP"></el-input>
+                            <el-input
+                                maxlength="14"
+                                show-word-limit
+                                v-model="ruleForm.nomorHP"></el-input>
                         </el-form-item>
                     </div>
                     <div class="col-md-6">
@@ -300,7 +303,9 @@
             { required: true, message: 'Mohon isi Alamat Asal', trigger: 'blur' },
         ],
         nomorHP: [
-            { required: true, message: 'Mohon isi nomor HP', trigger: 'blur' },
+            { required: true, message: 'Mohon isi Nomor Ponsel', trigger: 'blur' },
+            { min: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] },
+            { min: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] }
         ],
         nomorHPAlt: [
 

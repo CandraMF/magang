@@ -1148,8 +1148,16 @@ __webpack_require__.r(__webpack_exports__);
       }],
       nomorHP: [{
         required: true,
-        message: 'Mohon isi nomor HP',
+        message: 'Mohon isi Nomor Ponsel',
         trigger: 'blur'
+      }, {
+        min: 14,
+        message: 'Nomor Nomor Ponsel harus 14 digit',
+        trigger: ['blur', 'change']
+      }, {
+        min: 14,
+        message: 'Nomor Nomor Ponsel harus 14 digit',
+        trigger: ['blur', 'change']
       }],
       nomorHPAlt: [],
       marital: [{
@@ -3930,6 +3938,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            maxlength: "14",
+            "show-word-limit": "",
             modelValue: $setup.ruleForm.nomorHP,
             "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
               return $setup.ruleForm.nomorHP = $event;

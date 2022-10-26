@@ -49,6 +49,14 @@ __webpack_require__.r(__webpack_exports__);
           required: true,
           message: 'Mohon isi Nomor Induk Kependudukan',
           trigger: 'blur'
+        }, {
+          min: 16,
+          message: 'Nomor NIK harus 16 digit',
+          trigger: ['blur', 'change']
+        }, {
+          max: 16,
+          message: 'Nomor NIK harus 16 digit',
+          trigger: ['blur', 'change']
         }],
         confirmPassword: [{
           required: true,
@@ -66,10 +74,17 @@ __webpack_require__.r(__webpack_exports__);
         }],
         nomorHP: [{
           required: true,
-          message: 'Mohon isi Nomor HP',
+          message: 'Mohon isi Nomor Ponsel',
           trigger: ['blur', 'change']
-        } // { regex: /^[2-9]\d{2}[2-9]\d{2}\d{4}$/ },
-        ],
+        }, {
+          min: 14,
+          message: 'Nomor Nomor Ponsel harus 14 digit',
+          trigger: ['blur', 'change']
+        }, {
+          max: 14,
+          message: 'Nomor Nomor Ponsel harus 14 digit',
+          trigger: ['blur', 'change']
+        }],
         captcha: [{
           required: true,
           message: 'Mohon isi Captcha',
@@ -242,8 +257,10 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "card-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "card-title"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Registrasi Akun"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "fw-light fs-6 text-info mt-3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "mt-5"
+}, "Registrasi Akun"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "fw-light fs-6 text-info mt-5 mb-5"
 }, " Pastikan Data yang Anda Masukan Adalah Data yang Benar dan Valid")])])], -1
 /* HOISTED */
 );
@@ -315,6 +332,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            maxlength: "16",
+            "show-word-limit": "",
             modelValue: $data.ruleForm.nik,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
               return $data.ruleForm.nik = $event;
@@ -335,7 +354,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             modelValue: $data.ruleForm.nomorHP,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
               return $data.ruleForm.nomorHP = $event;
-            })
+            }),
+            maxlength: "14",
+            "show-word-limit": "",
+            number: ""
           }, null, 8
           /* PROPS */
           , ["modelValue"])];

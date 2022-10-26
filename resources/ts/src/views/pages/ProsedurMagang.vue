@@ -108,7 +108,7 @@
                       <span class="accordion-icon">
                         <span class="svg-icon svg-icon-4">
                           <inline-svg
-                            src="media/icons/duotone/Navigation/Right-2.svg"
+                            src="media/icons/duotone/arrows/arr064.svg"
                           />
                         </span>
                       </span>

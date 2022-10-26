@@ -31,7 +31,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-1">
+                        <!-- <div class="col-md-1">
                             <svg @click="" class="go_animated" id="go" width="30" height="30" viewBox="0 0 26 26" fill="#fff" xmlns="http://www.w3.org/2000/svg">
                                 <g id="7bf1db55bbc1be3d7d48f9ed6dd65c5f">
                                     <g id="b50410873f1c5ef41de022179f6506e3">
@@ -40,7 +40,7 @@
                                     </g>
                                 </g>
                             </svg>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
         <section >
             <div class="container">
                 <div class="row d-flex justify-content-center m-0 p-0">
-                    <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword' || this.$route.name == 'berandaLdap'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 9px; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
+                    <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword' || this.$route.name == 'berandaLdap'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 1.15rem; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
                         <div class="row" id="content">
                             <router-view v-if="!isLogged" v-slot="{ Component }">
                                 <transition :name="this.effect" mode="out-in">
@@ -60,85 +60,63 @@
                 </div>
             </div>
         </section>
-        <!-- <section id="logo">
-            <div class="d-flex justify-content-center" style="margin: 100px 0px;">
-                <img class="my-5" :src="'/image/logo-bpkh-s.png'" alt="" style="width: 300px">
-            </div>
-        </section>
-        <section id="berita-utama">
-            <div class=" col-md-12 text-center text-white" style="background: #3A57E8; padding: 75px 0px;">
-                <h2 class="text-white">Periode Pendaftaran Baru Telah Dibuka</h2>
-
-                <div class="action mb-4">
-                    <a href="#" class="btn btn-lg text-white mx-2" style="background: rgba(255, 255, 255, 0.226)">FAQ</a>
-                    <a href="#" class="btn btn-lg text-white mx-2" style="background: rgba(255, 255, 255, 0.226)">Prosedur Pendaftaran</a>
-                    <a href="#" class="btn btn-lg text-primary mx-2" style="background: white">Daftar/Masuk</a>
-                </div>
-
-                <p>Atau hubungi media sosial kami : </p>
-
-                <div class="contact">
-                    <div class="symbol symbol-50px symbol-circle mx-2">
-                        <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                            <i class="bi bi-telephone text-white"></i>
-                        </div>
-                    </div>
-                    <div class="symbol symbol-50px symbol-circle mx-2">
-                        <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                            <i class="bi bi-whatsapp text-white"></i>
-                        </div>
-                    </div>
-                    <div class="symbol symbol-50px symbol-circle mx-2">
-                        <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                            <i class="bi bi-envelope text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <section id="berita">
             <div class="container pt-10 mt-10 mb-10">
-                <div class="col-md-12">
-                    <div class="row pt-5" style="max-height: 100vh">
-                        <div class="col-md-4 px-5">
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div style="border-radius: 7px; height: 250px; background: #D9D9D9">
+                <!-- <div class="col-md-12">
+                    <div class="row">
+                        <div class="d-flex flex-column pt-8 flex-md-row">
+                            <div class="flex-column flex-md-row-auto w-100 w-md-250px w-xxl-350px">
+                                <div class="card mb-10 mb-md-0  h-md-500px">
+                                    <div class="card-body py-10 px-6">
+                                        <div class="d-flex flex-column mb-10 px-3">
+                                            <form>
+                                                <div class="input-group input-group-solid" id="kt_chat_aside_search">
+                                                    <span class="input-group-text" id="basic-addon1">
+                                                        <span class="svg-icon svg-icon-1 svg-icon-dark">
+                                                            <inline-svg src="/media/icons/duotone/general/gen004.svg" />
+                                                        </span>
+                                                    </span>
+                                                    <input type="text" class="form-control ps-0 py-4 h-auto" placeholder="Cari" />
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <ul
+                                            class="menu menu-column menu-rounded menu-gray-600 menu-hover-bg-light-primary menu-active-bg-light-primary fw-bold mb-10">
+
+                                            <li class="menu-item px-3 pb-1">
+                                                <a href="#" class="menu-link fs-6 px-3">
+                                                    Daftar Nama Peserta Lolos Seleksi Tahap 1
+                                                </a>
+                                            </li>
+                                            <li class="menu-item px-3 pb-1">
+                                                <a href="#" class="menu-link fs-6 px-3">
+                                                    Jadwal Penting! Catat ya
+                                                </a>
+                                            </li>
+                                            <li class="menu-item px-3 pb-1">
+                                                <a href="#" class="menu-link fs-6 px-3">
+                                                    Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h6>Daftar Nama Lolos ke Tahap Interview</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 px-5">
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div style="border-radius: 7px; height: 250px; background: #D9D9D9">
+
+                            <div class="flex-md-row-fluid ms-md-12">
+                                <div class="card h-md-500px">
+                                    <div class="card-body py-10">
+                                        <el-skeleton-item variant="image" style="width: 100%; height: 240px" />
+                                        <el-skeleton :rows="4" animated />
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h6>Jadwal Pendaftaran Magang</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 px-5">
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div style="border-radius: 7px; height: 250px; background: #D9D9D9">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h6>Jadwal Pendaftaran Magang</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat sit nunc venenatis diam elit. At nisl amet arcu at mi tortor elit felis vestibulum. Egestas tempus duis.</p>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                </div>
+                </div> -->
+                <Widget3></Widget3>
             </div>
         </section>
     </div>
@@ -150,6 +128,7 @@
     import Divisi from '@/views/pages/Divisi.vue';
     import Register from '@/views/pages/auth/Register.vue';
     import Activation from '@/components/notice/Activation.vue';
+    import Widget3 from '@/components/widgets/sliders/Widget3.vue';
 
     import { defineComponent, onMounted, watch } from "vue";
 
@@ -158,7 +137,8 @@
             Login,
             Register,
             Activation,
-            Divisi
+            Divisi,
+            Widget3
         },
         data () {
             return {

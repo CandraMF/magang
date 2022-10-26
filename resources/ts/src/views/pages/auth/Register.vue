@@ -6,8 +6,8 @@
                 <div class="card-header">
                     <div class="card-title">
                         <div>
-                            <h2>Registrasi Akun</h2>
-                            <p class="fw-light fs-6 text-info mt-3"> Pastikan Data yang Anda Masukan Adalah Data yang Benar dan Valid</p>
+                            <h2 class="mt-5">Registrasi Akun</h2>
+                            <p class="fw-light fs-6 text-info mt-5 mb-5"> Pastikan Data yang Anda Masukan Adalah Data yang Benar dan Valid</p>
                         </div>
                     </div>
                 </div>
@@ -39,12 +39,16 @@
                             <div class="col-md-6">
                                 <el-form-item prop="nik" label="Nomor Induk Kependudukan">
                                     <el-input
-
+                                        maxlength="16"
+                                        show-word-limit
                                         v-model="ruleForm.nik"
                                     ></el-input>
                                 </el-form-item>
                                 <el-form-item prop="nomorHP" label="Nomor Ponsel">
-                                    <el-input v-model="ruleForm.nomorHP"></el-input>
+                                    <el-input v-model="ruleForm.nomorHP"
+                                        maxlength="14"
+                                        show-word-limit
+                                        number></el-input>
                                 </el-form-item>
                             </div>
                             <div class="col-md-6">
@@ -138,6 +142,8 @@
                 ],
                 nik: [
                     { required: true, message: 'Mohon isi Nomor Induk Kependudukan', trigger: 'blur' },
+                    { min: 16, message: 'Nomor NIK harus 16 digit', trigger: ['blur', 'change'] },
+                    { max: 16, message: 'Nomor NIK harus 16 digit', trigger: ['blur', 'change'] }
                 ],
                 confirmPassword: [
                     { required: true, message: 'Mohon isi Konfirmasi Password', trigger: ['blur', 'change'] },
@@ -147,8 +153,9 @@
                     { min: 8, message: 'Password Minimal 8 Karakter', trigger: ['blur', 'change'] },
                 ],
                 nomorHP: [
-                    { required: true, message: 'Mohon isi Nomor HP', trigger: ['blur', 'change'] },
-                    // { regex: /^[2-9]\d{2}[2-9]\d{2}\d{4}$/ },
+                    { required: true, message: 'Mohon isi Nomor Ponsel', trigger: ['blur', 'change'] },
+                    { min: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] },
+                    { max: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] }
                 ],
                 captcha: [
                     { required: true, message: 'Mohon isi Captcha', trigger: ['blur', 'change'] },
