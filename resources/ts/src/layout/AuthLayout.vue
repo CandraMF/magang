@@ -1,5 +1,5 @@
 <template>
-    <div class="min-vh-100" style="background-size: cover; background-repeat: no-repeat; background-image: url('/image/bg_landing10.png'); background-attachment: fixed;">
+    <div class="min-vh-100 bg-parallax" style="background-size: cover; background-repeat: no-repeat; background-image: url('/image/bg_landing10.png'); background-attachment: fixed;">
         <nav class="navbar navbar-expand-lg"  style="z-index: 999; font-size: 12pt !important; transition: .2s ease-in-out;" :class="[view.type != 'md' && view.type != 'lg' ? 'navbarSm' : '', {'navOnScroll': !view.topOfPage, 'navOnTop' : view.topOfPage}]">
             <div class="container-fluid px-4">
                 <router-link class="navbar-brand" to="/">
@@ -49,14 +49,18 @@
             <router-view></router-view>
         </div>
     </div>
+
+    <HomeFooter></HomeFooter>
 </template>
 
 <script>
 import KTScrollTop from "@/layout/extras/ScrollTop.vue";
+import HomeFooter from "@/layout/footer/HomeFooter.vue";
 
 export default {
     components: {
         KTScrollTop,
+        HomeFooter
     },
     data () {
         return {
@@ -206,6 +210,13 @@ export default {
 
     footer .col-md-4 {
         padding: 0px 40px;
+    }
+
+    @media (max-width: 767.98px) {
+        .bg-parallax{
+            background-position: center;
+            background-size: 150%;
+        }
     }
 
 </style>

@@ -154,8 +154,7 @@
                 ],
                 nomorHP: [
                     { required: true, message: 'Mohon isi Nomor Ponsel', trigger: ['blur', 'change'] },
-                    { min: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] },
-                    { max: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] }
+                    { max: 14, message: 'Nomor Nomor Ponsel maksimal 14 digit', trigger: ['blur', 'change'] }
                 ],
                 captcha: [
                     { required: true, message: 'Mohon isi Captcha', trigger: ['blur', 'change'] },

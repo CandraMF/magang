@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main class="min-vh-100 bg-parallax" style="background-size: cover; background-repeat: no-repeat; background-image: url('/image/bg_landing10.png'); background-attachment: fixed;">
         <nav class="navbar navbar-expand-lg"  style="z-index: 999; font-size: 12pt !important; transition: .2s ease-in-out;" :class="[view.type != 'md' && view.type != 'lg' ? 'navbarSm' : '', {'navOnScroll': !view.topOfPage, 'navOnTop' : view.topOfPage}]">
             <div class="container-fluid px-4">
                 <router-link class="navbar-brand" to="/">
@@ -41,54 +41,7 @@
         <div class="">
             <router-view></router-view>
         </div>
-        <footer style="background: #092F53; color: white !important; padding: 50px 0px;">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h5 class="pb-4">Badan Pengelola Keuangan Haji</h5>
-                            <p>Menara Bidakara 1, lantai 5 Jalan Gatot Subroto, Kav. 71-73 Pancoran, Jakarta Seltan 12870, Indonesia.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5 class="pb-4">Hubungi Kami</h5>
-                            <h3>(021) 83793001</h3>
-                            <p>(hunting)</p>
-                            <h3>+62 821 9090 6002</h3>
-                            <p>(WA Contact Center)</p>
-                            <p>Fax: 021 83793019 <br> Email : info@bpkh.go.id</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5 class="pb-4">Media Sosial</h5>
-                            <div class="symbol symbol-50px symbol-circle m-2">
-                                <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                                    <i class="bi bi-telephone text-white"></i>
-                                </div>
-                            </div>
-                            <div class="symbol symbol-50px symbol-circle m-2">
-                                <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                                    <i class="bi bi-whatsapp text-white"></i>
-                                </div>
-                            </div>
-                            <div class="symbol symbol-50px symbol-circle m-2">
-                                <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                                    <i class="bi bi-instagram text-white"></i>
-                                </div>
-                            </div>
-                            <div class="symbol symbol-50px symbol-circle m-2">
-                                <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                                    <i class="bi bi-tiktok text-white"></i>
-                                </div>
-                            </div>
-                            <div class="symbol symbol-50px symbol-circle m-2">
-                                <div class="symbol-label" style="background: rgba(255, 255, 255, 0.226)">
-                                    <i class="bi bi-envelope text-white"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <HomeFooter></HomeFooter>
     </main>
     <KTScrollTop></KTScrollTop>
 </template>
@@ -189,10 +142,12 @@
 
 <script>
 import KTScrollTop from "@/layout/extras/ScrollTop.vue";
+import HomeFooter from "@/layout/footer/HomeFooter.vue";
 
 export default {
     components: {
         KTScrollTop,
+        HomeFooter
     },
     data () {
         return {

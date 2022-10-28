@@ -67,16 +67,6 @@
         captcha: ''
     })
 
-    function getCaptchaCode(value){
-        // console.log(value);
-    }
-    function checkValidCaptcha(value){
-        if(value) {
-            validCaptcha = true
-            console.log(validCaptcha)
-        }
-    }
-
     const rules = reactive({
         password: [
             { required: true, message: 'Mohon isi Password', trigger: ['blur', 'change'] },

@@ -65,7 +65,11 @@ var _hoisted_12 = {
   "class": "col-md-4 mb-5 text-center"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ILAL ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "position-relative d-inline-block"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "ILAL"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span class=\"position-absolute badge badge-light-success\" style=\"right: -25px; top: -15px;\">Dibuka</span> ")], -1
+/* HOISTED */
+);
 
 var _hoisted_14 = {
   "class": "col-md-4 mb-5 text-center"
@@ -95,7 +99,17 @@ var _hoisted_22 = {
   "class": "col-md-4 mb-5 text-center"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Registrasi dan Analisa Kemaslahatan ");
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "position-relative d-inline-block"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Registrasi dan Analisa Kemaslahatan"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "position-absolute badge badge-light-success",
+  style: {
+    "right": "-25px",
+    "top": "-15px"
+  }
+}, "Dibuka")], -1
+/* HOISTED */
+);
 
 var _hoisted_24 = {
   "class": "col-md-4 mb-5 text-center"

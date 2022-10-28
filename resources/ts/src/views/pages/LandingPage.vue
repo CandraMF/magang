@@ -1,16 +1,11 @@
 <template>
     <div>
-        <div class="container-bg ">
-            <div class="wrapper">
-                <img class="bg-img" :src="'/image/bg_landing10.png'" >
-            </div>
-        </div>
         <section id="jumbotron">
-            <div class="container" style="height: 75vh;">
+            <div class="container" style="height: 40vh; margin-top: 7.227rem;">
                 <div class="col-md-12" style="height: 100% !important">
                     <div class="row d-flex flex-column align-items-center justify-content-center" style="height: 100% !important">
                         <div class="col-md-12 text-center " >
-                            <h1 class="text-white" style="margin-bottom: 50px; color: #123155 !important;" >
+                            <h1 class="text-white" style="color: #123155 !important;" >
                                 <span class="fw-normal">Selamat Datang di</span> <span class="fw-bolder">Portal Magang BPKH</span>
                             </h1>
                         </div>
@@ -48,7 +43,7 @@
         <section >
             <div class="container">
                 <div class="row d-flex justify-content-center m-0 p-0">
-                    <div id="auth" :class="{'col-md-6' : this.$route.name == 'berandaLogin' || this.$route.name == 'berandaForgotPassword' || this.$route.name == 'berandaLdap'}" class="bg-white p-0" style="font-size: 12pt; margin-top: -150px; border-radius: 1.15rem; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
+                    <div id="auth" class="bg-white p-0" style="font-size: 12pt; border-radius: 1.15rem; box-shadow: 0px 4px 79px -23px rgba(0,0,0,0.75);">
                         <div class="row" id="content">
                             <router-view v-if="!isLogged" v-slot="{ Component }">
                                 <transition :name="this.effect" mode="out-in">
@@ -61,7 +56,83 @@
             </div>
         </section>
         <section id="berita">
-            <div class="container pt-10 mt-10 mb-10">
+            <div class="container pt-10 mt-10 mb-10 pb-10">
+                <div class=".col-md-12">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Daftar Nama Peserta Lolos Seleksi Tahap 1">
+                                        <div class="card-body">
+                                            <div class="overlay-wrapper">
+                                                <!-- <el-skeleton :rows="2" animated /> -->
+                                                <h4 class="cut-text">Daftar Nama Peserta Lolos Seleksi Tahap 1</h4>
+                                                <span class="text-gray-400 fs-6 fw-bold pe-2">5 Oktober 2022</span>
+                                            </div>
+                                            <div class="overlay-layer bg-dark bg-opacity-10">
+                                                <a href="#" class="btn btn-primary btn-shadow">Lihat</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?">
+                                        <div class="card-body">
+                                            <div class="overlay-wrapper">
+                                                <!-- <el-skeleton :rows="2" animated /> -->
+                                                <h4 class="cut-text">Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?</h4>
+                                                <span class="text-gray-400 fs-6 fw-bold pe-2">5 Oktober 2022</span>
+                                            </div>
+                                            <div class="overlay-layer bg-dark bg-opacity-10">
+                                                <a href="#" class="btn btn-primary btn-shadow">Lihat</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Daftar Nama Peserta Lolos Seleksi Tahap 1">
+                                        <div class="card-body">
+                                            <div class="overlay-wrapper">
+                                                <!-- <el-skeleton :rows="2" animated /> -->
+                                                <h4 class="cut-text">Daftar Nama Peserta Lolos Seleksi Tahap 1</h4>
+                                                <span class="text-gray-400 fs-6 fw-bold pe-2">5 Oktober 2022</span>
+                                            </div>
+                                            <div class="overlay-layer">
+                                                <a href="#" class="btn btn-primary btn-shadow">Lihat</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3">
+                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?">
+                                        <div class="card-body">
+                                            <div class="overlay-wrapper">
+                                                <el-skeleton :rows="2" animated />
+                                                <h4 class="cut-text">Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?</h4>
+                                                <span class="text-gray-400 fs-6 fw-bold pe-2">5 Oktober 2022</span>
+                                            </div>
+                                            <div class="overlay-layer bg-dark bg-opacity-10">
+                                                <a href="#" class="btn btn-primary btn-shadow">Lihat</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-1 ">
+                            <div class="card h-100 bg-primary">
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12 text-center pt-7">
+                            <router-link to="/pengumuman" class="btn btn-primary">
+                                <i class="las la-wallet fs-3 me-2"></i> Lihat Lebih Banyak Pengumuman
+                            </router-link>
+                        </div> -->
+                    </div>
+                </div>
                 <!-- <div class="col-md-12">
                     <div class="row">
                         <div class="d-flex flex-column pt-8 flex-md-row">
@@ -108,7 +179,7 @@
                                 <div class="card h-md-500px">
                                     <div class="card-body py-10">
                                         <el-skeleton-item variant="image" style="width: 100%; height: 240px" />
-                                        <el-skeleton :rows="4" animated />
+                                        <el-skeleton :rows="2" animated />
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +187,7 @@
 
                     </div>
                 </div> -->
-                <Widget3></Widget3>
+                <!-- <Widget3></Widget3> -->
             </div>
         </section>
     </div>
@@ -128,7 +199,7 @@
     import Divisi from '@/views/pages/Divisi.vue';
     import Register from '@/views/pages/auth/Register.vue';
     import Activation from '@/components/notice/Activation.vue';
-    import Widget3 from '@/components/widgets/sliders/Widget3.vue';
+    // import Widget3 from '@/components/widgets/sliders/Widget3.vue';
 
     import { defineComponent, onMounted, watch } from "vue";
 
@@ -137,8 +208,8 @@
             Login,
             Register,
             Activation,
-            Divisi,
-            Widget3
+            Divisi
+            // Widget3
         },
         data () {
             return {
@@ -159,29 +230,17 @@
                 }
             },
         },
-        mounted(){
-            if (localStorage.getItem('loggedIn')) {
-                this.isLogged = true
-            } else {
-                this.isLogged = false
-            }
-        }
     })
 
 </script>
 
 <style scoped>
-
-    @media (max-width: 767.98px) {
-        .bg-img {
-            min-height: 100vh;
-            width: unset !important;
-            left: -20%;
-            top: -50%;
-        }
-        .go_animated{
-            display: none;
-        }
+    .cut-text{
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .inner-form {
@@ -314,6 +373,10 @@
     }
     .out-in-translate-fade-leave-active {
         transform: translateX(100px);
+    }
+
+    .berita-card {
+
     }
 
 </style>

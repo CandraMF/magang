@@ -44,17 +44,6 @@ __webpack_require__.r(__webpack_exports__);
       confirmPassword: '',
       captcha: ''
     });
-
-    function getCaptchaCode(value) {// console.log(value);
-    }
-
-    function checkValidCaptcha(value) {
-      if (value) {
-        validCaptcha = true;
-        console.log(validCaptcha);
-      }
-    }
-
     var rules = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       password: [{
         required: true,
@@ -89,8 +78,6 @@ __webpack_require__.r(__webpack_exports__);
       callbackExpired: callbackExpired,
       callbackFail: callbackFail,
       ruleForm: ruleForm,
-      getCaptchaCode: getCaptchaCode,
-      checkValidCaptcha: checkValidCaptcha,
       rules: rules,
       submitForm: submitForm,
       VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__.VueRecaptcha
