@@ -53,10 +53,14 @@
                 <div class="col-md-4 mb-5 text-center" >
 
                     <router-link to="/detail/Registrasi dan Analisa Kemaslahatan" class="nav-link text-dark">
-                        <div class="position-relative d-inline-block">
-                            <span>Registrasi dan Analisa Kemaslahatan</span>
-                            <span class="position-absolute badge badge-light-success" style="right: -25px; top: -15px;">Dibuka</span>
+
+                        <div class="position-relative ">
+                            <span>
+                                Registrasi dan Analisa Kemaslahatan
+                                <span class="position-absolute badge badge-light-success" style="right: -25px; top: -15px;">Dibuka</span>
+                            </span>
                         </div>
+
                     </router-link>
                 </div>
                 <div class="col-md-4 mb-5 text-center" >

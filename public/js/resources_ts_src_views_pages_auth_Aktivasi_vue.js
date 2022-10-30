@@ -616,7 +616,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, 8
           /* PROPS */
           , ["disabled"]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vue_countdown, {
-            time: 7500000,
+            time: 300000,
             onEnd: _cache[2] || (_cache[2] = function ($event) {
               return $setup.onCountdownEnd();
             })
@@ -626,7 +626,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   hours = _a.hours,
                   minutes = _a.minutes,
                   seconds = _a.seconds;
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(hours) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(minutes) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(seconds), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 0" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(minutes) + ":" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(seconds), 1
               /* TEXT */
               )];
             }),

@@ -22,8 +22,8 @@
 
                     <span >
                         Kirim Ulang Kode Aktivasi Dalam
-                        <vue-countdown :time="7500000" v-slot="{ days, hours, minutes, seconds }" @end="onCountdownEnd()">
-                            0{{ hours }}:{{ minutes }}:{{ seconds }}
+                        <vue-countdown :time="300000" v-slot="{ days, hours, minutes, seconds }" @end="onCountdownEnd()">
+                            0{{ minutes }}:{{ seconds }}
                         </vue-countdown>
                     </span>
                 </el-form>

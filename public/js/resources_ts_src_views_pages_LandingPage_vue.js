@@ -33,7 +33,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       view: {
-        topOfPage: false
+        topOfPage: false,
+        width: 0,
+        height: 0,
+        type: 'md'
       },
       effect: "",
       isLogged: false,
@@ -46,6 +49,29 @@ __webpack_require__.r(__webpack_exports__);
         this.effect = 'out-in-translate-fade';
       } else {
         this.effect = 'in-out-translate-fade';
+      }
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize: function handleResize() {
+      this.view.width = window.innerWidth;
+      this.view.height = window.innerHeight;
+
+      if (this.view.width < 768) {
+        this.view.type = 'xs';
+      } else if (this.view.width >= 768 && this.view.width <= 992) {
+        this.view.type = 'sm';
+      } else if (this.view.width > 992 && this.view.width <= 1200) {
+        this.view.type = 'md';
+      } else {
+        this.view.type = 'lg';
       }
     }
   }
@@ -502,13 +528,45 @@ var _hoisted_5 = {
   "class": "row",
   id: "content"
 };
+var _hoisted_6 = {
+  id: "berita"
+};
+var _hoisted_7 = {
+  "class": "container pt-10 mt-10 mb-10 pb-10"
+};
+var _hoisted_8 = {
+  "class": ".col-md-12"
+};
+var _hoisted_9 = {
+  "class": "row"
+};
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section id=\"berita\" data-v-176fd577><div class=\"container pt-10 mt-10 mb-10 pb-10\" data-v-176fd577><div class=\".col-md-12\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-11\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-4\" data-v-176fd577><div class=\"card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0\" title=\"Daftar Nama Peserta Lolos Seleksi Tahap 1\" data-v-176fd577><div class=\"card-body\" data-v-176fd577><div class=\"overlay-wrapper\" data-v-176fd577><!-- &lt;el-skeleton :rows=&quot;2&quot; animated /&gt; --><h4 class=\"cut-text\" data-v-176fd577>Daftar Nama Peserta Lolos Seleksi Tahap 1</h4><span class=\"text-gray-400 fs-6 fw-bold pe-2\" data-v-176fd577>5 Oktober 2022</span></div><div class=\"overlay-layer bg-dark bg-opacity-10\" data-v-176fd577><a href=\"#\" class=\"btn btn-primary btn-shadow\" data-v-176fd577>Lihat</a></div></div></div></div><div class=\"col-md-4\" data-v-176fd577><div class=\"card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0\" title=\"Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?\" data-v-176fd577><div class=\"card-body\" data-v-176fd577><div class=\"overlay-wrapper\" data-v-176fd577><!-- &lt;el-skeleton :rows=&quot;2&quot; animated /&gt; --><h4 class=\"cut-text\" data-v-176fd577>Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?</h4><span class=\"text-gray-400 fs-6 fw-bold pe-2\" data-v-176fd577>5 Oktober 2022</span></div><div class=\"overlay-layer bg-dark bg-opacity-10\" data-v-176fd577><a href=\"#\" class=\"btn btn-primary btn-shadow\" data-v-176fd577>Lihat</a></div></div></div></div><div class=\"col-md-4\" data-v-176fd577><div class=\"card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0\" title=\"Daftar Nama Peserta Lolos Seleksi Tahap 1\" data-v-176fd577><div class=\"card-body\" data-v-176fd577><div class=\"overlay-wrapper\" data-v-176fd577><!-- &lt;el-skeleton :rows=&quot;2&quot; animated /&gt; --><h4 class=\"cut-text\" data-v-176fd577>Daftar Nama Peserta Lolos Seleksi Tahap 1</h4><span class=\"text-gray-400 fs-6 fw-bold pe-2\" data-v-176fd577>5 Oktober 2022</span></div><div class=\"overlay-layer\" data-v-176fd577><a href=\"#\" class=\"btn btn-primary btn-shadow\" data-v-176fd577>Lihat</a></div></div></div></div><!-- &lt;div class=&quot;col-md-3&quot;&gt;\n                                    &lt;div class=&quot;card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0&quot; title=&quot;Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?&quot;&gt;\n                                        &lt;div class=&quot;card-body&quot;&gt;\n                                            &lt;div class=&quot;overlay-wrapper&quot;&gt;\n                                                &lt;el-skeleton :rows=&quot;2&quot; animated /&gt;\n                                                &lt;h4 class=&quot;cut-text&quot;&gt;Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?&lt;/h4&gt;\n                                                &lt;span class=&quot;text-gray-400 fs-6 fw-bold pe-2&quot;&gt;5 Oktober 2022&lt;/span&gt;\n                                            &lt;/div&gt;\n                                            &lt;div class=&quot;overlay-layer bg-dark bg-opacity-10&quot;&gt;\n                                                &lt;a href=&quot;#&quot; class=&quot;btn btn-primary btn-shadow&quot;&gt;Lihat&lt;/a&gt;\n                                            &lt;/div&gt;\n                                        &lt;/div&gt;\n                                    &lt;/div&gt;\n                                &lt;/div&gt; --></div></div><div class=\"col-md-1\" data-v-176fd577><div class=\"card h-100 bg-primary\" data-v-176fd577><div class=\"card-body\" data-v-176fd577></div></div></div><!-- &lt;div class=&quot;col-md-12 text-center pt-7&quot;&gt;\n                            &lt;router-link to=&quot;/pengumuman&quot; class=&quot;btn btn-primary&quot;&gt;\n                                &lt;i class=&quot;las la-wallet fs-3 me-2&quot;&gt;&lt;/i&gt; Lihat Lebih Banyak Pengumuman\n                            &lt;/router-link&gt;\n                        &lt;/div&gt; --></div></div><!-- &lt;div class=&quot;col-md-12&quot;&gt;\n                    &lt;div class=&quot;row&quot;&gt;\n                        &lt;div class=&quot;d-flex flex-column pt-8 flex-md-row&quot;&gt;\n                            &lt;div class=&quot;flex-column flex-md-row-auto w-100 w-md-250px w-xxl-350px&quot;&gt;\n                                &lt;div class=&quot;card mb-10 mb-md-0  h-md-500px&quot;&gt;\n                                    &lt;div class=&quot;card-body py-10 px-6&quot;&gt;\n                                        &lt;div class=&quot;d-flex flex-column mb-10 px-3&quot;&gt;\n                                            &lt;form&gt;\n                                                &lt;div class=&quot;input-group input-group-solid&quot; id=&quot;kt_chat_aside_search&quot;&gt;\n                                                    &lt;span class=&quot;input-group-text&quot; id=&quot;basic-addon1&quot;&gt;\n                                                        &lt;span class=&quot;svg-icon svg-icon-1 svg-icon-dark&quot;&gt;\n                                                            &lt;inline-svg src=&quot;/media/icons/duotone/general/gen004.svg&quot; /&gt;\n                                                        &lt;/span&gt;\n                                                    &lt;/span&gt;\n                                                    &lt;input type=&quot;text&quot; class=&quot;form-control ps-0 py-4 h-auto&quot; placeholder=&quot;Cari&quot; /&gt;\n                                                &lt;/div&gt;\n                                            &lt;/form&gt;\n                                        &lt;/div&gt;\n\n                                        &lt;ul\n                                            class=&quot;menu menu-column menu-rounded menu-gray-600 menu-hover-bg-light-primary menu-active-bg-light-primary fw-bold mb-10&quot;&gt;\n\n                                            &lt;li class=&quot;menu-item px-3 pb-1&quot;&gt;\n                                                &lt;a href=&quot;#&quot; class=&quot;menu-link fs-6 px-3&quot;&gt;\n                                                    Daftar Nama Peserta Lolos Seleksi Tahap 1\n                                                &lt;/a&gt;\n                                            &lt;/li&gt;\n                                            &lt;li class=&quot;menu-item px-3 pb-1&quot;&gt;\n                                                &lt;a href=&quot;#&quot; class=&quot;menu-link fs-6 px-3&quot;&gt;\n                                                    Jadwal Penting! Catat ya\n                                                &lt;/a&gt;\n                                            &lt;/li&gt;\n                                            &lt;li class=&quot;menu-item px-3 pb-1&quot;&gt;\n                                                &lt;a href=&quot;#&quot; class=&quot;menu-link fs-6 px-3&quot;&gt;\n                                                    Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?\n                                                &lt;/a&gt;\n                                            &lt;/li&gt;\n                                        &lt;/ul&gt;\n                                    &lt;/div&gt;\n                                &lt;/div&gt;\n                            &lt;/div&gt;\n\n                            &lt;div class=&quot;flex-md-row-fluid ms-md-12&quot;&gt;\n                                &lt;div class=&quot;card h-md-500px&quot;&gt;\n                                    &lt;div class=&quot;card-body py-10&quot;&gt;\n                                        &lt;el-skeleton-item variant=&quot;image&quot; style=&quot;width: 100%; height: 240px&quot; /&gt;\n                                        &lt;el-skeleton :rows=&quot;2&quot; animated /&gt;\n                                    &lt;/div&gt;\n                                &lt;/div&gt;\n                            &lt;/div&gt;\n                        &lt;/div&gt;\n\n                    &lt;/div&gt;\n                &lt;/div&gt; --><!-- &lt;Widget3&gt;&lt;/Widget3&gt; --></div></section>", 1);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-11\" data-v-176fd577><div class=\"row\" data-v-176fd577><div class=\"col-md-4\" data-v-176fd577><div class=\"card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0\" title=\"Daftar Nama Peserta Lolos Seleksi Tahap 1\" data-v-176fd577><div class=\"card-body\" data-v-176fd577><div class=\"overlay-wrapper\" data-v-176fd577><!-- &lt;el-skeleton :rows=&quot;2&quot; animated /&gt; --><h4 class=\"cut-text\" data-v-176fd577>Daftar Nama Peserta Lolos Seleksi Tahap 1</h4><span class=\"text-gray-400 fs-6 fw-bold pe-2\" data-v-176fd577>5 Oktober 2022</span></div><div class=\"overlay-layer bg-dark bg-opacity-10\" data-v-176fd577><a href=\"#\" class=\"btn btn-primary btn-shadow\" data-v-176fd577>Lihat</a></div></div></div></div><div class=\"col-md-4\" data-v-176fd577><div class=\"card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0\" title=\"Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?\" data-v-176fd577><div class=\"card-body\" data-v-176fd577><div class=\"overlay-wrapper\" data-v-176fd577><!-- &lt;el-skeleton :rows=&quot;2&quot; animated /&gt; --><h4 class=\"cut-text\" data-v-176fd577>Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?</h4><span class=\"text-gray-400 fs-6 fw-bold pe-2\" data-v-176fd577>5 Oktober 2022</span></div><div class=\"overlay-layer bg-dark bg-opacity-10\" data-v-176fd577><a href=\"#\" class=\"btn btn-primary btn-shadow\" data-v-176fd577>Lihat</a></div></div></div></div><div class=\"col-md-4\" data-v-176fd577><div class=\"card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0\" title=\"Daftar Nama Peserta Lolos Seleksi Tahap 1\" data-v-176fd577><div class=\"card-body\" data-v-176fd577><div class=\"overlay-wrapper\" data-v-176fd577><!-- &lt;el-skeleton :rows=&quot;2&quot; animated /&gt; --><h4 class=\"cut-text\" data-v-176fd577>Daftar Nama Peserta Lolos Seleksi Tahap 1</h4><span class=\"text-gray-400 fs-6 fw-bold pe-2\" data-v-176fd577>5 Oktober 2022</span></div><div class=\"overlay-layer\" data-v-176fd577><a href=\"#\" class=\"btn btn-primary btn-shadow\" data-v-176fd577>Lihat</a></div></div></div></div><!-- &lt;div class=&quot;col-md-3&quot;&gt;\n                                    &lt;div class=&quot;card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0&quot; title=&quot;Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?&quot;&gt;\n                                        &lt;div class=&quot;card-body&quot;&gt;\n                                            &lt;div class=&quot;overlay-wrapper&quot;&gt;\n                                                &lt;el-skeleton :rows=&quot;2&quot; animated /&gt;\n                                                &lt;h4 class=&quot;cut-text&quot;&gt;Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?&lt;/h4&gt;\n                                                &lt;span class=&quot;text-gray-400 fs-6 fw-bold pe-2&quot;&gt;5 Oktober 2022&lt;/span&gt;\n                                            &lt;/div&gt;\n                                            &lt;div class=&quot;overlay-layer bg-dark bg-opacity-10&quot;&gt;\n                                                &lt;a href=&quot;#&quot; class=&quot;btn btn-primary btn-shadow&quot;&gt;Lihat&lt;/a&gt;\n                                            &lt;/div&gt;\n                                        &lt;/div&gt;\n                                    &lt;/div&gt;\n                                &lt;/div&gt; --></div></div>", 1);
+
+var _hoisted_11 = {
+  "class": "d-flex w-100 h-100 align-items-center justify-content-center"
+};
+var _hoisted_12 = {
+  key: 0
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
+  /*#__PURE__*/
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "bi bi-chevron-right text-white fs-2"
+  }, null, -1
+  /* HOISTED */
+  );
+});
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
+
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [!_ctx.isLogged ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, {
     key: 0
@@ -532,7 +590,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), _hoisted_6]);
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["col-md-1", {
+      'd-flex flex-row justify-content-center': _ctx.view.type == 'sm' || _ctx.view.type == 'xs'
+    }])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/pengumuman",
+    "class": "btn btn-primary h-100 my-2 my-md-0 my-lg-0 my-xl-0",
+    style: {
+      "border-radius": "1.15rem"
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [_ctx.view.type == 'sm' || _ctx.view.type == 'xs' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_12, "Lihat Lebih Banyak")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13, _hoisted_14])])];
+    }),
+    _: 1
+    /* STABLE */
+
+  })], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-12 text-center pt-7\">\n                            <router-link to=\"/pengumuman\" class=\"btn btn-primary\">\n                                <i class=\"las la-wallet fs-3 me-2\"></i> Lihat Lebih Banyak Pengumuman\n                            </router-link>\n                        </div> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"col-md-12\">\n                    <div class=\"row\">\n                        <div class=\"d-flex flex-column pt-8 flex-md-row\">\n                            <div class=\"flex-column flex-md-row-auto w-100 w-md-250px w-xxl-350px\">\n                                <div class=\"card mb-10 mb-md-0  h-md-500px\">\n                                    <div class=\"card-body py-10 px-6\">\n                                        <div class=\"d-flex flex-column mb-10 px-3\">\n                                            <form>\n                                                <div class=\"input-group input-group-solid\" id=\"kt_chat_aside_search\">\n                                                    <span class=\"input-group-text\" id=\"basic-addon1\">\n                                                        <span class=\"svg-icon svg-icon-1 svg-icon-dark\">\n                                                            <inline-svg src=\"/media/icons/duotone/general/gen004.svg\" />\n                                                        </span>\n                                                    </span>\n                                                    <input type=\"text\" class=\"form-control ps-0 py-4 h-auto\" placeholder=\"Cari\" />\n                                                </div>\n                                            </form>\n                                        </div>\n\n                                        <ul\n                                            class=\"menu menu-column menu-rounded menu-gray-600 menu-hover-bg-light-primary menu-active-bg-light-primary fw-bold mb-10\">\n\n                                            <li class=\"menu-item px-3 pb-1\">\n                                                <a href=\"#\" class=\"menu-link fs-6 px-3\">\n                                                    Daftar Nama Peserta Lolos Seleksi Tahap 1\n                                                </a>\n                                            </li>\n                                            <li class=\"menu-item px-3 pb-1\">\n                                                <a href=\"#\" class=\"menu-link fs-6 px-3\">\n                                                    Jadwal Penting! Catat ya\n                                                </a>\n                                            </li>\n                                            <li class=\"menu-item px-3 pb-1\">\n                                                <a href=\"#\" class=\"menu-link fs-6 px-3\">\n                                                    Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?\n                                                </a>\n                                            </li>\n                                        </ul>\n                                    </div>\n                                </div>\n                            </div>\n\n                            <div class=\"flex-md-row-fluid ms-md-12\">\n                                <div class=\"card h-md-500px\">\n                                    <div class=\"card-body py-10\">\n                                        <el-skeleton-item variant=\"image\" style=\"width: 100%; height: 240px\" />\n                                        <el-skeleton :rows=\"2\" animated />\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n\n                    </div>\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Widget3></Widget3> ")])])]);
 }
 
 /***/ }),
@@ -1083,14 +1160,14 @@ var _hoisted_22 = {
 };
 
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "position-relative d-inline-block"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Registrasi dan Analisa Kemaslahatan"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "position-relative"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Registrasi dan Analisa Kemaslahatan "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "position-absolute badge badge-light-success",
   style: {
     "right": "-25px",
     "top": "-15px"
   }
-}, "Dibuka")], -1
+}, "Dibuka")])], -1
 /* HOISTED */
 );
 

@@ -62,7 +62,7 @@
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Daftar Nama Peserta Lolos Seleksi Tahap 1">
+                                    <div class="card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0" title="Daftar Nama Peserta Lolos Seleksi Tahap 1">
                                         <div class="card-body">
                                             <div class="overlay-wrapper">
                                                 <!-- <el-skeleton :rows="2" animated /> -->
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?">
+                                    <div class="card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0" title="Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?">
                                         <div class="card-body">
                                             <div class="overlay-wrapper">
                                                 <!-- <el-skeleton :rows="2" animated /> -->
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Daftar Nama Peserta Lolos Seleksi Tahap 1">
+                                    <div class="card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0" title="Daftar Nama Peserta Lolos Seleksi Tahap 1">
                                         <div class="card-body">
                                             <div class="overlay-wrapper">
                                                 <!-- <el-skeleton :rows="2" animated /> -->
@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-3">
-                                    <div class="card berita-card overlay overflow-hidden my-3 my-md-0 my-lg-0 my-xl-0" title="Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?">
+                                    <div class="card berita-card overlay overflow-hidden my-2 my-md-0 my-lg-0 my-xl-0" title="Pembukaan Lowongan Magang Batch 3, Apa Saja Posisi Magang yang di Buka?">
                                         <div class="card-body">
                                             <div class="overlay-wrapper">
                                                 <el-skeleton :rows="2" animated />
@@ -119,12 +119,13 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="col-md-1 ">
-                            <div class="card h-100 bg-primary">
-                                <div class="card-body">
+                        <div class="col-md-1" :class="{'d-flex flex-row justify-content-center' : view.type == 'sm' || view.type == 'xs'}">
 
+                            <router-link to="/pengumuman" class="btn btn-primary h-100 my-2 my-md-0 my-lg-0 my-xl-0" style="border-radius: 1.15rem;">
+                                <div class="d-flex w-100 h-100 align-items-center justify-content-center">
+                                    <span><span v-if="view.type == 'sm' || view.type == 'xs'">Lihat Lebih Banyak</span> <i class="bi bi-chevron-right text-white fs-2"></i></span>
                                 </div>
-                            </div>
+                            </router-link>
                         </div>
                         <!-- <div class="col-md-12 text-center pt-7">
                             <router-link to="/pengumuman" class="btn btn-primary">
@@ -215,6 +216,9 @@
             return {
                 view: {
                     topOfPage: false,
+                    width: 0,
+                    height: 0,
+                    type: 'md',
                 },
                 effect: "",
                 isLogged: false,
@@ -230,6 +234,30 @@
                 }
             },
         },
+        beforeMount() {
+            this.handleResize();
+            window.addEventListener('resize', this.handleResize);
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize);
+        },
+        methods: {
+            handleResize() {
+                this.view.width = window.innerWidth;
+                this.view.height = window.innerHeight;
+
+                if (this.view.width < 768) {
+                    this.view.type = 'xs'
+                } else if (this.view.width >= 768 &&  this.view.width <= 992) {
+                    this.view.type = 'sm'
+                } else if (this.view.width > 992 &&  this.view.width <= 1200) {
+                    this.view.type = 'md'
+                } else  {
+                    this.view.type = 'lg'
+                }
+
+            },
+        }
     })
 
 </script>
