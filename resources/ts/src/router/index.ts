@@ -1,20 +1,8 @@
 import store from "@/store";
 import { Actions } from "@/store/enums/StoreEnums";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-// import activated from "./middleware/activated";
-// import active from "./middleware/active";
-// import auth from "./middleware/auth";
-// import authentication from "./middleware/auth";
-// import authenticated from "./middleware/authenticated";
-// import role from "./middleware/role";
 
 import multiguard from 'vue-router-multiguard';
-
-// import activated from "./middleware/activated";
-// import active from "./middleware/active";
-// import authenticated from "./middleware/authenticated";
-// // import log from "./middleware/log";
-// // import authenticated from "./middleware/authenticated";
 
 var user = store.getters.getUser ? store.getters.getUser : { role_id : 'ROL001', status_id : 'USR101', person_id : null } ;
 
@@ -91,8 +79,10 @@ const authenticated = (to, from, next) => {
     console.log('authenticated')
 
     if (token) {
-        next({ name: 'admin' })
-        return false
+        if(to.name == 'login') {
+            next({ name: 'admin' })
+            return false
+        }
     }
 
     next()
@@ -164,7 +154,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: "/auth",
         redirect: "/login",
-        // beforeEnter: multiguard([auth, activated, authenticated]),
+        beforeEnter: multiguard([auth, activated, authenticated]),
         component: () => import("@/layout/AuthLayout.vue"),
         children: [
             {
@@ -197,7 +187,7 @@ const routes: Array<RouteRecordRaw> = [
     {
       path: "/admin",
       name: "admin",
-    //   beforeEnter: multiguard([auth, active, role]),
+      beforeEnter: multiguard([auth, active, role]),
       component: () => import("@/layout/Layout.vue"),
       children: user.role_id == 'ROL001' ? [ // Pendaftar
         {

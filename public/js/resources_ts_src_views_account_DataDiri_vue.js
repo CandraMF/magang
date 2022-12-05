@@ -80,12 +80,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _views_forms_DataDiriForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/views/forms/DataDiriForm.vue */ "./resources/ts/src/views/forms/DataDiriForm.vue");
-/* harmony import */ var _views_account_Berkas_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/views/account/Berkas.vue */ "./resources/ts/src/views/account/Berkas.vue");
-/* harmony import */ var _views_account_Pendidikan_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/views/account/Pendidikan.vue */ "./resources/ts/src/views/account/Pendidikan.vue");
-/* harmony import */ var _views_account_Keluarga_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/views/account/Keluarga.vue */ "./resources/ts/src/views/account/Keluarga.vue");
-/* harmony import */ var _views_account_Kerja_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/views/account/Kerja.vue */ "./resources/ts/src/views/account/Kerja.vue");
-/* harmony import */ var _views_account_Organisasi_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/views/account/Organisasi.vue */ "./resources/ts/src/views/account/Organisasi.vue");
+/* harmony import */ var _views_account_Pendidikan_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/views/account/Pendidikan.vue */ "./resources/ts/src/views/account/Pendidikan.vue");
+/* harmony import */ var _views_account_Keluarga_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/views/account/Keluarga.vue */ "./resources/ts/src/views/account/Keluarga.vue");
+/* harmony import */ var _views_account_Kerja_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/views/account/Kerja.vue */ "./resources/ts/src/views/account/Kerja.vue");
+/* harmony import */ var _views_account_Organisasi_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/views/account/Organisasi.vue */ "./resources/ts/src/views/account/Organisasi.vue");
+/* harmony import */ var _views_forms_DataDiriForm_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/views/forms/DataDiriForm.vue */ "./resources/ts/src/views/forms/DataDiriForm.vue");
+/* harmony import */ var _views_account_Berkas_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/views/account/Berkas.vue */ "./resources/ts/src/views/account/Berkas.vue");
 
 
 
@@ -99,64 +99,19 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _a) {
     var expose = _a.expose;
     expose();
-    var step = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
+    var tabs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(["Data Diri", "Pendidikan", "Keluarga", "Pekerjaan", "Organisasi", "Berkas"]);
+    var tabActiveName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("Data Diri");
     var effect = "";
-    var steps = [{
-      name: "Data Diri",
-      desc: "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-      icon: "person",
-      active: true,
-      component: _views_forms_DataDiriForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-    }, {
-      name: "Pendidikan",
-      desc: "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-      icon: "person",
-      active: true,
-      component: _views_account_Pendidikan_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-    }, {
-      name: "Keluarga",
-      desc: "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-      icon: "person",
-      active: true,
-      component: _views_account_Keluarga_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-    }, {
-      name: "Perkerjaan",
-      desc: "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-      icon: "work",
-      active: true,
-      component: _views_account_Kerja_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
-    }, {
-      name: "Organisasi",
-      desc: "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-      icon: "social",
-      active: true,
-      component: _views_account_Organisasi_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
-    }, {
-      name: "Berkas",
-      desc: "Pastikan Data yang dimasukan adalah data yang sebenar benarnya",
-      icon: "person",
-      active: true,
-      component: _views_account_Berkas_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-    }];
-
-    var nextStepAction = function nextStepAction() {
-      effect = "in-out-translate-fade";
-      if (step.value < steps.length - 1) step.value++;
-      console.log(step.value);
-    };
-
-    var backStep = function backStep() {
-      effect = "out-in-translate-fade";
-      if (step.value > 0) step.value--;
-      console.log(step.value);
-    };
-
     var __returned__ = {
-      step: step,
+      tabs: tabs,
+      tabActiveName: tabActiveName,
       effect: effect,
-      steps: steps,
-      nextStepAction: nextStepAction,
-      backStep: backStep
+      Pendidikan: _views_account_Pendidikan_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      Keluarga: _views_account_Keluarga_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      Pekerjaan: _views_account_Kerja_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      Organisasi: _views_account_Organisasi_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      DataDiriForm: _views_forms_DataDiriForm_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      Berkas: _views_account_Berkas_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -178,13 +133,154 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_Modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Modal.vue */ "./resources/ts/src/components/Modal.vue");
 /* harmony import */ var _views_forms_KeluargaForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/views/forms/KeluargaForm.vue */ "./resources/ts/src/views/forms/KeluargaForm.vue");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -216,7 +312,10 @@ __webpack_require__.r(__webpack_exports__);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
-      getData();
+
+      if (personId.value != null) {
+        getData();
+      }
     });
 
     var indexMethod = function indexMethod(index) {
@@ -243,17 +342,17 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Batal',
         type: 'warning'
       }).then(function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+        return __awaiter(_this, void 0, void 0, function () {
           var _this = this;
 
-          return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+          return __generator(this, function (_a) {
             switch (_a.label) {
               case 0:
                 return [4
                 /*yield*/
                 , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                  return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
                       switch (_a.label) {
                         case 0:
                           return [4
@@ -307,18 +406,18 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getData = function getData() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               loading.value = true;
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -402,13 +501,154 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_Modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Modal.vue */ "./resources/ts/src/components/Modal.vue");
 /* harmony import */ var _views_forms_KerjaForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/views/forms/KerjaForm.vue */ "./resources/ts/src/views/forms/KerjaForm.vue");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -440,7 +680,10 @@ __webpack_require__.r(__webpack_exports__);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
-      getData();
+
+      if (personId.value != null) {
+        getData();
+      }
     });
 
     var indexMethod = function indexMethod(index) {
@@ -467,17 +710,17 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Batal',
         type: 'warning'
       }).then(function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+        return __awaiter(_this, void 0, void 0, function () {
           var _this = this;
 
-          return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+          return __generator(this, function (_a) {
             switch (_a.label) {
               case 0:
                 return [4
                 /*yield*/
                 , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                  return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
                       switch (_a.label) {
                         case 0:
                           return [4
@@ -531,18 +774,18 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getData = function getData() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               loading.value = true;
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -626,13 +869,154 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_Modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Modal.vue */ "./resources/ts/src/components/Modal.vue");
 /* harmony import */ var _views_forms_OrganisasiForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/views/forms/OrganisasiForm.vue */ "./resources/ts/src/views/forms/OrganisasiForm.vue");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -664,7 +1048,10 @@ __webpack_require__.r(__webpack_exports__);
       token = store.getters.getToken;
       personId.value = store.getters.getUser.person_id;
       globalProperties = app.appContext.config.globalProperties;
-      getData();
+
+      if (personId.value != null) {
+        getData();
+      }
     });
 
     var indexMethod = function indexMethod(index) {
@@ -691,17 +1078,17 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Batal',
         type: 'warning'
       }).then(function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+        return __awaiter(_this, void 0, void 0, function () {
           var _this = this;
 
-          return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+          return __generator(this, function (_a) {
             switch (_a.label) {
               case 0:
                 return [4
                 /*yield*/
                 , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                    return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                  return __awaiter(_this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
                       switch (_a.label) {
                         case 0:
                           return [4
@@ -755,18 +1142,18 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getData = function getData() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               loading.value = true;
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -850,13 +1237,154 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_Modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Modal.vue */ "./resources/ts/src/components/Modal.vue");
 /* harmony import */ var _views_forms_PendidikanForm_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/views/forms/PendidikanForm.vue */ "./resources/ts/src/views/forms/PendidikanForm.vue");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -893,7 +1421,9 @@ __webpack_require__.r(__webpack_exports__);
       // });
       // console.log(myModal.show())
 
-      getEducation();
+      if (personId.value != null) {
+        getEducation();
+      }
     });
 
     var showModal = function showModal() {
@@ -901,8 +1431,8 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var handleModalClose = function handleModalClose() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+      return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
           console.log('close');
           return [2
           /*return*/
@@ -912,17 +1442,17 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getEducation = function getEducation() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -994,12 +1524,153 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store/enums/StoreEnums */ "./resources/ts/src/store/enums/StoreEnums.ts");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -1015,7 +1686,6 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.useStore)();
     var ruleFormRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var alamatTinggalShow = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var token = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('');
     var personId = null;
     var etnicity = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
@@ -1027,26 +1697,26 @@ __webpack_require__.r(__webpack_exports__);
       etnicity: '',
       marital: '',
       religion: '',
-      gelarAwal: '',
-      gelarAkhir: '',
-      nomorKTP: '',
-      nomorNPWP: '',
-      nomorSIMA: '',
-      nomorSIMB: '',
-      nomorSIMC: '',
-      tempatLahir: '',
-      tanggalLahir: '',
-      golonganDarah: '',
-      domisiliAsal: '',
-      kodeDomisiliAsal: '',
-      domisiliTinggal: '',
-      kodeDomisiliTinggal: '',
-      alamatAsal: '',
-      alamatTinggal: '',
-      nomorHP: '',
-      nomorHPAlt: '',
-      kodePosTinggal: '',
-      kodePosAsal: ''
+      title_pre: '',
+      title_post: '',
+      identity_id: '',
+      tax_id: '',
+      driving_a: '',
+      driving_b: '',
+      driving_c: '',
+      birth_place: '',
+      birth_date: '',
+      blood_type: '',
+      region: '',
+      region_id: '',
+      region_home: '',
+      region_id_home: '',
+      address: '',
+      address_home: '',
+      mobile: '',
+      mobile_alt: '',
+      zip_home: '',
+      zip: ''
     });
     var rules = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       name: [{
@@ -1067,7 +1737,7 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Mohon isi format email yang benar',
         trigger: ['blur', 'change']
       }],
-      nomorKTP: [{
+      identity_id: [{
         required: true,
         message: 'Mohon isi nomor KTP',
         trigger: ['blur', 'change']
@@ -1080,7 +1750,7 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Nomor KTP harus 16 digit',
         trigger: ['blur', 'change']
       }],
-      nomorNPWP: [{
+      tax_id: [{
         min: 16,
         message: 'Nomor NPWP harus 16 digit',
         trigger: ['blur', 'change']
@@ -1089,7 +1759,7 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Nomor NPWP harus 16 digit',
         trigger: ['blur', 'change']
       }],
-      nomorSIMA: [{
+      driving_a: [{
         min: 12,
         message: 'Nomor SIM harus 12 digit',
         trigger: ['blur', 'change']
@@ -1098,7 +1768,7 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Nomor SIM harus 12 digit',
         trigger: ['blur', 'change']
       }],
-      nomorSIMB: [{
+      driving_b: [{
         min: 12,
         message: 'Nomor SIM harus 12 digit',
         trigger: ['blur', 'change']
@@ -1107,7 +1777,7 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Nomor SIM harus 12 digit',
         trigger: ['blur', 'change']
       }],
-      nomorSIMC: [{
+      driving_c: [{
         min: 12,
         message: 'Nomor SIM harus 12 digit',
         trigger: ['blur', 'change']
@@ -1116,56 +1786,52 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Nomor SIM harus 12 digit',
         trigger: ['blur', 'change']
       }],
-      tempatLahir: [{
+      birth_place: [{
         required: true,
         message: 'Mohon isi Tempat Lahir',
         trigger: 'blur'
       }],
-      tanggalLahir: [{
+      birth_date: [{
         required: true,
         message: 'Mohon isi Tanggal Lahir',
         trigger: 'blur'
       }],
-      domisiliAsal: [{
+      region: [{
         required: true,
         message: 'Mohon isi Kecamatan',
         trigger: 'blur'
       }],
-      domisiliTinggal: [{
+      region_home: [{
         required: true,
         message: 'Mohon isi Kecamatan',
         trigger: 'blur'
       }],
-      alamatTinggal: [{
+      address_home: [{
         required: true,
         message: 'Mohon isi Alamat Tinggal',
         trigger: 'blur'
       }],
-      alamatAsal: [{
+      address: [{
         required: true,
         message: 'Mohon isi Alamat Asal',
         trigger: 'blur'
       }],
-      nomorHP: [{
+      mobile: [{
         required: true,
         message: 'Mohon isi Nomor Ponsel',
         trigger: 'blur'
       }, {
-        min: 14,
-        message: 'Nomor Nomor Ponsel harus 14 digit',
-        trigger: ['blur', 'change']
-      }, {
-        min: 14,
+        max: 14,
         message: 'Nomor Nomor Ponsel harus 14 digit',
         trigger: ['blur', 'change']
       }],
-      nomorHPAlt: [],
+      mobile_alt: [],
       marital: [{
         required: true,
         message: 'Mohon pilih Status Pernikahan',
         trigger: ['blur', 'change']
       }],
-      golonganDarah: [{
+      blood_type: [{
         required: true,
         message: 'Mohon pilih Golongan Darah',
         trigger: ['blur', 'change']
@@ -1180,12 +1846,12 @@ __webpack_require__.r(__webpack_exports__);
         message: 'Mohon pilih Agama',
         trigger: ['blur', 'change']
       }],
-      kodePosTinggal: [{
+      zip_home: [{
         required: true,
         message: 'Mohon isi Kode Pos Tinggal',
         trigger: ['blur', 'change']
       }],
-      kodePosAsal: [{
+      zip: [{
         required: true,
         message: 'Mohon isi Kode Pos Asal',
         trigger: ['blur', 'change']
@@ -1193,29 +1859,29 @@ __webpack_require__.r(__webpack_exports__);
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       ruleForm.email = store.getters.getUser.email;
-      ruleForm.nomorKTP = store.getters.getUser.login;
-      ruleForm.nomorHP = store.getters.getUser.mobile;
+      ruleForm.identity_id = store.getters.getUser.login;
+      ruleForm.mobile = store.getters.getUser.mobile;
       token = store.getters.getToken;
       personId = store.getters.getUser.person_id;
       getStatus();
 
-      if (personId) {
+      if (personId != null) {
         getPerson();
       }
     });
 
     var getPerson = function getPerson() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_2___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -1225,29 +1891,29 @@ __webpack_require__.r(__webpack_exports__);
                             'Authorization': 'Bearer ' + token
                           }
                         }).then(function (response) {
-                          ruleForm.alamatAsal = response.data.address;
-                          ruleForm.alamatTinggal = response.data.address_home;
-                          ruleForm.domisiliAsal = response.data.region;
-                          ruleForm.domisiliTinggal = response.data.region_home;
+                          ruleForm.address = response.data.address;
+                          ruleForm.address_home = response.data.address_home;
+                          ruleForm.region = response.data.region;
+                          ruleForm.region_home = response.data.region_home;
                           ruleForm.email = response.data.email;
                           ruleForm.etnicity = response.data.ethnicity_id;
-                          ruleForm.gelarAwal = response.data.title_pre;
-                          ruleForm.gelarAkhir = response.data.title_post;
-                          ruleForm.golonganDarah = response.data.blood_type;
-                          ruleForm.kodePosAsal = response.data.zip;
-                          ruleForm.kodePosTinggal = response.data.zip_home;
+                          ruleForm.title_pre = response.data.title_pre;
+                          ruleForm.title_post = response.data.title_post;
+                          ruleForm.blood_type = response.data.blood_type;
+                          ruleForm.zip = response.data.zip;
+                          ruleForm.zip_home = response.data.zip_home;
                           ruleForm.marital = response.data.marital_status_id;
                           ruleForm.name = response.data.name;
-                          ruleForm.nomorHP = response.data.mobile;
-                          ruleForm.nomorHPAlt = response.data.mobile_alt;
-                          ruleForm.nomorKTP = response.data.identity_id;
-                          ruleForm.nomorNPWP = response.data.tax_id;
-                          ruleForm.nomorSIMA = response.data.driving_a;
-                          ruleForm.nomorSIMB = response.data.driving_b;
-                          ruleForm.nomorSIMC = response.data.driving_c;
+                          ruleForm.mobile = response.data.mobile;
+                          ruleForm.mobile_alt = response.data.mobile_alt;
+                          ruleForm.identity_id = response.data.identity_id;
+                          ruleForm.tax_id = response.data.tax_id;
+                          ruleForm.driving_a = response.data.driving_a;
+                          ruleForm.driving_b = response.data.driving_b;
+                          ruleForm.driving_c = response.data.driving_c;
                           ruleForm.religion = response.data.religion_id;
-                          ruleForm.tanggalLahir = response.data.birth_date;
-                          ruleForm.tempatLahir = response.data.birth_place;
+                          ruleForm.birth_date = response.data.birth_date;
+                          ruleForm.birth_place = response.data.birth_place;
                         })];
 
                       case 1:
@@ -1273,17 +1939,17 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getStatus = function getStatus() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_2___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -1336,10 +2002,10 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var submitForm = function submitForm() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _a;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_b) {
+        return __generator(this, function (_b) {
           // console.log(ruleForm)
           (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.validate(function (valid) {
             if (valid) {
@@ -1383,9 +2049,9 @@ __webpack_require__.r(__webpack_exports__);
     var results = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
 
     var querySearch = function querySearch(queryString, cb) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var payload;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               payload = queryString;
@@ -1431,17 +2097,23 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var handleSelectAsal = function handleSelectAsal(item) {
-      ruleForm.kodeDomisiliAsal = item.region_id;
+      ruleForm.region_id = item.region_id;
     };
 
     var handleSelectTinggal = function handleSelectTinggal(item) {
-      ruleForm.kodeDomisiliTinggal = item.region_id;
+      ruleForm.region_id_home = item.region_id;
+    };
+
+    var handleClickaddress = function handleClickaddress() {
+      ruleForm.address_home = ruleForm.address;
+      ruleForm.region_home = ruleForm.region;
+      ruleForm.region_id_home = ruleForm.region_id;
+      ruleForm.zip_home = ruleForm.zip;
     };
 
     var __returned__ = {
       store: store,
       ruleFormRef: ruleFormRef,
-      alamatTinggalShow: alamatTinggalShow,
       token: token,
       personId: personId,
       etnicity: etnicity,
@@ -1457,7 +2129,8 @@ __webpack_require__.r(__webpack_exports__);
       querySearch: querySearch,
       createFilter: createFilter,
       handleSelectAsal: handleSelectAsal,
-      handleSelectTinggal: handleSelectTinggal
+      handleSelectTinggal: handleSelectTinggal,
+      handleClickaddress: handleClickaddress
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -1479,11 +2152,152 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -1547,17 +2361,17 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var getPerson = function getPerson() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -1591,17 +2405,17 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getStatus = function getStatus() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -1617,18 +2431,7 @@ __webpack_require__.r(__webpack_exports__);
                                 'value': element.status_id,
                                 'label': element.name
                               });
-                            } // } else if(element.status_id.slice(0,3) == 'REL') {
-                            //     religion.push({
-                            //         'value': element.status_id,
-                            //         'label': element.name,
-                            //     })
-                            // } else if(element.status_id.slice(0,3) == 'MAR') {
-                            //     marital.push({
-                            //         'value': element.status_id,
-                            //         'label': element.name,
-                            //     })
-                            // }
-
+                            }
                           });
                         })];
 
@@ -1655,10 +2458,10 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var submitForm = function submitForm() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _a;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_b) {
+        return __generator(this, function (_b) {
           (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.validate(function (valid) {
             if (valid) {
               axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
@@ -1733,11 +2536,152 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -1785,8 +2729,8 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var submitForm = function submitForm() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+      return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
           isLoading.value = false;
           ruleFormRef.value.validate(function (valid) {
             if (valid) {
@@ -1926,11 +2870,152 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -1978,8 +3063,8 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var submitForm = function submitForm() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+      return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
           isLoading.value = false;
           ruleFormRef.value.validate(function (valid) {
             if (valid) {
@@ -2119,11 +3204,152 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = undefined && undefined.__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 
 
 
@@ -2215,17 +3441,17 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var getPerson = function getPerson() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -2259,17 +3485,17 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var getStatus = function getStatus() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
               , axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
-                return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
-                  return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+                return __awaiter(_this, void 0, void 0, function () {
+                  return __generator(this, function (_a) {
                     switch (_a.label) {
                       case 0:
                         return [4
@@ -2328,10 +3554,10 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var submitForm = function submitForm() {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var _a;
 
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_b) {
+        return __generator(this, function (_b) {
           (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.validate(function (valid) {
             if (valid) {
               axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
@@ -2375,9 +3601,9 @@ __webpack_require__.r(__webpack_exports__);
     var results = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([]);
 
     var majorSearch = function majorSearch(queryString, cb) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var payload;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               payload = queryString;
@@ -2417,9 +3643,9 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var schoolSearch = function schoolSearch(queryString, cb) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var payload;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               payload = queryString;
@@ -2459,9 +3685,9 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var regionSearch = function regionSearch(queryString, cb) {
-      return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(_this, void 0, void 0, function () {
+      return __awaiter(_this, void 0, void 0, function () {
         var payload;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__generator)(this, function (_a) {
+        return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               payload = queryString;
@@ -2635,141 +3861,161 @@ var _hoisted_1 = {
   "class": "row"
 };
 var _hoisted_2 = {
-  "class": "col-10"
+  "class": "col-md-12"
 };
 var _hoisted_3 = {
   "class": "card bg-white"
 };
-var _hoisted_4 = {
-  "class": "card-body"
-};
-var _hoisted_5 = {
-  "class": "row"
-};
-var _hoisted_6 = {
-  key: 0,
-  "class": "my-5 notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
-};
-var _hoisted_7 = {
-  "class": "svg-icon svg-icon-2tx svg-icon-warning me-4"
-};
-var _hoisted_8 = {
-  "class": "d-flex flex-stack flex-grow-1"
-};
-var _hoisted_9 = {
-  "class": "fw-bold"
-};
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
-  "class": "text-gray-800 fw-bolder"
-}, "Perhatian!", -1
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-title"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Data Diri")])], -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
-  "class": "fs-6 text-gray-600"
+var _hoisted_5 = {
+  "class": "card-body"
 };
-var _hoisted_12 = {
-  "class": "d-flex justify-content-between"
+var _hoisted_6 = {
+  "class": "card bg-white"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Kembali");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "card-title"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Upload Berkas")])], -1
+/* HOISTED */
+);
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Lanjut");
-
-var _hoisted_15 = {
-  "class": "col-2"
+var _hoisted_8 = {
+  "class": "card-body"
 };
+var _hoisted_9 = {
+  "class": "d-flex justify-content-center mt-10"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa fa-chevron-left me-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kembali ");
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Lanjut ");
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa fa-chevron-right ms-2"
+}, null, -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
+  var _component_el_tab_pane = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-tab-pane");
+
+  var _component_el_tabs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-tabs");
 
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
 
-  var _component_el_step = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-step");
-
-  var _component_el_steps = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-steps");
-
-  var _component_el_affix = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-affix");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [!($setup.step == 1 || $setup.step == 2 || $setup.step == 3 || $setup.step == 4) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
-    src: "/media/icons/duotune/general/gen044.svg"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.steps[$setup.step].desc), 1
-  /* TEXT */
-  )])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-    name: $setup.effect,
-    mode: "out-in"
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tabs, {
+    "tab-position": "top",
+    modelValue: $setup.tabActiveName,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $setup.tabActiveName = $event;
+    })
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.KeepAlive, null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)($setup.steps[$setup.step].component)))], 1024
-      /* DYNAMIC_SLOTS */
-      ))];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tab_pane, {
+        name: "Data Diri",
+        label: "Data Diri"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DataDiriForm"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"row\">\n                                    <div class=\"d-flex justify-content-between \">\n                                        <el-button type=\"primary\" @click=\"backStep()\">Kembali</el-button>\n                                        <el-button type=\"primary\" @click=\"nextStepAction()\">Lanjut</el-button>\n                                    </div>\n                                </div> ")])])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tab_pane, {
+        name: "Pendidikan",
+        label: "Pendidikan"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pendidikan"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tab_pane, {
+        name: "Keluarga",
+        label: "Keluarga"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Keluarga"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tab_pane, {
+        name: "Pekerjaan",
+        label: "Pekerjaan"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pekerjaan"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tab_pane, {
+        name: "Organisasi",
+        label: "Organisasi"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Organisasi"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_tab_pane, {
+        name: "Berkas",
+        label: "Berkas"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Berkas"])])])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["name"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
-    type: "primary",
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $setup.backStep();
-    })
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+    type: "info",
+    plain: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_13];
+      return [_hoisted_10, _hoisted_11];
     }),
     _: 1
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
     type: "primary",
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $setup.nextStepAction();
-    })
+    plain: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_14];
+      return [_hoisted_12, _hoisted_13];
     }),
     _: 1
     /* STABLE */
 
-  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_affix, {
-    offset: 120
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_steps, {
-        active: $setup.step,
-        direction: "vertical",
-        style: {
-          "height": "300px"
-        }
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_step, {
-            title: "Data Diri"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_step, {
-            title: "Pendidikan"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_step, {
-            title: "Keluarga"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_step, {
-            title: "Kerja"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_step, {
-            title: "Organisasi"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_step, {
-            title: "Berkas"
-          })];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["active"])];
-    }),
-    _: 1
-    /* STABLE */
-
-  })])])]);
+  })])])])]);
 }
 
 /***/ }),
@@ -3333,7 +4579,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_3 = {
-  "class": "card-body pt-2 px-0"
+  "class": "card-body pt-2 px-6"
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit");
@@ -3508,16 +4754,16 @@ var _hoisted_11 = {
   "class": "col-md-6"
 };
 var _hoisted_12 = {
-  "class": "col-md-6"
+  "class": "row"
 };
 var _hoisted_13 = {
-  "class": "row"
+  "class": "col-md-6"
 };
 var _hoisted_14 = {
   "class": "col-md-6"
 };
 var _hoisted_15 = {
-  "class": "transition-box"
+  "class": "col-md-6"
 };
 var _hoisted_16 = {
   "class": "row"
@@ -3525,34 +4771,40 @@ var _hoisted_16 = {
 var _hoisted_17 = {
   "class": "col-md-6"
 };
-var _hoisted_18 = {
-  "class": "row"
-};
-var _hoisted_19 = {
-  "class": "col-md-6"
-};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fas fa-plus-square me-3 text-primary"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Masukkan sebagai Alamat Tinggal");
+
 var _hoisted_20 = {
-  "class": "col-md-6"
+  "class": "row"
 };
 var _hoisted_21 = {
-  "class": "row"
+  "class": "col-md-6"
 };
 var _hoisted_22 = {
-  "class": "col-md-6"
+  "class": "row"
 };
 var _hoisted_23 = {
   "class": "col-md-6"
 };
 var _hoisted_24 = {
-  "class": "col-md-12"
+  "class": "col-md-6"
 };
 var _hoisted_25 = {
+  "class": "col-md-12"
+};
+var _hoisted_26 = {
   "class": "d-flex justify-content-end"
 };
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset");
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Reset");
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Simpan");
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Simpan");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-input");
@@ -3572,6 +4824,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_el_autocomplete = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-autocomplete");
 
   var _component_el_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-button");
+
+  var _component_el_divider = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-divider");
 
   var _component_el_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("el-form");
 
@@ -3620,13 +4874,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Gelar Awal",
-        prop: "gelarAwal"
+        prop: "title_pre"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $setup.ruleForm.gelarAwal,
+            modelValue: $setup.ruleForm.title_pre,
             "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-              return $setup.ruleForm.gelarAwal = $event;
+              return $setup.ruleForm.title_pre = $event;
             })
           }, null, 8
           /* PROPS */
@@ -3637,13 +4891,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Gelar Akhir",
-        prop: "gelarAkhir"
+        prop: "title_post"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $setup.ruleForm.gelarAkhir,
+            modelValue: $setup.ruleForm.title_post,
             "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-              return $setup.ruleForm.gelarAkhir = $event;
+              return $setup.ruleForm.title_post = $event;
             })
           }, null, 8
           /* PROPS */
@@ -3654,13 +4908,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Nomor KTP",
-        prop: "nomorKTP"
+        prop: "identity_id"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $setup.ruleForm.nomorKTP,
+            modelValue: $setup.ruleForm.identity_id,
             "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-              return $setup.ruleForm.nomorKTP = $event;
+              return $setup.ruleForm.identity_id = $event;
             })
           }, null, 8
           /* PROPS */
@@ -3671,13 +4925,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "NPWP",
-        prop: "nomorNPWP"
+        prop: "tax_id"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $setup.ruleForm.nomorNPWP,
+            modelValue: $setup.ruleForm.tax_id,
             "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-              return $setup.ruleForm.nomorNPWP = $event;
+              return $setup.ruleForm.tax_id = $event;
             }),
             maxlength: "16",
             "show-word-limit": ""
@@ -3688,18 +4942,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <el-form-item label=\"Nomor SIM A\" prop=\"nomorSIMA\">\n                            <el-input\n                                v-model=\"ruleForm.nomorSIMA\"\n                                maxlength=\"12\"\n                                show-word-limit >\n                            </el-input>\n                        </el-form-item>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <el-form-item label=\"Nomor SIM B\" prop=\"nomorSIMB\">\n                            <el-input\n                                v-model=\"ruleForm.nomorSIMB\"\n                                maxlength=\"12\"\n                                show-word-limit>\n                            </el-input>\n                        </el-form-item>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <el-form-item label=\"Nomor SIM C\" prop=\"nomorSIMC\">\n                            <el-input\n                                v-model=\"ruleForm.nomorSIMC\"\n                                maxlength=\"12\"\n                                show-word-limit>\n                            </el-input>\n                        </el-form-item>\n                    </div>\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <el-form-item label=\"Nomor SIM A\" prop=\"driving_a\">\n                            <el-input\n                                v-model=\"ruleForm.driving_a\"\n                                maxlength=\"12\"\n                                show-word-limit >\n                            </el-input>\n                        </el-form-item>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <el-form-item label=\"Nomor SIM B\" prop=\"driving_b\">\n                            <el-input\n                                v-model=\"ruleForm.driving_b\"\n                                maxlength=\"12\"\n                                show-word-limit>\n                            </el-input>\n                        </el-form-item>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <el-form-item label=\"Nomor SIM C\" prop=\"driving_c\">\n                            <el-input\n                                v-model=\"ruleForm.driving_c\"\n                                maxlength=\"12\"\n                                show-word-limit>\n                            </el-input>\n                        </el-form-item>\n                    </div>\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Tempat, Tanggal Lahir"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "tempatLahir"
+            prop: "birth_place"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $setup.ruleForm.tempatLahir,
+                modelValue: $setup.ruleForm.birth_place,
                 "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-                  return $setup.ruleForm.tempatLahir = $event;
+                  return $setup.ruleForm.birth_place = $event;
                 }),
                 placeholder: "Tempat Lahir"
               }, null, 8
@@ -3710,13 +4964,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
 
           })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "tanggalLahir"
+            prop: "birth_date"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_date_picker, {
-                modelValue: $setup.ruleForm.tanggalLahir,
+                format: "DD-MM-YYYY",
+                "value-format": "YYYY-MM-DD",
+                modelValue: $setup.ruleForm.birth_date,
                 "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-                  return $setup.ruleForm.tanggalLahir = $event;
+                  return $setup.ruleForm.birth_date = $event;
                 }),
                 placeholder: "Tanggal Lahir",
                 "class": "w-100"
@@ -3734,13 +4990,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Golongan Darah",
-        prop: "golonganDarah"
+        prop: "blood_type"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_radio_group, {
-            modelValue: $setup.ruleForm.golonganDarah,
+            modelValue: $setup.ruleForm.blood_type,
             "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-              return $setup.ruleForm.golonganDarah = $event;
+              return $setup.ruleForm.blood_type = $event;
             })
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -3804,17 +5060,53 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Nomor Ponsel",
+        prop: "mobile"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            maxlength: "14",
+            "show-word-limit": "",
+            modelValue: $setup.ruleForm.mobile,
+            "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+              return $setup.ruleForm.mobile = $event;
+            })
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Nomor Ponsel Alternatif",
+        prop: "mobile_alt"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
+            modelValue: $setup.ruleForm.mobile_alt,
+            "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+              return $setup.ruleForm.mobile_alt = $event;
+            })
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Alamat Asal (Sesuai KTP)",
-        prop: "alamatAsal"
+        prop: "address"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
             placeholder: "Isi Alamat di Bawah Tingkat Kecamatan",
             type: "textarea",
-            modelValue: $setup.ruleForm.alamatAsal,
-            "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-              return $setup.ruleForm.alamatAsal = $event;
+            modelValue: $setup.ruleForm.address,
+            "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+              return $setup.ruleForm.address = $event;
             })
           }, null, 8
           /* PROPS */
@@ -3825,14 +5117,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Domisili Asal (Isi dengan nama kecamatan)",
-        prop: "domisiliAsal"
+        prop: "region"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_autocomplete, {
             "class": "inline-input w-100",
-            modelValue: $setup.ruleForm.domisiliAsal,
-            "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-              return $setup.ruleForm.domisiliAsal = $event;
+            modelValue: $setup.ruleForm.region,
+            "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+              return $setup.ruleForm.region = $event;
             }),
             "fetch-suggestions": $setup.querySearch,
             placeholder: "Isi Dengan Nama Kecamatan",
@@ -3845,15 +5137,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Kode Pos Asal",
-        prop: "kodePosAsal"
+        prop: "zip"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $setup.ruleForm.kodePosAsal,
-            "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-              return $setup.ruleForm.kodePosAsal = $event;
+            modelValue: $setup.ruleForm.zip,
+            "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+              return $setup.ruleForm.zip = $event;
             })
           }, null, 8
           /* PROPS */
@@ -3862,88 +5154,52 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <el-divider>\n                    <el-checkbox v-model=\"alamatTinggalShow\" label=\"Alamat \" size=\"large\" border/></div>\n                </el-divider> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
-        name: "el-zoom-in-top",
-        persisted: ""
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
+        "class": "mt-2 w-full",
+        onClick: $setup.handleClickaddress
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            label: "Alamat Tinggal",
-            prop: "alamatTinggal"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                placeholder: "Isi Alamat di Bawah Tingkat Kecamatan",
-                type: "textarea",
-                modelValue: $setup.ruleForm.alamatTinggal,
-                "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-                  return $setup.ruleForm.alamatTinggal = $event;
-                })
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            label: "Domisili Tinggal (Isi dengan nama kecamatan)",
-            prop: "domisiliTinggal"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_autocomplete, {
-                "class": "inline-input w-100",
-                modelValue: $setup.ruleForm.domisiliTinggal,
-                "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-                  return $setup.ruleForm.domisiliTinggal = $event;
-                }),
-                "fetch-suggestions": $setup.querySearch,
-                placeholder: "Isi Dengan Nama Kecamatan",
-                "trigger-on-focus": false,
-                onSelect: $setup.handleSelectTinggal
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            label: "Kode Pos Tinggal",
-            prop: "kodePosTinggal"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $setup.ruleForm.kodePosTinggal,
-                "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-                  return $setup.ruleForm.kodePosTinggal = $event;
-                })
-              }, null, 8
-              /* PROPS */
-              , ["modelValue"])];
-            }),
-            _: 1
-            /* STABLE */
-
-          })])])], 512
-          /* NEED_PATCH */
-          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.alamatTinggalShow]])];
+          return [_hoisted_18, _hoisted_19];
         }),
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        label: "Nomor Ponsel",
-        prop: "nomorHP"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_divider, {
+        "content-position": "left"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Alamat Tinggal",
+        prop: "address_home"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            maxlength: "14",
-            "show-word-limit": "",
-            modelValue: $setup.ruleForm.nomorHP,
+            placeholder: "Isi Alamat di Bawah Tingkat Kecamatan",
+            type: "textarea",
+            modelValue: $setup.ruleForm.address_home,
+            "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+              return $setup.ruleForm.address_home = $event;
+            })
+          }, null, 8
+          /* PROPS */
+          , ["modelValue"])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Domisili Tinggal (Isi dengan nama kecamatan)",
+        prop: "region_home"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_autocomplete, {
+            "class": "inline-input w-100",
+            modelValue: $setup.ruleForm.region_home,
             "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-              return $setup.ruleForm.nomorHP = $event;
-            })
+              return $setup.ruleForm.region_home = $event;
+            }),
+            "fetch-suggestions": $setup.querySearch,
+            placeholder: "Isi Dengan Nama Kecamatan",
+            "trigger-on-focus": false,
+            onSelect: $setup.handleSelectTinggal
           }, null, 8
           /* PROPS */
           , ["modelValue"])];
@@ -3951,15 +5207,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-        label: "Nomor Ponsel Alternatif",
-        prop: "nomorHPAlt"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+        label: "Kode Pos Tinggal",
+        prop: "zip_home"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-            modelValue: $setup.ruleForm.nomorHPAlt,
+            modelValue: $setup.ruleForm.zip_home,
             "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-              return $setup.ruleForm.nomorHPAlt = $event;
+              return $setup.ruleForm.zip_home = $event;
             })
           }, null, 8
           /* PROPS */
@@ -3968,7 +5224,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_divider), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Etnis",
         prop: "etnicity"
       }, {
@@ -4004,7 +5260,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
         label: "Agama",
         prop: "religion"
       }, {
@@ -4040,7 +5296,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
+      })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_button, {
             onClick: _cache[20] || (_cache[20] = function ($event) {
@@ -4048,7 +5304,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             })
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_26];
+              return [_hoisted_27];
             }),
             _: 1
             /* STABLE */
@@ -4060,7 +5316,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             })
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_27];
+              return [_hoisted_28];
             }),
             _: 1
             /* STABLE */

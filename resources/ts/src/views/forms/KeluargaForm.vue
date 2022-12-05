@@ -129,17 +129,6 @@
                             'label': element.name,
                         })
                     }
-                    // } else if(element.status_id.slice(0,3) == 'REL') {
-                    //     religion.push({
-                    //         'value': element.status_id,
-                    //         'label': element.name,
-                    //     })
-                    // } else if(element.status_id.slice(0,3) == 'MAR') {
-                    //     marital.push({
-                    //         'value': element.status_id,
-                    //         'label': element.name,
-                    //     })
-                    // }
                 });
             })
         })

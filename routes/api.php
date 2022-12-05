@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('logout');
 Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->middleware('auth:sanctum');
-Route::post('/login/ldap', [App\Http\Controllers\LDAPController::class, 'login'])->name('ldap');
+Route::put('/resetPassword', [App\Http\Controllers\AuthController::class, 'resetPassword'])->name('resetPassword');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('person', App\Http\Controllers\PersonController::class);

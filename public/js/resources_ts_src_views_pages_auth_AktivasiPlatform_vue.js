@@ -49,7 +49,7 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.success) {
           console.log(response.data);
           store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_SUBJECT, subject);
-          store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_REMAINING, 180000);
+          store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_REMAINING, 300000);
           store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_2__.Mutations.SET_CODE, response.data.code); // this.$notify({
           //     title: 'Success',
           //     type: 'success',

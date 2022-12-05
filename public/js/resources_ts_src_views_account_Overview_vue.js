@@ -260,6 +260,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_widgets_lists_Widget2_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/widgets/lists/Widget2.vue */ "./resources/ts/src/components/widgets/lists/Widget2.vue");
 /* harmony import */ var _components_widgets_lists_Widget4_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/widgets/lists/Widget4.vue */ "./resources/ts/src/components/widgets/lists/Widget4.vue");
 /* harmony import */ var _core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/core/helpers/breadcrumb */ "./resources/ts/src/core/helpers/breadcrumb.ts");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/store */ "./resources/ts/src/store/index.ts");
+
 
 
 
@@ -273,9 +275,16 @@ __webpack_require__.r(__webpack_exports__);
     KTListWidget4: _components_widgets_lists_Widget4_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   setup: function setup() {
+    var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount)(function () {
+      user.value = _store__WEBPACK_IMPORTED_MODULE_5__["default"].getters.getUser;
+    });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       (0,_core_helpers_breadcrumb__WEBPACK_IMPORTED_MODULE_4__.setCurrentPageBreadcrumbs)("Overview", ["Account", "Overview"]);
     });
+    return {
+      user: user
+    };
   }
 }));
 
@@ -793,17 +802,83 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_5 = {
   "class": "card-body p-9"
 };
+var _hoisted_6 = {
+  "class": "row mb-7"
+};
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row mb-7\"><label class=\"col-lg-4 fw-bold text-muted\">Nama Lengkap</label><div class=\"col-lg-8\"><span class=\"fw-bolder fs-6 text-dark\">Max Smith</span></div></div><div class=\"row mb-7\"><label class=\"col-lg-4 fw-bold text-muted\">Nomor KTP</label><div class=\"col-lg-8\"><span class=\"fw-bolder fs-6 text-dark\">32170110129382</span></div></div><div class=\"row mb-7\"><label class=\"col-lg-4 fw-bold text-muted\"> Nomor Telepon <i class=\"fas fa-exclamation-circle ms-1 fs-7\" data-bs-toggle=\"tooltip\" title=\"Phone number must be active\"></i></label><div class=\"col-lg-8 d-flex align-items-center\"><span class=\"fw-bolder fs-6 me-2\">044 3276 454 935</span><span class=\"badge badge-success\">Verified</span></div></div><div class=\"row mb-7\"><label class=\"col-lg-4 fw-bold text-muted\">Alamat Email</label><div class=\"col-lg-8\"><a href=\"#\" class=\"fw-bold fs-6 text-dark text-hover-primary me-2\">candragain99@gmail.com</a><span class=\"badge badge-success\">Verified</span></div></div><div class=\"row mb-7\"><label class=\"col-lg-4 fw-bold text-muted\">Communication</label><div class=\"col-lg-8\"><span class=\"fw-bolder fs-6 text-dark\">Email, Phone</span></div></div><div class=\"row mb-10\"><label class=\"col-lg-4 fw-bold text-muted\">Allow Changes</label><div class=\"col-lg-8\"><span class=\"fw-bold fs-6\">Yes</span></div></div>", 6);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-lg-4 fw-bold text-muted"
+}, "Nama Lengkap", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "col-lg-8"
+};
+var _hoisted_9 = {
+  "class": "fw-bolder fs-6 text-dark"
+};
+var _hoisted_10 = {
+  "class": "row mb-7"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-lg-4 fw-bold text-muted"
+}, "User ID", -1
+/* HOISTED */
+);
 
 var _hoisted_12 = {
-  "class": "notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
+  "class": "col-lg-8"
 };
 var _hoisted_13 = {
+  "class": "fw-bolder fs-6 text-dark"
+};
+var _hoisted_14 = {
+  "class": "row mb-7"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-lg-4 fw-bold text-muted"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nomor Telepon "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fas fa-exclamation-circle ms-1 fs-7",
+  "data-bs-toggle": "tooltip",
+  title: "Phone number must be active"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
+  "class": "col-lg-8 d-flex align-items-center"
+};
+var _hoisted_17 = {
+  "class": "fw-bolder fs-6 me-2"
+};
+var _hoisted_18 = {
+  "class": "row mb-7"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-lg-4 fw-bold text-muted"
+}, "Alamat Email", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
+  "class": "col-lg-8"
+};
+var _hoisted_21 = {
+  href: "#",
+  "class": "fw-bold fs-6 text-dark text-hover-primary me-2"
+};
+var _hoisted_22 = {
+  "class": "notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
+};
+var _hoisted_23 = {
   "class": "svg-icon svg-icon-2tx svg-icon-warning me-4"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex flex-stack flex-grow-1\"><div class=\"fw-bold\"><h4 class=\"text-gray-800 fw-bolder\">Perhatian!</h4><div class=\"fs-6 text-gray-600\"> Data Akun Anda Belum Lengkap Mohon <a class=\"fw-bolder\" href=\"#\">Lengkapi Detail Akun</a>. </div></div></div>", 1);
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"d-flex flex-stack flex-grow-1\"><div class=\"fw-bold\"><h4 class=\"text-gray-800 fw-bolder\">Perhatian!</h4><div class=\"fs-6 text-gray-600\"> Data Akun Anda Belum Lengkap Mohon <a class=\"fw-bolder\" href=\"#\">Lengkapi Detail Akun</a>. </div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
@@ -820,9 +895,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.login), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.mobile), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.email), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
     src: "/media/icons/duotune/general/gen044.svg"
-  })]), _hoisted_14])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <KTChartWidget2 widget-classes=\"mb-5 mb-xl-10\"></KTChartWidget2>\n\n  <KTTableWidget1 widget-classes=\"mb-5 mb-xl-10\"></KTTableWidget1>\n\n  <KTListWidget4 widget-classes=\"mb-5 mb-xl-10\"></KTListWidget4> ")], 2112
+  })]), _hoisted_24])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <KTChartWidget2 widget-classes=\"mb-5 mb-xl-10\"></KTChartWidget2>\n\n  <KTTableWidget1 widget-classes=\"mb-5 mb-xl-10\"></KTTableWidget1>\n\n  <KTListWidget4 widget-classes=\"mb-5 mb-xl-10\"></KTListWidget4> ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }

@@ -86,7 +86,9 @@
 
         globalProperties = app.appContext.config.globalProperties
 
-        getData()
+        if(personId.value != null) {
+            getData()
+        }
     })
 
     const indexMethod = (index: number) => {

@@ -22,9 +22,11 @@
 
                     <span >
                         Kirim Ulang Kode Aktivasi Dalam
-                        <vue-countdown :time="300000" v-slot="{ days, hours, minutes, seconds }" @end="onCountdownEnd()">
+                        <vue-countdown ref="countRef" :time="remaining" v-slot="{ days, hours, minutes, seconds }" @end="onCountdownEnd()" @progress="onCountProgress">
                             0{{ minutes }}:{{ seconds }}
                         </vue-countdown>
+
+                        {{ remaining }}
                     </span>
                 </el-form>
             </el-card>
@@ -56,23 +58,28 @@
             const store = useStore();
             const router = useRouter();
 
-            let remaining = ref(0);
             let subject = ref('');
             let token = ref('');
             let userId = ref('');
+
+            let countRef = ref(null);
+
+            const remaining = ref(2);
+
+            onMounted(() => {
+                remaining.value = store.getters.remainingTime
+            })
 
             const notify = inject('$notify');
 
             let code = ref('');
 
             onBeforeMount(() => {
-                remaining = store.getters.remainingTime
                 subject = store.getters.subject
                 code = store.getters.code
                 token = store.getters.getToken
                 userId = store.getters.getUser.user_id
 
-                console.log(remaining)
                 console.log(subject)
                 console.log(code)
                 console.log(token)
@@ -82,6 +89,10 @@
             const onCountdownEnd = async () => {
                 await store.commit(Mutations.SET_CODE, '');
                 router.push({ path : '/auth/aktivasiPlatform' })
+            }
+
+            const onCountProgress = (payload) => {
+                store.commit(Mutations.SET_REMAINING, payload.totalMilliseconds)
             }
 
             const submitForm = async () => {
@@ -122,7 +133,9 @@
                 subject,
                 completed,
                 submitForm,
-                onCountdownEnd
+                onCountdownEnd,
+                onCountProgress,
+                countRef
             }
         },
     }

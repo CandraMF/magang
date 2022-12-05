@@ -12,7 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue3-recaptcha-v2 */ "./node_modules/vue3-recaptcha-v2/dist/vue3-recaptcha-v2.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/router */ "./resources/ts/src/router/index.ts");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue3-recaptcha-v2 */ "./node_modules/vue3-recaptcha-v2/dist/vue3-recaptcha-v2.js");
+
+
 
 
 
@@ -24,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
     var isLoading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var ruleFormRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var validCaptcha = false;
-    var resetRecaptcha = (0,vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__.useRecaptcha)().resetRecaptcha;
+    var resetRecaptcha = (0,vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_3__.useRecaptcha)().resetRecaptcha;
     var recaptchaWidget = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
 
     var callbackVerify = function callbackVerify(response) {
@@ -40,19 +45,19 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var ruleForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      user_id: '',
       password: '',
-      confirmPassword: '',
       captcha: ''
     });
     var rules = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
-      password: [{
+      user_id: [{
         required: true,
-        message: 'Mohon isi Password',
+        message: 'Mohon isi User ID',
         trigger: ['blur', 'change']
       }],
       confirmPassword: [{
         required: true,
-        message: 'Mohon Ulangi Password',
+        message: 'Mohon isi Password',
         trigger: ['blur', 'change']
       }],
       captcha: [{
@@ -63,9 +68,31 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     var submitForm = function submitForm(payload) {
-      var _a;
+      isLoading.value = false;
+      ruleFormRef.value.validate(function (valid) {
+        if (valid) {
+          axios__WEBPACK_IMPORTED_MODULE_2___default().get("/sanctum/csrf-cookie").then(function (response) {
+            axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/resetPassword", {
+              login: ruleForm.user_id,
+              password: ruleForm.password
+            }).then(function (response) {
+              console.log(response);
 
-      (_a = ruleFormRef.value) === null || _a === void 0 ? void 0 : _a.validate();
+              if (response.data.success) {
+                _router__WEBPACK_IMPORTED_MODULE_1__["default"].push('/auth/login');
+              }
+
+              isLoading.value = false;
+            })["catch"](function (error) {
+              console.error(error.message);
+              isLoading.value = false;
+            });
+          });
+        } else {
+          isLoading.value = false;
+          return false;
+        }
+      });
     };
 
     var __returned__ = {
@@ -80,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
       ruleForm: ruleForm,
       rules: rules,
       submitForm: submitForm,
-      VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_1__.VueRecaptcha
+      VueRecaptcha: vue3_recaptcha_v2__WEBPACK_IMPORTED_MODULE_3__.VueRecaptcha
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -155,16 +182,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "password",
+            prop: "user",
             label: "User ID"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $setup.ruleForm.password,
+                modelValue: $setup.ruleForm.user_id,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-                  return $setup.ruleForm.password = $event;
-                }),
-                "show-password": ""
+                  return $setup.ruleForm.user_id = $event;
+                })
               }, null, 8
               /* PROPS */
               , ["modelValue"])];
@@ -173,14 +199,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             /* STABLE */
 
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_form_item, {
-            prop: "confirmPassword",
+            prop: "password",
             label: "Password Baru"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_el_input, {
-                modelValue: $setup.ruleForm.confirmPassword,
+                modelValue: $setup.ruleForm.password,
                 "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-                  return $setup.ruleForm.confirmPassword = $event;
+                  return $setup.ruleForm.password = $event;
                 }),
                 "show-password": "",
                 autocomplete: "off"

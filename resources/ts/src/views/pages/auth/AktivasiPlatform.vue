@@ -55,7 +55,7 @@
                             console.log(response.data)
 
                             store.commit(Mutations.SET_SUBJECT, subject)
-                            store.commit(Mutations.SET_REMAINING, 180000)
+                            store.commit(Mutations.SET_REMAINING, 300000)
                             store.commit(Mutations.SET_CODE, response.data.code)
 
                             // this.$notify({

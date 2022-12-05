@@ -40,7 +40,7 @@ class AuthController extends Controller
             $message = 'Gagal Membuat Akun';
             $token = null;
 
-        if($errorCode == '7'){
+            if($errorCode == '7'){
                 $message = "NIK Telah Terdaftar, Silahkan Login";
             } else {
                 $message = $ex->errorInfo;
@@ -117,5 +117,36 @@ class AuthController extends Controller
         return response()->json([
             'success' => true
         ], 200);
+    }
+
+    public function resetPassword(Request $request)
+    {
+
+        try {
+            $user = User::whereLogin($request->login)->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            $success = true;
+            $message = 'Berhasil Mengubah Password';
+            $user = null;
+            $token = null;
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            $success = false;
+            $message = 'Akun Tidak Ditemukan';
+            $user = null;
+            $token = null;
+        }
+
+        $response = [
+            'success' => $success,
+            'message' => $message,
+            'user'    => $user,
+            'token'   => $token,
+        ];
+
+        return response()->json($response);
+
     }
 }

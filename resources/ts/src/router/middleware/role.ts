@@ -12,7 +12,7 @@ export default ({ to, from, next }) => {
             console.log('dashboar')
             next({ path: '/dashboard' });
             return false;
-        } else if(user.role_id == 'ROL101' || user.role_id == 'ROL102') {
+        } else if (user.role_id == 'ROL101' || user.role_id == 'ROL102') {
             console.log('admin-dashboard')
             next({ path: '/profil' });
             return false;

@@ -210,8 +210,8 @@
       async submitForm(formName) {
         this.setLoading(true)
         this.$refs[formName].validate((valid) => {
-          if (valid) {
-            if(this.validCaptcha) {
+        //   if (valid) {
+        //     if(this.validCaptcha) {
                 axios.get('/sanctum/csrf-cookie').then(response => {
                     axios.post('/api/register', {
                         login: this.ruleForm.nik,
@@ -243,17 +243,17 @@
                             this.setLoading(false)
                         });
                 })
-            } else {
-                this.setLoading(false)
-                this.$notify.error({
-                    title: 'Error',
-                    message: "Captcha tidak valid"
-                });
-            }
-          } else {
-            this.setLoading(false)
-            return false;
-          }
+        //     } else {
+        //         this.setLoading(false)
+        //         this.$notify.error({
+        //             title: 'Error',
+        //             message: "Captcha tidak valid"
+        //         });
+        //     }
+        //   } else {
+        //     this.setLoading(false)
+        //     return false;
+        //   }
         });
       },
       resetForm(formName) {

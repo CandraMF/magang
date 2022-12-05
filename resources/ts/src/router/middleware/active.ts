@@ -9,13 +9,7 @@ export default ({ to, from, next }) => {
 
     if (user.status_id == 'USR001') {
         console.log('aktivasi')
-        next({ path : '/auth/aktivasi' })
-
-        return false
-    } else if (user.person_id == null) {
-        console.log('aktivasip')
-
-        next({path : '/auth/aktivasiPlatform' })
+        next({ path : '/auth/aktivasiPlatform' })
 
         return false
     }

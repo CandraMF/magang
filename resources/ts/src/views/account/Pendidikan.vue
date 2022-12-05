@@ -7,7 +7,7 @@
                     <h3>Data Pendidikan</h3>
                 </div>
             </div>
-            <div class="card-body pt-2 px-0">
+            <div class="card-body pt-2 px-6">
                 <div>
                     <el-table :data="list" style="width: 100%">
                         <el-table-column label="Jenis" prop="education_type" />
@@ -108,8 +108,9 @@
         //     offset: 100
         // });
         // console.log(myModal.show())
-
-        getEducation()
+        if(personId.value != null) {
+            getEducation()
+        }
     })
 
     const showModal = () => {

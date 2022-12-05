@@ -11,27 +11,27 @@
 
                 <div class="row">
                     <div class="col-md-6 ">
-                        <el-form-item label="Gelar Awal" prop="gelarAwal">
-                            <el-input v-model="ruleForm.gelarAwal"></el-input>
+                        <el-form-item label="Gelar Awal" prop="title_pre">
+                            <el-input v-model="ruleForm.title_pre"></el-input>
                         </el-form-item>
                     </div>
                     <div class="col-md-6">
-                        <el-form-item label="Gelar Akhir" prop="gelarAkhir" >
-                            <el-input v-model="ruleForm.gelarAkhir"></el-input>
+                        <el-form-item label="Gelar Akhir" prop="title_post" >
+                            <el-input v-model="ruleForm.title_post"></el-input>
                         </el-form-item>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        <el-form-item label="Nomor KTP" prop="nomorKTP">
-                            <el-input v-model="ruleForm.nomorKTP"></el-input>
+                        <el-form-item label="Nomor KTP" prop="identity_id">
+                            <el-input v-model="ruleForm.identity_id"></el-input>
                         </el-form-item>
                     </div>
                     <div class="col-md-6">
-                        <el-form-item label="NPWP" prop="nomorNPWP">
+                        <el-form-item label="NPWP" prop="tax_id">
                             <el-input
-                                v-model="ruleForm.nomorNPWP"
+                                v-model="ruleForm.tax_id"
                                 maxlength="16"
                                 show-word-limit></el-input>
                         </el-form-item>
@@ -39,27 +39,27 @@
                 </div>
                 <!-- <div class="row">
                     <div class="col-md-6">
-                        <el-form-item label="Nomor SIM A" prop="nomorSIMA">
+                        <el-form-item label="Nomor SIM A" prop="driving_a">
                             <el-input
-                                v-model="ruleForm.nomorSIMA"
+                                v-model="ruleForm.driving_a"
                                 maxlength="12"
                                 show-word-limit >
                             </el-input>
                         </el-form-item>
                     </div>
                     <div class="col-md-6">
-                        <el-form-item label="Nomor SIM B" prop="nomorSIMB">
+                        <el-form-item label="Nomor SIM B" prop="driving_b">
                             <el-input
-                                v-model="ruleForm.nomorSIMB"
+                                v-model="ruleForm.driving_b"
                                 maxlength="12"
                                 show-word-limit>
                             </el-input>
                         </el-form-item>
                     </div>
                     <div class="col-md-6">
-                        <el-form-item label="Nomor SIM C" prop="nomorSIMC">
+                        <el-form-item label="Nomor SIM C" prop="driving_c">
                             <el-input
-                                v-model="ruleForm.nomorSIMC"
+                                v-model="ruleForm.driving_c"
                                 maxlength="12"
                                 show-word-limit>
                             </el-input>
@@ -69,20 +69,20 @@
                 <el-form-item label="Tempat, Tanggal Lahir">
                     <div class="row">
                         <div class="col-md-6 mb-sm-2">
-                            <el-form-item prop="tempatLahir">
-                                <el-input v-model="ruleForm.tempatLahir" placeholder="Tempat Lahir"></el-input>
+                            <el-form-item prop="birth_place">
+                                <el-input v-model="ruleForm.birth_place" placeholder="Tempat Lahir"></el-input>
                             </el-form-item>
                         </div>
                         <div class="col-md-6">
-                            <el-form-item prop="tanggalLahir">
-                                <el-date-picker v-model="ruleForm.tanggalLahir" placeholder="Tanggal Lahir" class="w-100"></el-date-picker>
+                            <el-form-item prop="birth_date">
+                                <el-date-picker format="DD-MM-YYYY" value-format="YYYY-MM-DD" v-model="ruleForm.birth_date" placeholder="Tanggal Lahir" class="w-100"></el-date-picker>
                             </el-form-item>
                         </div>
                     </div>
                 </el-form-item>
 
-                <el-form-item label="Golongan Darah" prop="golonganDarah">
-                    <el-radio-group v-model="ruleForm.golonganDarah">
+                <el-form-item label="Golongan Darah" prop="blood_type">
+                    <el-radio-group v-model="ruleForm.blood_type">
                         <el-radio-button border label="A"></el-radio-button>
                         <el-radio-button border label="B"></el-radio-button>
                         <el-radio-button border label="O"></el-radio-button>
@@ -99,15 +99,31 @@
                         </el-option>
                     </el-select>
                 </el-form-item>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <el-form-item label="Nomor Ponsel" prop="mobile">
+                            <el-input
+                                maxlength="14"
+                                show-word-limit
+                                v-model="ruleForm.mobile"></el-input>
+                        </el-form-item>
+                    </div>
+                    <div class="col-md-6">
+                        <el-form-item label="Nomor Ponsel Alternatif" prop="mobile_alt">
+                            <el-input v-model="ruleForm.mobile_alt"></el-input>
+                        </el-form-item>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
-                <el-form-item label="Alamat Asal (Sesuai KTP)" prop="alamatAsal">
-                    <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.alamatAsal"></el-input>
+                <el-form-item label="Alamat Asal (Sesuai KTP)" prop="address">
+                    <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.address"></el-input>
                 </el-form-item>
-                <el-form-item label="Domisili Asal (Isi dengan nama kecamatan)" prop="domisiliAsal">
+                <el-form-item label="Domisili Asal (Isi dengan nama kecamatan)" prop="region">
                     <el-autocomplete
                         class="inline-input w-100"
-                        v-model="ruleForm.domisiliAsal"
+                        v-model="ruleForm.region"
                         :fetch-suggestions="querySearch"
                         placeholder="Isi Dengan Nama Kecamatan"
                         :trigger-on-focus="false"
@@ -116,56 +132,40 @@
                 </el-form-item>
                 <div class="row">
                     <div class="col-md-6">
-                        <el-form-item label="Kode Pos Asal" prop="kodePosAsal">
-                            <el-input v-model="ruleForm.kodePosAsal"></el-input>
+                        <el-form-item label="Kode Pos Asal" prop="zip">
+                            <el-input v-model="ruleForm.zip"></el-input>
                         </el-form-item>
                     </div>
                 </div>
 
-                <!-- <el-divider>
-                    <el-checkbox v-model="alamatTinggalShow" label="Alamat " size="large" border/></div>
-                </el-divider> -->
 
-                <transition name="el-zoom-in-top">
-                    <div v-show="alamatTinggalShow" class="transition-box">
-                        <el-form-item label="Alamat Tinggal" prop="alamatTinggal">
-                            <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.alamatTinggal"></el-input>
-                        </el-form-item>
-                        <el-form-item label="Domisili Tinggal (Isi dengan nama kecamatan)" prop="domisiliTinggal">
-                            <el-autocomplete
-                                class="inline-input w-100"
-                                v-model="ruleForm.domisiliTinggal"
-                                :fetch-suggestions="querySearch"
-                                placeholder="Isi Dengan Nama Kecamatan"
-                                :trigger-on-focus="false"
-                                @select="handleSelectTinggal">
-                            </el-autocomplete>
-                        </el-form-item>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <el-form-item label="Kode Pos Tinggal" prop="kodePosTinggal">
-                                    <el-input v-model="ruleForm.kodePosTinggal"></el-input>
-                                </el-form-item>
-                            </div>
-                        </div>
-                    </div>
-                </transition>
+                <el-button class="mt-2 w-full" @click="handleClickaddress"><i class="fas fa-plus-square me-3 text-primary"></i>Masukkan sebagai Alamat Tinggal</el-button>
 
+                <el-divider content-position="left"></el-divider>
+
+                <el-form-item label="Alamat Tinggal" prop="address_home">
+                    <el-input placeholder="Isi Alamat di Bawah Tingkat Kecamatan" type="textarea" v-model="ruleForm.address_home"></el-input>
+                </el-form-item>
+                <el-form-item label="Domisili Tinggal (Isi dengan nama kecamatan)" prop="region_home">
+                    <el-autocomplete
+                        class="inline-input w-100"
+                        v-model="ruleForm.region_home"
+                        :fetch-suggestions="querySearch"
+                        placeholder="Isi Dengan Nama Kecamatan"
+                        :trigger-on-focus="false"
+                        @select="handleSelectTinggal">
+                    </el-autocomplete>
+                </el-form-item>
                 <div class="row">
                     <div class="col-md-6">
-                        <el-form-item label="Nomor Ponsel" prop="nomorHP">
-                            <el-input
-                                maxlength="14"
-                                show-word-limit
-                                v-model="ruleForm.nomorHP"></el-input>
-                        </el-form-item>
-                    </div>
-                    <div class="col-md-6">
-                        <el-form-item label="Nomor Ponsel Alternatif" prop="nomorHPAlt">
-                            <el-input v-model="ruleForm.nomorHPAlt"></el-input>
+                        <el-form-item label="Kode Pos Tinggal" prop="zip_home">
+                            <el-input v-model="ruleForm.zip_home"></el-input>
                         </el-form-item>
                     </div>
                 </div>
+
+                <el-divider></el-divider>
+
                 <div class="row">
                     <div class="col-md-6">
                         <el-form-item label="Etnis" prop="etnicity">
@@ -217,8 +217,6 @@
     const store = useStore();
     const ruleFormRef = ref(null);
 
-    const alamatTinggalShow = ref(false);
-
     var token = ref('');
     var personId = null;
 
@@ -232,26 +230,26 @@
         etnicity: '',
         marital: '',
         religion: '',
-        gelarAwal: '',
-        gelarAkhir: '',
-        nomorKTP: '',
-        nomorNPWP: '',
-        nomorSIMA: '',
-        nomorSIMB: '',
-        nomorSIMC: '',
-        tempatLahir: '',
-        tanggalLahir: '',
-        golonganDarah: '',
-        domisiliAsal: '',
-        kodeDomisiliAsal: '',
-        domisiliTinggal: '',
-        kodeDomisiliTinggal: '',
-        alamatAsal: '',
-        alamatTinggal: '',
-        nomorHP: '',
-        nomorHPAlt: '',
-        kodePosTinggal: '',
-        kodePosAsal: '',
+        title_pre: '',
+        title_post: '',
+        identity_id: '',
+        tax_id: '',
+        driving_a: '',
+        driving_b: '',
+        driving_c: '',
+        birth_place: '',
+        birth_date: '',
+        blood_type: '',
+        region: '',
+        region_id: '',
+        region_home: '',
+        region_id_home: '',
+        address: '',
+        address_home: '',
+        mobile: '',
+        mobile_alt: '',
+        zip_home: '',
+        zip: '',
     })
 
     const rules = reactive({
@@ -263,57 +261,56 @@
             { required: true, message: 'Mohon isi email', trigger: 'blur' },
             { type: 'email', message: 'Mohon isi format email yang benar', trigger: ['blur', 'change'] }
         ],
-        nomorKTP: [
+        identity_id: [
             { required: true, message: 'Mohon isi nomor KTP', trigger: ['blur', 'change'] },
             { min: 16, message: 'Nomor KTP harus 16 digit', trigger: ['blur', 'change'] },
             { max: 16, message: 'Nomor KTP harus 16 digit', trigger: ['blur', 'change'] }
         ],
-        nomorNPWP: [
+        tax_id: [
             { min: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] },
             { max: 16, message: 'Nomor NPWP harus 16 digit', trigger: ['blur', 'change'] }
         ],
-        nomorSIMA: [
+        driving_a: [
             { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
             { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
         ],
-        nomorSIMB: [
+        driving_b: [
             { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
             { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
         ],
-        nomorSIMC: [
+        driving_c: [
             { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] },
             { min: 12, message: 'Nomor SIM harus 12 digit', trigger: ['blur', 'change'] }
         ],
-        tempatLahir: [
+        birth_place: [
             { required: true, message: 'Mohon isi Tempat Lahir', trigger: 'blur' },
         ],
-        tanggalLahir: [
+        birth_date: [
             { required: true, message: 'Mohon isi Tanggal Lahir', trigger: 'blur' },
         ],
-        domisiliAsal: [
+        region: [
             { required: true, message: 'Mohon isi Kecamatan', trigger: 'blur' },
         ],
-        domisiliTinggal: [
+        region_home: [
             { required: true, message: 'Mohon isi Kecamatan', trigger: 'blur' },
         ],
-        alamatTinggal: [
+        address_home: [
             { required: true, message: 'Mohon isi Alamat Tinggal', trigger: 'blur' },
         ],
-        alamatAsal: [
+        address: [
             { required: true, message: 'Mohon isi Alamat Asal', trigger: 'blur' },
         ],
-        nomorHP: [
+        mobile: [
             { required: true, message: 'Mohon isi Nomor Ponsel', trigger: 'blur' },
-            { min: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] },
-            { min: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] }
+            { max: 14, message: 'Nomor Nomor Ponsel harus 14 digit', trigger: ['blur', 'change'] }
         ],
-        nomorHPAlt: [
+        mobile_alt: [
 
         ],
         marital: [
             { required: true, message: 'Mohon pilih Status Pernikahan', trigger: ['blur', 'change'] },
         ],
-        golonganDarah: [
+        blood_type: [
             { required: true, message: 'Mohon pilih Golongan Darah', trigger: ['blur', 'change'] },
         ],
         etnicity: [
@@ -322,25 +319,25 @@
         religion: [
             { required: true, message: 'Mohon pilih Agama', trigger: ['blur', 'change'] },
         ],
-        kodePosTinggal: [
+        zip_home: [
             { required: true, message: 'Mohon isi Kode Pos Tinggal', trigger: ['blur', 'change'] },
         ],
-        kodePosAsal: [
+        zip: [
             { required: true, message: 'Mohon isi Kode Pos Asal', trigger: ['blur', 'change'] },
         ],
     })
 
     onMounted(() => {
         ruleForm.email = store.getters.getUser.email
-        ruleForm.nomorKTP = store.getters.getUser.login
-        ruleForm.nomorHP = store.getters.getUser.mobile
+        ruleForm.identity_id = store.getters.getUser.login
+        ruleForm.mobile = store.getters.getUser.mobile
 
         token = store.getters.getToken
         personId = store.getters.getUser.person_id
 
         getStatus()
 
-        if (personId) {
+        if (personId != null) {
             getPerson()
         }
 
@@ -353,29 +350,29 @@
                 headers: {'Authorization': 'Bearer '+ token},
             })
             .then((response)=> {
-                ruleForm.alamatAsal             = response.data.address;
-                ruleForm.alamatTinggal          = response.data.address_home;
-                ruleForm.domisiliAsal           = response.data.region;
-                ruleForm.domisiliTinggal        = response.data.region_home;
+                ruleForm.address             = response.data.address;
+                ruleForm.address_home          = response.data.address_home;
+                ruleForm.region           = response.data.region;
+                ruleForm.region_home        = response.data.region_home;
                 ruleForm.email                  = response.data.email;
                 ruleForm.etnicity               = response.data.ethnicity_id;
-                ruleForm.gelarAwal              = response.data.title_pre;
-                ruleForm.gelarAkhir             = response.data.title_post;
-                ruleForm.golonganDarah          = response.data.blood_type;
-                ruleForm.kodePosAsal            = response.data.zip;
-                ruleForm.kodePosTinggal         = response.data.zip_home;
+                ruleForm.title_pre              = response.data.title_pre;
+                ruleForm.title_post             = response.data.title_post;
+                ruleForm.blood_type          = response.data.blood_type;
+                ruleForm.zip            = response.data.zip;
+                ruleForm.zip_home         = response.data.zip_home;
                 ruleForm.marital                = response.data.marital_status_id;
                 ruleForm.name                   = response.data.name;
-                ruleForm.nomorHP                = response.data.mobile;
-                ruleForm.nomorHPAlt             = response.data.mobile_alt;
-                ruleForm.nomorKTP               = response.data.identity_id;
-                ruleForm.nomorNPWP              = response.data.tax_id;
-                ruleForm.nomorSIMA              = response.data.driving_a;
-                ruleForm.nomorSIMB              = response.data.driving_b;
-                ruleForm.nomorSIMC              = response.data.driving_c;
+                ruleForm.mobile                = response.data.mobile;
+                ruleForm.mobile_alt             = response.data.mobile_alt;
+                ruleForm.identity_id               = response.data.identity_id;
+                ruleForm.tax_id              = response.data.tax_id;
+                ruleForm.driving_a              = response.data.driving_a;
+                ruleForm.driving_b              = response.data.driving_b;
+                ruleForm.driving_c              = response.data.driving_c;
                 ruleForm.religion               = response.data.religion_id;
-                ruleForm.tanggalLahir           = response.data.birth_date;
-                ruleForm.tempatLahir            = response.data.birth_place;
+                ruleForm.birth_date           = response.data.birth_date;
+                ruleForm.birth_place            = response.data.birth_place;
             })
         })
     }
@@ -475,11 +472,18 @@
 
 
     const handleSelectAsal = (item) => {
-        ruleForm.kodeDomisiliAsal = item.region_id
+        ruleForm.region_id = item.region_id
     };
 
     const handleSelectTinggal = (item) => {
-        ruleForm.kodeDomisiliTinggal = item.region_id
+        ruleForm.region_id_home = item.region_id
     };
+
+    const handleClickaddress = () => {
+        ruleForm.address_home = ruleForm.address
+        ruleForm.region_home = ruleForm.region
+        ruleForm.region_id_home = ruleForm.region_id
+        ruleForm.zip_home = ruleForm.zip
+    }
 
 </script>

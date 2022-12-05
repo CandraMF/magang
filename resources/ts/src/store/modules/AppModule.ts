@@ -12,7 +12,7 @@ interface StoreInfo {
 @Module
 export default class AppModule extends VuexModule implements StoreInfo {
     private _code = '';
-    private _remainingTime = 240;
+    private _remainingTime = 300000;
     private _subject = '';
     private _phone = '';
     private _email = '';

@@ -9,10 +9,6 @@ export default ({ to, from, next }) => {
         next({ name : 'admin'})
 
         return false
-    } else if (user.role_id == 'ROL101') {
-        next({ name : 'admin' })
-
-        return false
     }
 
     next()
